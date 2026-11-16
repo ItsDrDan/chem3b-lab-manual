@@ -2,6 +2,8 @@
 
 **Daniel Kwasniewski, Ph.D. and Alexandra Aloia**
 
+**Website:** https://itsdrdan.github.io/chem3b-lab-manual/
+
 An open educational resource (OER) laboratory manual with 15 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes link to these experiments.
 
 > **Working draft.** This is the current working edition, still being refined. Experiment numbers and procedures may change before the final release.
