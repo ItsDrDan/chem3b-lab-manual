@@ -1,0 +1,10 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="170" viewBox="0 0 900 170" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',18);
+
+const co=(p,x,ls,lab,sub)=>{grid(x,100,58,40);at(p+0,0,0,ls[0]);at(p+1,1,0,'C',{color:BLUE});at(p+2,2,0,ls[1]);at(p+'o',1,-1.5,'O',{color:BLUE});bd(p+0,p+1);bd(p+1,p+2);bd(p+1,p+'o',2,{color:BLUE});label(x+58,155,lab,{fs:17,bold:true});};
+co('f',60,['H','H'],'Aldehyde: formaldehyde');co('e',360,['H_3C','H'],'Aldehyde: acetaldehyde');co('k',660,['H_3C','CH_3'],'Ketone: acetone');
+
+</script>

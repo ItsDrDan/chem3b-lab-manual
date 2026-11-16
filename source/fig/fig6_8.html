@@ -1,0 +1,10 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="230" viewBox="0 0 820 230" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style><script src="chem.js"></script>
+<script>
+init('s',19); const O={l:'O',order:2};
+const L=(x,y,s)=>txt(x,y,s,{bold:true,fs:20});
+L(10,70,'A.'); chain(50,70,[{l:'CH_3CH_2CH_2'},{l:'C',up:O},{l:'OH'}]);
+L(430,70,'B.'); chain(470,70,[{l:'CH_3CH_2'},{l:'C',up:O},{l:'O'},{l:'CH_3'}]);
+L(10,190,'C.'); chain(50,190,[{l:'H'},{l:'C',up:O},{l:'O'},{l:'CH_2CH_3'}]);
+L(430,190,'D.'); chain(470,190,[{l:'CH_3CH_2CH_2'},{l:'C',up:O},{l:'O'},{l:'CH_2CH_3'}]);
+</script>

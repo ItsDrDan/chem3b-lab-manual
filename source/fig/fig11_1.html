@@ -1,0 +1,26 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="215" viewBox="0 0 1040 215" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', BLUE='#1f5fbf';
+const y=95;
+const a1=chain(12,y,[{l:'H_2N'},{l:'C',up:{l:'R_1'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'OH',color:RED}]);
+label(a1.start+ (a1.end-a1.start)/2, 200,'amino acid 1',{fs:16});
+txt(a1.end+12,y+7,'+');
+const a2=chain(a1.end+38,y,[{l:'H',color:RED},{l:'N',down:{l:'H'}},{l:'C',up:{l:'R_2'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'OH'}]);
+label(a2.start+(a2.end-a2.start)/2,200,'amino acid 2',{fs:16});
+// equilibrium arrows
+const ax1=a2.end+14, ax2=ax1+120;
+arrow(ax1,y-6,ax2,y-6); arrow(ax2,y+6,ax1,y+6);
+label((ax1+ax2)/2,y-40,'condensation',{fs:15,italic:true});
+label((ax1+ax2)/2,y-22,'(H–OH removed)',{fs:13});
+label((ax1+ax2)/2,y+30,'hydrolysis',{fs:15,italic:true});
+label((ax1+ax2)/2,y+47,'(H–OH added)',{fs:13});
+const p=chain(ax2+14,y,[{l:'H_2N'},{l:'C',up:{l:'R_1'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'N',down:{l:'H'},bondColor:BLUE},{l:'C',up:{l:'R_2'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'OH'}]);
+// highlight peptide bond
+const c=p.pos[2], n=p.pos[3];
+rect(c.x-16,y-62,(n.x-c.x)+32,118,{stroke:BLUE,dash:'5 4'});
+label((c.x+n.x)/2,y+75,'peptide bond',{fs:14,color:BLUE,bold:true});
+label(p.start+(p.end-p.start)/2,200,'dipeptide',{fs:16});
+txt(p.end+10,y+7,'+'); txt(p.end+34,y+7,'H_2O',{color:RED});
+</script>

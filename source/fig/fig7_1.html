@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="980" height="200" viewBox="0 0 980 200" style="background:#fff">
+<image href="mol/aniline_blue.svg" x="840" y="18" width="120" height="120"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18); const BLUE='#1f5fbf', GRAY='#555';
+const Y=90;
+function lab(x,a,b){label(x,165,a,{fs:15,bold:true}); label(x,184,b,{fs:13,color:GRAY});}
+let w=chain(15,Y,[{l:'H'},{l:'N',up:{l:'H'}},{l:'H'}]); lab((w.start+w.end)/2,'ammonia','(not an amine)');
+w=chain(140,Y,[{l:'CH_3',color:BLUE},{l:'N',up:{l:'H'}},{l:'H'}]); lab((w.start+w.end)/2,'methylamine','primary (1°)');
+w=chain(290,Y,[{l:'CH_3',color:BLUE},{l:'N',up:{l:'H'}},{l:'CH_3',color:BLUE}]); lab((w.start+w.end)/2,'dimethylamine','secondary (2°)');
+w=chain(455,Y,[{l:'CH_3',color:BLUE},{l:'N',up:{l:'CH_3',color:BLUE}},{l:'CH_3',color:BLUE}]); lab((w.start+w.end)/2,'trimethylamine','tertiary (3°)');
+w=chain(640,Y,[{l:'CH_3',color:BLUE},{l:'N^+',up:{l:'CH_3',color:BLUE},down:{l:'CH_3',color:BLUE}},{l:'CH_3',color:BLUE}]); lab((w.start+w.end)/2,'tetramethylammonium ion','quaternary (4°)');
+lab(900,'aniline','primary (1°), aromatic');
+</script>

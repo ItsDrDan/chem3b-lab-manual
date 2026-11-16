@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="880" height="335" viewBox="0 0 880 335" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555', SIL='#6b6b6b'; let y=90;
+const CO={l:'C',up:{l:'O',order:2}};
+const a=chain(10,y,[{l:'CH_3'},CO,{l:'H',color:BLUE}]);
+label((a.start+a.end)/2,148,'aldehyde',{fs:15,bold:true}); label((a.start+a.end)/2,167,'(acetaldehyde)',{fs:13,color:GRAY});
+let x=a.end+12; txt(x,y+7,'+'); x+=24; let t=txt(x,y+7,'2 Ag(NH_3)_2^+'); label(x+t.w/2,148,'Tollens’ reagent',{fs:15,bold:true}); label(x+t.w/2,167,'(colorless)',{fs:13,color:GRAY});
+x+=t.w+12; txt(x,y+7,'+'); x+=24; t=txt(x,y+7,'3 OH^-'); x+=t.w+14;
+arrow(x,y,x+70,y); label(x+35,y-12,'warm',{fs:14,italic:true}); x+=82;
+const p=chain(x,y,[{l:'CH_3'},CO,{l:'O^-',color:BLUE}]);
+label((p.start+p.end)/2,148,'carboxylate ion',{fs:15,bold:true}); label((p.start+p.end)/2,167,'(oxidized aldehyde)',{fs:13,color:GRAY});
+x=p.end+16; txt(x,y+7,'+'); x+=30; t=txt(x,y+7,'2 Ag(s)',{bold:true,color:SIL}); label(x+t.w/2,148,'silver metal',{fs:15,bold:true}); label(x+t.w/2,167,'(mirror or gray-black)',{fs:13,color:SIL});
+x+=t.w+12; txt(x,y+7,'+ 4 NH_3 + 2 H_2O');
+y=250;
+const k=chain(10,y,[{l:'CH_3'},CO,{l:'CH_3'}]);
+label((k.start+k.end)/2,308,'ketone',{fs:15,bold:true}); label((k.start+k.end)/2,327,'(acetone)',{fs:13,color:GRAY});
+x=k.end+12; txt(x,y+7,'+'); x+=24; t=txt(x,y+7,'Ag(NH_3)_2^+'); x+=t.w+14;
+arrow(x,y,x+70,y); label(x+35,y-12,'warm',{fs:14,italic:true}); x+=86;
+txt(x,y-4,'no reaction',{bold:true}); txt(x,y+20,'(solution stays clear; no silver mirror)',{fs:16,color:GRAY});
+</script>

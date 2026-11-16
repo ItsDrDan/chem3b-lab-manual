@@ -1,0 +1,18 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',17); const GRAY='#555', GL='#8c99a6';
+function tube(cx,fill,l1,l2,l3){const top=60,bot=230,w=34,lq=150;
+ el('path',{d:`M${cx-w/2},${lq} L${cx-w/2},${bot-w/2} A${w/2},${w/2} 0 0 0 ${cx+w/2},${bot-w/2} L${cx+w/2},${lq} Z`,fill});
+ el('path',{d:`M${cx-w/2},${top} L${cx-w/2},${bot-w/2} A${w/2},${w/2} 0 0 0 ${cx+w/2},${bot-w/2} L${cx+w/2},${top}`,fill:'none',stroke:GL,'stroke-width':2.5});
+ el('ellipse',{cx,cy:top,rx:w/2+3,ry:4,fill:'none',stroke:GL,'stroke-width':2});
+ label(cx,262,l1,{fs:16,bold:true}); label(cx,282,l2,{fs:14,color:GRAY}); if(l3)label(cx,301,l3,{fs:14,color:GRAY});}
+tube(110,'#e67e22','Negative','stays orange','3° alcohol');
+tube(310,'#2e8b6e','Positive','blue-green (Cr^3+)','1° or 2° alcohol');
+tube(590,'#f2d16b','Negative','stays yellow','alcohols');
+tube(790,'#6a2c91','Positive','violet / purple','phenols');
+label(210,28,'Chromic acid (Cr(VI)) test: Part C',{fs:17,bold:true});
+label(690,28,'Iron(III) chloride (FeCl_3) test: Part D',{fs:17,bold:true});
+line(450,15,450,315,{color:'#bbb',dash:'5,5'});
+</script>

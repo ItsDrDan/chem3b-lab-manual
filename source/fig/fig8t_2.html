@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="840" height="268" viewBox="0 0 840 268" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig8t_haw.js"></script>
+<script>
+init('s',19); U=40; SL=36;
+const Y=100;
+// alpha
+const a=pyran(120,Y,{C1:{down:{l:'OH',c:RED,bold:true}},C2:{down:'OH'},C3:{up:{l:'OH',len:24}},C4:{down:'HO'},C5:{up:'CH_2OH'}});
+num(a.C1,1,10,-8);
+// open chain (curled)
+const cx=420; const p=k=>[cx+PN[k][0]*U,Y+PN[k][1]*U];
+[['C4','C5'],['C3','C4'],['C2','C3']].forEach(([m,n])=>{const [x1,y1]=p(m),[x2,y2]=p(n); line(x1,y1,x2,y2,{w:['C2C3','C3C4','C1C2'].includes(n+m)||['C2C3','C3C4','C1C2'].includes(m+n)?5:1.7});});
+{const [x1,y1]=p('C5'),[x2,y2]=p('O'); line(x1,y1,x2-16,y2); atomAt(x2+2,y2,'OH',{color:BLU,bold:true});}
+{const [x,y]=p('C5'); line(x,y,x,y-SL+10); atomAt(x,y-SL,'CH_2OH');}
+{const [x,y]=p('C4'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'HO');}
+{const [x,y]=p('C3'); line(x,y,x,y-24+10); atomAt(x,y-24,'OH');}
+{const [x,y]=p('C2'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'OH');}
+// C1 aldehyde: put C label at C1 position
+{const [x2,y2]=p('C2'),[x1,y1]=p('C1'); line(x2,y2,x1-4,y1+7,{w:5});}
+{const [x,y]=p('C1'); atomAt(x+6,y,'C',{color:RED}); bond(x+16,y,x+40,y,2,{color:RED}); atomAt(x+50,y,'O',{color:RED}); line(x+10,y-10,x+24,y-30); atomAt(x+30,y-40,'H');}
+num(p('C1'),1,0,22); num(p('C5'),5,-14,-4);
+// curved arrow from C5 OH to C1
+el('path',{d:`M ${p('O')[0]-2} ${p('O')[1]+14} Q ${p('O')[0]+6} ${Y+10} ${p('C1')[0]-6} ${Y-4}`,fill:'none',stroke:BLU,'stroke-width':1.6,'marker-end':'url(#ah)'});
+const defs=el('defs',{}); const mk=el('marker',{id:'ah',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'},defs); el('path',{d:'M0,0 L10,5 L0,10 z',fill:BLU},mk);
+// beta
+const b=pyran(720,Y,{C1:{up:{l:'OH',c:BLU,bold:true}},C2:{down:'OH'},C3:{up:{l:'OH',len:24}},C4:{down:'HO'},C5:{up:'CH_2OH'}});
+num(b.C1,1,10,10);
+// equilibrium arrows
+function eq(x1,x2,y){arrow(x1,y-5,x2,y-5); arrow(x2,y+5,x1,y+5);}
+eq(222,292,Y); eq(552,622,Y);
+label(120,Y+105,'α-D-Glucose',{fs:18,bold:true}); label(120,Y+128,'C1 –OH down',{fs:15,italic:true,color:RED});
+label(424,Y+105,'Open-chain D-glucose',{fs:18,bold:true}); label(424,Y+128,'C5 –OH adds to the C1 carbonyl',{fs:15,italic:true,color:BLU});
+label(720,Y+105,'β-D-Glucose',{fs:18,bold:true}); label(720,Y+128,'C1 –OH up',{fs:15,italic:true,color:BLU});
+label(120,Y+152,'(about 36%)',{fs:14,color:GRY}); label(424,Y+152,'(less than 1%)',{fs:14,color:GRY}); label(720,Y+152,'(about 64%)',{fs:14,color:GRY});
+</script>

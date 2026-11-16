@@ -1,0 +1,19 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="650" height="350" viewBox="0 0 650 350" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', RED='#c0392b', GRAY='#555';
+function row(y,L,R,mid,txtL,txtR,lab){
+  const a=chain(15,y,L);
+  label((a.start+a.end)/2,y+48,txtL[0],{fs:16,bold:true}); if(txtL[1])label((a.start+a.end)/2,y+67,txtL[1],{fs:14,color:GRAY});
+  const pl=txt(a.end+16,y+6,'+'); const r=txt(a.end+42,y+6,mid,{bold:true});
+  const x1=a.end+42+r.w+18,x2=x1+90; arrow(x1,y,x2,y);
+  const b=chain(x2+16,y,R);
+  label((b.start+b.end)/2,y+48,txtR[0],{fs:16,bold:true}); if(txtR[1])label((b.start+b.end)/2,y+67,txtR[1],{fs:14,color:GRAY});
+  const p2=txt(b.end+16,y+6,'+'); txt(b.end+42,y+6,lab);
+  return b;}
+row(90,[{l:'C_6H_5'},{l:'C',up:{l:'O',order:2}},{l:'OH',color:RED}],[{l:'C_6H_5'},{l:'C',up:{l:'O',order:2}},{l:'O^-  Na^+',color:BLUE}],'NaOH',['benzoic acid','slightly soluble in cold water'],['sodium benzoate','a carboxylate salt: soluble'],'H_2O');
+row(265,[{l:'C_6H_5'},{l:'C',up:{l:'O',order:2}},{l:'O^-  Na^+',color:BLUE}],[{l:'C_6H_5'},{l:'C',up:{l:'O',order:2}},{l:'OH',color:RED}],'HCl',['sodium benzoate','soluble'],['benzoic acid','white solid forms again'],'NaCl');
+label(15,24,'Neutralization with a base (A.5)',{fs:15,italic:true,color:GRAY,anchor:'start'});
+label(15,196,'Adding a strong acid to the salt (A.6)',{fs:15,italic:true,color:GRAY,anchor:'start'});
+</script>

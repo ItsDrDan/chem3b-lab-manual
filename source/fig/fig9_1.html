@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="325" viewBox="0 0 1040 325" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555'; const y0=70, g=82;
+const gl=backbone(20,y0,[[{l:'CH_2'},{l:'OH'}],[{l:'CH'},{l:'OH'}],[{l:'CH_2'},{l:'OH'}]],g);
+label(60,y0+2*g+50,'glycerol',{fs:15,bold:true});
+txt(130,y0+g+6,'+');
+const fa=[0,1,2].map(i=>chain(165,y0+i*g,[{l:'HO'},{l:'C',up:{l:'O',order:2}},{l:'(CH_2)_{14}CH_3'}]));
+label(250,y0+2*g+50,'3 palmitic acid',{fs:15,bold:true});
+arrow(370,y0+g,470,y0+g); label(420,y0+g-12,'condensation',{fs:13,italic:true}); label(420,y0+g+22,'(3 H_2O removed)',{fs:12,color:GRAY});
+const tg=backbone(490,y0,[0,1,2].map(i=>[{l:i==1?'CH':'CH_2'},{l:'O',color:BLUE},{l:'C',up:{l:'O',order:2},bondColor:BLUE},{l:'(CH_2)_{14}CH_3'}]),g);
+label(640,y0+2*g+50,'glyceryl tripalmitate (tripalmitin), a triacylglycerol',{fs:15,bold:true});
+label(640,y0+2*g+70,'three ester bonds (blue)',{fs:13,color:BLUE});
+txt(tg[1].end+14,y0+g+6,'+'); txt(tg[1].end+36,y0+g+6,'3 H_2O');
+</script>

@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="800" height="210" viewBox="0 0 800 210" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555';
+// alkene drawn with angled substituents. tl,tr,bl,br labels and colors
+function alk(cx,cy,tl,tr,bl,br,ctl,ctr,cbl,cbr){
+  const d=24; const xl=cx-d, xr=cx+d;
+  atomAt(xl,cy,'C'); atomAt(xr,cy,'C'); bond(xl+9,cy,xr-9,cy,2);
+  const ax=34, ay=34;
+  line(xl-7,cy-8,xl-ax+4,cy-ay+6); atomAt(xl-ax-12,cy-ay-4,tl,{color:ctl});
+  line(xl-7,cy+8,xl-ax+4,cy+ay-6); atomAt(xl-ax-12,cy+ay+4,bl,{color:cbl});
+  line(xr+7,cy-8,xr+ax-4,cy-ay+6); atomAt(xr+ax+12,cy-ay-4,tr,{color:ctr});
+  line(xr+7,cy+8,xr+ax-4,cy+ay-6); atomAt(xr+ax+12,cy+ay+4,br,{color:cbr});
+}
+const cy=90;
+alk(200,cy,'H_3C','CH_3','H','H',BLUE,BLUE);
+label(200,170,'cis-2-butene',{fs:17,bold:true,italic:true}); label(200,192,'CH_3 groups on the same side',{fs:14,color:BLUE});
+alk(600,cy,'H_3C','H','H','CH_3',RED,null,null,RED);
+label(600,170,'trans-2-butene',{fs:17,bold:true,italic:true}); label(600,192,'CH_3 groups on opposite sides',{fs:14,color:RED});
+line(400,30,400,190,{color:'#bbb',w:1});
+</script>

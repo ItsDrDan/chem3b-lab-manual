@@ -1,0 +1,34 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="400" viewBox="0 0 760 400" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const G='#555', PAP='#fbfaf5', SOLV='#cfe3f7', GL='#8a99a8';
+function head(x,s){label(x,26,s,{fs:17,bold:true});}
+function cyl(cx,yt,yb,rx,ry,o={}){ // paper cylinder with gap at front
+ el('path',{d:`M${cx-rx},${yt} L${cx-rx},${yb} A${rx},${ry} 0 0 0 ${cx-6},${yb+ry} L${cx-6},${yt+ry} A${rx},${ry} 0 0 1 ${cx-rx},${yt} Z`,fill:PAP,stroke:'#777','stroke-width':1.5});
+ el('path',{d:`M${cx+rx},${yt} L${cx+rx},${yb} A${rx},${ry} 0 0 1 ${cx+6},${yb+ry} L${cx+6},${yt+ry} A${rx},${ry} 0 0 0 ${cx+rx},${yt} Z`,fill:PAP,stroke:'#777','stroke-width':1.5});
+ el('ellipse',{cx,cy:yt,rx,ry,fill:'none',stroke:'#777','stroke-width':1.5});
+ // origin line and spots
+ const oy=yb-o.org; el('path',{d:`M${cx-rx},${oy} A${rx},${ry} 0 0 0 ${cx-6},${oy+ry} M${cx+6},${oy+ry} A${rx},${ry} 0 0 0 ${cx+rx},${oy}`,fill:'none',stroke:'#555','stroke-width':1.2});
+ [-0.92,-0.6,-0.25,0.25,0.6,0.92].forEach(f=>{const x=cx+f*rx, y=oy+ry*Math.sqrt(1-f*f); el('circle',{cx:x,cy:y,r:3.5,fill:'#333'});});
+ // staples
+ [yt+ry+40,yb-o.org-60].forEach(y=>{el('rect',{x:cx-14,y:y-3,width:28,height:6,rx:2,fill:'none',stroke:'#444','stroke-width':1.6});});
+ return oy;}
+head(150,'(a) Roll and staple the paper');
+cyl(150,90,320,85,20,{org:56});
+label(150,375,'Edges close but not overlapping;',{fs:14,color:G}); label(150,393,'spots on the outside, at the bottom.',{fs:14,color:G});
+head(520,'(b) Develop in the covered beaker');
+const bx=410,bw=220,by=70,bh=300;
+el('rect',{x:bx+2,y:by+bh-26,width:bw-4,height:24,fill:SOLV});
+cyl(520,120,by+bh-22,78,18,{org:50});
+el('rect',{x:bx+2,y:by+bh-26,width:bw-4,height:24,fill:SOLV,opacity:0.45});
+el('path',{d:`M${bx},${by} L${bx},${by+bh} L${bx+bw},${by+bh} L${bx+bw},${by}`,fill:'none',stroke:GL,'stroke-width':3});
+el('path',{d:`M${bx-8},${by-2} Q${bx+bw/2},${by-14} ${bx+bw+8},${by-2} L${bx+bw+4},${by+12} L${bx-4},${by+12} Z`,fill:'#e9eef2',stroke:'#999'});
+function cl(x1,y1,x2,y2,t){line(x1,y1,x2,y2,{w:1});txt(x2+4,y2+5,t,{fs:14});}
+cl(bx+bw+6,by+4,bx+bw+28,by+4,'parafilm');
+cl(bx+bw-2,by+bh-14,bx+bw+28,by+bh-14,'solvent');
+cl(520+60,by+bh-74,bx+bw+28,by+bh-74,'origin above');
+txt(bx+bw+32,by+bh-53,'the solvent',{fs:14});
+cl(520+78,by+150,bx+bw+28,by+150,'paper does not');
+txt(bx+bw+32,by+168,'touch the beaker',{fs:14});
+</script>

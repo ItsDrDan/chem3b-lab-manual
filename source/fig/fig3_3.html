@@ -1,0 +1,28 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" style="background:#fff">
+<image href="mol/e3_cyclohexene.svg" x="40" y="20" width="150" height="140"/>
+<image href="mol/e3_dibromo.svg" x="520" y="15" width="170" height="150"/>
+<image href="mol/e3_cyclohexane.svg" x="40" y="205" width="150" height="140"/>
+<image href="mol/e3_bromocyclohexane.svg" x="520" y="205" width="170" height="140"/>
+<image href="mol/e3_benzene.svg" x="40" y="390" width="150" height="140"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', ORG='#d35400', GRAY='#555', BLUE='#1f5fbf';
+function row(y,lab1,arrTop,arrBot,prod,lab2,extra){
+  txt(205,y+7,'+'); txt(232,y+7,'Br_2',{color:ORG,bold:true}); label(252,y+38,'red-orange',{fs:14,color:ORG});
+  arrow(300,y,490,y); label(395,y-12,arrTop,{fs:15,italic:true}); label(395,y+24,arrBot,{fs:14,color:GRAY});
+  label(115,y+82,lab1,{fs:15,bold:true});
+  if(prod) label(605,y+82,prod,{fs:15,bold:true}); if(lab2) label(605,y+102,lab2,{fs:14,color:GRAY});
+  if(extra) extra();
+}
+row(90,'cyclohexene (alkene)','addition','fast, no light needed','1,2-dibromocyclohexane','colorless: the color disappears at once');
+label(880,80,'POSITIVE',{fs:16,bold:true,color:BLUE}); label(880,100,'for C=C',{fs:14,color:BLUE});
+row(275,'cyclohexane (alkane)','substitution','slow; needs bright light','bromocyclohexane (colorless)','color fades over minutes, only in light',
+ ()=>{txt(705,282,'+'); txt(728,282,'HBr'); label(748,312,'acidic gas',{fs:14,color:GRAY});});
+label(880,265,'NEGATIVE',{fs:16,bold:true,color:RED}); label(880,285,'in the dark',{fs:14,color:RED});
+row(460,'benzene ring (aromatic)','no reaction','(no catalyst)','',' ');
+label(660,466,'No reaction: the red-orange color stays',{fs:16});
+label(660,490,'(the CH_3 group of toluene reacts only slowly in light)',{fs:14,color:GRAY});
+label(880,450,'NEGATIVE',{fs:16,bold:true,color:RED});
+</script>

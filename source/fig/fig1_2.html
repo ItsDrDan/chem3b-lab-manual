@@ -1,0 +1,21 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="370" viewBox="0 0 1000 370" style="background:#fff"><image href="mol/fig1_skel_hex.svg" x="760" y="70" width="230" height="170"/></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',17);
+
+grid(30,150,40,40);
+at('h0',0,0,'H');for(let i=1;i<=6;i++)at('c'+i,i,0,'C');at('h7',7,0,'H');
+bd('h0','c1');for(let i=1;i<6;i++)bd('c'+i,'c'+(i+1));bd('c6','h7');
+[1,3,4,5,6].forEach(i=>{at('u'+i,i,-1,'H');bd('c'+i,'u'+i);});[1,2,4,5,6].forEach(i=>{at('d'+i,i,1,'H');bd('c'+i,'d'+i);});
+at('m',2,-2.6,'C');bd('c2','m');at('m1',1,-2.6,'H');at('m2',3,-2.6,'H');at('m3',2,-3.5,'H');bd('m','m1');bd('m','m2');bd('m','m3');
+at('e1',3,2.3,'C');bd('c3','e1');at('e1a',2,2.3,'H');at('e1b',4,2.3,'H');bd('e1','e1a');bd('e1','e1b');
+at('e2',3,3.3,'C');bd('e1','e2');at('e2a',2,3.3,'H');at('e2b',4,3.3,'H');at('e2c',3,4.1,'H');bd('e2','e2a');bd('e2','e2b');bd('e2','e2c');
+label(170,365,'Expanded structural formula',{fs:17,bold:true});
+grid(385,150,64,40);
+['CH_3','CH','CH','CH_2','CH_2','CH_3'].forEach((l,i)=>at('k'+i,i,0,l));for(let i=0;i<5;i++)bd('k'+i,'k'+(i+1));
+at('km',1,-1.3,'CH_3');bd('k1','km');at('ke1',2,1.3,'CH_2');bd('k2','ke1');at('ke2',2,2.6,'CH_3');bd('ke1','ke2');
+label(545,365,'Condensed structural formula',{fs:17,bold:true});
+label(870,365,'Line-angle (skeletal) structure',{fs:17,bold:true});
+
+</script>

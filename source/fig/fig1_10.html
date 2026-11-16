@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="350" viewBox="0 0 900 350" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',16);
+
+const rows=[['Ion–dipole','an ion and a polar molecule','Na^+ ions surrounded by water'],['Hydrogen bonding','H bonded to O, N, or F on one molecule and a lone pair','water, alcohols, amines with N–H'],['','on an O, N, or F of another molecule',''],['Dipole–dipole','the δ+ end of one polar molecule and the δ− end of another','CH_3Cl'],['London dispersion','temporary dipoles from moving electrons;','CH_4, all molecules'],['','the only IMF between nonpolar molecules','']];
+const box=(y,h,name,a,b,ex,fill)=>{rect(70,y,810,h,{fill,stroke:'#7a8bb0',rx:6});txt(85,y+28,name,{bold:true,fs:17});txt(270,y+26,a,{fs:15});if(b)txt(270,y+46,b,{fs:15});txt(270,y+(b?66:46),'Example: '+ex,{fs:14,italic:true,color:'#555'});};
+box(15,58,'Ion–dipole','between an ion and a polar molecule','','Na^+ ions dissolved in water','#dfe6f4');
+box(83,80,'Hydrogen bond','between an H that is bonded directly to O, N, or F and a lone pair','on an O, N, or F of another molecule','water, alcohols, carboxylic acids','#e7ecf5');
+box(173,80,'Dipole–dipole','between the δ+ end of one polar molecule and the δ− end of another','(polar molecules with no O–H, N–H, or F–H bond)','chloromethane, CH_3Cl','#eff2f9');
+box(263,80,'London dispersion','between temporary dipoles caused by moving electrons; present in all','molecules and the only IMF between nonpolar molecules','methane, CH_4','#f7f8fc');
+arrow(35,335,35,22,{w:4,head:16,color:'#3b4f7d'});
+const t=el('text',{x:0,y:0,'font-family':FONT,'font-size':15,fill:'#3b4f7d','font-weight':'bold',transform:'translate(28,250) rotate(-90)'});t.textContent='stronger attraction';
+
+</script>

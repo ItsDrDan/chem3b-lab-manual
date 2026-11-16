@@ -1,0 +1,15 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="230" viewBox="0 0 1000 230" style="background:#fff">
+<image href="mol/e3_benzene.svg" x="805" y="22" width="150" height="140"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', GRAY='#555';
+const _b=bond; bond=function(x1,y1,x2,y2,order,o){ if(order==3){ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),nx=-dy/L*4.2,ny=dx/L*4.2; line(x1,y1,x2,y2,o); line(x1+nx,y1+ny,x2+nx,y2+ny,o); line(x1-nx,y1-ny,x2-nx,y2-ny,o);} else _b(x1,y1,x2,y2,order,o); };
+const y=95;
+const a=chain(20,y,[{l:'H'},{l:'C',up:{l:'H'},down:{l:'H'}},{l:'C',up:{l:'H'},down:{l:'H'}},{l:'H'}]);
+const b=chain(270,y,[{l:'H'},{l:'C',up:{l:'H'}},{l:'C',up:{l:'H'},order:2,bondColor:RED},{l:'H'}]);
+const c=chain(525,y,[{l:'H'},{l:'C'},{l:'C',order:3,bondColor:RED},{l:'H'}]);
+const cols=[[ (a.start+a.end)/2,'Alkane','ethane, CH_3CH_3','single bonds only (saturated)'],[(b.start+b.end)/2,'Alkene','ethene (ethylene), CH_2=CH_2','C=C double bond (unsaturated)'],[(c.start+c.end)/2,'Alkyne','ethyne (acetylene), HC≡CH','C≡C triple bond (unsaturated)'],[880,'Aromatic','benzene, C_6H_6','benzene ring']];
+cols.forEach(([x,f,n,d])=>{label(x,25,f,{fs:19,bold:true}); label(x,190,n,{fs:15}); label(x,212,d,{fs:14,color:GRAY});});
+</script>

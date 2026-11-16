@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="700" height="190" viewBox="0 0 700 190" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', RED='#c0392b', GRAY='#555'; const y=95;
+const a=chain(15,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O–H',color:RED}]);
+label((a.start+a.end)/2,165,'acetic acid',{fs:16,bold:true});
+txt(a.end+18,y+6,'+'); const w=txt(a.end+45,y+6,'H_2O');
+const x1=a.end+45+w.w+20, x2=x1+110;
+arrow(x1,y-5,x2,y-5); arrow(x2,y+5,x1,y+5);
+label((x1+x2)/2,y+40,'(only a small fraction ionizes)',{fs:13,italic:true,color:GRAY});
+const b=chain(x2+20,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O^-',color:BLUE}]);
+label((b.start+b.end)/2,165,'acetate ion',{fs:16,bold:true}); label((b.start+b.end)/2,184,'(a carboxylate ion)',{fs:14,color:GRAY});
+txt(b.end+18,y+6,'+'); const h=txt(b.end+45,y+6,'H_3O^+',{color:RED});
+label(b.end+45+h.w/2,165,'hydronium ion',{fs:16,bold:true});
+</script>

@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="570" height="220" viewBox="0 0 570 220" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',22); const B='#1f5fbf', R='#b03a2e', G='#2f6f3f', P='#6a3d9a';
+const y=100;
+const a=chain(170,y,[{l:'H_2N',color:B},{l:'C',up:{l:'R',color:G},down:{l:'H'},color:P},{l:'C',up:{l:'O',order:2,color:R},color:R},{l:'OH',color:R}],{vbond:24});
+const n=a.pos[0], ca=a.pos[1], c=a.pos[2], oh=a.pos[3];
+rect(n.x-n.hw-8,y-24,n.hw*2+16,46,{stroke:B,dash:'5 4'});
+rect(c.x-16,y-88,(oh.x+oh.hw)-(c.x-16)+8,112,{stroke:R,dash:'5 4'});
+label(n.x-n.hw-20,y+7,'amino group',{fs:17,bold:true,color:B,anchor:'end'});
+txt(oh.x+oh.hw+24,y-2,'carboxylic acid',{fs:17,bold:true,color:R}); txt(oh.x+oh.hw+24,y+18,'group',{fs:17,bold:true,color:R});
+txt(ca.x-20,y-44,"R group (side chain)",{fs:17,bold:true,color:G,anchor:"end"});
+label(ca.x,208,'alpha (α) carbon',{fs:17,bold:true,color:P});
+arrow(ca.x-40,190,ca.x-8,y+12,{head:9,w:1.4,color:P});
+</script>

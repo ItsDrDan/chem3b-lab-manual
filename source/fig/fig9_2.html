@@ -1,0 +1,14 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" style="background:#fff">
+<image href="mol/cholesterol.svg" x="540" y="0" width="330" height="230"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const BLUE='#1f5fbf', GRAY='#555';
+const w=chain(50,120,[{l:'CH_3(CH_2)_{14}'},{l:'C',up:{l:'O',order:2}},{l:'O',color:BLUE,bondColor:BLUE},{l:'(CH_2)_{29}CH_3'}]);
+label((w.start+w.end)/2,180,'Wax (myricyl palmitate, in beeswax)',{fs:15,bold:true});
+label((w.start+w.end)/2,200,'fatty acid + long-chain alcohol joined by an ester bond (blue)',{fs:13,color:GRAY});
+label((w.start+w.end)/2,220,'HYDROLYZABLE',{fs:13,bold:true,color:BLUE});
+label(705,215,'Cholesterol, a steroid',{fs:15,bold:true});
+label(705,235,'four fused rings, no ester bond: NON-HYDROLYZABLE',{fs:13,color:GRAY});
+</script>

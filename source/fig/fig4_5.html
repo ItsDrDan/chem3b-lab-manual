@@ -1,0 +1,38 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="470" viewBox="0 0 1040 470" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', BLU='#1f5fbf', GRAY='#555', OR='#e67e22', GR='#2e8b6e';
+function swatch(x,y,fill,t){el('circle',{cx:x,cy:y,r:11,fill,stroke:'#333','stroke-width':1}); label(x,y+30,t,{fs:13,color:GRAY});}
+function ox(x,y,w){arrow(x,y,x+w,y); label(x+w/2,y-10,'[O]',{fs:17,bold:true});}
+const rows=[70,215,360];
+// row 1 primary
+let y=rows[0];
+let a=chain(150,y,[{l:'CH_3'},{l:'C',up:{l:'H',color:BLU},down:{l:'H'}},{l:'O',color:RED},{l:'H',color:BLU}]);
+ox(a.end+15,y,85);
+let b=chain(a.end+112,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2,color:RED}},{l:'H'}]);
+label((b.start+b.end)/2,y+48,'aldehyde',{fs:14,bold:true});
+ox(b.end+15,y,85);
+let c=chain(b.end+112,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2,color:RED}},{l:'OH'}]);
+label((c.start+c.end)/2,y+48,'carboxylic acid',{fs:14,bold:true});
+swatch(940,y-8,OR,'orange'); arrow(956,y-8,986,y-8,{head:8}); swatch(1006,y-8,GR,'blue-green');
+// row 2 secondary
+y=rows[1];
+a=chain(150,y,[{l:'CH_3'},{l:'C',up:{l:'H',color:BLU},down:{l:'CH_3'}},{l:'O',color:RED},{l:'H',color:BLU}]);
+ox(a.end+15,y,85);
+b=chain(a.end+112,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2,color:RED}},{l:'CH_3'}]);
+label((b.start+b.end)/2,y+48,'ketone (stops here)',{fs:14,bold:true});
+swatch(940,y-8,OR,'orange'); arrow(956,y-8,986,y-8,{head:8}); swatch(1006,y-8,GR,'blue-green');
+// row 3 tertiary
+y=rows[2];
+a=chain(150,y,[{l:'CH_3'},{l:'C',up:{l:'CH_3'},down:{l:'CH_3'}},{l:'O',color:RED},{l:'H',color:BLU}]);
+ox(a.end+15,y,85);
+txt(a.end+115,y+7,'no reaction (NR)',{bold:true});
+txt(a.end+115,y+30,'no H on the C–OH carbon',{fs:14,color:GRAY});
+swatch(940,y-8,OR,'orange'); arrow(956,y-8,986,y-8,{head:8}); swatch(1006,y-8,OR,'orange');
+const lab=(y,a,b)=>{txt(10,y-6,a,{fs:16,bold:true}); txt(10,y+15,b,{fs:14,color:GRAY});};
+lab(rows[0],'1° alcohol','ethanol'); lab(rows[1],'2° alcohol','2-propanol'); lab(rows[2],'3° alcohol','2-methyl-2-propanol');
+txt(900,22,'Test tube color',{fs:14,bold:true});
+label(520,455,'The two blue atoms (the H on O and the H on the C–OH carbon) are removed; a C=O double bond forms.',{fs:14,color:BLU});
+line(0,140,1040,140,{color:'#ddd',w:1}); line(0,288,1040,288,{color:'#ddd',w:1});
+</script>

@@ -1,0 +1,12 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="800" height="170" viewBox="0 0 800 170" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',18);
+
+grid(80,100,58,40);at('a0',0,0,'H_3C');at('a1',1,0,'C',{color:BLUE});at('a2',2,0,'O',{color:BLUE});at('a3',3,0,'H',{color:BLUE});at('ao',1,-1.5,'O',{color:BLUE});bd('a0','a1');bd('a1','a2',1,{color:BLUE});bd('a2','a3',1,{color:BLUE});bd('a1','ao',2,{color:BLUE});
+label(167,155,'Carboxylic acid: acetic acid',{fs:17,bold:true});
+grid(450,100,58,40);at('b0',0,0,'H_3C');at('b1',1,0,'C',{color:BLUE});at('b2',2,0,'O',{color:BLUE});at('b3',3,0,'CH_3');at('bo',1,-1.5,'O',{color:BLUE});bd('b0','b1');bd('b1','b2',1,{color:BLUE});bd('b2','b3',1,{color:BLUE});bd('b1','bo',2,{color:BLUE});
+label(537,155,'Ester: methyl acetate',{fs:17,bold:true});
+
+</script>

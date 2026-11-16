@@ -1,0 +1,78 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="830" viewBox="0 0 1000 830" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const BLUE='#2f6fbf', LB='#cfe0f5', PUR='#7b4fa8', TEAL='#2a9d8f', ORG='#d97a1f', RED='#c0392b', GRAY='#666';
+function head(x,y,s,sub){txt(x,y,s,{fs:19,bold:true,color:'#1d3557'}); if(sub)txt(x,y+20,sub,{fs:14,color:GRAY,italic:true});}
+// (a) primary
+head(20,32,'(a) Primary structure','the order (sequence) of amino acids, held together by peptide bonds');
+const aas=['Gly','Ala','Ser','Cys','Lys','Phe','Glu','Val','Tyr'];
+let x0=110,y0=105;
+txt(20,y0+5,'H_3N^+',{fs:16});
+aas.forEach((a,i)=>{const cx=x0+i*92; if(i>0)line(cx-92+30,y0,cx-30,y0,{w:2.5});
+ el('circle',{cx,cy:y0,r:30,fill:LB,stroke:BLUE,'stroke-width':2}); label(cx,y0+6,a,{fs:16});});
+line(75,y0,x0-30,y0,{w:2.5}); line(x0+8*92+30,y0+0,x0+8*92+50,y0,{w:2.5}); txt(x0+8*92+54,y0+5,'COO^−',{fs:16});
+label(80,y0+52,'N-terminus',{fs:13,color:GRAY}); label(x0+8*92+78,y0+52,'C-terminus',{fs:13,color:GRAY});
+// (b) secondary
+head(20,195,'(b) Secondary structure','hydrogen bonds between backbone C=O and N–H groups');
+// alpha helix: coil
+(function(){const cx0=60,cy=300,amp=48,turn=62,n=4.5; let back='',front='';
+ for(let s=0;s<=n*2;s++){} 
+ const pts=[]; for(let t=0;t<=n*2*Math.PI;t+=0.05){pts.push([cx0+t/(2*Math.PI)*turn+t*2, cy+amp*Math.sin(t), Math.cos(t)]);}
+ // draw back segments first then front
+ for(let pass=0;pass<2;pass++){let d='';for(let i=1;i<pts.length;i++){const f=pts[i][2]>0; if((pass==1)==f){d+=`M${pts[i-1][0]},${pts[i-1][1]}L${pts[i][0]},${pts[i][1]}`;}}
+  el('path',{d,stroke:pass?BLUE:'#9dbbe3','stroke-width':pass?9:7,fill:'none','stroke-linecap':'round'});}
+ // H-bonds: short dashes parallel to helix axis between neighboring turns
+ [cy-22,cy+22].forEach(lv=>{const xs=[];for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i];if((a[1]-lv)*(b[1]-lv)<=0&&a[2]>0)xs.push(a[0]);}
+   xs.sort((a,b)=>a-b);for(let i=(lv<cy?1:0);i+1<xs.length;i+=2)line(xs[i]+9,lv,xs[i+1]-9,lv,{dash:'3 3',color:RED,w:2});});
+ label(cx0+150,cy+85,'α helix',{fs:17,bold:true});
+ label(cx0+150,cy+104,'(coil; each turn H-bonds to the next turn)',{fs:13,color:GRAY});})();
+// beta sheet: 3 strands of zigzag arrows
+(function(){const x1=560,x2=930; const ys=[250,300,350];
+ ys.forEach((yy,i)=>{const dir=i%2==0?1:-1; let d=''; const step=30; let k=0;
+  for(let x=x1;x<=x2-30;x+=step){d+=(k==0?'M':'L')+x+','+(yy+(k%2?7:-7)); k++;}
+  el('path',{d,stroke:TEAL,'stroke-width':8,fill:'none','stroke-linejoin':'round'});
+  // arrowhead
+  const hx= dir>0?x2:x1-10, bx= dir>0?x2-34:x1+24;
+  if(dir>0) el('polygon',{points:`${x2-30},${yy-16} ${x2},${yy} ${x2-30},${yy+16}`,fill:TEAL});
+  else el('polygon',{points:`${x1+2},${yy-16} ${x1-28},${yy} ${x1+2},${yy+16}`,fill:TEAL});
+ });
+ for(let x=x1+30;x<x2-40;x+=60){line(x,262,x,288,{dash:'3 4',color:RED,w:1.6});line(x,312,x,338,{dash:'3 4',color:RED,w:1.6});}
+ label((x1+x2)/2,385,'β-pleated sheet',{fs:17,bold:true});
+ label((x1+x2)/2,404,'(side-by-side strands; H-bonds between strands)',{fs:13,color:GRAY});})();
+line(400,424,450,424,{dash:'3 4',color:RED,w:2}); 
+txt(458,429,'= hydrogen bond',{fs:14,color:RED});
+// (c) tertiary
+head(20,470,'(c) Tertiary structure','R-group interactions fold one chain into a 3-D shape');
+(function(){
+ const X=[70,170,270,370], top=540, bot=700;
+ let d=`M${X[0]-30},${top-10} C${X[0]},${top-20} ${X[0]+10},${top} ${X[0]},${top+20}`;
+ // arms with gentle waves, U-turns alternate bottom/top
+ for(let i=0;i<4;i++){const x=X[i]; const down=i%2==0; const y1=down?top+20:bot-20, y2=down?bot-20:top+20;
+   d+=` C${x-14},${(2*y1+y2)/3} ${x+14},${(y1+2*y2)/3} ${x},${y2}`;
+   if(i<3){const yt=down?bot+30:top-30; d+=` C${x},${yt} ${X[i+1]},${yt} ${X[i+1]},${down?bot-20:top+20}`;} }
+ d+=` C${X[3]},${top-20} ${X[3]+20},${top-30} ${X[3]+45},${top-25}`;
+ el('path',{d,stroke:BLUE,'stroke-width':8,fill:'none','stroke-linecap':'round'});
+ // interactions between neighbouring arms
+ function stub(x1,x2,y,c,kind){
+   if(kind=='ss'){line(x1+6,y,x2-6,y,{color:c,w:4}); label((x1+x2)/2,y-8,'S–S',{fs:14,color:c,bold:true});}
+   if(kind=='ion'){line(x1+18,y,x2-18,y,{color:c,w:2,dash:'2 4'}); el('circle',{cx:x1+12,cy:y,r:9,fill:'#fff',stroke:c,'stroke-width':1.5});el('circle',{cx:x2-12,cy:y,r:9,fill:'#fff',stroke:c,'stroke-width':1.5});label(x1+12,y+5,'+',{fs:15,color:c,bold:true});label(x2-12,y+5,'−',{fs:15,color:c,bold:true});}
+   if(kind=='hb'){line(x1+6,y,x2-6,y,{color:c,w:2.2,dash:'5 4'}); label((x1+x2)/2,y-8,'H-bond',{fs:12,color:c,bold:true});}
+   if(kind=='hp'){[[0.3,-8],[0.5,6],[0.7,-6],[0.45,-20]].forEach(([f,o])=>el('circle',{cx:x1+(x2-x1)*f,cy:y+o,r:10,fill:'#bfe3dc',stroke:c,'stroke-width':1.2}));}
+ }
+ stub(X[0],X[1],585,ORG,'ss'); stub(X[1],X[2],640,RED,'ion'); stub(X[2],X[3],580,PUR,'hb'); stub(X[0],X[1],665,TEAL,'hp');
+ // legend
+ const lg=[[ORG,'Disulfide bond: covalent –S–S– link between two cysteines'],[RED,'Salt bridge: ionic attraction, –NH_3^+ and ^−OOC–'],[PUR,'Hydrogen bond: between polar R groups (–OH, –NH_2)'],[TEAL,'Hydrophobic interaction: nonpolar R groups cluster away from water']];
+ lg.forEach(([c,t],i)=>{el('rect',{x:30,y:752+i*20,width:12,height:12,fill:c}); txt(50,763+i*20,t,{fs:14});});
+})();
+// (d) quaternary
+head(560,470,'(d) Quaternary structure','two or more folded chains (subunits) join');
+(function(){
+ function blob(cx,cy,r,c,fill){let d='';const n=60;for(let i=0;i<=n;i++){const a=i/n*2*Math.PI, rr=r*(1+0.07*Math.sin(3*a+cx/50)+0.04*Math.cos(5*a));const x=cx+rr*Math.cos(a),y=cy+rr*Math.sin(a);d+=(i?'L':'M')+x+','+y;}
+   el('path',{d:d+'Z',fill,stroke:c,'stroke-width':3,'stroke-linejoin':'round'});}
+ blob(700,590,62,BLUE,'#d6e4f5'); blob(820,590,62,PUR,'#e6dbf1'); blob(700,700,62,PUR,'#e6dbf1'); blob(820,700,62,BLUE,'#d6e4f5');
+ label(700,596,'α',{fs:22,bold:true,color:BLUE}); label(820,596,'β',{fs:22,bold:true,color:PUR}); label(700,706,'β',{fs:22,bold:true,color:PUR}); label(820,706,'α',{fs:22,bold:true,color:BLUE});
+ txt(900,640,'example:',{fs:14,color:GRAY}); txt(900,658,'hemoglobin',{fs:14,color:GRAY}); txt(900,676,'(4 subunits)',{fs:14,color:GRAY});
+ txt(600,800,'Subunits are held together by the same R-group',{fs:14,color:GRAY}); txt(600,818,'interactions that create tertiary structure.',{fs:14,color:GRAY});
+})();
+</script>

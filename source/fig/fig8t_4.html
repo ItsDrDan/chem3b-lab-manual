@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="800" height="228" viewBox="0 0 800 228" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig8t_haw.js"></script>
+<script>
+init('s',18); U=40; SL=34;
+const Y=125, X=[105,295,485,675];
+const nrm=(c1,c4)=>({C1:{up:{l:'-',c:c1,len:34}},C2:{down:'OH'},C3:{up:{l:'OH',len:22}},C4:{down:{l:'-',c:c4,len:34}},C5:{up:'CH_2OH'}});
+const flp=(c1,c4)=>({C4:{up:{l:'-',c:c4,len:34}},C3:{down:{l:'OH',len:24}},C2:{up:'OH'},C1:{down:{l:'-',c:c1,len:34}},C5:{down:'CH_2OH'}});
+const A=pyran(X[0],Y,nrm(RED,undefined));
+const B=pyran(X[1],Y,flp(RED,RED),true);
+const C=pyran(X[2],Y,nrm(RED,RED));
+const D=pyran(X[3],Y,flp(undefined,RED),true);
+function link(p,q,up){const ox=(p[0]+q[0])/2, s=up?-1:1, oy=Y+s*62, ey=Y+s*34; line(p[0],ey,ox-8,oy-s*6,{color:RED}); line(ox+8,oy-s*6,q[0],ey,{color:RED}); atomAt(ox,oy,'O',{color:RED}); label(ox,oy+(up?-24:34),'β-1,4',{fs:15,color:RED,bold:true});}
+link(A.C1,B.C4,true); link(B.C1,C.C4,false); link(C.C1,D.C4,true);
+{const [x]=A.C4; line(x,Y+34,x,Y+46); atomAt(x,Y+58,'O'); line(x-10,Y+62,x-30,Y+70);}
+{const [x]=D.C1; line(x,Y+34,x,Y+46); atomAt(x,Y+58,'O'); line(x+10,Y+62,x+30,Y+70);}
+[A,C].forEach(u=>{num(u.C1,1,10,8); num(u.C4,4,-12,-6);}); [B,D].forEach(u=>{num(u.C1,1,10,-6); num(u.C4,4,-12,10);});
+</script>

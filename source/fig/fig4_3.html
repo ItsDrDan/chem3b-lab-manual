@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="860" height="230" viewBox="0 0 860 230" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', BLU='#1f5fbf', GRAY='#555'; const y=100;
+const a=chain(20,y,[{l:'CH_3'},{l:'CH_2'},{l:'O',color:RED},{l:'H',color:BLU}]);
+const p=a.pos; const ox=p[2].x, hx=p[3].x;
+label(ox,y+34,'δ−',{fs:16,color:RED}); label(hx,y+34,'δ+',{fs:16,color:BLU});
+// hydrogen bond to water O
+const wx=hx+110; line(hx+14,y,wx-14,y,{dash:'4,5',w:2.4,color:'#2b8a3e'});
+atomAt(wx,y,'O',{color:RED}); label(wx-16,y+34,'δ−',{fs:16,color:RED});
+bond(wx+8,y-8,wx+38,y-38); atomAt(wx+48,y-48,'H',{color:BLU});
+bond(wx+8,y+8,wx+38,y+38); atomAt(wx+48,y+48,'H',{color:BLU});
+label((hx+wx)/2,y-14,'H bond',{fs:15,color:'#2b8a3e',bold:true});
+label((a.start+wx)/2+20,200,'ethanol  +  water',{fs:16,bold:true});
+// second panel: ethanol to ethanol
+const bx=470; const b=chain(bx,y,[{l:'CH_3'},{l:'CH_2'},{l:'O',color:RED},{l:'H',color:BLU}]);
+const ox2=b.pos[2].x, hx2=b.pos[3].x; label(ox2,y+34,'δ−',{fs:16,color:RED}); label(hx2,y+34,'δ+',{fs:16,color:BLU});
+const w2=hx2+80; line(hx2+14,y,w2-12,y,{dash:'4,5',w:2.4,color:'#2b8a3e'}); atomAt(w2,y,'O',{color:RED});
+bond(w2,y-12,w2,y-40); atomAt(w2,y-52,'H',{color:BLU}); bond(w2,y+12,w2,y+40); atomAt(w2,y+54,'CH_2CH_3');
+label(bx+180,200,'ethanol  +  ethanol',{fs:16,bold:true});
+</script>

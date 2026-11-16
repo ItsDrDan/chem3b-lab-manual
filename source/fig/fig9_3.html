@@ -1,0 +1,13 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1010" height="200" viewBox="0 0 1010 200" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', ORG='#d35400', GRAY='#555'; const y=95;
+const a=chain(10,y,[{l:'CH_3(CH_2)_7'},{l:'CH',up:{l:'H'}},{l:'CH',up:{l:'H'},order:2,bondColor:RED},{l:'(CH_2)_7COOH'}]);
+label((a.start+a.end)/2,180,'oleic acid (C=C double bond)',{fs:16,bold:true});
+txt(a.end+10,y+6,'+'); txt(a.end+32,y+6,'Br_2',{color:ORG,bold:true});
+label(a.end+48,180,'red-orange',{fs:15,color:ORG});
+const x1=a.end+76,x2=x1+90; arrow(x1,y,x2,y); label((x1+x2)/2,y-12,'addition',{fs:15,italic:true});
+const p=chain(x2+12,y,[{l:'CH_3(CH_2)_7'},{l:'CH',up:{l:'Br',color:ORG},down:{l:'H'}},{l:'CH',up:{l:'Br',color:ORG},down:{l:'H'}},{l:'(CH_2)_7COOH'}]);
+label((p.start+p.end)/2,180,'dibromo product: colorless (color fades)',{fs:16,bold:true});
+</script>

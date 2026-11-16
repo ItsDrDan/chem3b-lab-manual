@@ -1,0 +1,19 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="720" height="370" viewBox="0 0 720 370" style="background:#fff">
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', GRAY='#555', RED='#b0302a';
+function row(Y,title,reag,prod,side,notes){
+  label(360,Y-75,title,{fs:16,bold:true});
+  let w=chain(20,Y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'NH_2',color:BLUE,bondColor:BLUE}]);
+  label((w.start+w.end)/2,Y+40,'acetamide',{fs:14,color:GRAY});
+  let x=w.end+12; txt(x,Y+7,'+'); x+=28; const r=txt(x,Y+7,reag); x+=r.w+12;
+  arrow(x,Y,x+80,Y); label(x+40,Y-10,'heat',{fs:13,color:GRAY}); x+=95;
+  w=chain(x,Y,prod); label((w.start+w.end)/2,Y+40,notes[0],{fs:14,color:GRAY});
+  x=w.end+12; txt(x,Y+7,'+'); x+=28; const s=txt(x,Y+7,side,{color:RED}); label(x+s.w/2,Y+40,notes[1],{fs:14,color:GRAY});
+  label(360,Y+64,notes[2],{fs:14,italic:true,color:'#000'});
+}
+row(110,'(a) Acid hydrolysis (D.4)','HCl + H_2O',[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'OH'}],'NH_4^+ Cl^−',['acetic acid','ammonium chloride','Test: vinegar odor of acetic acid; no ammonia odor, because NH_3 stays in solution as NH_4^+.']);
+row(295,'(b) Base hydrolysis (D.5)','NaOH',[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O^− Na^+'}],'NH_3',['sodium acetate','ammonia gas','Test: ammonia odor; moist red litmus held above the tube turns blue.']);
+</script>

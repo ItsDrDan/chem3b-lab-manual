@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="872" height="195" viewBox="0 0 872 195" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555', BRN='#8a4b08', YEL='#b38f00'; const y=100;
+const CO={l:'C',up:{l:'O',order:2}};
+const k=chain(10,y,[{l:'CH_3'},CO,{l:'CH_3',color:BLUE}]);
+label((k.start+k.end)/2,160,'acetone',{fs:15,bold:true}); label((k.start+k.end)/2,179,'(methyl group in blue)',{fs:13,color:BLUE});
+let x=k.end+12; txt(x,y+7,'+'); x+=26; let t=txt(x,y+7,'3 I_2',{color:BRN,bold:true}); label(x+t.w/2,160,'iodine reagent',{fs:15,bold:true}); label(x+t.w/2,179,'(dark red-brown)',{fs:13,color:BRN});
+x+=t.w+12; txt(x,y+7,'+'); x+=26; t=txt(x,y+7,'4 NaOH'); x+=t.w+14;
+arrow(x,y,x+80,y); label(x+40,y-12,'50–60 °C',{fs:14,italic:true}); x+=92;
+const p=chain(x,y,[{l:'CH_3'},CO,{l:'O^-'}]); txt(p.end+4,y+7,'Na^+'); 
+label((p.start+p.end)/2+14,160,'sodium acetate',{fs:15,bold:true}); label((p.start+p.end)/2+14,179,'(stays dissolved)',{fs:13,color:GRAY});
+x=p.end+48; txt(x,y+7,'+'); x+=24; t=txt(x,y+7,'CHI_3(s)',{color:YEL,bold:true}); label(x+t.w/2,160,'iodoform',{fs:15,bold:true}); label(x+t.w/2,179,'(yellow solid)',{fs:13,color:YEL});
+x+=t.w+10; txt(x,y+7,'+ 3 NaI + 3 H_2O');
+</script>

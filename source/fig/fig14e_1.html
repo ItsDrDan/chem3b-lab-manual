@@ -1,0 +1,24 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20);
+const X0=90,Y0=360;
+arrow(X0,Y0,X0,30,{w:2.2}); arrow(X0,Y0,560,Y0,{w:2.2});
+txt(0,0,'');
+const t=txt(0,0,'Energy',{fs:22,bold:true}); t.el.setAttribute('transform','translate(48,230) rotate(-90)');
+label(325,402,'Progress of reaction',{fs:22,bold:true});
+// curves: reactants y=250 at x 110-200 ; products y=320
+const yR=250,yP=320,peakU=70,peakC=150,xp=320;
+function curve(peak,color,dash){el('path',{d:`M110,${yR} L200,${yR} C260,${yR} 270,${peak} ${xp},${peak} C370,${peak} 390,${yP} 450,${yP} L540,${yP}`,fill:'none',stroke:color,'stroke-width':5,'stroke-dasharray':dash||''});}
+curve(peakU,'#c0392b','10 7'); curve(peakC,'#1f5fbf');
+label(150,238,'Reactants',{fs:18});
+label(500,308,'Products',{fs:18});
+// Ea arrows
+line(200,yR,600,yR,{w:1,dash:'4 4',color:'#555'});
+arrow(xp-14,yR,xp-14,peakU+4,{w:1.6,color:'#c0392b'}); arrow(xp+14,yR,xp+14,peakC+4,{w:1.6,color:'#1f5fbf'});
+line(xp,peakU,600,peakU,{w:1,dash:'4 4',color:'#c0392b'}); line(xp,peakC,600,peakC,{w:1,dash:'4 4',color:'#1f5fbf'});
+txt(608,peakU-4,'Activation energy,',{fs:17,color:'#c0392b'}); txt(608,peakU+16,'no enzyme',{fs:17,color:'#c0392b'});
+txt(608,peakC-4,'Activation energy,',{fs:17,color:'#1f5fbf'}); txt(608,peakC+16,'with enzyme',{fs:17,color:'#1f5fbf'});
+txt(608,yR+6,'Energy of reactants',{fs:17,color:'#555'});
+</script>

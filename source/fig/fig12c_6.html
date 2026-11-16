@@ -1,0 +1,36 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const G='#555', PLT='#fbfaf5', SOLV='#cfe3f7', GL='#8a99a8';
+function head(x,s){label(x,26,s,{fs:17,bold:true});}
+const S=30;
+head(250,'(a) Side view of the covered beaker');
+const bx=70,bw=8.5*S,bh=12*S,by=455-bh-20, bb=by+bh; // bb = inside bottom
+// solvent
+el('rect',{x:bx+2,y:bb-0.5*S,width:bw-4,height:0.5*S,fill:SOLV});
+// plate
+const px=bx+(bw-7.5*S)/2, pw=7.5*S, ph=10*S, pt=bb-ph;
+el('rect',{x:px,y:pt,width:pw,height:ph,fill:PLT,stroke:'#777','stroke-width':1.5});
+const oy=bb-1.5*S, sy=pt+1*S;
+line(px,oy,px+pw,oy,{w:1.2,color:'#555'}); line(px,sy,px+pw,sy,{w:1.2,color:'#555'});
+[1.5,3,4.5,6].forEach(c=>el('circle',{cx:px+c*S,cy:oy,r:3.5,fill:'#333'}));
+el('rect',{x:bx+2,y:bb-0.5*S,width:bw-4,height:0.5*S,fill:SOLV,opacity:0.5});
+el('path',{d:`M${bx},${by} L${bx},${bb+2} L${bx+bw},${bb+2} L${bx+bw},${by}`,fill:'none',stroke:GL,'stroke-width':3});
+el('path',{d:`M${bx-8},${by-2} Q${bx+bw/2},${by-14} ${bx+bw+8},${by-2} L${bx+bw+4},${by+12} L${bx-4},${by+12} Z`,fill:'#e9eef2',stroke:'#999'});
+function cl(x1,y1,x2,y2,t,t2){line(x1,y1,x2,y2,{w:1});txt(x2+4,y2+5,t,{fs:14}); if(t2)txt(x2+4,y2+22,t2,{fs:14});}
+const xc=bx+bw+28;
+cl(bx+bw+6,by+4,xc,by+4,'parafilm or plastic wrap');
+cl(px+pw-10,sy,xc,sy,'stop line, 1 cm from the top');
+cl(px+pw-20,pt+ph*0.45,xc,pt+ph*0.45,'cellulose plate; its side edges','do not touch the beaker');
+cl(px+pw-30,oy,xc,oy-8,'origin, 1.5 cm from the bottom,','above the solvent');
+cl(bx+bw-2,bb-0.25*S,xc,bb-0.25*S+14,'solvent, about 0.5 cm deep');
+// top view
+head(720,'(b) View from above');
+const cx=720, cy=230, r=4.25*S*0.85;
+el('circle',{cx,cy,r,fill:'#f4f8fb',stroke:GL,'stroke-width':3});
+const hw=3.75*S*0.85;
+el('rect',{x:cx-hw,y:cy-3,width:2*hw,height:6,fill:PLT,stroke:'#777','stroke-width':1.3});
+label(cx,cy-16,'plate',{fs:14});
+label(cx,cy+r+28,'The 7.5 cm plate fits',{fs:14,color:G}); label(cx,cy+r+46,'across the 600-mL beaker',{fs:14,color:G}); label(cx,cy+r+64,'without touching the wall.',{fs:14,color:G});
+</script>

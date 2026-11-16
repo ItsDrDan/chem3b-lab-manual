@@ -1,0 +1,15 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="250" viewBox="0 0 760 250" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig2_struct.js"></script>
+<script>
+init('s',22); const GRAY='#555';
+// (a) wedge-dash methane
+mol(160,105,1,[['C',0,0,'C'],['H1',0,-70,'H'],['H2',-68,28,'H'],['H3',68,32,'H'],['H4',12,74,'H']],[['C','H1'],['C','H2'],['C','H3','w'],['C','H4','d']]);
+label(160,215,'(a) Methane, CH_4',{fs:16,bold:true});
+// legend
+const lx=300; 
+el('polygon',{points:`${lx},60 ${lx+60},55 ${lx+60},65`,fill:'#000'}); txt(lx+75,66,'wedge: bond points toward you',{fs:16});
+line(lx,110,lx+60,110,{}); txt(lx+75,116,'plain line: bond in the plane of the page',{fs:16});
+for(let i=1;i<=7;i++){const x=lx+i*60/7,w=5*i/7; line(x,160-w,x,160+w,{});} txt(lx+75,166,'dash: bond points away from you',{fs:16});
+label(500,215,'(b) Bond symbols (each H–C–H angle is 109.5°)',{fs:16,bold:true});
+</script>

@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="250" viewBox="0 0 1040 250" style="background:#fff">
+<image href="mol/benzaldehyde5.svg" x="665" y="38" width="170" height="150"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555'; const y=135;
+const CO={l:'C',up:{l:'O',order:2,color:RED,bondColor:RED},color:RED};
+// carbonyl group
+atomAt(60,y,'C',{color:RED}); bond(60,y-12,60,y-34,2,{color:RED}); atomAt(60,y-46,'O',{color:RED}); line(22,y,50,y); line(70,y,98,y);
+label(60,200,'carbonyl group',{fs:15,bold:true});
+// divider
+line(130,40,130,215,{color:'#bbb',w:1});
+label(490,28,'Aldehydes: the carbonyl carbon has at least one H',{fs:16,bold:true,color:BLUE});
+const a1=chain(150,y,[{l:'H',color:BLUE},CO,{l:'H'}]); label((a1.start+a1.end)/2,200,'formaldehyde',{fs:15,bold:true}); label((a1.start+a1.end)/2,219,'(methanal)',{fs:14,color:GRAY});
+const a2=chain(300,y,[{l:'CH_3'},CO,{l:'H',color:BLUE}]); label((a2.start+a2.end)/2,200,'acetaldehyde',{fs:15,bold:true}); label((a2.start+a2.end)/2,219,'(ethanal)',{fs:14,color:GRAY});
+const a3=chain(475,y,[{l:'CH_3CH_2'},CO,{l:'H',color:BLUE}]); label((a3.start+a3.end)/2,200,'propionaldehyde',{fs:15,bold:true}); label((a3.start+a3.end)/2,219,'(propanal)',{fs:14,color:GRAY});
+label(750,200,'benzaldehyde',{fs:15,bold:true}); label(750,219,'(benzaldehyde)',{fs:14,color:GRAY});
+line(860,40,860,215,{color:'#bbb',w:1});
+label(950,28,"Ketone: two C groups",{fs:15,bold:true,color:BLUE});
+const k=chain(878,y,[{l:'CH_3'},CO,{l:'CH_3'}]); label((k.start+k.end)/2,200,'acetone',{fs:15,bold:true}); label((k.start+k.end)/2,219,'(propanone)',{fs:14,color:GRAY});
+</script>

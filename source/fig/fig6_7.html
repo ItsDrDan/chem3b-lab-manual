@@ -1,0 +1,17 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="185" viewBox="0 0 900 185" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style><script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555'; const y=90;
+const a=chain(10,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O'},{l:'CH_2CH_3'}],{bl:34});
+// dashed cut line across the C–O ester bond (between atoms 1 and 2)
+const p1=a.pos[1],p2=a.pos[2]; const mx=(p1.x+p1.hw+p2.x-p2.hw)/2;
+line(mx-8,y+24,mx+8,y-24,{color:RED,w:2.2,dash:'5,3'});
+label(mx+62,y-40,'bond broken',{fs:14,color:RED,italic:true});
+label((a.start+a.end)/2,150,'ethyl acetate',{fs:16,bold:true}); label((a.start+a.end)/2,170,'(ester)',{fs:14,color:GRAY});
+txt(a.end+14,y+6,'+'); const n=txt(a.end+40,y+6,'NaOH',{bold:true});
+const x1=a.end+40+n.w+18,x2=x1+100; arrow(x1,y,x2,y); label((x1+x2)/2,y-12,'heat',{fs:14,italic:true});
+const b=chain(x2+16,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O^- Na^+',color:BLUE}]);
+label((b.start+b.end)/2,150,'sodium acetate',{fs:16,bold:true}); label((b.start+b.end)/2,170,'(carboxylate salt)',{fs:14,color:GRAY});
+txt(b.end+14,y+6,'+'); const c=chain(b.end+40,y,[{l:'HO',color:BLUE},{l:'CH_2CH_3'}]);
+label((c.start+c.end)/2,150,'ethanol',{fs:16,bold:true}); label((c.start+c.end)/2,170,'(alcohol)',{fs:14,color:GRAY});
+</script>

@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="358" viewBox="0 0 760 358" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const BLU='#1f5fbf', RED='#c0392b';
+const DY=46, HW=46;
+// Fischer projection. rows: array of {mid, l, r, dbl}; T0 label at index 0 handled as text
+function fischer(x,y,rows,name,kind,hl){
+  rows.forEach((r,i)=>{
+    const yy=y+i*DY;
+    if(r.text){ atomAt(x,yy,r.text,{color:r.color}); }
+    else {
+      atomAt(x,yy,'C',{color:r.color});
+      if(r.l){line(x-HW+12,yy,x-10,yy); atomAt(x-HW-(r.l.length>1?8:0),yy,r.l,{color:r.lc});}
+      if(r.r){ if(r.dbl){bond(x+10,yy,x+HW-10,yy,2,{color:r.color});} else line(x+10,yy,x+HW-12,yy); atomAt(x+HW+ (r.r.length>1?8:2),yy,r.r,{color:r.rc||r.color});}
+    }
+    if(i<rows.length-1) line(x,yy+(r.text?17:12),x,yy+DY-(rows[i+1].text?17:12));
+  });
+  label(x+4,y+rows.length*DY+8,name,{fs:19,bold:true});
+  label(x+4,y+rows.length*DY+30,kind,{fs:16,italic:true,color:'#444'});
+}
+const T0=40;
+// highlight boxes
+rect(78,T0-18,124,36,{fill:'#e3edfb'}); rect(328,T0-18,124,36,{fill:'#e3edfb'}); rect(585,T0+DY-18,110,36,{fill:'#fbe7e3'});
+fischer(140,T0,[{text:'CHO',color:BLU},{l:'H',r:'OH'},{l:'HO',r:'H'},{l:'H',r:'OH'},{l:'H',r:'OH'},{text:'CH_2OH'}],'D-Glucose','aldose (aldohexose)');
+fischer(390,T0,[{text:'CHO',color:BLU},{l:'H',r:'OH'},{l:'HO',r:'H'},{l:'HO',r:'H'},{l:'H',r:'OH'},{text:'CH_2OH'}],'D-Galactose','aldose (aldohexose)');
+fischer(620,T0,[{text:'CH_2OH'},{r:'O',dbl:true,color:RED},{l:'HO',r:'H'},{l:'H',r:'OH'},{l:'H',r:'OH'},{text:'CH_2OH'}],'D-Fructose','ketose (ketohexose)');
+label(140,T0-26,'aldehyde',{fs:15,color:BLU}); label(390,T0-26,'aldehyde',{fs:15,color:BLU}); label(700,T0+DY-26,'ketone',{fs:15,color:RED});
+// carbon numbers
+[140,390].forEach(x=>{for(let i=0;i<6;i++) label(x-HW-40,T0+i*DY+6,String(i+1),{fs:13,color:'#777'});});
+for(let i=0;i<6;i++) label(620-HW-40,T0+i*DY+6,String(i+1),{fs:13,color:'#777'});
+</script>

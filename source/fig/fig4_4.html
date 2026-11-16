@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="210" viewBox="0 0 760 210" style="background:#fff">
+<image href="mol/exp4_phenol_eq.svg" x="10" y="15" width="140" height="140"/>
+<image href="mol/exp4_phenoxide.svg" x="440" y="15" width="140" height="140"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const GRAY='#555', RED='#c0392b';
+txt(170,95,'+'); txt(200,95,'H_2O');
+const x1=280,x2=410; line(x1,80,x2-2,80); el('polygon',{points:`${x2},80 ${x2-12},73 ${x2-12},80`}); line(x1+2,92,x2,92); el('polygon',{points:`${x1},92 ${x1+12},99 ${x1+12},92`});
+label(345,64,'small amount',{fs:14,italic:true,color:GRAY});
+txt(600,95,'+'); txt(630,95,'H_3O^+');
+label(80,182,'phenol',{fs:16,bold:true}); label(80,200,'weak acid',{fs:14,color:GRAY});
+label(500,182,'phenoxide ion',{fs:16,bold:true}); label(500,200,'charge spread over the ring',{fs:14,color:GRAY});
+label(680,182,'hydronium',{fs:16,bold:true}); label(680,200,'lowers the pH',{fs:14,color:RED});
+</script>

@@ -1,0 +1,18 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="850" height="215" viewBox="0 0 850 215" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const B='#1f5fbf', R='#b03a2e', G='#555';
+const y=88;
+const a1=chain(14,y,[{l:'H_3N^+',color:B},{l:'C',up:{l:'CH_3'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'OH',color:R}]);
+const x1=a1.end+16, x2=x1+92;
+arrow(x2,y-6,x1,y-6,{head:10}); arrow(x1,y+6,x2,y+6,{head:10});
+label((x1+x2)/2,y-16,'+ H^+',{fs:15}); label((x1+x2)/2,y+30,'− H^+',{fs:15});
+const a2=chain(x2+14,y,[{l:'H_3N^+',color:B},{l:'C',up:{l:'CH_3'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'O^−',color:R}]);
+const x3=a2.end+16, x4=x3+92;
+arrow(x4,y-6,x3,y-6,{head:10}); arrow(x3,y+6,x4,y+6,{head:10});
+label((x3+x4)/2,y-16,'+ H^+',{fs:15}); label((x3+x4)/2,y+30,'− H^+',{fs:15});
+const a3=chain(x4+14,y,[{l:'H_2N',color:B},{l:'C',up:{l:'CH_3'},down:{l:'H'}},{l:'C',up:{l:'O',order:2}},{l:'O^−',color:R}]);
+function cap(a,t1,t2){const m=(a.start+a.end)/2; label(m,176,t1,{fs:17,bold:true}); label(m,200,t2,{fs:15,color:G});}
+cap(a1,'Low pH (acidic)','net charge 1+'); cap(a2,'Zwitterion (near neutral pH)','net charge 0'); cap(a3,'High pH (basic)','net charge 1−');
+</script>

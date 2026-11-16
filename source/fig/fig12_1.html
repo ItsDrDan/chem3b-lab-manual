@@ -1,0 +1,40 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="250" viewBox="0 0 1040 250" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555';
+function ring(cx,cy,oxidized){
+  const r=40, ang=[-90,-18,54,126,198].map(a=>a*Math.PI/180);
+  const P=ang.map(a=>[cx+r*Math.cos(a),cy+r*Math.sin(a)]);
+  const [O1,C2,C3,C4,C5]=P;
+  // ring O label
+  atomAt(O1[0],O1[1],'O');
+  const sh=(a,b,s=10)=>{const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy);return [[a[0]+dx/L*s,a[1]+dy/L*s],[b[0]-dx/L*s,b[1]-dy/L*s]];};
+  let [a,b]=sh(O1,C2,11);[a[0],a[1]]; line(a[0],a[1],C2[0],C2[1]);
+  line(C2[0],C2[1],C3[0],C3[1]);
+  if(oxidized){line(C3[0],C3[1],C4[0],C4[1]);} else { line(C3[0],C3[1],C4[0],C4[1]); line(C3[0]-6,C3[1]-6,C4[0]+6,C4[1]-6);} // inner double bond
+  line(C4[0],C4[1],C5[0],C5[1]); [a,b]=sh(C5,O1,11); line(C5[0],C5[1],b[0],b[1]);
+  // C2 =O
+  bond(C2[0],C2[1],C2[0]+34,C2[1]-4,2); atomAt(C2[0]+44,C2[1]-5,'O');
+  // C3, C4 substituents downward
+  [[C3,18],[C4,-18]].forEach(([C,dx])=>{const ex=C[0]+dx*0.5,ey=C[1]+36;
+     if(oxidized){bond(C[0],C[1],ex,ey-9,2); atomAt(ex,ey,'O',{color:BLUE});}
+     else {line(C[0],C[1],ex,ey-9); atomAt(ex,ey,'O'); atomAt(ex+(dx>0?14:-14),ey,'H',{color:RED});}
+  });
+  // side chain at C5
+  line(C5[0],C5[1],C5[0]-30,C5[1]-14); txt(C5[0]-32,C5[1]-8,'HOCH_2CH(OH)',{anchor:'end'});
+  return {left:C5[0]-150,right:C2[0]+56};
+}
+// reactant
+const r1=ring(200,105,false);
+label(145,210,'vitamin C (ascorbic acid)',{fs:15,bold:true});
+label(145,228,'reducing agent: is oxidized (loses 2 H)',{fs:13,color:GRAY});
+txt(r1.right+10,112,'+');
+txt(r1.right+38,112,'I_2');
+label(r1.right+52,210,'iodine',{fs:15,bold:true}); label(r1.right+52,228,'blue-black with starch',{fs:13,color:GRAY});
+const ax1=r1.right+80, ax2=ax1+90; arrow(ax1,105,ax2,105);
+const r2=ring(ax2+175,105,true);
+label(ax2+120,210,'dehydroascorbic acid',{fs:15,bold:true}); label(ax2+120,228,'(oxidized vitamin C)',{fs:13,color:GRAY});
+txt(r2.right+10,112,'+'); txt(r2.right+36,112,'2 H^+ + 2 I^−');
+label(r2.right+90,210,'iodide ions',{fs:15,bold:true}); label(r2.right+90,228,'no color with starch',{fs:13,color:GRAY});
+</script>

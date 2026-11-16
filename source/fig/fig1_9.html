@@ -1,0 +1,19 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="270" viewBox="0 0 820 270" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',20);
+
+const R='#c0392b';
+grid(110,140,70,40);at('o1',0,0,'O');at('c',1,0,'C');at('o2',2,0,'O');bd('o1','c',2);bd('c','o2',2);['u','d'].forEach(d=>{lp('o1',d);lp('o2',d);});
+label(110,105,'δ−',{fs:17,color:R});label(180,105,'δ+',{fs:17,color:R});label(250,105,'δ−',{fs:17,color:R});
+dip(165,82,118,82,{color:R});dip(195,82,242,82,{color:R});
+label(180,215,'CO_2: linear',{fs:17,bold:true});label(180,237,'bond dipoles cancel → nonpolar',{fs:15,color:'#555'});
+grid(560,100,60,40);at('o',0,0,'O');at('h1',-1.15,1.45,'H');at('h2',1.15,1.45,'H');bd('o','h1');bd('o','h2');
+dots(543,100,true);dots(577,100,true);
+label(560,80,'δ−',{fs:17,color:R});label(470,170,'δ+',{fs:17,color:R});label(650,170,'δ+',{fs:17,color:R});
+dip(491,140,523,102,{color:R});dip(629,140,597,102,{color:R});
+dip(560,200,560,150,{color:'#1f5fbf'});label(505,195,'net dipole',{fs:14,color:'#1f5fbf',italic:true});
+label(560,225,'H_2O: bent',{fs:17,bold:true});label(560,247,'bond dipoles do not cancel → polar',{fs:15,color:'#555'});
+
+</script>

@@ -1,0 +1,18 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1040" height="290" viewBox="0 0 1040 290" style="background:#fff">
+<image href="mol/salicylic.svg" x="20" y="20" width="190" height="170"/>
+<image href="mol/anhydride.svg" x="225" y="20" width="190" height="170"/>
+<image href="mol/aspirin.svg" x="560" y="10" width="220" height="190"/>
+<image href="mol/acetic.svg" x="830" y="20" width="130" height="170"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18); const GRAY='#555', RED='#c0392b', BLUE='#1f5fbf';
+txt(212,112,'+'); arrow(425,105,545,105); label(485,92,'H_3PO_4',{fs:15}); label(485,128,'heat',{fs:15,italic:true});
+txt(800,112,'+');
+const L=(x,a,b,c)=>{label(x,222,a,{fs:15,bold:true}); label(x,241,b,{fs:13,color:GRAY}); if(c)label(x,260,c,{fs:13,color:c[0]=='p'?RED:BLUE});};
+label(115,222,'salicylic acid',{fs:15,bold:true}); label(115,241,'138.12 g/mol',{fs:13,color:GRAY}); label(120,260,'phenol –OH (red) reacts with FeCl₃',{fs:13,color:RED});
+label(320,222,'acetic anhydride',{fs:15,bold:true}); label(320,241,'(excess)',{fs:13,color:GRAY});
+label(670,222,'aspirin (acetylsalicylic acid)',{fs:15,bold:true}); label(670,241,'180.16 g/mol',{fs:13,color:GRAY}); label(670,260,'new ester group (blue): no free phenol',{fs:13,color:BLUE});
+label(895,222,'acetic acid',{fs:15,bold:true});
+</script>

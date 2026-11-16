@@ -1,0 +1,18 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1020" height="250" viewBox="0 0 1020 250" style="background:#fff">
+<image href="mol/exp4_cyclohexanol.svg" x="790" y="35" width="140" height="140"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const RED='#c0392b', BLU='#1f5fbf', GRAY='#555'; const y=110;
+const C=(o)=>Object.assign({l:'C'},o);
+chain(20,y,[{l:'CH_3',color:BLU},C({up:{l:'H'},down:{l:'H'}}),{l:'OH',color:RED}]);
+chain(270,y,[{l:'CH_3',color:BLU},C({up:{l:'H'},down:{l:'CH_3',color:BLU}}),{l:'OH',color:RED}]);
+chain(530,y,[{l:'CH_3',color:BLU},C({up:{l:'CH_3',color:BLU},down:{l:'CH_3',color:BLU}}),{l:'OH',color:RED}]);
+const L=(x,a,b,c)=>{label(x,205,a,{fs:16,bold:true}); label(x,225,b,{fs:15,color:BLU}); if(c)label(x,244,c,{fs:13,color:GRAY});};
+L(100,'ethanol','primary (1°) alcohol','C–OH carbon bonded to 1 C');
+L(350,'2-propanol','secondary (2°) alcohol','C–OH carbon bonded to 2 C');
+L(612,'2-methyl-2-propanol','tertiary (3°) alcohol','C–OH carbon bonded to 3 C');
+L(860,'cyclohexanol','secondary (2°) alcohol','C–OH carbon bonded to 2 C');
+label(510,22,'Count the carbon atoms (blue) bonded to the C that holds the –OH group (red).',{fs:15,color:GRAY});
+</script>

@@ -1,0 +1,36 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="330" viewBox="0 0 1000 330" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18);
+const EN='#bcd3ee',ENS='#1f5fbf',GLC='#f0b429';
+// enzyme shape with cleft at top; cx center x, y top of body
+function enzyme(cx,y,fit){
+  const w=90, d=fit?26:30, cw=fit?58:62; // cleft width
+  const p=`M${cx-w},${y+20} Q${cx-w},${y} ${cx-w+20},${y} L${cx-cw/2},${y} ${fit?`C${cx-cw/2},${y+d} ${cx+cw/2},${y+d} ${cx+cw/2},${y}`:`L${cx-cw/2+8},${y+d} L${cx+cw/2-8},${y+d} L${cx+cw/2},${y}`} L${cx+w-20},${y} Q${cx+w},${y} ${cx+w},${y+20} L${cx+w},${y+80} Q${cx+w},${y+110} ${cx+w-30},${y+110} L${cx-w+30},${y+110} Q${cx-w},${y+110} ${cx-w},${y+80} Z`;
+  el('path',{d:p,fill:EN,stroke:ENS,'stroke-width':2.5});
+}
+function glc(x,y){el('polygon',{points:hex(x,y,11),fill:GLC,stroke:'#8a6100','stroke-width':1.5});}
+function hex(x,y,r){let s='';for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3;s+=`${x+r*Math.cos(a)},${y+r*Math.sin(a)} `;}return s;}
+function chainG(x,y,n){for(let i=0;i<n;i++){if(i)line(x+(i-1)*24+11,y,x+i*24-11,y,{w:2,color:'#8a6100'});glc(x+i*24,y);}}
+const Y=150;
+// panel 1: E + S
+enzyme(110,Y,false); label(110,Y+70,'Enzyme',{fs:18,bold:true}); label(110,Y+92,'(amylase)',{fs:16});
+chainG(46,Y-60,6); label(106,Y-82,'Substrate (starch chain)',{fs:16});
+txt(70,Y-30,'Active site',{fs:15,color:ENS}); arrow(110,Y-24,110,Y+10,{w:1.4,color:ENS,head:8});
+arrow(225,Y+40,295,Y+40,{w:2}); arrow(295,Y+52,225,Y+52,{w:2});
+// panel 2: ES
+enzyme(420,Y,true); [0,1,2,3,4,5].forEach(i=>{const x=360+i*24, y=(i==2||i==3)?Y+12:Y-12; if(i){const xp=x-24, yp=(i-1==2||i-1==3)?Y+12:Y-12; line(xp,yp,x,y,{w:2,color:'#8a6100'});}}); [0,1,2,3,4,5].forEach(i=>glc(360+i*24,(i==2||i==3)?Y+12:Y-12));
+label(420,Y+80,'Enzyme–substrate',{fs:18,bold:true}); label(420,Y+102,'complex (ES)',{fs:18,bold:true});
+txt(330,Y-72,'The active site changes shape',{fs:15,color:ENS}); txt(330,Y-54,'to fit the substrate (induced fit)',{fs:15,color:ENS});
+// cut mark
+line(420,Y-6,420,Y+30,{w:2.5,color:'#c0392b',dash:'4 3'}); txt(430,Y-2,'',{});
+label(420,Y+136,'A glycosidic bond is hydrolyzed (+ H_{2}O)',{fs:15,color:'#c0392b'});
+arrow(530,Y+46,580,Y+46,{w:2});
+// panel 3: E + P
+enzyme(680,Y,false); label(680,Y+70,'Enzyme',{fs:18,bold:true}); label(680,Y+92,'(unchanged, reused)',{fs:16});
+chainG(860,Y-60,3); chainG(860,Y-20,3);
+label(884,Y+20,'Products',{fs:18,bold:true}); label(884,Y+42,'shorter chains',{fs:16}); label(884,Y+62,'(dextrins, maltose)',{fs:16});
+label(808,Y-30,'+',{fs:26});
+label(500,24,'E + S  ⇌  ES  →  E + P',{fs:22,bold:true});
+</script>

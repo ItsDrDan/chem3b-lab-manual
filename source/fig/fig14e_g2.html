@@ -1,0 +1,15 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="700" height="330" viewBox="0 0 700 330" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18);
+const x0=90,y0=260,W=580,H=240,a=0,b=100,st=10;
+const X=v=>x0+(v-a)/(b-a)*W;
+for(let v=a;v<=b+1e-9;v+=st/2){line(X(v),y0,X(v),y0-H,{w:Math.abs((v-a)/st-Math.round((v-a)/st))<1e-6?0.9:0.4,color:'#9aa'});}
+for(let k=0;k<=12;k++){const y=y0-k*H/12; line(x0,y,x0+W,y,{w:k%4==0?0.9:0.4,color:'#9aa'});}
+line(x0,y0,x0+W,y0,{w:2}); line(x0,y0,x0,y0-H,{w:2});
+for(let v=a;v<=b+1e-9;v+=st){label(X(v),y0+22,String(v),{fs:15});}
+[0,1,2,3].forEach(k=>label(x0-14,y0-k*H/3+5,String(k),{fs:16,bold:true}));
+label(x0+W/2,y0+52,'Temperature (°C)',{fs:18,bold:true});
+const t=txt(0,0,'Activity level',{fs:18,bold:true}); t.el.setAttribute('transform','translate(48,'+(y0-H/2+55)+') rotate(-90)');
+</script>

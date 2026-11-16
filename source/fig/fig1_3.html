@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="212" viewBox="0 0 900 212" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',18);
+
+grid(40,95,44,40);at('a0',0,0,'H');at('a1',1,0,'C');at('a2',2,0,'C');at('a3',3,0,'H');bd('a0','a1');bd('a1','a2');bd('a2','a3');
+[1,2].forEach(i=>{at('au'+i,i,-1,'H');at('ad'+i,i,1,'H');bd('a'+i,'au'+i);bd('a'+i,'ad'+i);});
+label(106,175,'Alkane: ethane',{fs:17,bold:true});label(106,194,'C–C single bonds only',{fs:14,color:'#555'});
+grid(355,95,44,40);at('b0',0,0,'H');at('b1',1,0,'C',{color:BLUE});at('b2',2,0,'C',{color:BLUE});at('b3',3,0,'H');bd('b0','b1');bd('b1','b2',2,{color:BLUE});bd('b2','b3');
+[1,2].forEach(i=>{at('bu'+i,i,-1,'H');bd('b'+i,'bu'+i);});
+label(421,175,'Alkene: ethene',{fs:17,bold:true});label(421,194,'C=C double bond',{fs:14,color:'#555'});
+grid(670,95,46,40);at('c0',0,0,'H');at('c1',1,0,'C',{color:BLUE});at('c2',2,0,'C',{color:BLUE});at('c3',3,0,'H');bd('c0','c1');bd('c1','c2',3,{color:BLUE});bd('c2','c3');
+label(739,175,'Alkyne: ethyne',{fs:17,bold:true});label(739,194,'C≡C triple bond',{fs:14,color:'#555'});
+
+</script>

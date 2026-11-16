@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" style="background:#fff">
+<image href="mol/benzamide.svg" x="420" y="18" width="150" height="141"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', GRAY='#555', RED='#b0302a';
+let Y=105;
+let w=chain(20,Y,[{l:'',bl:16},{l:'C',up:{l:'O',order:2}},{l:'N',color:BLUE,bondColor:BLUE,down:{l:''}},{l:'',bl:16}]);
+label(85,175,'amide group',{fs:15,bold:true});
+w=chain(170,Y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'NH_2',color:BLUE,bondColor:BLUE}]); label((w.start+w.end)/2,175,'acetamide',{fs:15,bold:true});
+label(495,175,'benzamide',{fs:15,bold:true});
+w=chain(620,Y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'NH',color:BLUE,bondColor:BLUE},{l:'CH_3'}]); {const m=(w.start+w.end)/2; txt(m-62,175,'N',{fs:15,bold:true,italic:true}); txt(m-50,175,'-methylacetamide',{fs:15,bold:true});}
+// amidation
+Y=270;
+w=chain(20,Y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O',color:RED},{l:'H',color:RED,bondColor:RED}]); label((w.start+w.end)/2,Y+40,'acetic acid',{fs:14,color:GRAY});
+txt(w.end+14,Y+7,'+');
+let x=w.end+44; txt(x,Y+7,'H',{color:RED}); txt(x+15,Y+7,'NH_2',{color:BLUE}); label(x+30,Y+40,'ammonia',{fs:14,color:GRAY});
+arrow(x+80,Y,x+175,Y); label(x+127,Y-10,'heat',{fs:13,color:GRAY});
+w=chain(x+190,Y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'NH_2',color:BLUE,bondColor:BLUE}]); label((w.start+w.end)/2,Y+40,'acetamide',{fs:14,color:GRAY});
+txt(w.end+14,Y+7,'+'); txt(w.end+44,Y+7,'H_2O',{color:RED}); label(w.end+64,Y+40,'water',{fs:14,color:GRAY});
+</script>

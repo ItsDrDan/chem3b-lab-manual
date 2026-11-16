@@ -1,0 +1,17 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="230" viewBox="0 0 900 230" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style><script src="chem.js"></script>
+<script>
+init('s',19); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555'; const y=110;
+const a=chain(10,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'OH',color:RED}]);
+label((a.start+a.end)/2,175,'acetic acid',{fs:16,bold:true}); label((a.start+a.end)/2,195,'(carboxylic acid)',{fs:14,color:GRAY});
+txt(a.end+14,y+6,'+');
+const b=chain(a.end+40,y,[{l:'H',color:RED},{l:'O'},{l:'CH_2CH_3'}]);
+label((b.start+b.end)/2,175,'ethanol',{fs:16,bold:true}); label((b.start+b.end)/2,195,'(alcohol)',{fs:14,color:GRAY});
+const x1=b.end+20,x2=x1+130; arrow(x1,y-5,x2,y-5); arrow(x2,y+5,x1,y+5);
+label((x1+x2)/2,y-16,'H^+ catalyst, heat',{fs:14}); label((x1+x2)/2,y+28,'',{fs:14});
+label((x1+x2)/2,40,'esterification →',{fs:15,italic:true,color:BLUE}); label((x1+x2)/2,y+42,'← hydrolysis',{fs:15,italic:true,color:BLUE});
+const c=chain(x2+20,y,[{l:'CH_3'},{l:'C',up:{l:'O',order:2}},{l:'O',color:BLUE},{l:'CH_2CH_3'}]);
+label((c.start+c.end)/2,175,'ethyl acetate',{fs:16,bold:true}); label((c.start+c.end)/2,195,'(ester)',{fs:14,color:GRAY});
+txt(c.end+14,y+6,'+'); const w=txt(c.end+40,y+6,'H_2O',{color:RED}); label(c.end+40+w.w/2,175,'water',{fs:16,bold:true});
+label(450,222,'The –OH from the acid and the H from the alcohol (red) leave as water.',{fs:14,italic:true,color:GRAY});
+</script>

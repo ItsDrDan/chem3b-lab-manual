@@ -1,0 +1,12 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="215" viewBox="0 0 1000 215" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style><script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', GRAY='#555'; const y=80;
+const O={l:'O',order:2};
+const a=chain(10,y,[{l:'CH_3'},{l:'C',up:O},{l:'O',color:BLUE},{l:'(CH_2)_7CH_3'}]);
+label((a.start+a.end)/2,180,'octyl acetate',{fs:16,bold:true}); label((a.start+a.end)/2,200,'(oranges)',{fs:14,color:GRAY});
+const b=chain(a.end+40,y,[{l:'CH_3'},{l:'C',up:O},{l:'O',color:BLUE},{l:'(CH_2)_4CH_3'}]);
+label((b.start+b.end)/2,180,'pentyl acetate',{fs:16,bold:true}); label((b.start+b.end)/2,200,'(bananas)',{fs:14,color:GRAY});
+const c=chain(b.end+40,y,[{l:'H'},{l:'C',up:O},{l:'O',color:BLUE},{l:'CH_2'},{l:'CH',down:{l:'CH_3'}},{l:'CH_3'}]);
+label((c.start+c.end)/2,180,'isobutyl formate',{fs:16,bold:true}); label((c.start+c.end)/2,200,'(raspberries)',{fs:14,color:GRAY});
+</script>

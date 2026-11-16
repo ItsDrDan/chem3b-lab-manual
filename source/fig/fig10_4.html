@@ -1,0 +1,35 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="-80 20 880 500" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const GL='#8a99a8', GRAY='#555';
+// ring stand
+el('rect',{x:120,y:470,width:340,height:16,fill:'#333',rx:2}); el('rect',{x:140,y:40,width:10,height:432,fill:'#666'});
+// filter flask
+const fx=310;
+el('path',{d:`M${fx-22},250 L${fx-22},300 L${fx-110},468 L${fx+110},468 L${fx+22},300 L${fx+22},250`,fill:'none',stroke:GL,'stroke-width':3});
+el('path',{d:`M${fx-80},410 L${fx-110},468 L${fx+110},468 L${fx+80},410 Z`,fill:'#e8f1fb'});
+// side arm
+el('path',{d:`M${fx+22},275 L${fx+70},275 M${fx+22},290 L${fx+70},290`,stroke:GL,'stroke-width':3});
+// hose
+el('path',{d:`M${fx+70},282 C${fx+130},282 ${fx+140},330 ${fx+210},330`,fill:'none',stroke:'#c9a96e','stroke-width':12,'stroke-linecap':'round'});
+arrow(fx+215,330,fx+260,330,{w:2});
+// clamp holding flask neck
+el('rect',{x:150,y:272,width:fx-22-150,height:8,fill:'#444'}); el('rect',{x:fx-28,y:264,width:56,height:24,rx:5,fill:'none',stroke:'#444','stroke-width':3});
+// rubber adapter
+el('rect',{x:fx-20,y:226,width:40,height:26,fill:'#555',rx:3});
+// buchner funnel
+el('path',{d:`M${fx-80},110 L${fx-80},180 L${fx-10},215 L${fx-10},280 M${fx+80},110 L${fx+80},180 L${fx+10},215 L${fx+10},280`,fill:'none',stroke:GL,'stroke-width':3});
+line(fx-78,178,fx+78,178,{w:3,color:'#9aa',dash:'4 3'}); line(fx-78,172,fx+78,172,{w:2,color:'#999'});
+el('rect',{x:fx-76,y:152,width:152,height:18,fill:'#fff',stroke:'none'});
+for(let i=0;i<7;i++) el('circle',{cx:fx-60+i*20,cy:163,r:4,fill:'#f2f2f2',stroke:'#bbb'});
+function cl(x1,y1,x2,y2,a,b){line(x1,y1,x2,y2,{w:1.2}); const right=x2>x1; txt(x2+(right?6:-6),y2+5,a,{fs:15,bold:true,anchor:right?'start':'end'}); if(b)txt(x2+(right?6:-6),y2+23,b,{fs:13,color:GRAY,anchor:right?'start':'end'});}
+cl(fx+80,120,fx+150,90,'Büchner funnel');
+cl(fx+60,168,fx+150,150,'filter paper','wet it so it seals flat');
+cl(fx+20,240,fx+150,215,'rubber adapter','seals funnel to flask');
+cl(fx+225,330,fx+250,390,'to vacuum','thick-walled hose');
+cl(fx+60,440,fx+160,445,'filtrate','liquid that passes through');
+cl(fx-25,276,90,215,'clamp','holds the flask so');
+txt(84,256,'it cannot tip over',{fs:13,color:GRAY,anchor:'end'});
+cl(fx-90,410,80,400,'filter flask','thick-walled');
+</script>

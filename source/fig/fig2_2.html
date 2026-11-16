@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig2_struct.js"></script>
+<script>
+init('s',20); const GRAY='#555';
+label(165,28,'Complete structural formula',{fs:16,bold:true}); label(500,28,'Condensed structural formula',{fs:16,bold:true}); label(770,28,'Skeletal formula',{fs:16,bold:true});
+line(10,40,890,40,{w:1,color:'#999'});
+// butane
+const [a,b]=hchain(4); mol(75,130,50,a,b);
+chain(400,130,[{l:'CH_3'},{l:'CH_2'},{l:'CH_2'},{l:'CH_3'}],{bl:14});
+mol(715,140,1,[['1',0,0,''],['2',30,-18,''],['3',60,0,''],['4',90,-18,'']],[['1','2'],['2','3'],['3','4']]);
+label(450,215,'Butane (C_4H_10): a continuous chain of four carbons',{fs:16,bold:true,color:GRAY});
+line(10,240,890,240,{w:1,color:'#999'});
+// 2-methylpropane
+const at=[['C0',0,0,'C'],['C1',65,0,'C'],['C2',130,0,'C'],['HL',-55,0,'H'],['HR',185,0,'H'],['U0',0,-50,'H'],['D0',0,50,'H'],['U2',130,-50,'H'],['D2',130,50,'H'],['D1',65,50,'H'],
+ ['C3',65,-95,'C'],['H3a',15,-95,'H'],['H3b',115,-95,'H'],['H3c',65,-140,'H']];
+const bd=[['HL','C0'],['C0','C1'],['C1','C2'],['C2','HR'],['C0','U0'],['C0','D0'],['C2','U2'],['C2','D2'],['C1','D1'],['C1','C3'],['C3','H3a'],['C3','H3b'],['C3','H3c']];
+mol(110,425,1,at,bd);
+chain(430,425,[{l:'CH_3'},{l:'CH',up:{l:'CH_3'}},{l:'CH_3'}],{bl:14});
+mol(770,420,1,[['c',0,0,''],['1',0,-34,''],['2',-30,17,''],['3',30,17,'']],[['c','1'],['c','2'],['c','3']]);
+label(450,508,'2-Methylpropane (C_4H_10): a three-carbon chain with a CH_3 branch on the middle carbon',{fs:16,bold:true,color:GRAY});
+</script>

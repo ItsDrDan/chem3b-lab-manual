@@ -1,0 +1,23 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360" style="background:#fff">
+<image href="mol/aniline.svg" x="20" y="180" width="130" height="130"/>
+<image href="mol/anilinium.svg" x="470" y="172" width="135" height="140"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const BLUE='#1f5fbf', GRAY='#555';
+function eq(x1,x2,y){line(x1,y-4,x2,y-4); el('polyline',{points:`${x2-10},${y-10} ${x2},${y-4}`,stroke:'#000','stroke-width':1.6,fill:'none'});
+ line(x1,y+4,x2,y+4); el('polyline',{points:`${x1+10},${y+10} ${x1},${y+4}`,stroke:'#000','stroke-width':1.6,fill:'none'});}
+label(345,22,'(a) An amine is a weak base in water',{fs:16,bold:true});
+let Y=80;
+let w=chain(40,Y,[{l:'CH_3'},{l:'NH_2',color:BLUE}]); label((w.start+w.end)/2,Y+34,'methylamine',{fs:14,color:GRAY});
+txt(170,Y+7,'+'); txt(205,Y+7,'H_2O'); eq(285,365,Y);
+w=chain(395,Y,[{l:'CH_3'},{l:'NH_3^+',color:BLUE}]); label((w.start+w.end)/2,Y+34,'methylammonium ion',{fs:14,color:GRAY});
+txt(545,Y+7,'+'); txt(580,Y+7,'OH^−',{color:'#b0302a'}); label(605,Y+34,'hydroxide ion (pH > 7)',{fs:14,color:GRAY});
+label(345,165,'(b) An amine reacts with an acid to form an amine salt',{fs:16,bold:true});
+Y=262;
+txt(170,Y+7,'+'); txt(205,Y+7,'HCl'); arrow(290,Y,420,Y); label(355,Y-12,'(10% HCl)',{fs:13,color:GRAY});
+txt(610,Y+7,'Cl^−');
+label(85,330,'aniline',{fs:14,color:GRAY}); label(85,348,'slightly soluble, has an odor',{fs:13,color:GRAY});
+label(570,330,'anilinium chloride (an amine salt)',{fs:14,color:GRAY}); label(570,348,'ionic: dissolves in water, no odor',{fs:13,color:GRAY});
+</script>

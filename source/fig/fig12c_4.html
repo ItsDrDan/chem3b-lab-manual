@@ -1,0 +1,27 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="660" height="380" viewBox="0 0 660 380" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const B='#1f5fbf', PU='#7b3fa0', G='#555', PLT='#fbfaf5';
+const S=34, x0=150, base=365, Wp=7.5*S, Hp=10*S;
+const ptop=base-Hp;
+el('rect',{x:x0,y:ptop,width:Wp,height:Hp,fill:PLT,stroke:'#777','stroke-width':1.5});
+const oy=base-1.5*S, fy=oy-7.4*S;
+line(x0,oy,x0+Wp,oy,{w:1.2,color:'#666'}); line(x0,fy,x0+Wp,fy,{w:1.8,color:B});
+txt(x0+Wp+10,fy+5,'solvent front (pencil line)',{fs:15,color:B});
+txt(x0+Wp+10,oy+5,'origin (starting line)',{fs:15});
+const sp=[['A',5.2,1.5],['B',2.8,3],['C',1.1,4.5],['Unk',2.8,6]];
+sp.forEach(([n,d,cx])=>{const x=x0+cx*S, yy=oy-d*S;
+ el('circle',{cx:x,cy:oy,r:3.5,fill:'#555'});
+ el('ellipse',{cx:x,cy:yy,rx:9,ry:7,fill:PU,opacity:0.75});
+ el('ellipse',{cx:x,cy:yy,rx:12,ry:10,fill:'none',stroke:'#333','stroke-width':1.2});
+ el('circle',{cx:x,cy:yy,r:1.8,fill:'#000'});
+ arrow(x,oy-4,x,yy+3,{head:7,w:1.3}); txt(x+5,(oy+yy)/2+5,d.toFixed(1),{fs:14});
+ label(x,oy+22,n,{fs:16,bold:true});});
+arrow(x0-22,oy,x0-22,fy,{head:9,w:1.6,color:B});
+txt(x0-30,(oy+fy)/2-6,'solvent',{fs:15,color:B,anchor:'end'}); txt(x0-30,(oy+fy)/2+12,'moved',{fs:15,color:B,anchor:'end'}); txt(x0-30,(oy+fy)/2+30,'7.4 cm',{fs:15,color:B,anchor:'end',bold:true});
+txt(x0+Wp+10,oy-60,'Measure from the origin',{fs:14,color:G}); txt(x0+Wp+10,oy-42,'to the CENTER of each spot.',{fs:14,color:G}); txt(x0+Wp+10,oy-24,'(distances in cm)',{fs:14,color:G});
+txt(x0+Wp+10,120,'R_{f} of B = 2.8 cm ÷ 7.4 cm',{fs:15}); txt(x0+Wp+40,140,'= 0.38',{fs:15});
+txt(x0+Wp+10,180,'R_{f} of A = 0.70',{fs:15}); txt(x0+Wp+10,200,'R_{f} of C = 0.15',{fs:15});
+txt(x0+Wp+10,220,'R_{f} of Unk = 0.38 (matches B)',{fs:15});
+</script>

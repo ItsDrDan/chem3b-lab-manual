@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="660" viewBox="0 0 900 660" style="background:#fff">
+<image href="fig12a_mol_gly.svg" x="20" y="60" width="200" height="190"/>
+<image href="fig12a_mol_ala.svg" x="230" y="60" width="200" height="190"/>
+<image href="fig12a_mol_phe.svg" x="440" y="40" width="200" height="230"/>
+<image href="fig12a_mol_ser.svg" x="685" y="60" width="200" height="190"/>
+<image href="fig12a_mol_asp.svg" x="20" y="380" width="200" height="190"/>
+<image href="fig12a_mol_glu.svg" x="240" y="360" width="200" height="230"/>
+<image href="fig12a_mol_lys.svg" x="560" y="360" width="200" height="230"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18); const G='#555';
+function box(x,y,w,h,t,c){rect(x,y,w,h,{stroke:c,sw:2,rx:10}); label(x+w/2,y+24,t,{fs:17,bold:true,color:c});}
+box(8,8,644,300,'Nonpolar R groups','#2f6f3f');
+box(668,8,224,300,'Polar neutral R group','#1f5fbf');
+box(8,330,454,320,'Acidic R groups (charge 1−)','#b03a2e');
+box(478,330,414,320,'Basic R group (charge 1+)','#6a3d9a');
+[[120,'Glycine (Gly)'],[330,'Alanine (Ala)'],[540,'Phenylalanine (Phe)'],[785,'Serine (Ser)']].forEach(([x,t])=>label(x,292,t,{fs:16}));
+label(120,268,'(R group = H)',{fs:14,color:G});
+[[120,'Aspartic acid (Asp)'],[340,'Glutamic acid (Glu)'],[660,'Lysine (Lys)']].forEach(([x,t])=>label(x,625,t,{fs:16}));
+</script>

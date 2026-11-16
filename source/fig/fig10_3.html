@@ -1,0 +1,45 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const GRAY='#555', BLUE='#1f5fbf', SOLV='#cfe3f7', PL='#f3f1ea';
+function plate(x,y,w,h){el('rect',{x,y,width:w,height:h,fill:PL,stroke:'#777','stroke-width':1.5});}
+function head(x,s){txt(x,28,s,{fs:17,bold:true,anchor:'middle'});}
+// (a) spotted plate
+head(130,'(a) Spot the plate');
+const ax=40,ay=60,aw=180,ah=300; plate(ax,ay,aw,ah);
+const oy=ay+ah-30; line(ax+8,oy,ax+aw-8,oy,{w:1,color:'#888',dash:'2 2'});
+for(let i=0;i<6;i++){const cx=ax+20+i*28; el('circle',{cx,cy:oy,r:4,fill:'#444'}); label(cx,oy+20,String(i+1),{fs:13});}
+line(ax+aw+8,oy,ax+aw+8,ay+ah,{w:1}); label(ax+aw+30,oy+20,'1 cm',{fs:13});
+txt(ax,ay+ah+48,'Pencil line (origin) 1 cm',{fs:13,color:GRAY}); txt(ax,ay+ah+64,'from the bottom; tiny spots',{fs:13,color:GRAY});
+txt(ax,ay+ah+80,'1 = aspirin … 6 = OTC drug',{fs:13,color:GRAY});
+// (b) chamber
+head(420,'(b) Develop the plate');
+const bx=320,by=90,bw=200,bh=290;
+el('path',{d:`M${bx},${by} L${bx},${by+bh} L${bx+bw},${by+bh} L${bx+bw},${by}`,fill:'none',stroke:'#8a99a8','stroke-width':3});
+el('rect',{x:bx+2,y:by+bh-18,width:bw-4,height:16,fill:SOLV});
+el('rect',{x:bx-6,y:by-8,width:bw+12,height:8,fill:'#ddd',stroke:'#999'});
+const px=bx+55,pw=90,ph=250; el('rect',{x:px,y:by+bh-5-ph,width:pw,height:ph,fill:PL,stroke:'#777','stroke-width':1.5,transform:`rotate(4 ${px+pw/2} ${by+bh})`});
+const oy2=by+bh-44; for(let i=0;i<6;i++) el('circle',{cx:px+10+i*14,cy:oy2,r:3,fill:'#444',transform:`rotate(4 ${px+pw/2} ${by+bh})`});
+el('rect',{x:px,y:by+bh-5-ph*0.45,width:pw,height:ph*0.45,fill:SOLV,opacity:0.55,transform:`rotate(4 ${px+pw/2} ${by+bh})`});
+function cl(x1,y1,x2,y2,t){line(x1,y1,x2,y2,{w:1});txt(x2+(x2>x1?4:-4),y2+5,t,{fs:13,anchor:x2>x1?'start':'end'});}
+cl(bx+bw,by-4,bx+bw+30,by-24,'parafilm cover'); cl(bx+bw-4,by+bh-12,bx+bw+30,by+bh+10,'solvent (~½ cm)');
+txt(bx-10,by+bh+40,'Solvent level must be BELOW the origin.',{fs:13,color:'#c0392b'});
+txt(bx-10,by+bh+56,'Cover and do not disturb.',{fs:13,color:GRAY});
+// (c) developed plate + Rf
+head(800,'(c) Measure and calculate R_{f}');
+const cx0=650,cy0=60,cw=180,ch=300; plate(cx0,cy0,cw,ch);
+const o3=cy0+ch-30, front=cy0+30; line(cx0+8,o3,cx0+cw-8,o3,{w:1,color:'#888',dash:'2 2'}); line(cx0+4,front,cx0+cw-4,front,{w:1.5,color:BLUE});
+txt(cx0+cw+8,front+5,'solvent front',{fs:13,color:BLUE});
+const spots=[0.62,0.35]; const sx=cx0+70;
+el('ellipse',{cx:sx,cy:o3-(o3-front)*0.62,rx:9,ry:7,fill:'none',stroke:'#333','stroke-width':2});
+el('circle',{cx:sx,cy:o3,r:3.5,fill:'#444'});
+arrow(sx,o3,sx,o3-(o3-front)*0.62+9,{head:8,w:1.4});
+txt(sx+14,o3-60,'distance moved',{fs:13}); txt(sx+14,o3-44,'by substance',{fs:13});
+arrow(cx0-14,o3,cx0-14,front,{head:8,w:1.4,color:BLUE}); 
+txt(cx0-20,(o3+front)/2-8,'distance',{fs:13,anchor:'end',color:BLUE}); txt(cx0-20,(o3+front)/2+8,'moved by',{fs:13,anchor:'end',color:BLUE}); txt(cx0-20,(o3+front)/2+24,'solvent',{fs:13,anchor:'end',color:BLUE});
+txt(cx0+cw+8,o3+5,'origin',{fs:13});
+txt(cx0-10,cy0+ch+63,'R_{f} =',{fs:16}); txt(cx0+150,cy0+ch+46,'distance moved by substance',{fs:15,anchor:'middle'}); line(cx0+42,cy0+ch+56,cx0+258,cy0+ch+56,{w:1});
+txt(cx0+150,cy0+ch+76,'distance moved by solvent',{fs:15,anchor:'middle'});
+txt(cx0+10,cy0+ch+96,'Measure to the CENTER of each spot.',{fs:13,color:GRAY});
+</script>

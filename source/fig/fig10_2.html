@@ -1,0 +1,13 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" style="background:#fff">
+<image href="mol/aspirin_big.svg" x="20" y="10" width="230" height="170"/>
+<image href="mol/acetaminophen.svg" x="320" y="10" width="230" height="170"/>
+<image href="mol/ibuprofen.svg" x="620" y="10" width="260" height="170"/>
+<image href="mol/naproxen.svg" x="110" y="235" width="280" height="170"/>
+<image href="mol/caffeine.svg" x="530" y="225" width="220" height="190"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18);
+[[135,205,'Aspirin','pain, fever, inflammation'],[435,205,'Acetaminophen','pain, fever'],[750,205,'Ibuprofen','pain, fever, inflammation'],[250,440,'Naproxen','pain, fever, inflammation'],[640,440,'Caffeine','stimulant added to some pain relievers']].forEach(([x,y,a,b])=>{label(x,y,a,{fs:17,bold:true});label(x,y+19,b,{fs:13,color:'#555'});});
+</script>

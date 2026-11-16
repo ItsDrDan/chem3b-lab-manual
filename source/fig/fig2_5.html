@@ -1,0 +1,11 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="440" viewBox="0 0 820 440" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig2_struct.js"></script>
+<script>
+init('s',20); const o={bl:14,vbond:14};
+const row=(y,lab,atoms)=>{txt(10,y+7,lab,{bold:true}); chain(50,y,atoms,o); line(470,y+12,800,y+12,{w:1.2});};
+row(45,'a.',[{l:'CH_3'},{l:'CH_2'},{l:'CH_3'}]);
+row(150,'b.',[{l:'CH_3'},{l:'CH_2'},{l:'CH',down:{l:'CH_3'}},{l:'CH',up:{l:'CH_3'}},{l:'CH_3'}]);
+row(270,'c.',[{l:'CH_3'},{l:'CH',up:{l:'CH_3'}},{l:'CH',up:{l:'CH_3'}},{l:'CH_3'}]);
+row(385,'d.',[{l:'CH_3'},{l:'CH',down:{l:'Br'}},{l:'CH',up:{l:'CH_3'}},{l:'CH_3'}]);
+</script>

@@ -1,0 +1,14 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="230" viewBox="0 0 820 230" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig2_struct.js"></script>
+<script>
+init('s',20);
+const s=70, ox=115, oy=65;
+mol(ox,oy,1,[['a',0,0,'C'],['b',s,0,'C'],['c',0,s,'C'],['d',s,s,'C'],
+ ['a1',0,-45,'H'],['a2',-50,0,'H'],['b1',s,-45,'H'],['b2',s+50,0,'H'],['c1',0,s+45,'H'],['c2',-50,s,'H'],['d1',s,s+45,'H'],['d2',s+50,s,'H']],
+ [['a','b'],['b','d'],['d','c'],['c','a'],['a','a1'],['a','a2'],['b','b1'],['b','b2'],['c','c1'],['c','c2'],['d','d1'],['d','d2']]);
+mol(395,oy+5,1,[['a',0,0,'H_2C'],['b',90,0,'CH_2'],['c',0,65,'H_2C'],['d',90,65,'CH_2']],[['a','b'],['d','c']]);
+line(395+9,oy+5+17,395+9,oy+5+65-15); line(395+90-9,oy+5+17,395+90-9,oy+5+65-15);
+el('rect',{x:640,y:oy+5,width:62,height:62,fill:'none',stroke:'#000','stroke-width':1.8});
+label(150,215,'Complete structural formula',{fs:16,bold:true}); label(440,215,'Condensed structural formula',{fs:16,bold:true}); label(671,215,'Geometric (skeletal) formula',{fs:16,bold:true});
+</script>

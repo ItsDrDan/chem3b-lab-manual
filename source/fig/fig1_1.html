@@ -1,0 +1,27 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig1_grid.js"></script>
+<script>
+init('s',20);
+
+const defs=el('defs',{});
+function grad(id,c1,c2){const g=el('radialGradient',{id,cx:'35%',cy:'30%',r:'70%'},defs);el('stop',{offset:'0%','stop-color':c1},g);el('stop',{offset:'100%','stop-color':c2},g);}
+grad('gc','#8a8a8a','#151515');grad('gh','#ffffff','#a9a9a9');grad('ghb','#e8e8e8','#8d8d8d');
+const C={x:180,y:120};
+const Hs=[{x:255,y:85,r:17,b:1},{x:180,y:28,r:22},{x:102,y:175,r:22},{x:228,y:200,r:24}];
+const stick=(p,w)=>{el('line',{x1:C.x,y1:C.y,x2:p.x,y2:p.y,stroke:'#777','stroke-width':w,'stroke-linecap':'round'});};
+stick(Hs[0],9);el('circle',{cx:Hs[0].x,cy:Hs[0].y,r:Hs[0].r,fill:'url(#ghb)',stroke:'#666'});
+el('circle',{cx:C.x,cy:C.y,r:33,fill:'url(#gc)'});
+Hs.slice(1).forEach(p=>{stick(p,11);});el('circle',{cx:C.x,cy:C.y,r:33,fill:'url(#gc)'});
+Hs.slice(1).forEach(p=>el('circle',{cx:p.x,cy:p.y,r:p.r,fill:'url(#gh)',stroke:'#666'}));
+label(180,245,'3D model (ball-and-stick)',{fs:17,bold:true});
+// wedge-dash
+grid(500,125);at('C',0,0,'C');at('H1',0,-2.2,'H');at('H2',-1.9,0.95,'H');at('H3',1.75,1.15,'H');at('H4',1.95,-0.55,'H');
+bd('C','H1');bd('C','H2');
+el('polygon',{points:'508,131 569,166 563,175',fill:'#000'});
+for(let i=1;i<=7;i++){const t=i/8,x=508+(573-508)*t,y=118+(103-118)*t,hw=1+5*t;line(x-0.25*hw,y-hw,x+0.25*hw,y+hw,{w:1.6});}
+label(640,190,'wedge: toward you',{fs:14,color:'#555',italic:true});label(645,82,'dash: away from you',{fs:14,color:'#555',italic:true});
+label(450,72,'in the plane',{fs:14,color:'#555',italic:true});
+label(510,245,'wedge–dash drawing',{fs:17,bold:true});
+
+</script>

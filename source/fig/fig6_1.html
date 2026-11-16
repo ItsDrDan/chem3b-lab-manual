@@ -1,0 +1,18 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="250" viewBox="0 0 1000 250" style="background:#fff">
+<image href="mol6/benzoic.svg" x="815" y="20" width="170" height="170"/>
+</svg>
+<meta charset="utf-8"><style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',19); const BLUE='#1f5fbf', GRAY='#555'; const y=120;
+const O={l:'O',order:2,color:BLUE,bondColor:BLUE};
+const g=chain(20,y,[{l:'R'},{l:'C',up:O,color:BLUE},{l:'OH',color:BLUE}]);
+label((g.start+g.end)/2,215,'carboxyl group',{fs:16,bold:true}); label((g.start+g.end)/2,236,'(C=O plus –OH)',{fs:14,color:GRAY});
+const a=chain(175,y,[{l:'CH_3'},{l:'C',up:O,color:BLUE},{l:'OH',color:BLUE}]);
+label((a.start+a.end)/2,215,'acetic acid',{fs:16,bold:true}); label((a.start+a.end)/2,236,'(vinegar)',{fs:14,color:GRAY});
+const p=chain(345,y,[{l:'CH_3CH_2'},{l:'C',up:O,color:BLUE},{l:'OH',color:BLUE}]);
+label((p.start+p.end)/2,215,'propanoic acid',{fs:16,bold:true}); label((p.start+p.end)/2,236,'(propionic acid)',{fs:14,color:GRAY});
+const m=chain(540,y,[{l:'HO',color:BLUE},{l:'C',up:O,color:BLUE},{l:'CH_2'},{l:'C',up:O,color:BLUE},{l:'OH',color:BLUE}]);
+label((m.start+m.end)/2,215,'malonic acid',{fs:16,bold:true}); label((m.start+m.end)/2,236,'(two carboxyl groups)',{fs:14,color:GRAY});
+label(900,215,'benzoic acid',{fs:16,bold:true}); label(900,236,'(carboxyl group on a benzene ring)',{fs:14,color:GRAY});
+</script>

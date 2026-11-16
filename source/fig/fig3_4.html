@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1000" height="230" viewBox="0 0 1000 230" style="background:#fff">
+<image href="mol/e3_cyclohexene.svg" x="20" y="25" width="150" height="140"/>
+<image href="mol/e3_diol.svg" x="545" y="20" width="170" height="150"/>
+</svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const PUR='#7d3c98', BRN='#7b4a1e', GRAY='#555';
+const y=95;
+txt(185,y+7,'+'); txt(212,y+7,'KMnO_4',{color:PUR,bold:true}); label(250,y+38,'purple solution',{fs:14,color:PUR});
+arrow(320,y,520,y); label(420,y-12,'oxidation',{fs:15,italic:true}); label(420,y+24,'(two –OH groups add)',{fs:14,color:GRAY});
+txt(735,y+7,'+'); txt(760,y+7,'MnO_2(s)',{color:BRN,bold:true}); label(805,y+38,'brown solid',{fs:14,color:BRN});
+label(95,200,'cyclohexene',{fs:15,bold:true});
+label(630,200,'cyclohexane-1,2-diol (a diol)',{fs:15,bold:true});
+label(805,200,'',{});
+</script>

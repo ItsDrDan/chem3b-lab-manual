@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="640" height="270" viewBox="0 0 640 270" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const BLU='#1f5fbf', RED='#c0392b';
+const DY=58, HW=50;
+function fischer(x,y,rows){
+  rows.forEach((r,i)=>{
+    const yy=y+i*DY;
+    if(r.text){ atomAt(x,yy,r.text,{color:r.color}); }
+    else {
+      atomAt(x,yy,'C');
+      line(x-HW+14,yy,x-10,yy); atomAt(x-HW-(r.l.length>1?8:0),yy,r.l,{color:r.lc,bold:!!r.lc});
+      line(x+10,yy,x+HW-14,yy); atomAt(x+HW+(r.r.length>1?8:0),yy,r.r,{color:r.rc,bold:!!r.rc});
+    }
+    if(i<rows.length-1) line(x,yy+(r.text?14:12),x,yy+DY-(rows[i+1].text?14:12));
+  });
+}
+const T=50;
+fischer(150,T,[{text:'CHO'},{l:'HO',r:'H',lc:RED},{text:'CH_2OH'}]);
+fischer(470,T,[{text:'CHO'},{l:'H',r:'OH',rc:BLU},{text:'CH_2OH'}]);
+label(150,T+2*DY+50,'L-Glyceraldehyde',{fs:19,bold:true});
+label(150,T+2*DY+74,'–OH on the left',{fs:16,italic:true,color:RED});
+label(470,T+2*DY+50,'D-Glyceraldehyde',{fs:19,bold:true});
+label(470,T+2*DY+74,'–OH on the right',{fs:16,italic:true,color:BLU});
+line(310,20,310,235,{color:'#999',w:1.4,dash:'6,5'});
+label(310,14,'mirror',{fs:14,color:'#777',italic:true});
+</script>
