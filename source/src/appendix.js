@@ -12,14 +12,14 @@ const cap=s=>P(s,{align:AlignmentType.CENTER,after:80,keepNext:true});
 const note=s=>P(s,{run:{size:20},after:120});
 // PNG size (px at 3x) -> display px
 function pngSize(file){const b=fs.readFileSync(file);return [b.readUInt32BE(16)/3,b.readUInt32BE(20)/3];}
-function picRun(file,scale=1,maxW=1e9){let [w,h]=pngSize(file);let s=Math.min(scale,maxW/w);return new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:Math.round(w*s),height:Math.round(h*s)}});}
+function picRun(file,scale=1,maxW=1e9,alt){let [w,h]=pngSize(file);let s=Math.min(scale,maxW/w);return new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:Math.round(w*s),height:Math.round(h*s)},altText:L.altFor(file,alt)});}
 function fig(file,caption,scale=1){const [w,h]=pngSize(file);return img(file,Math.round(w*scale),Math.round(h*scale),caption);}
 // table with image-capable cells. cell: string | array of strings | {t, span, shade, align, bold, img:[file,scale,maxW], size}
 const bd={style:BorderStyle.SINGLE,size:6,color:'000000'}; const borders={top:bd,bottom:bd,left:bd,right:bd};
 function xcell(cv,w,hdr){
   const o=(cv&&typeof cv=='object'&&!Array.isArray(cv))?cv:{t:cv};
   const kids=[];
-  if(o.img){kids.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:40,after:o.t?20:40},children:[picRun(o.img[0],o.img[1]??1,o.img[2]??1e9)]}));}
+  if(o.img){kids.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:40,after:o.t?20:40},children:[picRun(o.img[0],o.img[1]??1,o.img[2]??1e9,o.alt||('Structure: '+(Array.isArray(o.t)?o.t.join(', '):(o.t||''))))]}));}
   const arr=o.t==null?[]:(Array.isArray(o.t)?o.t:[o.t]);
   arr.forEach(t=>kids.push(new Paragraph({alignment:hdr?AlignmentType.CENTER:(o.align??(o.img?AlignmentType.CENTER:undefined)),children:runs(t,{bold:hdr||o.bold,size:o.size||20}),spacing:{after:0}})));
   if(!kids.length)kids.push(new Paragraph({children:[]}));
@@ -69,7 +69,7 @@ c.push(xtable([2700,6660],[['Item','What it is used for'],
 c.push(ptitle('Appendix B: Organic Functional Groups'));
 c.push(P('A **functional group** is an atom or group of atoms that gives an organic compound its typical properties and reactions. In the general structures in Table B.1, R stands for a carbon-containing group (an alkyl group or a benzene ring); R and R′ may be the same group or different groups, and X stands for a halogen atom (F, Cl, Br, or I). Each example is named with its IUPAC name, followed by its common name in parentheses.'));
 c.push(cap('**Table B.1: Common Functional Groups**'));
-const g=k=>({img:[M+'gen_'+k+'.png',0.85]});
+const g=k=>({img:[M+'gen_'+k+'.png',0.85],alt:'General structure of the '+k+' functional group.'});
 c.push(xtable([1560,1750,2000,2250,1800],[['Class','General structure','Example','IUPAC name (common name)','Naming'],
  ['**Alkane**',g('alkane'),'CH_{3}CH_{2}CH_{3}','propane','ending *-ane*'],
  ['**Alkene**',g('alkene'),'CH_{2}=CH_{2}','ethene (ethylene)','ending *-ene*'],
@@ -168,7 +168,7 @@ c.push(h3('D.1 VSEPR Shapes of Organic Molecules',{before:120}));
 c.push(P('Valence-shell electron-pair repulsion (VSEPR) theory predicts the shape around a central atom. Count the **electron groups** around the atom: each bonded atom counts as one group (a single, double, or triple bond each count as one), and each lone pair counts as one group. The groups spread out as far apart as possible, which sets the electron geometry; the molecular shape describes only where the atoms are. In the drawings, a plain line is in the plane of the page, a solid wedge points toward you, and a hashed wedge points away from you.',{keepNext:true}));
 c.push(cap('**Table D.1: VSEPR Shapes Found in Organic Molecules**'));
 const v=k=>({img:[F+'figapp_v_'+k+'.png',0.72]});
-c.push(xtable([900,800,1800,1150,2350,2360],[['Electron groups','Lone pairs','Electron geometry → molecular shape','Bond angle','Where it is found (hybridization)','Example'],
+c.push(xtable([1100,700,1800,1100,2300,2360],[['Electron groups','Lone pairs','Electron geometry → molecular shape','Bond angle','Where it is found (hybridization)','Example'],
  ['2','0','linear → **linear**','180°','C of an alkyne or nitrile (sp)',{...v('lin'),t:'ethyne, HC≡CH'}],
  ['3','0','trigonal planar → **trigonal planar**','120°','C of an alkene, aromatic ring, or C=O group (sp^{2})',{...v('trig'),t:'methanal, H_{2}C=O'}],
  ['3','1','trigonal planar → **bent**','a little less than 120°','N of an imine, C=N–R (sp^{2})',{...v('bent3'),t:'methanimine, H_{2}C=NH'}],
@@ -199,7 +199,7 @@ c.push(note('In a polar covalent bond, the more electronegative atom carries a p
 // ======================= APPENDIX E =======================
 c.push(ptitle('Appendix E: Biomolecules Reference Sheet'));
 c.push(h3('E.1 Monosaccharides',{before:120}));
-c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with the most oxidized carbon (C1) at the top; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Experiment #8).',{keepNext:true}));
+c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with C1 at the top, so the carbonyl carbon is as near the top as possible; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Experiment #8).',{keepNext:true}));
 c.push(...fig(F+'figapp_e1.png','**Figure E.1:** The D-aldoses with three to six carbons.'));
 c.push(...fig(F+'figapp_e2.png','**Figure E.2:** Dihydroxyacetone and the D-ketoses with four to six carbons. Dihydroxyacetone has no chirality center, so it is neither D nor L.'));
 c.push(h3('E.2 The 20 Common Amino Acids',{pageBreak:true,before:0}));
@@ -208,7 +208,7 @@ c.push(cap('**Table E.1: The 20 Amino Acids, Their Abbreviations, and Side-Chain
 const AN={Gly:['Glycine','G'],Ala:['Alanine','A'],Val:['Valine','V'],Leu:['Leucine','L'],Ile:['Isoleucine','I'],Pro:['Proline','P'],Phe:['Phenylalanine','F'],Trp:['Tryptophan','W'],Met:['Methionine','M'],
  Ser:['Serine','S'],Thr:['Threonine','T'],Cys:['Cysteine','C'],Asn:['Asparagine','N'],Gln:['Glutamine','Q'],Tyr:['Tyrosine','Y'],Asp:['Aspartate (aspartic acid)','D'],Glu:['Glutamate (glutamic acid)','E'],Lys:['Lysine','K'],Arg:['Arginine','R'],His:['Histidine','H']};
 const aa=k=>({img:[M+'aa_'+k+'.png',0.78,112],t:['**'+AN[k][0]+'**',k+', '+AN[k][1]],valign:VerticalAlign.BOTTOM,size:18});
-const hd=(t,span)=>({t:'**'+t+'**',span,shade:'E7ECF5',align:AlignmentType.CENTER});
+const hd=(t,span)=>({t,bold:true,span,shade:'E7ECF5',align:AlignmentType.CENTER});
 const blank={t:''};
 c.push(xtable([1872,1872,1872,1872,1872],[
  [hd('Nonpolar (hydrophobic) side chains',5)],
@@ -219,16 +219,16 @@ c.push(xtable([1872,1872,1872,1872,1872],[
  ['Asp','Glu','Lys','Arg','His'].map(aa)],{header:1,repeat:false}));
 c.push(note('Some textbooks place glycine, cysteine, tyrosine, or tryptophan in a different class, because their side chains are only weakly polar or weakly nonpolar. The essential amino acids for adults (which must come from the diet) are His, Ile, Leu, Lys, Met, Phe, Thr, Trp, and Val.'));
 c.push(h3('E.3 Common Fatty Acids'));
-c.push(P('Fatty acids are long-chain carboxylic acids, usually with an even number of carbons. Table E.2 gives each fatty acid’s number of carbons and C=C double bonds (for example, 18:1 means 18 carbons and one double bond), the positions of its double bonds counted from the carboxyl carbon (C1), and its omega (ω) family, which gives the position of the first double bond counted from the CH_{3} end. The double bonds in natural fatty acids are *cis*, which bends the chain. The melting points match Table 2 in Experiment #10.',{keepNext:true}));
+c.push(P('Fatty acids are long-chain carboxylic acids, usually with an even number of carbons. Table E.2 gives each fatty acid’s number of carbons and C=C double bonds (for example, 18:1 means 18 carbons and one double bond), the positions of its double bonds counted from the carboxyl carbon (C1), and its omega (ω) family, which gives the position of the first double bond counted from the CH_{3} end. The double bonds in natural fatty acids are *cis*, which bends the chain. The melting points match Table 2 in Experiment #10, which lists all of these fatty acids except arachidonic acid.',{keepNext:true}));
 c.push(cap('**Table E.2: Structures of Some Common Fatty Acids**'));
 c.push(xtable([2560,6800],[['Fatty acid','Structure (skeletal formula)'],
  ...[['Lauric acid','12:0','saturated','','44','lauric'],['Myristic acid','14:0','saturated','','54','myristic'],['Palmitic acid','16:0','saturated','','63','palmitic'],['Stearic acid','18:0','saturated','','70','stearic'],
   ['Palmitoleic acid','16:1','*cis*-9','ω-7','0','palmitoleic'],['Oleic acid','18:1','*cis*-9','ω-9','13','oleic'],['Linoleic acid','18:2','*cis*-9,12','ω-6','−5','linoleic'],
-  ['α-Linolenic acid','18:3','*cis*-9,12,15','ω-3','−11','linolenic'],['Arachidonic acid','20:4','*cis*-5,8,11,14','ω-6','−50','arachidonic']].map(([n,num,db,om,mp,k])=>[{t:['**'+n+'**',num+(db=='saturated'?', saturated':', '+db+' ('+om+')'),'mp '+mp+' °C'],valign:VerticalAlign.CENTER},{img:[M+'fa_'+k+'.png',1,370]}])]));
+  ['α-Linolenic acid','18:3','*cis*-9,12,15','ω-3','−11','linolenic'],['Arachidonic acid','20:4','*cis*-5,8,11,14','ω-6','−50','arachidonic']].map(([n,num,db,om,mp,k])=>[{t:['**'+n+'**',num+(db=='saturated'?', saturated':', '+db+' ('+om+')'),'mp '+mp+' °C'],valign:VerticalAlign.CENTER},{img:[M+'fa_'+k+'.png',1,370],alt:'Skeletal structure of '+n.toLowerCase()+': a '+num.split(':')[0]+'-carbon chain with a carboxylic acid (COOH) group at C1'+(db=='saturated'?' and only single bonds.':' and '+(num.split(':')[1]=='1'?'one double bond':num.split(':')[1]+' double bonds')+' ('+db.replace(/\*/g,'')+').')}])]));
 
 // ======================= APPENDIX F =======================
 c.push(ptitle('Appendix F: Periodic Table and Reference Data'));
-c.push(...fig(F+'figapp_f1.png','**Figure F.1:** Periodic table of the elements. Atomic masses are the IUPAC standard atomic weights rounded to two decimal places (g/mol). A value in parentheses is the mass number of a long-lived isotope of an element that has no stable isotopes.'));
+c.push(...fig(F+'figapp_f1.png','**Figure F.1:** Periodic table of the elements. Atomic masses are the IUPAC standard atomic weights rounded to two decimal places (g/mol); lead is given as 207.2 because its atomic weight varies in natural samples. A value in parentheses is the mass number of a long-lived isotope of an element that has no stable isotopes.'));
 c.push(h3('F.1 Constants and Conversion Factors'));
 c.push(cap('**Table F.1: Constants and Conversion Factors**'));
 c.push(xtable([2900,6460],[['Quantity','Value'],

@@ -7,7 +7,7 @@ const c=[];
 c.push(title('Experiment #15: Vitamins'));
 c.push(h3('Goals',{before:0}));
 ['Classify vitamins as water-soluble or fat-soluble.',
- 'Standardize an iodine solution using a vitamin C tablet of known mass.',
+ 'Standardize an iodine solution using a vitamin C tablet that contains a known amount of vitamin C.',
  'Use an iodine titration to measure the vitamin C in a fruit juice and a powdered drink.',
  'Determine how heating affects the vitamin C content of a juice and a powdered drink.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
@@ -88,9 +88,9 @@ c.push(h3('C. Analysis of Vitamin C in a Fruit Juice and a Powdered Drink'));
 c.push(materials('Fruit juice (light-colored works best), powdered drink mix (such as an orange drink powder), cheesecloth, funnel, 250-mL Erlenmeyer flasks, 50-mL graduated cylinder, 10- or 25-mL graduated cylinder or pipet, balance, weighing paper, 0.1 M acetic acid, 1% starch solution, your buret of iodine solution from Part B'));
 c.push(P('The endpoint is easiest to see in a colorless or lightly colored sample. Record the type and brand of each sample you use.'));
 c.push(step('C.1','**Juice sample:** If the juice has a lot of pulp, pour it through cheesecloth in a funnel (use two layers if pulp still gets through). Measure 20.0 mL of juice into a clean 250-mL Erlenmeyer flask. Add 30 mL of distilled water, 2 mL of 0.1 M acetic acid, and 10 drops of 1% starch solution.'));
-c.push(step('C.2','Record the initial buret reading (your final reading from Part B). Titrate the juice to the blue-black endpoint, adding the iodine slowly; this sample needs much less iodine than the tablet did. Record the final buret reading.'));
+c.push(step('C.2','Record the initial buret reading (your final reading from Part B, or your new reading if you refilled the buret). Titrate the juice to the blue-black endpoint, adding the iodine slowly; this sample needs much less iodine than the tablet did. Record the final buret reading.'));
 c.push(step('C.3','**Powdered drink sample:** From the label, record the mg of vitamin C per serving and the serving size in grams. Weigh 1.00 g of the powder and transfer it to a clean 250-mL Erlenmeyer flask. Add 50 mL of distilled water and swirl until the powder dissolves. Add 2 mL of 0.1 M acetic acid and 10 drops of 1% starch solution.'));
-c.push(step('C.4','Record the initial buret reading (your final reading from C.2). Titrate the powdered drink to the blue-black endpoint and record the final buret reading.'));
+c.push(step('C.4','Record the initial buret reading (your final reading from C.2, or your new reading if you refilled the buret). Titrate the powdered drink to the blue-black endpoint and record the final buret reading.'));
 c.push(step('C.5','For each sample, calculate the volume of iodine solution used and the mg of vitamin C in the sample, using your standardization factor from B.4:',{after:0,keepNext:true}));
 c.push(eq('_____ mL iodine solution × ','mg vitamin C','1 mL iodine solution',' = mg vitamin C'));
 c.push(sub('Then calculate the mg of vitamin C per mL of juice and per gram of powder. For the powder, also calculate the amount of vitamin C you expected from the label: (mg vitamin C per serving ÷ grams per serving) × grams of powder used.'));
@@ -138,7 +138,7 @@ c.push(table([3360,3000,3000],[['','Heated fruit juice','Heated powdered drink']
  ['Final buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
  ['**D.5** Volume of iodine solution used',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
  [['mg vitamin C remaining after heating','(show your calculation)'],{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
- ['mg vitamin C destroyed (C.5 − D.5)',{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
+ ['mg vitamin C destroyed (C.5 − D.5)',{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
  [['Percent destroyed','(show your calculation)'],{t:'%',align:AlignmentType.RIGHT},{t:'%',align:AlignmentType.RIGHT}]],{h:[0,520,520,520,1500,600,1500]}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));

@@ -61,7 +61,7 @@ c.push(h4('Appearance and Odor'));
 c.push(step('A.2','Label seven test tubes. Add 5 drops of each liquid, or a small amount of each solid, to its own tube: stearic acid, oleic acid, olive oil, safflower oil, lecithin, cholesterol, and vitamin A (puncture a capsule and squeeze out the contents, or grind a tablet with a mortar and pestle). Describe the appearance of each.'));
 c.push(step('A.3','Carefully waft the vapors toward you and describe the odor of each lipid as best you can.'));
 c.push(h4('Solubility in a Polar Solvent'));
-c.push(step('A.4','Add about 2 mL of water to each of the seven test tubes. Stopper each tube, hold the stopper in place, and shake. Record whether each lipid dissolves, floats, sinks, or forms a separate layer.'));
+c.push(step('A.4','Add about 2 mL of water to each of the seven test tubes. Stopper each tube, hold the stopper in place, and shake. Record whether each lipid dissolves, forms a cloudy mixture, floats, sinks, or forms a separate layer.'));
 c.push(h4('Solubility in an Organic Solvent of Low Polarity'));
 c.push(step('A.5','**In the fume hood:** label seven clean, dry test tubes and add 10–15 drops of each liquid lipid, or a small amount of each solid lipid. Add 1 mL (about 20 drops) of methylene chloride (CH_{2}Cl_{2}) to each tube and mix gently. Record whether each lipid dissolves. Do not stopper these tubes.'));
 c.push(h3('B. Bromine Test for Unsaturation'));
@@ -70,7 +70,7 @@ c.push(step('B.1','**In the fume hood:** label four clean, dry test tubes. Add e
 c.push(step('B.2','**In the fume hood** (avoid contact with the bromine solution and its vapors): add 1% bromine solution to the first tube one drop at a time, swirling after each drop, and count the drops. Stop when a red-orange color stays for about 30 seconds, or when you have added 50 drops (record “more than 50”). Record the number of drops and whether the color faded quickly or stayed. Repeat with each of the other three tubes, using the same dropper.'));
 c.push(step('B.3','Decide whether each sample is saturated or unsaturated. Because each tube holds the same small amount of lipid, a sample that takes more drops before the color stays contains more C=C double bonds. Rank the unsaturated samples from fewest to most C=C double bonds.'));
 c.push(h3('C. Preparation of Hand Lotion'));
-c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolamine, glycerol, ethanol, distilled water, fragrance (optional), commercial hand lotion, balance, weighing paper, 10-mL and 50-mL graduated cylinders, two 100-mL beakers, 250-mL beaker (water bath), thermometer, wire mesh, stirring rod, crucible tongs, pH paper'));
+c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolamine, glycerol, ethanol, distilled water, fragrance (optional), commercial hand lotion, balance, weighing paper, 10-mL and 50-mL graduated cylinders, two 100-mL beakers, 250-mL beaker (water bath), hot plate, thermometer, wire mesh, stirring rod, crucible tongs, pH paper'));
 c.push(P('**Your instructor will tell you whether to make all three lotions, or to make one assigned lotion and compare your results with other groups.**'));
 c.push(step('C.1','Follow the General Instructions below using all of the ingredients in the table.'));
 c.push(step('C.2','Follow the General Instructions, but leave the **triethanolamine** out of Beaker 1.'));

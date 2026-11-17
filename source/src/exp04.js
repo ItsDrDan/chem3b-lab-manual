@@ -94,7 +94,7 @@ c.push(h3('B. Properties of Alcohols and Phenols'));
 const names=['Ethanol','2-Propanol','t-Butyl alcohol','Cyclohexanol','Salicylic acid','Unknown ____'];
 c.push(table([2160,2800,2400,2000],[['Compound','B.1 Odor','B.2 Soluble in water?','B.3 pH'],...names.map(n=>[n,'','',''])],{h:515,firstColBold:true}));
 c.push(h3('C. Oxidation of Alcohols and Phenols',{pageBreak:true,before:0}));
-c.push(table([1700,1800,2100,1460,2300],[['Compound','C.1 Color with chromate reagent','C.2 Skeletal formula','C.3 Classification','C.4 Oxidation product (or NR)'],...names.map(n=>[n,'','','',''])],{h:966,firstColBold:true}));
+c.push(table([1700,1800,2100,1460,2300],[['Compound','C.1 Color with chromate reagent','C.2 Skeletal formula','C.3 Type (1°, 2°, 3°, or phenol)','C.4 Oxidation product (or NR)'],...names.map(n=>[n,'','','',''])],{h:966,firstColBold:true}));
 c.push(h3('D. Iron(III) Chloride Test'));
 c.push(table([2160,3600,3600],[['Compound','D.1 Color with FeCl_{3}','Positive or negative?'],...names.map(n=>[n,'',''])],{h:442,firstColBold:true}));
 c.push(h3('E. Identification of the Unknown',{pageBreak:true,before:0}));
@@ -106,7 +106,7 @@ c.push(table([3200,6160],[['E.2 Name of unknown','E.2 Structure'],['','']],{h:14
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 c.push(step('Q.1','Draw the skeletal structure of each alcohol and classify it as 1°, 2°, or 3°.',{left:0,after:88}));
 c.push(table([4680,4680],[['1-Pentanol','3-Pentanol'],['Cycloheptanol','1-Methylcyclopentanol']],{header:0,h:1320}));
-c.push(step('Q.2','Use your textbook or a reliable online source to draw the condensed structural formulas of thymol, menthol, and resorcinol, and give one use of each. Circle the –OH group(s) in each structure and state whether each compound is a phenol or an alcohol. Classify any alcohol as 1°, 2°, or 3°. If the compounds are available in lab, carefully waft and describe their odors.',{left:0,after:0}));
+c.push(step('Q.2','Use your textbook or a reliable online source to draw the structures of thymol, menthol, and resorcinol (rings may be drawn as skeletal rings), and give one use of each. Circle the –OH group(s) in each structure and state whether each compound is a phenol or an alcohol. Classify any alcohol as 1°, 2°, or 3°. If the compounds are available in lab, carefully waft and describe their odors.',{left:0,after:0}));
 c.push(space(1760));
 c.push(step('Q.3','Write the product of each reaction (if no reaction, write NR). For the 1° alcohol, draw both the aldehyde and the carboxylic acid that form under the conditions of the chromic acid test. Use your Part C results to guide your thinking.',{left:0,after:0,keepNext:true}));
 c.push(...img(F+'fig4_7.png',420,240));

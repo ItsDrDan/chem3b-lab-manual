@@ -4,7 +4,7 @@
 
 **Website:** https://itsdrdan.github.io/chem3b-lab-manual/
 
-An open educational resource (OER) laboratory manual with 15 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes link to these experiments.
+An open educational resource (OER) laboratory manual with 15 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes describe the related experiments.
 
 > **Working draft.** This is the current working edition, still being refined. Experiment numbers and procedures may change before the final release.
 
@@ -36,7 +36,7 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 Page numbers are the manual's printed page numbers. Each experiment PDF keeps them, so a single lab matches the full manual.
 
-Every experiment has the same parts: Goals, Introduction, Hazards and Safety, Waste Instructions, Pre-Lab Questions, Procedure, Report Sheet, and Questions and Problems.
+Every experiment has the same parts: Goals, Introduction, Hazards and Safety, Waste Instructions, Procedure, Pre-Lab Questions, Report Sheet, and Questions and Problems.
 
 ## Drafts (not adopted)
 

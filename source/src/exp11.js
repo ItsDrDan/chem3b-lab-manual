@@ -105,7 +105,7 @@ c.push(h3('C. Analysis of Analgesics by TLC',{pageBreak:true,before:0}));
 c.push(table([3600,5760],[['**C.5** Sketch of your TLC plate','OTC pain reliever brand: ________________________']],{header:0,h:4400}));
 c.push(P('**C.6** Distance moved by solvent: ____________ cm',{before:160,after:120}));
 c.push(table([1100,3000,2630,2630],[['Spot','Substance','C.6 Distance moved by spot (cm)','C.6 R_{f} value'],
- ['1','Aspirin','',''],['2','Ibuprofen','',''],['3','Acetaminophen','',''],['4','Naproxen','',''],['5','Caffeine','',''],['6','OTC pain reliever (each spot)','','']],{h:600,firstColBold:true}));
+ ['1','Aspirin','',''],['2','Ibuprofen','',''],['3','Acetaminophen','',''],['4','Naproxen','',''],['5','Caffeine','',''],['6','OTC pain reliever, spot 1','',''],['6','OTC pain reliever, spot 2','',''],['6','OTC pain reliever, spot 3','','']],{h:600,firstColBold:true}));
 c.push(P('**C.7** Analgesic(s) identified in the OTC pain reliever, and the R_{f} evidence:',{before:200,after:900}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));

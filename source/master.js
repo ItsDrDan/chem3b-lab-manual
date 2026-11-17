@@ -56,9 +56,9 @@ let first=true;
 for(const [name,h] of LABS){const ch=collect(name); if(!ch)continue;
   add(ch,{header:h,pageNumbers:first?{start:1,formatType:NumberFormat.DECIMAL}:undefined}); first=false;}
 
-const doc=new Document({creator:'Daniel Kwasniewski and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',
+const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',
   features:{updateFields:!process.env.PROOF && !process.env.NOPROMPT},
-  styles:{default:{document:{run:{font:TNR,size:24}}},
+  styles:{default:{document:{run:{font:TNR,size:24,language:L.LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
       {id:'Heading2',name:'Heading 2',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:40,bold:true,color:'000000'},paragraph:{spacing:{before:320,after:160},keepNext:true,outlineLevel:1}},
       {id:'Heading3',name:'Heading 3',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:28,bold:true,color:'000000'},paragraph:{spacing:{before:280,after:120},keepNext:true,outlineLevel:2}},

@@ -69,7 +69,7 @@ c.push(materials('4 clean test tubes, test tube rack, marker, droppers, 10-mL gr
 c.push(step('D.1','Label four clean test tubes with a marker. Place 5 drops of anisaldehyde, benzaldehyde, acetone, and your unknown in separate tubes.'));
 c.push(step('D.2','Add 3 mL of Tollens’ reagent to each tube and mix gently.'));
 c.push(step('D.3','Place all four tubes in the 50–60 °C water bath **at the same time** for 5 minutes. Make sure the tubes are stable so they do not tip or splash. Do not heat them longer than 5 minutes.'));
-c.push(step('D.4','Remove the tubes and look for a silver mirror or a gray-black precipitate of silver, which shows that the sample was oxidized. Compare each tube with the acetone (ketone) tube; *be aware that this test may give a false positive for one or more of the samples* (see Introduction D). Record your observations and identify the compounds that were oxidized. **Immediately** pour the contents of all five tubes into the **non-halogenated organic waste container**.'));
+c.push(step('D.4','Remove the tubes and look for a silver mirror or a gray-black precipitate of silver, which shows that the sample was oxidized. Compare each tube with the acetone (ketone) tube; *be aware that this test may give a false positive for one or more of the samples* (see Introduction D). Record your observations and identify the compounds that were oxidized. **Immediately** pour the contents of all four tubes into the **non-halogenated organic waste container**.'));
 c.push(h3('E. Identification of an Unknown'));
 c.push(step('E.1','Record your unknown letter. Summarize your unknown’s results from B.1, B.3, C, and D in the Part E table.'));
 c.push(step('E.2','Compare your unknown’s results with those of the known aldehydes and ketones you tested. Decide whether your unknown is an aldehyde or a ketone, whether it is a methyl ketone, and whether it is a small or a large molecule. Explain your conclusion in complete sentences.'));
@@ -101,7 +101,7 @@ c.push(h3('E. Identification of an Unknown',{pageBreak:true,before:0}));
 c.push(P('**E.1** Unknown letter: __________',{after:120}));
 c.push(table([2100,3630,3630],[['Test','Result for your unknown','Conclusion'],
  ['B.1 Odor','',{t:'Does it smell like one of the known compounds? Which one?'}],['B.3 Solubility in water','','Small (few C atoms) or larger molecule?'],['C. Iodoform test','','Is it a methyl ketone?'],['D. Tollens’ test','','Is it an aldehyde?']],{h:1050,firstColBold:true}));
-c.push(P('**E.2** Is your unknown an aldehyde or a ketone? Explain your conclusion in complete sentences, using the evidence above.',{before:200,after:3000}));
+c.push(P('**E.2** Is your unknown an aldehyde or a ketone? Is it a methyl ketone? Is it a small or a large molecule? Explain your conclusion in complete sentences, using the evidence above.',{before:200,after:3000}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 c.push(step('Q.1','Based on your odor observations in lab, is an aldehyde or a ketone present in each of the following household items? Name the compound if you can.',{left:0,after:120}));
@@ -109,8 +109,8 @@ c.push(step('Q.1','Based on your odor observations in lab, is an aldehyde or a k
 c.push(step('Q.2','Complete each sentence with the word *soluble* or *insoluble*.',{left:0,after:160,}));
 c.push(P('Aldehydes and ketones with one to four carbon atoms are ____________________ in water.',{indent:{left:540},after:200}));
 c.push(P('Aldehydes and ketones with five or more carbon atoms are ____________________ in water.',{indent:{left:540},after:240}));
-c.push(step('Q.3','Based on your experimental findings, predict the result of the iodoform test and the Tollens’ test for each compound. For a positive test, draw the organic product. For a negative test, write NR (no reaction).',{left:0,after:120,keepNext:true}));
-const im=(f,w,h)=>new D.Paragraph({alignment:AlignmentType.CENTER,children:[new ImageRun({type:'png',data:fs.readFileSync(F+f),transformation:{width:w,height:h}})]});
+c.push(step('Q.3','Based on your experimental findings, predict the result of the iodoform test and the Tollens’ test for each compound. For a positive test, draw the organic product(s). For a negative test, write NR (no reaction).',{left:0,after:120,keepNext:true}));
+const im=(f,w,h)=>new D.Paragraph({alignment:AlignmentType.CENTER,children:[new ImageRun({type:'png',data:fs.readFileSync(F+f),transformation:{width:w,height:h},altText:L.altFor(f)})]});
 const bd={style:D.BorderStyle.SINGLE,size:6,color:'000000'}; const bds={top:bd,bottom:bd,left:bd,right:bd};
 const hc=(t,w)=>new D.TableCell({borders:bds,width:{size:w,type:D.WidthType.DXA},shading:{fill:'E7ECF5',type:D.ShadingType.CLEAR,color:'auto'},children:[new D.Paragraph({alignment:AlignmentType.CENTER,children:L.runs('**'+t+'**',{size:22})})]});
 const ec=(w,kids)=>new D.TableCell({borders:bds,width:{size:w,type:D.WidthType.DXA},verticalAlign:D.VerticalAlign.CENTER,children:kids||[new D.Paragraph({children:[]})]});

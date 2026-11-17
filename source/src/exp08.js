@@ -42,7 +42,7 @@ c.push(table([1900,2600,2160,2700],[['Disaccharide','Monosaccharide units','Glyc
  ['Maltose','Glucose + glucose','α-1,4','Germinating grains (malt); hydrolysis of starch'],
  ['Lactose','Galactose + glucose','β-1,4 (from galactose C1)','Milk, yogurt, ice cream'],
  ['Sucrose','Glucose + fructose','α-1,β-2 (glucose C1 to fructose C2)','Table sugar: sugar cane and sugar beets']],{firstColBold:true}));
-c.push(...img(F+'fig8_2.png',480,345,'**Figure 4:** Haworth structures of maltose and sucrose. (Reducing and nonreducing sugars are tested in Experiment #9.)'));
+c.push(...img(F+'fig8_2.png',480,345,'**Figure 4:** Haworth structures of maltose and sucrose. The bond written α(1→4) in the figure is the same as α-1,4 in the text. (Reducing and nonreducing sugars are tested in Experiment #9.)'));
 // C
 c.push(h3('C. Polysaccharides'));
 c.push(P('A **polysaccharide** is a polymer of hundreds to many thousands of monosaccharide units joined by glycosidic bonds. Starch, glycogen, and cellulose are all made of glucose only. They differ in the type of glycosidic bond (α or β) and in how much the chain branches (Table 3).'));

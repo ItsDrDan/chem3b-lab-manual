@@ -11,7 +11,7 @@ function cover(F){
   c.push(t('CHEM 3B',64,{bold:true,color:BLUE,before:600}));
   c.push(t('Laboratory Manual',56,{bold:true,color:BLUE,after:120}));
   c.push(t('Introductory Organic and Biological Chemistry',32,{font:TNR,italics:true,after:360}));
-  c.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:360},children:[new ImageRun({type:'png',data:fs.readFileSync(F+'cover/cover_dan.png'),transformation:{width:520,height:403}})]}));
+  c.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{after:360},children:[new ImageRun({type:'png',data:fs.readFileSync(F+'cover/cover_dan.png'),transformation:{width:520,height:403},altText:L.altFor('cover_dan.png')})]}));
   c.push(t('Daniel Kwasniewski, Ph.D.',28,{font:TNR,after:60}));
   c.push(t('Alexandra Aloia',28,{font:TNR,after:240}));
   c.push(t('Department of Chemistry',24,{font:TNR,after:40}));
@@ -27,10 +27,10 @@ function copyright(){
   c.push(P('**CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry**',{after:80}));
   c.push(P('Daniel Kwasniewski and Alexandra Aloia, Department of Chemistry, Fresno City College. 2026 Edition.',{after:280}));
   c.push(P('**License.** This work is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). You may share (copy and redistribute in any medium or format) and adapt (remix, transform, and build upon) this material for any purpose, including commercially, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. License text: https://creativecommons.org/licenses/by/4.0/',{after:200}));
-  c.push(P('**Suggested attribution.** *CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry* by Daniel Kwasniewski and Alexandra Aloia, Fresno City College, licensed under CC BY 4.0.',{after:200}));
+  c.push(P('**Suggested attribution.** *CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry* by Daniel Kwasniewski and Alexandra Aloia, Fresno City College, licensed under CC BY 4.0. https://itsdrdan.github.io/chem3b-lab-manual/',{after:200}));
   c.push(P('**Figures.** The cover illustration and all figures and structures were drawn for this edition by the authors and are covered by the same license.',{after:200}));
   c.push(P('**Acknowledgments.** Several experiments in this manual grew out of classic procedures first used at Fresno City College with a commercial general, organic, and biological chemistry laboratory manual. For this edition, every introduction, procedure, question, and figure was rewritten or redrawn, checked for accuracy, and expanded with safety, waste, and pre-lab material.',{after:200}));
-  c.push(P('**Companion textbook.** This manual is written to accompany the CHEM 3B open textbook on LibreTexts, whose lab connection sections link to the matching experiments here.',{after:200}));
+  c.push(P('**Companion textbook.** This manual is written to accompany the CHEM 3B open textbook on LibreTexts, whose “In the Lab” boxes describe the related experiments.',{after:200}));
   c.push(P('**Safety disclaimer.** These procedures are written for a supervised teaching laboratory. Instructors should review every procedure, reagent, and waste instruction against their own institution’s chemical hygiene plan, the current Safety Data Sheets (SDS), and local disposal regulations before use, and adapt them “as your instructor directs.” The authors accept no liability for use of this material outside a properly supervised laboratory.',{after:200}));
   return c;
 }

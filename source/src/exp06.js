@@ -75,7 +75,7 @@ c.push(h3('C. Hydrolysis of Esters'));
 c.push(materials('Test tube, test tube holder, droppers, stirring rod, 10-mL graduated cylinder, boiling water bath, beaker of cold tap water, methyl salicylate in a dropper bottle, 10% NaOH, 10% HCl, blue litmus paper'));
 c.push(step('C.1','Draw the condensed structural formula of methyl salicylate.'));
 c.push(step('C.2','Place 3 mL of water in a test tube. Add 5 drops of methyl salicylate. Record the appearance of the mixture (where is the ester?) and the odor of the ester.'));
-c.push(step('C.3','Add 1 mL (about 20 drops) of 10% NaOH. You should still see two layers: the water layer and the oily ester layer at the bottom. Using a test tube holder, place the tube in the boiling water bath for 30 minutes, or until the oily ester layer disappears. Record any change in the appearance and odor. Remove the tube and cool it in cold water.'));
+c.push(step('C.3','Add 1 mL (about 20 drops) of 10% NaOH. Record whether you see an oily ester layer. Using a test tube holder, place the tube in the boiling water bath for 30 minutes, or until the oily ester layer disappears. Record any change in the appearance and odor. Remove the tube and cool it in cold water.'));
 c.push(step('C.4','Write the equation for the saponification of methyl salicylate.'));
 c.push(step('C.5','When the solution is cool, add 10% HCl about 5 drops at a time (about 20 drops in all), mixing after each addition, until a drop of the solution turns blue litmus paper red. Record your observations. Write the name and formula of the solid that forms.'));
 // Pre-lab

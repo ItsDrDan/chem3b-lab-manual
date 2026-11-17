@@ -35,7 +35,7 @@ c.push(mathP([R('molar mass of '),new M.MathSubScript({children:[R('C')],subScri
 c.push(P('Their other physical properties differ, because their shapes differ. Alkanes are nonpolar, so the only attractions between their molecules are weak **London dispersion forces**. A long, straight chain has more surface that can touch neighboring molecules than a compact, branched molecule, so the attractions are stronger. **The more branched an isomer is, the lower its boiling point.** Melting points are less regular, because they also depend on how well the molecules pack together in a solid. **Density** is the mass per unit volume. Liquids are usually reported in g/mL; for a gas, such as the C_{4}H_{10} isomers at room temperature, the density is often given in g/L or as the density of the liquid at a stated temperature. Always record the units and the state.'));
 c.push(h4('Naming Alkanes (IUPAC Rules)'));
 c.push(step('1.','Find the **longest continuous chain** of carbon atoms. Name it with the alkane name from Table 1 (the parent chain). The longest chain is not always drawn in a straight line.',{left:360}));
-c.push(step('2.','Number the chain starting from the end **nearest a branch**.',{left:360}));
+c.push(step('2.','Number the chain starting from the end **nearest a substituent** (a branch or a halogen atom).',{left:360}));
 c.push(step('3.','Name each branch (**substituent**) as an alkyl group by changing *-ane* to *-yl*: –CH_{3} is **methyl** and –CH_{2}CH_{3} is **ethyl**. Give each one the number of the carbon it is attached to.',{left:360}));
 c.push(step('4.','If the same group appears more than once, use the prefixes **di-**, **tri-**, and **tetra-**, and give a number for each one. List different substituents in **alphabetical order**. Separate numbers from each other with commas and numbers from words with hyphens.',{left:360}));
 c.push(step('5.','If numbering from either end gives the substituents the same numbers, give the lower number to the substituent that comes first in alphabetical order (for example, 2-bromo-3-methylbutane, not 3-bromo-2-methylbutane).',{left:360}));
@@ -69,7 +69,7 @@ c.push(step('A.3','Make a model of propane, C_{3}H_{8}. Write the complete struc
 c.push(h3('B. Constitutional Isomers'));
 c.push(materials('Molecular model kit; textbook, internet, or chemistry handbook'));
 c.push(step('B.1','The molecular formula of butane is C_{4}H_{10}. Construct a model of butane by connecting four carbon atoms in a chain. Draw its complete and condensed structural formulas.'));
-c.push(step('B.2','Make an isomer of C_{4}H_{10}: remove an end –CH_{3} group from your butane model and attach it to one of the two middle carbon atoms. Complete the end of the chain with a hydrogen atom. Write the complete and condensed structural formulas of this isomer, 2-methylpropane.'));
+c.push(step('B.2','Make an isomer of C_{4}H_{10}: remove an end –CH_{3} group from your butane model, and remove one hydrogen atom from the middle carbon of the three-carbon chain that is left. Attach the –CH_{3} group where that hydrogen was, and put the hydrogen on the carbon that lost the –CH_{3} group. Write the complete and condensed structural formulas of this isomer, 2-methylpropane.'));
 c.push(step('B.3','Using your textbook, the internet, or a chemistry handbook, find the molar mass, melting point, boiling point, and density of each isomer of C_{4}H_{10}. Include units, and note the state and temperature for each density.'));
 c.push(step('B.4','Make models of the three isomers of C_{5}H_{12}. Make the continuous-chain isomer first. Draw the complete and condensed structural formulas for each, and name each isomer. Check that no two of your models have the same name.'));
 c.push(step('B.5','Using your textbook, the internet, or a chemistry handbook, find the molar mass, melting point, boiling point, and density of each isomer of C_{5}H_{12}. Include units, and note the state and temperature for each density.'));
@@ -106,7 +106,7 @@ c.push(two('A.3 Structure of propane, C_{3}H_{8}','Complete structural formula',
 c.push(h3('B. Constitutional Isomers',{pageBreak:true,before:0}));
 c.push(two('B.1 Structure of butane, C_{4}H_{10}','Complete structural formula','Condensed structural formula',2000)); c.push(space(160));
 c.push(two('B.2 Structure of 2-methylpropane, C_{4}H_{10}','Complete structural formula','Condensed structural formula',2400)); c.push(space(160));
-const propHdr=['Isomer','Molar mass (g/mol)','Melting point (°C)','Boiling point (°C)','Density (units, state)'];
+const propHdr=['Isomer','Molar mass (g/mol)','Melting point (°C)','Boiling point (°C)','Density (units, state, temperature)'];
 c.push(table([2360,1700,1700,1700,1900],[[{t:'B.3 Physical Properties of the Isomers of C_{4}H_{10}',span:5,align:AlignmentType.LEFT}],propHdr.map(t=>({t:'**'+t+'**',align:AlignmentType.CENTER})),['**Butane**','','','',''],['**2-Methylpropane** (isobutane)','','','','']],{header:1,h:[0,0,800,800]}));
 c.push(space(160));
 const b4=[]; [1,2,3].forEach(i=>{b4.push([{t:'**Complete structural formula**'},{t:'**Condensed structural formula**'}],['',''],[{t:'**Name:**',span:2}]);});
@@ -133,5 +133,5 @@ c.push(...img(F+'fig2_5.png',600,322));
 c.push(step('Q.2','In B.3, what physical property is identical for the two isomers of C_{4}H_{10}? Why?',{left:0,after:0})); c.push(space(748));
 c.push(step('Q.3','What physical properties are different for the isomers in B.3 and B.5? Use your data to describe how branching affects the boiling point, and explain why.',{left:0,after:0})); c.push(space(1346));
 c.push(step('Q.4','Draw the skeletal structure of each of the four isomers of dichloropropane from D.4, and write the name under each.',{left:0,after:0})); c.push(space(1646));
-c.push(step('Q.5','Draw the skeletal structures and write the names of the four isomers with the formula C_{4}H_{9}Cl.',{left:0,after:0}));
+c.push(step('Q.5','Draw the skeletal structures and write the names of the four isomers with the formula C_{4}H_{9}Cl.',{left:0,after:0})); c.push(space(1646));
 build(c,OUT).then(()=>console.log('wrote',OUT));

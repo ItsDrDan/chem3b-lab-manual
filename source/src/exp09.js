@@ -76,7 +76,7 @@ c.push(note('Instructor Notes:','Start Part A first, because the fermentation tu
 c.push(h3('A. Fermentation Test'));
 c.push(materials('Fermentation tubes, baker’s yeast, balance, spatula, dropper or pipet, 2% carbohydrate solutions: glucose, fructose, sucrose, lactose, starch, and unknown'));
 c.push(step('A.1','Each group in the class will be given 1 or 2 fermentation tubes and the carbohydrate solution(s) to test. You are making samples for the entire class to observe. Label each tube with the name of its solution.'));
-c.push(step('A.2','Add about **0.2 g** of yeast to the fermentation tube, then add a small amount of your carbohydrate solution. *Your goal is to observe CO_{2} gas formation, so removing all air bubbles from the closed arm is crucial!* **Gently** tilt and rotate the tube so the solution flows into the closed arm. Use a pipet to mix the solution if any solid is stuck. Fill the rest of the tube until the closed arm is completely full and the open bulb is about ¾ full (Figure 2).'));
+c.push(step('A.2','Add about **0.2 g** of yeast to the fermentation tube, then add a small amount of your carbohydrate solution. *Your goal is to observe CO_{2} gas formation, so removing all air bubbles from the closed arm is crucial!* **Gently** tilt and rotate the tube so the solution flows into the closed arm. Use a pipet to mix the solution if any solid is stuck. Fill the rest of the tube until the closed arm is completely full and the open bulb is about ¾ full (Figure 1).'));
 c.push(step('A.3','Place the fermentation tube in the classroom water bath. During the last 30 minutes of the lab, observe all of the class’s tubes and record whether gas has collected at the top of each closed arm (none, small, or large gas pocket).'));
 c.push(h3('B. Benedict’s Test for Reducing Sugars'));
 c.push(materials('7 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, boiling water bath, Benedict’s reagent, distilled water, 2% carbohydrate solutions: glucose, fructose, sucrose, lactose, starch, and unknown'));
@@ -151,7 +151,7 @@ c.push(P('b. A color change with Benedict’s reagent, a light pink color with S
 c.push(P('c. No color change with Benedict’s or Seliwanoff’s reagent, but a blue-black color with iodine reagent.',{indent:{left:540},after:900}));
 c.push(step('Q.6','How do the Benedict’s test results in Part E show that hydrolysis of sucrose and starch occurred? Why do the tubes heated with water give different results?',{left:0,after:0})); c.push(space(1200));
 c.push(step('Q.7','How do the iodine test results in Part E show that hydrolysis of starch occurred?',{left:0,after:0})); c.push(space(1000));
-c.push(step('Q.8','Predict whether each carbohydrate below will give a positive (+) or negative (–) result in each test. In the iodine test, count blue-black and red-purple as positive (+).',{left:0,after:120,keepNext:true}));
+c.push(step('Q.8','Predict whether each carbohydrate below will give a positive (+) or negative (–) result in each test. In the iodine test, count blue-black, red-purple, and red-brown as positive (+).',{left:0,after:120,keepNext:true}));
 c.push(table([1960,1850,1850,1850,1850],[['','Benedict’s','Seliwanoff’s (1 min)','Fermentation','Iodine'],
  ...['Glucose','Fructose','Galactose','Sucrose','Lactose','Maltose','Amylose','Amylopectin'].map(n=>[n,'','','',''])],{h:520,firstColBold:true}));
 build(c,OUT).then(()=>console.log('wrote',OUT));

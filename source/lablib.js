@@ -2,9 +2,14 @@ const fs=require('fs');
 const D=require('docx');
 const {Document,Packer,Paragraph,TextRun,ImageRun,Table,TableRow,TableCell,WidthType,BorderStyle,AlignmentType,HeadingLevel,Footer,PageNumber,TabStopType,ShadingType,LevelFormat,HeightRule,VerticalAlign,TableLayoutType}=D;
 const HF='Hadassah Friedlaender', TNR='Times New Roman', BLUE='2F5496', W=9360;
+const LANG={value:'en-US'};
+// alt text: fig/alt.json (file name -> description) for images without a caption; otherwise the caption text
+let ALT=null; const plain=s=>String(s||'').replace(/\*\*|\*/g,'').replace(/[_^]\{([^}]*)\}/g,'$1').trim();
+function altFor(file,fallback){if(!ALT){try{ALT=JSON.parse(fs.readFileSync(require('path').join(__dirname,'fig','alt.json'),'utf8'));}catch(e){ALT={};}}
+  const k=require('path').basename(file); return {name:k,title:'',description:ALT[k]||plain(fallback)||''};}
 // markup: **bold**, *italic*, _{sub}, ^{sup}
 function runs(s,base={}){
-  const out=[]; let b=!!base.bold,i=!!base.italics; const re=/(\*\*|\*|_\{[^}]*\}|\^\{[^}]*\})/g; let last=0,m;
+  s=String(s).replace(/ °C/g,'\u00a0°C'); const out=[]; let b=!!base.bold,i=!!base.italics; const re=/(\*\*|\*|_\{[^}]*\}|\^\{[^}]*\})/g; let last=0,m;
   const push=(t,ex={})=>{if(t)out.push(new TextRun(Object.assign({text:t,bold:b,italics:i,font:base.font||TNR,size:base.size||24,color:base.color},ex)));};
   while((m=re.exec(s))){push(s.slice(last,m.index)); const t=m[0];
     if(t=='**')b=!b; else if(t=='*')i=!i; else if(t[0]=='_')push(t.slice(2,-1),{subScript:true}); else push(t.slice(2,-1),{superScript:true});
@@ -22,7 +27,7 @@ const sub=(s)=>new Paragraph({children:runs(s),indent:{left:540},spacing:{after:
 const materials=s=>new Paragraph({children:[new TextRun({text:'Materials: ',bold:true,font:TNR,size:24}),...runs(s)],indent:{left:360,hanging:360},spacing:{after:160,line:264}});
 const note=(lab,s)=>new Paragraph({children:[new TextRun({text:lab+' ',bold:true,font:TNR,size:24}),...runs(s)],spacing:{after:160,line:264}});
 const caution=s=>new Paragraph({children:runs('**Caution:** *'+s+'*'),spacing:{after:160,line:264}});
-function img(file,wpx,hpx,caption){const out=[new Paragraph({alignment:AlignmentType.CENTER,keepNext:!!caption,spacing:{before:120,after:caption?60:160},children:[new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:wpx,height:hpx}})]})];
+function img(file,wpx,hpx,caption,alt){const out=[new Paragraph({alignment:AlignmentType.CENTER,keepNext:!!caption,spacing:{before:120,after:caption?60:160},children:[new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:wpx,height:hpx},altText:altFor(file,alt||caption)})]})];
   if(caption)out.push(new Paragraph({alignment:AlignmentType.CENTER,children:runs(caption,{size:20}),spacing:{after:200}}));return out;}
 const bd={style:BorderStyle.SINGLE,size:6,color:'000000'}; const borders={top:bd,bottom:bd,left:bd,right:bd};
 // cell content: string (markup) or array of strings
@@ -34,13 +39,13 @@ function table(widths,rows,o={}){const total=widths.reduce((a,b)=>a+b,0);
   return new Table({width:{size:total,type:WidthType.DXA},columnWidths:widths,layout:TableLayoutType.FIXED,rows:rows.map((r,ri)=>{
     const hdr=ri<(o.header??1); const h=hdr?null:(Array.isArray(o.h)?o.h[ri]:o.h);
     let ci=0; const cells=r.map(c=>{const isO=c&&typeof c=='object'&&!Array.isArray(c); let span=1,val=c; if(isO){span=c.span||1;val=c.t;} const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0); const res=cell(val,w,{bold:hdr||(o.firstColBold&&ci==0)||(isO&&c.bold),shade:hdr?'E7ECF5':(isO?c.shade:undefined),align:hdr?AlignmentType.CENTER:(isO?c.align:undefined),span:span>1?span:undefined}); ci+=span; return res;});
-    return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat,height:h?{value:h,rule:HeightRule.ATLEAST}:undefined,children:cells});})});}
+    return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat!==false,height:h?{value:h,rule:HeightRule.ATLEAST}:undefined,children:cells});})});}
 const gap=(n=1)=>Array.from({length:n},()=>new Paragraph({children:[],spacing:{after:0}}));
 const space=tw=>new Paragraph({children:[],spacing:{before:0,after:tw}});
 const nameBlock=()=>[P('Name ___________________________________  Date ________________________________',{after:280}),P('Lab Partner ______________________________  Section ______________________________',{after:280})];
 function build(children,out){
   if(global.__COLLECT){global.__COLLECT.push({children,out});return Promise.resolve();}
-  const doc=new Document({creator:'CHEM 3B',styles:{default:{document:{run:{font:TNR,size:24}}},
+  const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',styles:{default:{document:{run:{font:TNR,size:24,language:LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
       {id:'Heading2',name:'Heading 2',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:40,bold:true,color:'000000'},paragraph:{spacing:{before:320,after:160},keepNext:true,outlineLevel:1}},
       {id:'Heading3',name:'Heading 3',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:28,bold:true,color:'000000'},paragraph:{spacing:{before:280,after:120},keepNext:true,outlineLevel:2}}]},
@@ -50,4 +55,4 @@ function build(children,out){
       children}]});
   return Packer.toBuffer(doc).then(b=>fs.writeFileSync(out,b));
 }
-module.exports={HF,TNR,BLUE,runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,gap,space,nameBlock,build,W,D};
+module.exports={altFor,LANG,HF,TNR,BLUE,runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,gap,space,nameBlock,build,W,D};

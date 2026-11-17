@@ -84,7 +84,7 @@ c.push(h3('B. Color, Odor, and Physical State'));
 c.push(materials('Test tubes (6), test tube rack, spatulas, droppers, NaCl(s), KI(s), benzoic acid(s), cyclohexane, toluene, distilled water'));
 c.push(step('B.1','Label three test tubes. Place a few crystals of NaCl, KI, and benzoic acid in separate tubes.'));
 c.push(step('B.2','**In the fume hood:** label three more test tubes and add 10 drops of cyclohexane, toluene, and water to separate tubes.'));
-c.push(step('B.3','Observe each sample. Record its formula, physical state (solid, liquid, or gas), and odor. Check odors only by wafting (see Hazards).'));
+c.push(step('B.3','Observe each sample. Record its formula, color, physical state (solid, liquid, or gas), and odor. Check odors only by wafting (see Hazards).'));
 c.push(step('B.4','State whether each substance has ionic or covalent bonds, and identify it as organic or inorganic. Look up the melting point of each in your textbook, the chemistry handbook in the lab, or a reliable online source.'));
 c.push(step('B.5','If you prepared tubes, pour the liquids into the non-halogenated organic waste container and put the solids in the solid waste container.'));
 c.push(h3('C. Solubility'));
@@ -130,7 +130,7 @@ c.push(h3('A. Types of Hydrocarbons with Model Kits',{before:120}));
 c.push(table([2400,6960],[['Name','A.2 Condensed or skeletal structure'],...['Ethene','Propene','Cyclobutene','*cis*-2-Butene','Ethyne (acetylene)'].map(n=>[n,''])],{h:820,firstColBold:true}));
 c.push(table([9360],[['**A.3** Can *cis*-2-butene be turned into *trans*-2-butene without breaking a bond? Why or why not?']],{header:0,h:1300}));
 c.push(h3('B. Color, Odor, and Physical State',{pageBreak:true,before:0}));
-c.push(table([1500,1260,1260,1500,1260,1290,1290],[['Substance','B.3 Formula','B.3 Physical state','B.3 Odor','B.4 Melting point (°C)','B.4 Ionic or covalent?','B.4 Organic or inorganic?'],
+c.push(table([1500,1260,1260,1500,1260,1290,1290],[['Substance','B.3 Formula','B.3 Color and physical state','B.3 Odor','B.4 Melting point (°C)','B.4 Ionic or covalent?','B.4 Organic or inorganic?'],
  ...['Sodium chloride','Potassium iodide','Benzoic acid','Cyclohexane','Toluene','Water'].map(n=>[n,'','','','','',''])],{h:780,firstColBold:true}));
 c.push(h3('C. Solubility'));
 c.push(table([2400,3480,3480],[['C.1 Layer','Top or bottom?','Aqueous (polar) or organic (nonpolar)?'],['Water','',''],['Cyclohexane','','']],{h:520,firstColBold:true}));
@@ -156,7 +156,7 @@ c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 c.push(step('Q.1','Name each of the following hydrocarbons.',{left:0,after:120}));
 const line_='______________________________';
 const qline=(lab,s)=>new Paragraph({children:[new TextRun({text:lab+'  ',bold:true,font:'Times New Roman',size:24}),...runs(s),new TextRun({text:'\t'+line_,font:'Times New Roman',size:24})],indent:{left:540},tabStops:[{type:'left',position:5200}],spacing:{after:320,line:264}});
-const qimg=(lab,file,w,h)=>new Paragraph({children:[new TextRun({text:lab+'  ',bold:true,font:'Times New Roman',size:24}),new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:w,height:h}}),new TextRun({text:'\t'+line_,font:'Times New Roman',size:24})],indent:{left:540},tabStops:[{type:'left',position:5200}],spacing:{after:240}});
+const qimg=(lab,file,w,h)=>new Paragraph({children:[new TextRun({text:lab+'  ',bold:true,font:'Times New Roman',size:24}),new ImageRun({type:'png',data:fs.readFileSync(file),transformation:{width:w,height:h},altText:L.altFor(file)}),new TextRun({text:'\t'+line_,font:'Times New Roman',size:24})],indent:{left:540},tabStops:[{type:'left',position:5200}],spacing:{after:240}});
 c.push(qline('A.','CH_{3}–CH=CH_{2}'));
 c.push(qline('B.','CH_{3}–CH=CH–CH_{3}'));
 c.push(qline('C.','CH_{2}=C(CH_{3})–CH_{2}–CH_{2}–CH_{3}'));
@@ -168,5 +168,5 @@ c.push(step('Q.3','A white solid has no odor, is soluble in water, and is not fl
 c.push(step('Q.4','A clear liquid with a gasoline-like odor forms a layer when added to water. Would you expect it to be an organic or an inorganic substance? Explain.',{left:0,after:0})); c.push(space(650));
 c.push(step('Q.5','Complete the following reactions by drawing the product(s).',{left:0,after:200}));
 c.push(P('**A.**  CH_{3}–CH=CH–CH_{3}  +  Br_{2}  ⟶',{indent:{left:540},after:500}));
-c.push(new Paragraph({children:[new TextRun({text:'B.  ',bold:true,font:'Times New Roman',size:24}),new ImageRun({type:'png',data:fs.readFileSync(F+'fig3_q5b.png'),transformation:{width:198,height:60}})],indent:{left:540},spacing:{after:900}}));
+c.push(new Paragraph({children:[new TextRun({text:'B.  ',bold:true,font:'Times New Roman',size:24}),new ImageRun({type:'png',data:fs.readFileSync(F+'fig3_q5b.png'),transformation:{width:198,height:60},altText:L.altFor('fig3_q5b.png')})],indent:{left:540},spacing:{after:900}}));
 build(c,OUT).then(()=>console.log('wrote',OUT));

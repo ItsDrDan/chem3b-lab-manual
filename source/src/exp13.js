@@ -127,5 +127,5 @@ const Q=[['Q.1','Why are alcohol and heat used to disinfect medical equipment?']
  ['Q.5','After working with HNO_{3}, a student noticed a yellow spot on their hand. What is the likely reason?'],
  ['Q.6','Which samples gave a negative biuret test? Explain why.'],
  ['Q.7','What test could you use to determine whether an unlabeled test tube contains an amino acid or a protein? Describe the result you would expect for each.']];
-Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(i==Q.length-1?0:1150));});
+Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(1150));});
 build(c,OUT).then(()=>console.log('wrote',OUT));
