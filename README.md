@@ -12,7 +12,7 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 ## Download
 
-**Full manual:** [PDF (278 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
+**Full manual:** [PDF (287 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
 
 | # | Experiment | PDF | Word | Pages |
 |---|---|---|---|---|
@@ -69,4 +69,4 @@ NOPROMPT=1 TOCJSON=tocpages.json node master.js fig out/CHEM3B_Lab_Manual.docx
 - `src/exp01.js` … `src/exp16.js` hold one experiment each. `src/frontmatter.js` holds the front matter and `src/appendix.js` the appendices. `lablib.js` has the shared styles and helpers.
 - Running a single lab file, for example `node src/exp04.js fig out/exp04.docx`, writes that experiment alone (pages numbered from 1). To write one part exactly as it appears in the manual (running header and manual page numbers), use `PART=exp04 NOPROMPT=1 TOCJSON=tocpages.json node master.js fig out/exp04.docx` (`PART` can also be `front` or `appendix`); the files in `docx/experiments/` are made this way.
 - `fig/` has the figures as PNGs, along with the HTML/SVG source each one was drawn from. `svg2png.sh` re-renders them with headless Chrome.
-- The Contents page numbers come from `tocpages.json`. After a layout change on macOS with Microsoft Word, `./remap.sh N` re-measures every page and lists pages that spill. `toc_from_map.py` then turns the map into a new `tocpages.json`.
+- The Contents page numbers come from `tocpages.json`. After a layout change on macOS with Microsoft Word, `./remap.sh N` re-measures every page and lists pages that spill. Because the manual is laid out for binding (a blank page after the cover, and every lab, the workshop and the appendices starting on a right-hand, odd-numbered page), Word adds blank pages that its page map does not count. So take the Contents numbers from an exported PDF instead: `python3 tools/toc_from_pdf.py <exported manual.pdf> tocpages.json`, rebuild, and export again. `tools/cut_pdfs.py` checks that every section starts on an odd page.

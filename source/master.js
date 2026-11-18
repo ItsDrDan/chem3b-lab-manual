@@ -30,7 +30,7 @@ const empty=()=>new Footer({children:[new Paragraph({children:[]})]});
 const emptyH=()=>new Header({children:[new Paragraph({children:[]})]});
 
 const sections=[];
-const add=(children,o={})=>sections.push({__tag:o.tag||'front',properties:{page:Object.assign({},page,o.pageNumbers?{pageNumbers:o.pageNumbers}:{})},
+const add=(children,o={})=>sections.push({__tag:o.tag||'front',properties:Object.assign({page:Object.assign({},page,o.pageNumbers?{pageNumbers:o.pageNumbers}:{})},o.odd?{type:D.SectionType.ODD_PAGE}:{}),
   headers:{default:o.header?hdr(o.header):emptyH()},footers:{default:o.nofoot?empty():ftr()},children});
 
 // Static table of contents (page numbers measured from a Word page map; see remap.sh)
@@ -48,6 +48,9 @@ function staticToc(pages){
 }
 const F=FIG+'/';
 add(FM.cover(F),{nofoot:true});
+// Bound as a book: a blank page backs the cover, and each lab, the workshop and the appendices start on a right-hand (odd) page.
+// Word adds a blank page before a section when needed (odd-page section breaks).
+add([new Paragraph({children:[]})],{nofoot:true});
 add(FM.copyright(),{nofoot:true});
 add([new Paragraph({children:[new TextRun({text:'Contents',font:HF,size:56,bold:true,color:BLUE})],spacing:{after:240}}),
      ...(process.env.PROOF?[]:process.env.TOCJSON?staticToc(JSON.parse(fs.readFileSync(process.env.TOCJSON,'utf8'))):[new TableOfContents('Contents',{hyperlink:true,headingStyleRange:'1-1'})])],{pageNumbers:{start:1,formatType:NumberFormat.LOWER_ROMAN}});
@@ -55,7 +58,7 @@ add([new Paragraph({children:[new TextRun({text:'Contents',font:HF,size:56,bold:
   .forEach(([fn,h])=>add(FM[fn](),{header:h,pageNumbers:{formatType:NumberFormat.LOWER_ROMAN}}));
 let first=true;
 for(const [name,h] of LABS){const ch=collect(name); if(!ch)continue;
-  add(ch,{tag:name,header:h,pageNumbers:first?{start:1,formatType:NumberFormat.DECIMAL}:undefined}); first=false;}
+  add(ch,{tag:name,header:h,odd:true,pageNumbers:first?{start:1,formatType:NumberFormat.DECIMAL}:undefined}); first=false;}
 // PART=front|expNN|appendix writes only that part, with the manual's own running header and page numbers,
 // so a single-experiment Word file (and its PDF) matches the pages of the full manual.
 let docTitle='CHEM 3B Laboratory Manual';

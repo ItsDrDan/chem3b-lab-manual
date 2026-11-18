@@ -2,13 +2,16 @@
 usage (from the repo root, with pypdf installed):
     python3 source/tools/cut_pdfs.py <exported full manual.pdf>
 Writes pdf/CHEM3B_Lab_Manual_OER.pdf and pdf/experiments/*.pdf, using source/tocpages.json for the section starts.
-Checks every printed page number (printed page = PDF page - 11) and every section start; stops on a mismatch."""
+Checks every printed page number (printed page = PDF page - 12) and every section start; stops on a mismatch.
+The manual is laid out for binding: a blank page backs the cover, and every lab, the workshop and the appendices
+start on a right-hand (odd) page, so Word adds fully blank pages (no header or number) where needed. Those blank pages
+stay in the full PDF but are left off the end of the single-section PDFs."""
 import sys, os, json, re
 from pypdf import PdfReader, PdfWriter
 from pypdf.annotations import Link
 from pypdf.generic import NameObject, TextStringObject, DictionaryObject, BooleanObject
 
-OFF = 11  # cover, license, Contents (i) and front matter ii-ix come before printed page 1
+OFF = 12  # cover, blank, license, Contents (i) and front matter ii-ix come before printed page 1
 NAMES = {1:'Exp01_FunctionalGroups',2:'Exp02_StructuresOfAlkanes',3:'Exp03_Hydrocarbons',4:'Exp04_AlcoholsPhenols',
  5:'Exp05_AldehydesKetones',6:'Exp06_CarboxylicAcidsEsters',7:'Exp07_AminesAmides',8:'Exp08_TypesOfCarbohydrates',
  9:'Exp09_TestsForCarbohydrates',10:'Exp10_Lipids',11:'Exp11_Aspirin',12:'Exp12_AminoAcids',13:'Exp13_PeptidesProteins',
@@ -24,7 +27,8 @@ ROMAN = {'i':1,'ii':2,'iii':3,'iv':4,'v':5,'vi':6,'vii':7,'viii':8,'ix':9,'x':10
 src = PdfReader(sys.argv[1]); N = len(src.pages)
 toc = json.load(open('source/tocpages.json'))
 lines = [[l.strip() for l in p.extract_text().split('\n')] for p in src.pages]
-bad = [i+1 for i in range(OFF, N) if not re.search(r'CHEM 3B Laboratory Manual\s*%d\b' % (i-OFF+1), ' '.join(lines[i]))]
+blank = {i for i in range(N) if not ''.join(lines[i]).strip()}
+bad = [i+1 for i in range(OFF, N) if i not in blank and not re.search(r'CHEM 3B Laboratory Manual\s*%d\b' % (i-OFF+1), ' '.join(lines[i]))]
 if bad: sys.exit(f'printed page numbers do not match on PDF pages {bad[:10]}')
 nlabs = max(int(k.split('#')[1].rstrip(':')) for k in toc if k.startswith('Experiment'))
 starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc['Workshop:'])+OFF-1, int(toc['Appendix A:'])+OFF-1]
@@ -34,7 +38,10 @@ for n in range(1, nlabs+1):
     if not t or not t[0].startswith(f'Experiment {n}:'): sys.exit(f'Experiment {n} does not start on PDF page {starts[n-1]+1}')
     titles[n] = t[0]
 apx = [(k, int(v)+OFF-1) for k, v in toc.items() if k.startswith('Appendix')]
-front = [('Cover',0),('License and Acknowledgments',1),('Contents',2)] + [(k, ROMAN[v]+1) for k, v in toc.items() if v in ROMAN]
+front = [('Cover',0),('License and Acknowledgments',2),('Contents',3)] + [(k, ROMAN[v]+2) for k, v in toc.items() if v in ROMAN]
+if 1 not in blank: sys.exit('PDF page 2 (back of the cover) is not blank')
+odd = [s - OFF + 1 for s in starts if (s - OFF + 1) % 2 == 0]
+if odd: sys.exit(f'sections starting on an even (left-hand) page: {odd}')
 
 def subs(a, b):
     out = []
@@ -51,11 +58,11 @@ def finish(w, title):
     root[NameObject('/ViewerPreferences')] = DictionaryObject({NameObject('/DisplayDocTitle'): BooleanObject(True)})
     root[NameObject('/PageMode')] = NameObject('/UseOutlines')
 
-CONTENTS = 2  # PDF page index of the Contents page
+CONTENTS = 3  # PDF page index of the Contents page
 
 def toc_target(k):
     v = toc[k]
-    return ROMAN[v] + 1 if v in ROMAN else int(v) + OFF - 1
+    return ROMAN[v] + 2 if v in ROMAN else int(v) + OFF - 1
 
 def contents_links(w):
     """Make every Contents entry clickable: a link over the whole line (title, dots, page number)."""
@@ -79,6 +86,8 @@ def contents_links(w):
     return made
 
 def make(fn, a, b, title, kind):
+    if kind != 'full':
+        while b - 1 in blank: b -= 1  # drop the blank page(s) that only push the next section to a right-hand page
     w = PdfWriter()
     for i in range(a, b): w.add_page(src.pages[i])
     if kind == 'full':

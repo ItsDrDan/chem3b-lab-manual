@@ -32,46 +32,30 @@ c.push(P('A glycosidic bond, such as the one that joins the two sugars of a disa
 c.push(h3('Hazards and Safety Instructions'));
 c.push(P('This workshop uses molecular model kits and printed structures only. No chemicals are used.',{after:100}));
 c.push(bullet('**Small Parts:** Model pieces are small. Never put them in your mouth, and pick up any that fall on the floor. If your kit uses magnetic atoms, keep the pieces away from pacemakers and other medical implants.'));
-c.push(bullet('**Station Models:** Do not take apart the models at a station unless the station tells you to build your own (Stations 5 and 6). Leave each station as you found it.'));
+c.push(bullet('**Station Models:** Do not take apart the models at a station unless the station card tells you to build your own. Leave each station as you found it.'));
 c.push(h3('Waste Instructions'));
 c.push(bullet('**No chemical waste** is produced. Return any model pieces you used to the kit.'));
 
 c.push(h2('Procedure',{before:360}));
-c.push(note('Instructor Notes:','Set up 20 numbered stations, each with a printed card of its task (the card text is the same as on the Answer Sheet) and the models listed below. **Stations 1, 2, 4:** a pair of models of a carbon with four groups (same molecule or enantiomers). **Station 3:** a pair of models of a carbon with only three different groups (achiral). **Stations 5, 6:** printed structures and a model kit; students build the two structures and take them apart. **Stations 7, 8:** pairs of two-carbon molecules, each carbon with four groups. **Stations 9, 10:** a sugar ring with no extra alcohol (hemiacetal or hemiketal). **Station 11:** a sugar ring joined to a simple alcohol (acetal or ketal). **Station 12:** a disaccharide (build one or use a stockroom model). **Stations 13, 14:** an open-chain sugar of 4–6 carbons. **Stations 15, 16:** a four-carbon molecule with a chiral carbon. **Stations 17, 18:** two open-chain sugars that are mirror images or diastereomers. **Stations 19, 20:** printed ring structures only. Pairs start at different stations and move to the next station when you call time (about 5 minutes per station, or as your schedule allows). Students who miss the workshop can complete the makeup version with printed structures.'));
+c.push(note('Instructor Notes:','Set up 20 numbered stations, each with a printed card of its task and the models it needs. The Answer Sheet boxes show only station numbers, so you can move stations or change tasks freely. A suggested setup: **Stations 1, 2, 4:** a pair of models of a carbon with four groups (same molecule or enantiomers). **Station 3:** a pair of models of a carbon with only three different groups (achiral). **Stations 5, 6:** printed structures and a model kit; students build the two structures and take them apart. **Stations 7, 8:** pairs of two-carbon molecules, each carbon with four groups. **Stations 9, 10:** a sugar ring with no extra alcohol (hemiacetal or hemiketal). **Station 11:** a sugar ring joined to a simple alcohol (acetal or ketal). **Station 12:** a disaccharide (build one or use a stockroom model). **Stations 13, 14:** an open-chain sugar of 4–6 carbons. **Stations 15, 16:** a four-carbon molecule with a chiral carbon. **Stations 17, 18:** two open-chain sugars that are mirror images or diastereomers. **Stations 19, 20:** printed ring structures only. Pairs start at different stations and move to the next station when you call time (about 5 minutes per station, or as your schedule allows). Students who miss the workshop can complete the makeup version with printed structures.'));
 c.push(h3('Directions'));
-c.push(materials('Molecular model kit (Stations 5 and 6), pencil, Answer Sheet'));
+c.push(materials('Molecular model kit (for stations where you build models), pencil, Answer Sheet'));
 ['Work with a partner. Your instructor tells you which station to start at.',
  'At each station, read the task on the station card. Look at the models from every side, and turn them to compare them; for a printed structure, draw it first.',
- 'Record your drawings and answers in the box for that station on the Answer Sheet. Star (\\*) every chiral carbon you are asked to find.',
- 'At Stations 5 and 6, build the two structures shown with your model kit, compare them, and take them apart before you leave the station.',
+ 'Record your drawings and answers in the box with that station’s number on the Answer Sheet. Star (\\*) every chiral carbon you are asked to find. If you run out of room, continue in an Extra Space box and write the station number there.',
+ 'If a station card asks you to build structures, build them with your model kit, compare them, and take them apart before you leave the station.',
  'Leave every station exactly as you found it, and move to the next station when your instructor calls time. Go through all 20 stations.',
  'When you have finished, return your model kit and have your instructor stamp or sign the Answer Sheet.'].forEach((s,i)=>c.push(step((i+1)+'.',s)));
 
 // ---------------- Answer Sheet
 c.push(h2('Answer Sheet',{pageBreak:true,before:0,rule:true}));
 c.push(...nameBlock());
-const ST=[
- [1,'Draw the molecules shown. Chiral or achiral? If chiral: are the two molecules enantiomers or the same molecule?'],
- [2,'Draw the molecules shown. Chiral or achiral? If chiral: are the two molecules enantiomers or the same molecule?'],
- [3,'Draw the molecules shown. Chiral or achiral? If chiral: are the two molecules enantiomers or the same molecule?'],
- [4,'Draw the molecules shown. Chiral or achiral? If chiral: are the two molecules enantiomers or the same molecule?'],
- [5,'Build the two structures shown. Are they enantiomers or the same molecule? Take them apart when you are done.'],
- [6,'Build the two structures shown. Are they enantiomers or the same molecule? Take them apart when you are done.'],
- [7,'Draw the molecules shown. How many chiral carbons are in one molecule? Are the two molecules enantiomers or the same molecule?'],
- [8,'Draw the molecules shown. How many chiral carbons are in one molecule? Are the two molecules enantiomers or the same molecule?'],
- [9,'Count the chiral carbons. Is the structure a hemiacetal or a hemiketal? How many carbons did the original aldehyde or ketone have?'],
- [10,'Count the chiral carbons. Is the structure a hemiacetal or a hemiketal? How many carbons did the original aldehyde or ketone have?'],
- [11,'Count the chiral carbons. Is the structure an acetal or a ketal? What alcohol was added to make it?'],
- [12,'Count the chiral carbons. Is the structure an acetal or a ketal?'],
- [13,'Draw the Fischer projection (carbonyl end at the top). Draw its enantiomer. Label each structure D or L.'],
- [14,'Draw the Fischer projection (carbonyl end at the top). Draw its enantiomer. Label each structure D or L.'],
- [15,'Draw the structure with wedges and dashes. Draw its enantiomer (mirror image).'],
- [16,'Draw the structure with wedges and dashes. Draw its enantiomer (mirror image).'],
- [17,'Draw both structures as Fischer projections (carbonyl end at the top). Are they the same, enantiomers, or diastereomers?'],
- [18,'Draw both structures as Fischer projections (carbonyl end at the top). Are they the same, enantiomers, or diastereomers?'],
- [19,'Draw the ring structure. How many chiral carbons does it have? Star (\\*) them.'],
- [20,'Draw the structure. Label any hemiacetal, hemiketal, acetal, or ketal carbons. How many chiral carbons? Star (\\*) them.']];
-ST.forEach(([n,t])=>c.push(table([9360],[['**Station '+n+':** '+t],['']],{header:0,h:[0,1900],noscale:true})));
+// Station boxes carry only the station number, so an instructor can move stations or change the tasks.
+const EXTRA=+(process.env.WS_EXTRA||3); // extra boxes; set so the last page fills
+// one-row boxes: a row never splits across pages, so a label is never stranded from its space
+const box=t=>table([9360],[[t]],{header:0,h:2400,noscale:true});
+for(let n=1;n<=20;n++) c.push(box('**Station '+n+'**'));
+for(let n=1;n<=EXTRA;n++) c.push(box('**Extra Space** (station number: ______ )'));
 c.push(space(200));
 c.push(table([6160,3200],[[['**Workshop complete** (all 20 stations)','☐ Model kit returned with all pieces'],['**Instructor stamp or signature:**']]],{header:0,h:900,noscale:true}));
 build(c,OUT).then(()=>console.log('wrote',OUT));

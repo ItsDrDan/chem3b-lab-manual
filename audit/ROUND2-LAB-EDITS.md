@@ -67,3 +67,9 @@ These changes were requested by Daniel and Alexandra. Detailed per-lab notes, wi
 Still open: Exp 13 chain size vs class size; Exp 16 (base cards, B.7 variations, isopropyl vs ethanol, placement). Several other labs (e.g. Exp 2) still describe peg-and-hole kits rather than Snatoms (earlier decision D-14).
 
 Rebuilt after these decisions: 270 pages (Contents regenerated), Word files rebuilt, PDF re-exported and cut with `source/tools/cut_pdfs.py`, which checks every page number and section start.
+
+## Book layout and workshop answer sheet (Daniel, 2026-11-17)
+
+- **Bound as a book:** a blank page now backs the cover, and every lab, the workshop and the appendices start on a right-hand (odd-numbered) page. Word adds a fully blank page (no header or number) before a section when needed. The manual is now 287 pages (Exp 1 starts on p. 1, Exp 2 on p. 15, … Appendices on p. 253). The single-section PDFs leave those blank pages off.
+- **Contents numbers** now come from the exported PDF (`source/tools/toc_from_pdf.py`), because Word's page map does not count the blank pages. `cut_pdfs.py` stops if a section starts on an even page.
+- **Chirality workshop:** the Answer Sheet boxes show only "Station 1" to "Station 20" (no prompts), so instructors can move stations or change tasks. Three "Extra Space" boxes (with a station-number blank) fill the last page. Student directions no longer name Stations 5 and 6; they say "if a station card asks you to build structures". Each box is one unbreakable row, so a label is never stranded at the bottom of a page.
