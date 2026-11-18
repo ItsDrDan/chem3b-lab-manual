@@ -5,6 +5,7 @@ Writes pdf/CHEM3B_Lab_Manual_OER.pdf and pdf/experiments/*.pdf, using source/toc
 Checks every printed page number (printed page = PDF page - 11) and every section start; stops on a mismatch."""
 import sys, os, json, re
 from pypdf import PdfReader, PdfWriter
+from pypdf.annotations import Link
 from pypdf.generic import NameObject, TextStringObject, DictionaryObject, BooleanObject
 
 OFF = 11  # cover, license, Contents (i) and front matter ii-ix come before printed page 1
@@ -50,10 +51,39 @@ def finish(w, title):
     root[NameObject('/ViewerPreferences')] = DictionaryObject({NameObject('/DisplayDocTitle'): BooleanObject(True)})
     root[NameObject('/PageMode')] = NameObject('/UseOutlines')
 
+CONTENTS = 2  # PDF page index of the Contents page
+
+def toc_target(k):
+    v = toc[k]
+    return ROMAN[v] + 1 if v in ROMAN else int(v) + OFF - 1
+
+def contents_links(w):
+    """Make every Contents entry clickable: a link over the whole line (title, dots, page number)."""
+    rows = {}
+    def v(t, cm, tm, fd, fs):
+        if t.strip():
+            x, y = tm[4]*cm[0] + cm[4], tm[5]*cm[3] + cm[5]
+            rows.setdefault(round(y, 1), []).append((x, t))
+    src.pages[CONTENTS].extract_text(visitor_text=v)
+    made = []
+    for y, parts in rows.items():
+        x0, text = min(parts)
+        right = max(x + 6*len(t) for x, t in parts)
+        k = max((k for k in toc if text.startswith(k)), key=len, default=None)
+        if k is None: continue
+        dest = toc_target(k)
+        w.add_annotation(CONTENTS, Link(rect=(x0 - 2, y - 4, min(right, 548), y + 12), target_page_index=dest))
+        made.append((k, dest))
+    missing = set(toc) - {k for k, _ in made}
+    if missing: sys.exit(f'Contents entries without a link: {sorted(missing)}')
+    return made
+
 def make(fn, a, b, title, kind):
     w = PdfWriter()
     for i in range(a, b): w.add_page(src.pages[i])
     if kind == 'full':
+        made = contents_links(w)
+        print(f'  Contents: {len(made)} clickable entries')
         fr = w.add_outline_item('Front Matter', 0)
         for t, i in front: w.add_outline_item(t, i, parent=fr)
         for n in range(1, nlabs+1):
