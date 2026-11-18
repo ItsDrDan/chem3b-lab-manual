@@ -25,12 +25,21 @@ Counts are from the reviewers' merged tables (`audit/working-notes/`), plus this
 | Word page map before and after (`remap.sh`) | 242 → 242 pages; all 27 Contents entries unchanged; spill pages 3 → 2 (both pre-existing) |
 | `audit/validate_calculations.py` | 14/14 pass |
 | Live-site link check (37 links) | 37 × HTTP 200; live files = commit `74efdc9` |
-| Visual inspection | all 242 pages of the **published** PDF (reviewers). The rebuilt DOCX was checked by page map only; see "Not done." |
+| Visual inspection | all 242 pages of the **published** PDF (reviewers); the reflowed pages of the new PDF rendered and checked |
 
-## Not done (needs Daniel, or a tool not available here)
+## Deliverables regenerated (2026-11-17, second commit)
 
-1. **Regenerate the PDFs.** Open the new `out/CHEM3B_Lab_Manual.docx` in Word and use Save As PDF with "Best for electronic distribution and accessibility," so the PDF is tagged and carries the new alt text. Re-cut the 17 section PDFs (same page ranges; the offset is still +11). Look at the reflowed pages: Exp 10 pp. 130–133, Exp 11 p. 151, Exp 12 p. 165, Exp 13 pp. 171–174, Exp 15 pp. 197–198, Appendix E pp. 223 and 227. Word's PDF export cannot be scripted on this Mac.
-2. **Replace `docx/` and `pdf/`, update the `index.html` file sizes, commit, push.** Not done; no push or deploy was authorized.
+- `docx/`: the full manual and all 15 single-lab Word files were rebuilt from the audit-branch source. Alt text, language and both authors' names are in each file.
+- `pdf/`: the full PDF was exported from Microsoft Word on the audit-branch DOCX. The 17 section PDFs were cut from it with the same page ranges and titles as before. All 242 pages are present; the printed page number on all 231 numbered pages matches (PDF page − 11), and each section file starts on its own title page.
+- Reflowed pages were inspected as rendered images: Exp 2 p. 19, Exp 10 pp. 132–133 (the stranded table row is gone), Exp 11 p. 151, Exp 12 p. 165, Exp 13 pp. 172–173, Appendix E p. 227. Layout is correct.
+- `index.html` file sizes still round to the same values, so no change was needed.
+- **The PDFs are still untagged.** Word's scripted export goes through the macOS Quartz PDF engine, which does not write tags. The alt text is in the Word files; a tagged PDF still needs Word's interactive Save As PDF → "Best for electronic distribution and accessibility."
+- New cosmetic item (P3): Word can break a line between a bond dash and its group (for example "–" / "CH₃" in Exp 2 B.2). A word-joiner fix was tried, but Word ignores it, so it was reverted.
+
+## Not done
+
+1. **Push and publish.** Not done; wait for both co-authors.
+2. **Tagged PDF export** (see above).
 3. **EHS and stockroom review** of the safety queue, with the sign-off table filled in.
 4. **Bench trials** for the items marked BT (Exps 3, 6, 7, 9, 10, 13, 14).
 5. **Instructor-only answer and prep guide.** Recommended as a separate, non-public file once the bench items are settled.
@@ -52,6 +61,7 @@ Counts are from the reviewers' merged tables (`audit/working-notes/`), plus this
 - [ ] The P1 safety wording items (S-10 to S-19) are resolved.
 - [ ] The unknown sets for Exps 5 and 9 are defined.
 - [ ] Bench results are recorded for the BT items, or the affected steps are marked "instructor demonstration / under trial."
-- [ ] PDFs are re-exported (tagged), re-cut, and their pages inspected.
+- [x] PDFs re-exported, re-cut, and the reflowed pages inspected.
+- [ ] Tagged PDF export (interactive Word Save As).
 - [ ] The acknowledgments wording is confirmed by the OER coordinator. The cover edition label matches the release status.
 - [ ] Both co-authors approve the CHANGELOG items marked **S**.
