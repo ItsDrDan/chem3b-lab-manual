@@ -59,14 +59,14 @@ const nameBlock=()=>[P('Name ___________________________________  Date _________
 const checkRow=(lab,s,o={})=>table([6160,3200],[[ '☐ **'+(lab?lab+' ':'')+'Instructor check:** '+s, o.stamp?['**Instructor stamp or signature:**']:'Initials or stamp:' ]],{header:0,h:o.h??(o.stamp?900:620),noscale:true});
 // Stamp box under the Pre-Lab Questions heading, and the Lab Check-Out box that closes the Report Sheet (data collection)
 const prelabStamp=()=>[table([6160,3200],[['Name ______________________   Section ________',['**Pre-Lab check:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true}),new Paragraph({children:[],spacing:{before:0,after:140}})];
-const checkoutBox=()=>[new Paragraph({children:[],spacing:{before:0,after:160}}),table([6160,3200],[[['**Lab Check-Out** (end of data collection): ☐ bench and sink clean   ☐ equipment and kits returned   ☐ waste in the correct containers'],['**Check-out:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true})];
-function finalize(children){const out=[];for(const c of children){
-  if(c&&c.__kind==='questions')out.push(...checkoutBox());
+const checkoutBox=(o={})=>[new Paragraph({children:[],spacing:{before:0,after:160}}),table([6160,3200],[[[o.nochem?'**Check-Out** (end of data collection): ☐ models taken apart   ☐ kits returned with all pieces   ☐ bench clean':'**Lab Check-Out** (end of data collection): ☐ bench and sink clean   ☐ equipment and kits returned   ☐ waste in the correct containers'],['**Check-out:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true})];
+function finalize(children,o={}){const out=[];for(const c of children){
+  if(c&&c.__kind==='questions')out.push(...checkoutBox(o));
   out.push(c);
   if(c&&c.__kind==='prelab')out.push(...prelabStamp());}
   return out;}
-function build(children,out){
-  children=finalize(children);
+function build(children,out,o={}){
+  children=finalize(children,o);  // o.nochem: a workshop with no chemicals (check-out box without waste)
   if(global.__COLLECT){global.__COLLECT.push({children,out});return Promise.resolve();}
   const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',styles:{default:{document:{run:{font:TNR,size:24,language:LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},

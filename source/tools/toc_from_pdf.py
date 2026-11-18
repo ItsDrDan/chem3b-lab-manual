@@ -7,7 +7,7 @@ from pypdf import PdfReader
 
 KEYS = ['To the Student', 'Laboratory Safety', 'Laboratory Safety Agreement', 'Chemical Waste Disposal',
         'Laboratory Notebooks and Reports', 'Measurements and Uncertainty'] + \
-       [f'Experiment #{n}:' for n in range(1, 17)] + ['Workshop:'] + [f'Appendix {c}:' for c in 'ABCDEF']
+       [f'Experiment #{n}:' for n in range(1, 16)] + ['Workshop: Types', 'Workshop: Chirality'] + [f'Appendix {c}:' for c in 'ABCDEF']
 
 r = PdfReader(sys.argv[1])
 pages = []
@@ -19,7 +19,7 @@ for p in r.pages:
 def heading(k, ls):
     if k.startswith('Experiment #'):
         return any(l.startswith(k.replace('#', '')) for l in ls[:3])
-    if k.endswith(':'):
+    if k.endswith(':') or k.startswith('Workshop'):
         return any(l.startswith(k) for l in ls[:3])
     return k in ls[1:3]  # front matter: line 0 is the running header (same words), the title follows
 

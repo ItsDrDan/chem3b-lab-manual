@@ -13,9 +13,11 @@ from pypdf.generic import NameObject, TextStringObject, DictionaryObject, Boolea
 
 OFF = 12  # cover, blank, license, Contents (i) and front matter ii-ix come before printed page 1
 NAMES = {1:'Exp01_FunctionalGroups',2:'Exp02_StructuresOfAlkanes',3:'Exp03_Hydrocarbons',4:'Exp04_AlcoholsPhenols',
- 5:'Exp05_AldehydesKetones',6:'Exp06_CarboxylicAcidsEsters',7:'Exp07_AminesAmides',8:'Exp08_TypesOfCarbohydrates',
- 9:'Exp09_TestsForCarbohydrates',10:'Exp10_Lipids',11:'Exp11_Aspirin',12:'Exp12_AminoAcids',13:'Exp13_PeptidesProteins',
- 14:'Exp14_Enzymes',15:'Exp15_Vitamins',16:'Exp16_NucleicAcids'}
+ 5:'Exp05_AldehydesKetones',6:'Exp06_CarboxylicAcidsEsters',7:'Exp07_AminesAmides',8:'Exp08_TestsForCarbohydrates',
+ 9:'Exp09_Lipids',10:'Exp10_Aspirin',11:'Exp11_AminoAcids',12:'Exp12_PeptidesProteins',13:'Exp13_Enzymes',
+ 14:'Exp14_Vitamins',15:'Exp15_NucleicAcids'}
+WS = [('Workshop: Types', 'Workshop: Types of Carbohydrates', 'Workshop_Carbohydrates', 'lab'),
+      ('Workshop: Chirality', 'Workshop: Chirality Stations', 'Workshop_Chirality', 'workshop')]
 APXT = {'Appendix A:':'Appendix A: Common Laboratory Equipment','Appendix B:':'Appendix B: Organic Functional Groups',
  'Appendix C:':'Appendix C: IUPAC Naming Guide','Appendix D:':'Appendix D: Molecular Shapes and Electronegativity',
  'Appendix E:':'Appendix E: Biomolecules Reference Sheet','Appendix F:':'Appendix F: Periodic Table and Reference Data'}
@@ -31,7 +33,7 @@ blank = {i for i in range(N) if not ''.join(lines[i]).strip()}
 bad = [i+1 for i in range(OFF, N) if i not in blank and not re.search(r'CHEM 3B Laboratory Manual\s*%d\b' % (i-OFF+1), ' '.join(lines[i]))]
 if bad: sys.exit(f'printed page numbers do not match on PDF pages {bad[:10]}')
 nlabs = max(int(k.split('#')[1].rstrip(':')) for k in toc if k.startswith('Experiment'))
-starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc['Workshop:'])+OFF-1, int(toc['Appendix A:'])+OFF-1]
+starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc[k])+OFF-1 for k, *_ in WS] + [int(toc['Appendix A:'])+OFF-1]
 titles = {}
 for n in range(1, nlabs+1):
     t = [l for l in lines[starts[n-1]] if l.startswith('Experiment')]
@@ -98,7 +100,10 @@ def make(fn, a, b, title, kind):
         for n in range(1, nlabs+1):
             s, e = starts[n-1], starts[n]; top = w.add_outline_item(titles[n], s)
             for h, i in subs(s, e): w.add_outline_item(h, i, parent=top)
-        w.add_outline_item('Workshop: Chirality Stations', starts[-2])
+        for j, (_, t, _, kd) in enumerate(WS):
+            s, e = starts[nlabs+j], starts[nlabs+j+1]; top = w.add_outline_item(t, s)
+            if kd == 'lab':
+                for h, i in subs(s, e): w.add_outline_item(h, i, parent=top)
         ap = w.add_outline_item('Appendices A–F', starts[-1])
         for k, i in apx: w.add_outline_item(APXT[k], i, parent=ap)
     elif kind == 'front':
@@ -119,5 +124,5 @@ def make(fn, a, b, title, kind):
 make('pdf/CHEM3B_Lab_Manual_OER.pdf', 0, N, 'CHEM 3B Laboratory Manual', 'full')
 make('pdf/experiments/00_FrontMatter_Safety.pdf', 0, OFF, 'CHEM 3B Laboratory Manual: Front Matter and Safety', 'front')
 for n in range(1, nlabs+1): make(f'pdf/experiments/{NAMES[n]}.pdf', starts[n-1], starts[n], titles[n], 'lab')
-make('pdf/experiments/Workshop_Chirality.pdf', starts[-2], starts[-1], 'Workshop: Chirality Stations', 'workshop')
+for j, (_, t, fn, kd) in enumerate(WS): make(f'pdf/experiments/{fn}.pdf', starts[nlabs+j], starts[nlabs+j+1], t, kd)
 make('pdf/experiments/16_Appendices.pdf', starts[-1], N, 'CHEM 3B Laboratory Manual: Appendices A–F', 'appendix')

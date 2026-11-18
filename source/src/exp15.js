@@ -1,156 +1,156 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,checkRow,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3];
-const {Paragraph,AlignmentType}=D; const M=D;
-const R=s=>new M.MathRun(s);
-function eq(left,num,den,right){return new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:120,after:200},keepNext:false,children:[new M.Math({children:[...(left?[R(left)]:[]),new M.MathFraction({numerator:[R(num)],denominator:[R(den)]}),...(right?[R(right)]:[])]})]});}
+const {Paragraph,AlignmentType}=D; const M=D; const R=s=>new M.MathRun(s); const Fr=(a,b)=>new M.MathFraction({numerator:[R(a)],denominator:[R(b)]});
+const mathP=(kids,o={})=>new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:120,after:o.after??200},keepNext:o.keepNext,children:[new M.Math({children:kids})]});
 const c=[];
-c.push(title('Experiment #15: Vitamins'));
+c.push(title('Experiment #15: Nucleic Acids and DNA Extraction'));
 c.push(h3('Goals',{before:0}));
-['Classify vitamins as water-soluble or fat-soluble.',
- 'Standardize an iodine solution using a vitamin C tablet that contains a known amount of vitamin C.',
- 'Use an iodine titration to measure the vitamin C in a fruit juice and a powdered drink.',
- 'Determine how heating affects the vitamin C content of a juice and a powdered drink.'].forEach(s=>c.push(bullet(s)));
+['Build models of the parts of a nucleotide and tell ribose (RNA) from deoxyribose (DNA).',
+ 'Show how the bases pair (A with T, G with C) by hydrogen bonding, and how the two strands of DNA run in opposite directions.',
+ 'Extract DNA from strawberries and explain what the detergent, the salt, and the cold alcohol each do.',
+ 'Separate the nitrogen bases by thin-layer chromatography (TLC) on silica gel, see them under UV light, and relate their R_{f} values to polarity and hydrogen bonding.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
-c.push(h3('A. Vitamins and Their Solubility',{before:120}));
-c.push(P('Vitamins are organic compounds that the body needs in small amounts. Many of them act as **coenzymes**, helping enzymes do their jobs. Most vitamins cannot be made by the body, so they must come from the diet. A diet low in a vitamin leads to a **deficiency disease**: too little vitamin C causes scurvy (bleeding gums, slow-healing wounds), too little vitamin A causes night blindness, too little vitamin D causes rickets in children, and too little vitamin B_{12} causes anemia.'));
-c.push(P('Vitamins are grouped by solubility, using the “like dissolves like” rule from CHEM 3A. Vitamins B and C have many polar groups (such as –OH), so they are **water-soluble**. The body does not store them; any extra is removed in the urine, so they must be eaten regularly. Vitamins A, D, E, and K are mostly nonpolar hydrocarbon, so they are **fat-soluble**. They dissolve in nonpolar solvents and are stored in body fat. In Part A, methylene chloride (CH_{2}Cl_{2}), an organic solvent of low polarity, stands in for fat. Table 1 summarizes some of the water-soluble vitamins; folic acid and pantothenic acid are also water-soluble B vitamins.'));
-c.push(P('**Table 1: Some Water-Soluble Vitamins and Their Coenzyme Functions**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
-c.push(table([2100,3630,3630],[['Vitamin','Coenzyme function','Deficiency symptoms'],
- ['B_{1} Thiamine','Decarboxylation of α-keto acids','Beriberi (fatigue, anorexia, nerve degeneration, heart failure)'],
- ['B_{2} Riboflavin','Biological oxidation','Dermatitis, glossitis (tongue inflammation), cataracts'],
- ['B_{3} Niacin','Biological oxidation','Pellagra (scaly skin, muscle fatigue, diarrhea, mouth sores, mental disorders)'],
- ['B_{6} Pyridoxine','Transamination reactions','Dermatitis, fatigue, anemia, irritability'],
- ['B_{12} Cobalamin','Transfer of methyl groups in the synthesis of red blood cells, choline, and purines','Pernicious anemia, malformed blood cells, mental disorders'],
- ['C Ascorbic acid','Synthesis of collagen, protein metabolism, iron absorption, wound healing','Scurvy (bleeding gums, slow-healing wounds, muscle pain, anemia)'],
- ['Biotin','Carboxylation of pyruvate to oxaloacetate; fatty acid and amino acid metabolism','Dermatitis, fatigue, anemia, nausea, depression']],{firstColBold:true}));
-c.push(h3('B. Standardization: Measuring Vitamin C by Titration'));
-c.push(h4('Vitamin C Is a Reducing Agent'));
-c.push(P('Vitamin C (ascorbic acid) helps the body build collagen, heal wounds, fight infection, and absorb iron. It is found in citrus fruits, broccoli, romaine lettuce, and green peppers. Vitamin C is easily oxidized, which makes it a good **reducing agent**. Recall from CHEM 3A that **oxidation** is the loss of electrons and **reduction** is the gain of electrons. For organic molecules, oxidation often shows up as the loss of hydrogen atoms, as you saw when alcohols were oxidized in Experiment #4.'));
-c.push(P('When vitamin C reacts with iodine (I_{2}), vitamin C loses two hydrogen atoms (it is oxidized), and I_{2} gains electrons to become colorless iodide ions, I^{–} (it is reduced). **One molecule of vitamin C reacts with one molecule of I_{2}** (Figure 1). Because of this 1:1 ratio, the amount of iodine a sample uses up tells us how much vitamin C the sample contains.',{keepNext:true}));
-c.push(...img(F+'fig12_1.png',624,150,'**Figure 1:** Vitamin C is oxidized by iodine. The two H atoms shown in red are removed.'));
-c.push(h4('Titration with a Starch Indicator'));
-c.push(P('A **titration** measures exactly how much of one solution is needed to react completely with a sample. In this experiment, a **buret** delivers the iodine solution, and you read its volume to the nearest 0.01 mL. The volume used in each titration is the final buret reading minus the initial buret reading.'));
-c.push(P('Starch is the **indicator**. Starch and I_{2} together form a deep **blue-black** color, but starch has no color with iodide ions (I^{–}). As you add iodine to a sample that still contains vitamin C, each drop of I_{2} is used up immediately, so no blue color lasts. Once all of the vitamin C has reacted, the next drop of I_{2} has nothing left to react with. It combines with the starch, and the blue-black color stays. This is the **endpoint** (Figure 2). The more vitamin C a sample contains, the more iodine it takes to reach the endpoint. A small amount of acetic acid is added to each sample to keep it slightly acidic, which slows the breakdown of vitamin C by oxygen in the air.'));
-c.push(h4('Why We Titrate a Vitamin C Tablet First'));
-c.push(P('The exact concentration of the iodine solution is not known, and it slowly changes over time as iodine evaporates and reacts with light and air. So instead of trusting a label, we **standardize** the iodine solution. In Part B, you titrate a vitamin C tablet that contains a *known* amount of vitamin C (100 mg). This tells you how many milligrams of vitamin C react with 1 mL of *your* iodine solution, called the **standardization factor**:',{keepNext:true}));
-c.push(eq('standardization factor (mg/mL) = ','mg vitamin C in tablet','mL iodine solution used'));
-c.push(h3('C. Analysis of Vitamin C in Foods'));
-c.push(P('In Parts C and D, you titrate samples that contain an *unknown* amount of vitamin C. The standardization factor converts the volume of iodine each sample uses into milligrams of vitamin C:',{keepNext:true}));
-c.push(eq('mg vitamin C in sample = mL iodine solution used × ','mg vitamin C','1 mL iodine solution'));
-c.push(P('**Example:** A 100-mg tablet uses 10.00 mL of iodine solution, so the standardization factor is 100 mg ÷ 10.00 mL = 10.0 mg/mL. A juice sample that uses 1.50 mL of the same iodine solution contains 1.50 mL × 10.0 mg/mL = 15.0 mg of vitamin C.'));
-c.push(P('The factor is only good for the iodine solution it was measured with, so use the same stock bottle of iodine, in the same buret, for every titration in Parts B, C, and D. Table 2 shows how the parts of this experiment fit together.'));
-c.push(P('**Table 2: How the Parts of This Experiment Fit Together**',{align:AlignmentType.CENTER,before:120,after:80,keepNext:true}));
-c.push(table([1900,2560,2400,2500],[['Part','Sample','Type of test','What you find'],
- ['A. Solubility','Vitamin tablets and capsules','Qualitative: does it dissolve in water or CH_{2}Cl_{2}?','Water-soluble or fat-soluble'],
- ['B. Standardization','Vitamin C tablet (known: 100 mg)','Titration of a known amount','mg vitamin C per 1 mL of iodine'],
- ['C. Analysis','Juice and powdered drink (unknown)','Titration of an unknown amount','mg vitamin C in each sample'],
- ['D. Heat destruction','Juice and powdered drink, boiled','Titration after heating','mg vitamin C destroyed by heat']],{firstColBold:true}));
-c.push(h3('D. Heat Destruction of Vitamin C'));
-c.push(P('Vitamin C breaks down when it is heated, especially when air (oxygen) is present. In Part D, you will boil a juice sample and a powdered drink sample that are identical to the ones you analyzed in Part C, then titrate them again. The difference between the unheated and heated results tells you how much vitamin C was destroyed by heating.'));
+c.push(P('Every living cell stores its genetic information in **nucleic acids**. **DNA** (deoxyribonucleic acid) holds the instructions for making all of the cell’s proteins and is passed on when a cell divides. **RNA** (ribonucleic acid) carries copies of those instructions to the ribosomes, where proteins are built. In this experiment, you will build models of the pieces of DNA and RNA, pull DNA out of strawberries, and separate the nitrogen bases of DNA and RNA by chromatography.'));
+c.push(h3('A. Nucleotides, Base Pairs, and the Two Strands of DNA',{before:120}));
+c.push(P('DNA and RNA are long chains (polymers) made of repeating units called **nucleotides**. Each nucleotide has three parts (Figure 1a):'));
+c.push(bullet('a **phosphate group**, which carries negative charges at the pH of the body;'));
+c.push(bullet('a five-carbon **sugar**, ribose in RNA or deoxyribose in DNA; and'));
+c.push(bullet('a **nitrogen base** (a ring compound containing nitrogen atoms).'));
+c.push(P('The carbon atoms of the sugar are numbered 1′ to 5′ (read “one prime” to “five prime”) so that they are not confused with the atoms of the base. The base is bonded to C1′ of the sugar, and the phosphate is bonded to the oxygen on C5′. Both bonds form by **condensation**: an –H and an –OH are removed as a molecule of water, the same kind of reaction that formed esters, amides, and peptide bonds in earlier experiments. The only difference between the two sugars is at C2′ (Figure 1b). **Ribose** has an –OH group on C2′. **Deoxyribose** has only an –H there; *deoxy* means “missing an oxygen.”',{keepNext:true}));
+c.push(...img(F+'fig16_1.png',624,197,'**Figure 1:** (a) The three parts of a DNA nucleotide. (b) Ribose and deoxyribose differ only at C2′, circled in red: ribose has –OH, and deoxyribose has –H.'));
+c.push(P('There are five common nitrogen bases (Figure 2 and Table 1). **Adenine (A)** and **guanine (G)** are **purines**, with two fused rings. **Cytosine (C)**, **thymine (T)**, and **uracil (U)** are **pyrimidines**, with one ring. DNA contains A, G, C, and T. RNA contains A, G, C, and U: uracil takes the place of thymine. Thymine and uracil differ only by one methyl group (–CH_{3}).',{keepNext:true}));
+c.push(...img(F+'fig16_2.png',624,195,'**Figure 2:** The five nitrogen bases, drawn as the free bases used in Part C.'));
+c.push(P('**Table 1: The Nitrogen Bases**',{align:AlignmentType.CENTER,before:120,after:80,keepNext:true}));
+c.push(table([2200,2000,2160,3000],[['Base','Ring type','Found in','Pairs with (number of H bonds)'],
+ ['Adenine (A)','Purine (2 rings)','DNA and RNA','T in DNA, U in RNA (2)'],
+ ['Guanine (G)','Purine (2 rings)','DNA and RNA','C (3)'],
+ ['Cytosine (C)','Pyrimidine (1 ring)','DNA and RNA','G (3)'],
+ ['Thymine (T)','Pyrimidine (1 ring)','DNA only','A (2)'],
+ ['Uracil (U)','Pyrimidine (1 ring)','RNA only','A (2)']],{firstColBold:true}));
+c.push(P('Nucleotides join into a chain when the phosphate on C5′ of one nucleotide forms a bond to the –OH on C3′ of the next sugar, again with loss of water. The repeating sugar–phosphate–sugar–phosphate chain is called the **backbone**, and the bases stick out from it. One end of a chain has a free phosphate on C5′ (the **5′ end**), and the other end has a free –OH on C3′ (the **3′ end**). A base sequence is always written from the 5′ end to the 3′ end, for example 5′-ATGC-3′.',{before:160}));
+c.push(P('DNA has two strands held together by **hydrogen bonds** between bases. A hydrogen bond forms between an H on a nitrogen (N–H) of one base and a lone pair on an O or N of the other base. The shapes of the bases allow only two pairs (Figure 3): **A pairs with T through 2 hydrogen bonds**, and **G pairs with C through 3 hydrogen bonds**. A purine always pairs with a pyrimidine, so every pair is the same width. Because the pairing rules are fixed, the sequence of one strand decides the sequence of the other; the two strands are **complementary**. In RNA, A pairs with U.',{keepNext:true}));
+c.push(...img(F+'fig16_3.png',400,371,'**Figure 3:** The two base pairs of DNA. Dashed lines are hydrogen bonds.'));
+c.push(P('The two strands run in opposite directions: one goes 5′→3′ from top to bottom, and its partner goes 5′→3′ from bottom to top. They are **antiparallel** (Figure 4). The two strands then twist around each other into the **double helix**. For example, the strand 5′-AACG-3′ pairs with the strand 3′-TTGC-5′, which is written 5′-CGTT-3′ when it is read from its own 5′ end.',{keepNext:true}));
+c.push(...img(F+'fig16_4.png',440,304,'**Figure 4:** A short piece of double-stranded DNA, drawn flat (untwisted). The left strand runs 5′→3′ downward, and the right strand runs 5′→3′ upward.'));
+c.push(h3('B. Extracting DNA from Strawberries'));
+c.push(P('DNA is found mainly in the **nucleus** of each cell, wrapped around proteins. To get it out, you must break open the cells, separate the DNA from the other cell parts, and then make the DNA come out of solution so that you can see it. One DNA molecule is far too thin to see, but millions of strands clumped together look like white, cloudy threads.'));
+c.push(P('Strawberries work well for this. They are soft and easy to mash, and ripe strawberries contain enzymes (pectinases and cellulases) that have already softened their cell walls. Garden strawberries are also **octoploid**: each cell has eight copies of each chromosome, compared with two copies in human cells, so each cell holds a lot of DNA. Each reagent has a job (Table 2).'));
+c.push(P('**Table 2: What Each Part of the Extraction Does**',{align:AlignmentType.CENTER,before:120,after:80,keepNext:true}));
+c.push(table([2600,6760],[['Step or reagent','What it does'],
+ ['Mashing','Breaks up the fruit tissue and cell walls so that the buffer can reach every cell.'],
+ ['Dish detergent','Cell and nuclear membranes are made of lipids. Detergent molecules have a nonpolar tail and a polar head, so they surround the membrane lipids and break the membranes apart, the same way they lift grease off a plate. This releases the DNA.'],
+ ['Table salt (NaCl)','In water, DNA has many negative charges on its phosphate groups, and these charges repel each other. Na^{+} ions cluster around the phosphates and cancel (neutralize) much of the charge, so the DNA strands can come together and clump when alcohol is added. The salt also helps keep many proteins dissolved in the water layer.'],
+ ['Filtering','Removes seeds, pulp, and cell wall pieces. The DNA stays dissolved in the liquid that passes through (the **filtrate**).'],
+ ['Ice-cold alcohol','DNA dissolves in water but not in alcohol. Where the alcohol meets the filtrate, the DNA comes out of solution (**precipitates**) as white strands. Cold alcohol makes the DNA even less soluble and slows down enzymes in the fruit that could cut the DNA into short pieces.']],{firstColBold:true}));
+c.push(P('Alcohol is less dense than water, so if it is poured slowly down the side of the tube, it floats as a separate layer on top of the filtrate. The DNA collects at the boundary between the two layers (the **interface**), where it can be wound onto a stick (Figure 5). The material you collect is **crude DNA**: it also contains RNA and other large molecules from the fruit, such as pectin (a plant polysaccharide that also comes out of solution in alcohol).',{keepNext:true}));
+c.push(...img(F+'fig16_5.png',624,227,'**Figure 5:** Extracting DNA from a strawberry.'));
+c.push(P('**Healthcare connection:** Extracting DNA (or RNA) is the first step in many clinical laboratory tests. Before a genetic test or a PCR test (the polymerase chain reaction, which makes millions of copies of a chosen piece of DNA) can be run, the nucleic acid must be released from cells in a blood sample, cheek swab, or nasal swab and separated from proteins and other material. Clinical labs use the same ideas you use today (detergents to open cells, salts to control how DNA dissolves, and alcohol to make DNA come out of solution), usually in kits in which the DNA sticks to a silica surface and is then rinsed and released in water. Labs often check how much DNA they collected by measuring how much ultraviolet light at 260 nm the sample absorbs, because the nitrogen bases absorb UV light, the same property you will use in Part C.',{before:160}));
+c.push(h3('C. Thin-Layer Chromatography of the Nitrogen Bases'));
+c.push(P('In Experiment #10, you used **thin-layer chromatography (TLC)** to separate pain relievers. Here you will use the same kind of plate to separate the nitrogen bases. A TLC plate is coated with a thin layer of **silica gel**, the **stationary phase**. Silica gel is covered with –OH groups, so it is very polar and forms hydrogen bonds. Small spots of each sample are placed on a pencil line (the **origin**) near the bottom of the plate, and the plate is stood in a shallow layer of solvent, the **mobile phase**, which climbs the plate by capillary action. In this experiment, the solvent is a mixture of isopropyl alcohol and dilute aqueous ammonia, the same solvent used in Experiment #11; it is less polar than the silica.'));
+c.push(P('Each base is pulled two ways: it sticks to the polar silica, and it dissolves in the moving solvent. **A base that forms more or stronger hydrogen bonds with the silica (more N–H and C=O groups, and fewer nonpolar groups such as –CH_{3}) sticks more strongly and travels a shorter distance. A less polar base stays dissolved in the solvent and travels farther.** Small differences in structure, such as the one –CH_{3} group that makes thymine different from uracil, can change how far a base travels.'));
+c.push(P('The bases are colorless, but their rings absorb ultraviolet (UV) light. The plate contains a compound that glows green under UV light at 254 nm. Where a base sits on the plate, it absorbs the UV light, so each spot shows up as a **dark spot** on the glowing plate. Each spot is described by its **R_{f} value** (retention factor), the distance the substance moved divided by the distance the solvent moved (Figure 6). An R_{f} value has no units and is always between 0 and 1. On the same kind of plate with the same solvent, a substance always has about the same R_{f}, so the bases in an unknown mixture can be identified by matching their R_{f} values to those of known bases run on the same plate.',{keepNext:true}));
+c.push(mathP([new M.MathSubScript({children:[R('R')],subScript:[R('f')]}),R(' = '),Fr('distance moved by substance (cm)','distance moved by solvent (cm)')],{keepNext:true}));
+c.push(...img(F+'fig16_6.png',500,244,'**Figure 6:** Marking, spotting, and measuring the TLC plate for the nitrogen bases.'));
+c.push(P('Guanine is not used in Part C. Its molecules hold on to each other so strongly by hydrogen bonds that it barely dissolves in water or in the solvent, so it gives a streak or stays at the origin instead of a clean spot.'));
 // Hazards
 c.push(h3('Hazards and Safety Instructions'));
-c.push(P('Wear safety goggles at all times. Wear gloves when handling iodine solution and methylene chloride.',{after:100}));
-c.push(bullet('**Toxic Vapors:** Methylene chloride (CH_{2}Cl_{2}) evaporates quickly, and its vapors are harmful to breathe. It is a suspected carcinogen. Dispense and use it only in the fume hood, and keep containers closed.'));
-c.push(bullet('**Staining and Irritating Reagent:** Iodine solution stains skin, clothing, and lab benches brown and can irritate skin and eyes. Wipe up drips right away. Iodine stains on skin fade in a day or two. If iodine gets in your eyes, rinse with water for 15 minutes and tell your instructor.'));
-c.push(bullet('**Buret Safety:** Lower the buret clamp, or take the buret down, so that you fill it below eye level. Never fill a buret over your head. Remove the funnel after filling so it does not drip and change your reading.'));
-c.push(bullet('**Thermal Hazards:** Boiling samples on a hot plate (Part D) can bump and splash. Heat gently, swirl with flask tongs, and point the flask opening away from everyone. Let hot flasks cool on a wire mesh for 1–2 minutes before placing them in the ice bath; very hot glass can crack in ice water.'));
-c.push(bullet('**Food Items:** Juices, drink powders, and vitamin tablets used in lab are lab chemicals. Never taste or drink anything in the lab.'));
+c.push(P('Wear safety goggles at all times. Wear gloves when you handle the alcohol, the TLC solvent, the base solutions, and the TLC plates.',{after:100}));
+c.push(bullet('**Flammable Alcohol:** 91% isopropyl alcohol and 95% ethanol catch fire easily, and the TLC solvent contains isopropyl alcohol. There are no flames or hot plates in this experiment; keep the alcohol and the solvent away from any hot plate or electrical equipment in use nearby. Keep the alcohol in an ice bath, not in an ordinary refrigerator or freezer (only a freezer rated for flammable liquids may be used). Alcohol vapor irritates the eyes; if alcohol gets in your eyes, rinse with water for 15 minutes and tell your instructor.'));
+c.push(bullet('**Ammonia (TLC Solvent):** The 0.5 M aqueous ammonia in the TLC solvent has a strong, choking odor and irritates the eyes, nose, and lungs. Mix and pour the solvent only in the fume hood, and keep the developing chamber covered. If it touches your skin or eyes, rinse with water for 15 minutes and tell your instructor.'));
+c.push(bullet('**Detergent and Base Solutions:** The extraction buffer contains dish detergent, which irritates the eyes. The base solutions are dilute but should not touch your skin; some may be dissolved in very dilute hydrochloric acid (see the label). Rinse any splash with water for 15 minutes and tell your instructor.'));
+c.push(bullet('**UV Light:** UV light can burn your eyes and skin. Never look directly into the UV lamp, and keep your hands out of the beam. Look at the plate, not the lamp, and turn the lamp off when you are done.'));
+c.push(bullet('**Glass Capillary Tubes and Tubes:** Capillary tubes break easily, and the broken ends are sharp. Handle them gently. Test tubes of ice-cold liquid can be slippery; keep them in a rack.'));
+c.push(bullet('**Food Items:** Strawberries and all other materials in the lab are lab materials. Never eat or taste anything in the lab, and never take strawberries or DNA samples out of the lab. Tell your instructor before lab if you have a strawberry allergy.'));
+c.push(bullet('**Model Kits:** Model pieces are small; keep them off the floor and return every piece to the kit.'));
 c.push(h3('Waste Instructions'));
-c.push(bullet('**Halogenated waste container:** every test tube that contains methylene chloride (Part A); all titration flasks from Parts B, C, and D; the waste beaker used to fill the buret tip (and to prime the buret, if you did); and the iodine left in your buret at the end of lab. Never pour leftover iodine back into the stock bottle.'));
-c.push(bullet('**Drain, with plenty of running water:** test tubes that contain only vitamins and water (no CH_{2}Cl_{2}), and leftover juice or drink that has no iodine in it.'));
-c.push(bullet('**Trash:** cheesecloth, empty vitamin capsules, and weighing paper.'));
+c.push(bullet('**Non-halogenated organic waste container:** the alcohol and filtrate mixtures from Part B (the contents of your DNA tubes), any leftover filtrate and extraction buffer (they contain detergent), the used TLC solvent (isopropyl alcohol and aqueous ammonia; pour it out in the fume hood), and any base solutions left in your small beakers.'));
+c.push(bullet('**Solid waste container:** strawberry pulp, used cheesecloth or coffee filters, zip-top bags, wooden sticks with DNA on them, and used TLC plates (after your results are recorded).'));
+c.push(bullet('**Broken glass box:** used glass capillary tubes and any broken glassware.'));
+c.push(bullet('**Model kits:** take your models apart and return every piece to the kit.'));
 // Procedure
 c.push(h2('Procedure',{pageBreak:true,before:0}));
-c.push(note('Instructor Notes:','Set up hot plates and an ice-water bath for Part D. To save time, students can prepare and start boiling their Part D flasks before they begin Part B; the cooled flasks can wait in the ice bath until they are titrated. Check before lab that a 100-mg tablet uses a reasonable volume of your iodine solution (about 10–20 mL in a 25-mL buret), so that the juice and powder samples use only a few mL each. If needed, adjust the mass of powdered drink in C.3 so that its sample uses about the same volume of iodine as the juice sample.'));
-c.push(h3('A. Solubility of Vitamins'));
-c.push(materials('Test tubes, test tube rack, droppers, mortar and pestle, spatula, methylene chloride (CH_{2}Cl_{2}), vitamins A, B (complex), C, D, E, folic acid, and any others provided'));
-c.push(step('A.1','Place a tiny amount (a “pinch,” a few milligrams) of each vitamin in a separate, labeled test tube. Crush tablets with a mortar and pestle, and pierce gel capsules to squeeze out the contents.'));
-c.push(step('A.2','Add 2 mL of water to each test tube and mix well. Tablets contain fillers (such as starch or calcium salts) that may not dissolve, so some cloudiness or a little solid at the bottom does not by itself mean the vitamin is insoluble. Judge by the vitamin itself: if its color or its oily contents pass into the water, it is water-soluble; if an oil floats or forms a separate layer, or the colored contents stay undissolved, it is not water-soluble. Folic acid is a B vitamin but dissolves only slightly in water, so expect little to dissolve. Record your observations.'));
-c.push(step('A.3','**In the fume hood:** place a fresh pinch of each vitamin that did *not* dissolve in water in a clean, dry test tube. Add 20 drops of methylene chloride (CH_{2}Cl_{2}) and mix. Record whether the vitamin dissolves in the organic solvent. Dispose of these tubes in the halogenated waste container.'));
-c.push(step('A.4','Use Table 1, the Introduction, or your textbook to record one main function of each vitamin in the body.'));
-c.push(h3('B. Standardization of the Iodine Solution'));
-c.push(materials('Vitamin C tablet (100 mg), mortar and pestle, 250-mL Erlenmeyer flasks, 50-mL graduated cylinder, 25-mL buret, buret clamp, ring stand, small funnel, small beaker, white paper, 0.1 M acetic acid, 1% starch solution, iodine solution'));
-c.push(h4('Using One Buret for the Whole Lab'));
-c.push(P('You will fill **one buret** with iodine solution and use it for every titration in Parts B, C, and D. Each titration uses only a small amount of iodine, so follow these rules:',{after:100}));
-c.push(bullet('**Never drain the buret between titrations.** The final reading of one titration becomes the initial reading of the next.'));
-c.push(bullet('Before each titration, check that the buret holds at least 5 mL more iodine than you expect to use. If it does not, refill it from the same stock bottle and record a new initial reading *before* you start. Never refill in the middle of a titration.'));
-c.push(bullet('If you overshoot an endpoint or need to repeat a sample, prepare a fresh sample and continue from your current buret reading. You do not need to drain or refill.'));
-c.push(bullet('Drain the buret into the halogenated waste container only when **all** of your titrations are done.'));
-c.push(bullet('**Reading the buret:** Iodine is dark, so hold a white card behind the buret at eye level. Read the bottom of the meniscus to two decimal places. If you cannot see the bottom of the meniscus, read the top of the liquid instead, and read it the same way every time.'));
-c.push(bullet('**Best practice (optional):** Before the first fill, rinse (“prime”) the buret with two small portions (about 3 mL each) of iodine solution, draining each through the tip into a waste beaker. Empty the waste beaker into the halogenated waste container. This keeps leftover water in the buret from diluting the iodine.'));
-c.push(...img(F+'fig12_2.png',540,372,'**Figure 2:** Titration setup for vitamin C analysis, and what the endpoint looks like.'));
-c.push(step('B.1','Obtain a vitamin C tablet and record the mass of vitamin C (mg) printed on the label. Crush the tablet with a mortar and pestle and transfer all of the powder to a 250-mL Erlenmeyer flask. Rinse the mortar with a few mL of distilled water from a 50-mL graduated cylinder into the flask, then add the rest of the 50 mL of water. Add 2 mL of 0.1 M acetic acid and swirl to dissolve. (The tablet’s fillers may leave the solution cloudy; this is fine, because only vitamin C reacts with iodine.) Add 10 drops of 1% starch solution.'));
-c.push(step('B.2','Clamp a 25-mL buret to a ring stand and close the stopcock. Place a small funnel in the top and carefully fill the buret with iodine solution to just below the 0.00 mL mark. Remove the funnel. Open the stopcock briefly over a waste beaker to fill the tip and remove any air bubbles. Record the initial buret reading to 0.01 mL (it does not need to be exactly 0.00 mL).'));
-c.push(step('B.3','Place the flask on a piece of white paper under the buret. Add iodine solution while swirling the flask. At first, blue color will flash and disappear. When the blue takes longer to fade, add iodine one drop at a time. The endpoint is the first blue-black color that stays for 20 seconds while swirling. Record the final buret reading and calculate the volume of iodine solution used.'));
-c.push(step('B.4','Calculate the standardization factor: the mg of vitamin C that react with 1 mL of your iodine solution.',{after:0,keepNext:true}));
-c.push(eq('','mg vitamin C in tablet','mL iodine solution used',' = mg vitamin C per 1 mL iodine solution'));
-c.push(h3('C. Analysis of Vitamin C in a Fruit Juice and a Powdered Drink'));
-c.push(materials('Fruit juice (light-colored works best), powdered drink mix (such as an orange drink powder), cheesecloth, funnel, 250-mL Erlenmeyer flasks, 50-mL graduated cylinder, 10- or 25-mL graduated cylinder or pipet, balance, weighing paper, 0.1 M acetic acid, 1% starch solution, your buret of iodine solution from Part B'));
-c.push(P('The endpoint is easiest to see in a colorless or lightly colored sample. Record the type and brand of each sample you use.'));
-c.push(step('C.1','**Juice sample:** If the juice has a lot of pulp, pour it through cheesecloth in a funnel (use two layers if pulp still gets through). Measure 20.0 mL of juice into a clean 250-mL Erlenmeyer flask. Add 30 mL of distilled water, 2 mL of 0.1 M acetic acid, and 10 drops of 1% starch solution.'));
-c.push(step('C.2','Record the initial buret reading (your final reading from Part B, or your new reading if you refilled the buret). Titrate the juice to the blue-black endpoint, adding the iodine slowly; this sample needs much less iodine than the tablet did. Record the final buret reading.'));
-c.push(step('C.3','**Powdered drink sample:** From the label, record the mg of vitamin C per serving and the serving size in grams. Weigh 1.00 g of the powder and transfer it to a clean 250-mL Erlenmeyer flask. Add 50 mL of distilled water and swirl until the powder dissolves. Add 2 mL of 0.1 M acetic acid and 10 drops of 1% starch solution.'));
-c.push(step('C.4','Record the initial buret reading (your final reading from C.2, or your new reading if you refilled the buret). Titrate the powdered drink to the blue-black endpoint and record the final buret reading.'));
-c.push(step('C.5','For each sample, calculate the volume of iodine solution used and the mg of vitamin C in the sample, using your standardization factor from B.4:',{after:0,keepNext:true}));
-c.push(eq('_____ mL iodine solution × ','mg vitamin C','1 mL iodine solution',' = mg vitamin C'));
-c.push(sub('Then calculate the mg of vitamin C per mL of juice and per gram of powder. For the powder, also calculate the amount of vitamin C you expected from the label: (mg vitamin C per serving ÷ grams per serving) × grams of powder used.'));
-c.push(h3('D. Heat Destruction of Vitamin C'));
-c.push(materials('250-mL Erlenmeyer flasks, 50-mL graduated cylinder, hot plate, flask tongs, wire mesh, ice-water bath, juice and powdered drink from Part C, 0.1 M acetic acid, 1% starch solution, your buret of iodine solution'));
-c.push(step('D.1','Prepare a second juice sample exactly as in C.1 (20.0 mL of juice and 30 mL of water) and a second powdered drink sample exactly as in C.3 (1.00 g of powder and 50 mL of water). Do **not** add the acetic acid or starch yet. Label the flasks.'));
-c.push(step('D.2','Heat both flasks on a hot plate until they boil gently, then boil for 15 minutes, swirling occasionally with flask tongs. Some water will evaporate; this does not affect the result, because you are measuring the total mg of vitamin C in the flask.'));
-c.push(step('D.3','Using flask tongs, move the flasks to a wire mesh to cool for 1–2 minutes, then place them in an ice-water bath until they are cool to the touch. Cooling quickly stops the breakdown of vitamin C.'));
-c.push(step('D.4','Add 2 mL of 0.1 M acetic acid and 10 drops of 1% starch solution to each flask. Continuing from your current buret reading, titrate each heated sample to the blue-black endpoint. **These titrations may use less iodine than in Part C,** so add it slowly, drop by drop as you approach the endpoint. Record the initial and final buret readings for each.'));
-c.push(step('D.5','For each heated sample, calculate the volume of iodine solution used and the mg of vitamin C remaining. Then use your results from C.5 to calculate the mg of vitamin C destroyed by heating and the percent destroyed:',{after:0,keepNext:true}));
-c.push(eq('% destroyed = ','mg vitamin C destroyed','mg vitamin C before heating (C.5)',' × 100%'));
-c.push(P('When all titrations are done, drain the buret into the halogenated waste container and rinse it with water.',{before:120}));
+c.push(note('Instructor Notes:','**Part C needs no new equipment:** it uses the silica gel F254 plates, capillary tubes, beaker developing chamber, and UV lamp from Experiment #10 and the isopropyl alcohol–aqueous ammonia solvent from Experiment #11. Place the bottles of 91% isopropyl alcohol (or 95% ethanol) in an ice bath at least 30 minutes before Part B so that the alcohol is ice-cold; do not use a household freezer. The stockroom prepares the extraction buffer (100 mL water, 10 mL clear dish detergent, and 2 g NaCl, stirred gently so that it does not foam) and the base solutions (adenine, cytosine, thymine, and uracil, about 0.1% each, in water or very dilute HCl, as prepared by the stockroom; label each bottle with how it was made), plus lettered unknowns that contain two of the four bases. The TLC plates may take 30–60 minutes to develop, so have students prepare and start Part C first, then do Parts B and A while the plates develop. For B.7, assign each group one variation so that the class can compare results. Have base models or base-pair cards ready for A.3 (see A.3).'));
+c.push(h3('A. Nucleotide and Base-Pair Models'));
+c.push(materials('Organic model kit, prepared models of the nitrogen bases or base-pair cards (stockroom), Figures 1–4'));
+c.push(step('A.1','**Sugars:** Build a model of **deoxyribose** as a five-membered ring of four carbon atoms and one oxygen atom (Figure 1b), with the fifth carbon (C5′) attached outside the ring as –CH_{2}OH. Put an –OH on C1′ and C3′, and only an –H on C2′. Number the carbons 1′–5′ on your report sheet. Then convert your model to **ribose** by replacing the –H on C2′ with an –OH. **Instructor check:** show your instructor C2′ of deoxyribose and of ribose, and say which sugar is in DNA and which is in RNA.'));
+c.push(step('A.2','**Nucleotide:** Starting with your deoxyribose model, form a nucleotide. (a) Attach a phosphate group: remove the –H from the –OH on C5′ and an –OH from phosphoric acid (H_{3}PO_{4}), and join the O on C5′ to the P. (b) Attach a base: remove the –OH from C1′ and an –H from a nitrogen of the base (use a prepared base model, or a single N atom to stand for the base), and join that N to C1′. Set aside the atoms you removed. **Instructor check:** show your instructor the nucleotide and the two water molecules that were removed (condensation).'));
+c.push(step('A.3','**Base pairs:** Using the prepared base models or base-pair cards, line up adenine with thymine and guanine with cytosine so that each N–H on one base points at an O or N on the other base, as in Figure 3. Count the hydrogen bonds in each pair. Then try to pair adenine with cytosine and record whether the N–H groups and the O or N atoms line up. **Instructor check:** show your instructor the A–T pair and the G–C pair, and point out each hydrogen bond.'));
+c.push(step('A.4','**Antiparallel strands:** Join your nucleotide to another group’s nucleotide: the phosphate on C5′ of one nucleotide bonds to the O of the –OH on C3′ of the other, and water is removed (a phosphodiester bond). Label the 5′ end and the 3′ end of your two-nucleotide strand. Then line it up beside another group’s strand so that the bases pair and the two strands run in opposite directions, as in Figure 4. **Instructor check:** show your instructor the 5′ and 3′ ends of each strand and explain why the strands are called antiparallel.'));
+c.push(step('A.5','On your report sheet, write the complementary DNA strand and the RNA strand for the sequences given there. Take your models apart and return every piece to the kit.'));
+c.push(h3('B. Extracting DNA from Strawberries'));
+c.push(materials('1 strawberry (fresh, or frozen and thawed; remove the green leaves), balance, weighing boat, sandwich-size zip-top plastic bag, 10-mL graduated cylinder, extraction buffer (water, dish detergent, and NaCl; see Instructor Notes), funnel, cheesecloth (two layers, about 15 cm × 15 cm) or a coffee filter, 50-mL beaker, two test tubes (16 × 150 mm), test tube rack, dropper (plastic transfer pipet), ice-cold 91% isopropyl alcohol or 95% ethanol (in an ice bath), wooden stick (coffee stirrer or bamboo skewer) or glass stirring rod, black paper or a dark background, gloves'));
+c.push(step('B.1','Remove the green leaves from one strawberry. Weigh the strawberry in a weighing boat and record its mass and whether it was fresh or frozen.'));
+c.push(step('B.2','Place the strawberry in a zip-top bag. Measure 10 mL of extraction buffer with a 10-mL graduated cylinder and add it to the bag. Press out most of the air and seal the bag.'));
+c.push(step('B.3','**Mash:** Squeeze and mash the strawberry through the bag with your fingers for 2 minutes, until no large pieces are left. Mash gently enough that the bag does not burst and the buffer does not foam. Record what the mixture looks like.'));
+c.push(step('B.4','**Filter:** Line a funnel with two layers of cheesecloth (or a coffee filter) and set it over a 50-mL beaker. Open the bag and pour the mixture into the funnel. Let the liquid drain for 2–3 minutes; you may gently squeeze the cheesecloth to collect more. Record the color and appearance of the filtrate.'));
+c.push(step('B.5','Pour about 3 mL of the filtrate into a clean test tube (use the 10-mL graduated cylinder, or fill to a 3-mL mark your instructor shows you). Save the rest of the filtrate for B.7.'));
+c.push(step('B.6','**Layer the alcohol:** Hold the test tube at an angle. Using a dropper, slowly add about 3 mL (an equal volume) of **ice-cold** alcohol so that it runs down the inside wall of the tube and floats on top of the filtrate. **Do not mix or shake the tube.** Stand the tube in the rack and hold it in front of a dark background. Watch the interface between the two layers for 2–3 minutes and record what you see, and when you first see it.',{keepNext:true}));
+c.push(step('B.7','**Spool and compare:** Gently turn a wooden stick at the interface to wind up anything that collects there. Lift the stick out and record the color, texture, and amount of material on it (none, a little, or a lot). Then carry out the variation your instructor assigns to your group, using a second test tube, and record your results and those of the other groups in the class table on your report sheet:'));
+c.push(bullet('(1) filtrate from a strawberry mashed in buffer made **without detergent** (water and NaCl only);'));
+c.push(bullet('(2) filtrate from a strawberry mashed in buffer made **without salt** (water and detergent only);'));
+c.push(bullet('(3) your own filtrate, layered with **room-temperature** alcohol instead of ice-cold alcohol;'));
+c.push(bullet('(4) your own filtrate, with the ice-cold alcohol **mixed in** (stopper the tube and turn it over twice) instead of layered.'));
+c.push(step('B.8','Empty the tubes into the non-halogenated organic waste container. Put the stick with the DNA, the pulp, the cheesecloth, and the bag in the solid waste container.'));
+c.push(h3('C. TLC of the Nitrogen Bases'));
+c.push(materials('Gloves, silica gel TLC plate with fluorescent indicator (F254), 6 cm × 10 cm, pencil, ruler, 600-mL beaker (developing chamber), parafilm or plastic wrap, 10-mL and 25-mL graduated cylinders, isopropyl alcohol, 0.5 M NH_{4}OH (fume hood), glass capillary tubes, small labeled beakers of the base solutions (adenine, cytosine, thymine, uracil; about 0.1%, as prepared by the stockroom), unknown base mixture, UV lamp (254 nm)'));
+c.push(step('C.1','**Prepare the chamber (in the fume hood):** Mix 20 mL of isopropyl alcohol and 10 mL of 0.5 M NH_{4}OH and pour the mixture into a clean, dry 600-mL beaker. The solvent layer should be about 0.5 cm deep and must stay **below the origin line** (1.5 cm). Cover the beaker with parafilm or plastic wrap, label it with your initials, and let the air inside fill with solvent vapor while you prepare the plate.'));
+c.push(step('C.2','**Mark the plate:** Wearing gloves, handle the TLC plate only by its edges. Using a **pencil** (ink would dissolve and run in the solvent), lightly draw the origin line 1.5 cm from the bottom of the plate. Make five small marks on the line, 1 cm apart and 1 cm from each side edge, and label them **A, C, T, U, X** just below the line (Figure 6). Write your initials in an upper corner.'));
+c.push(step('C.3','**Spot the plate:** Record the letter of your unknown. Dip a clean capillary tube into a base solution and lightly touch its tip to the matching mark, making a spot 2–3 mm across. Let the spot dry, then touch the same spot 3–4 more times, letting it dry each time; the bases are dilute, and too little sample will not show up under the UV lamp. Use a fresh capillary tube for each solution. Before you develop the plate, look at it under the UV lamp to check that every spot shows up as a dark area; if a spot is very faint, add 2–3 more applications.'));
+c.push(step('C.4','**Develop the plate (in the fume hood):** Stand the plate in the chamber with the spotted end down. **The solvent must be below the origin line.** Do not let the plate touch the sides of the beaker. Cover the chamber and do not move it while the solvent climbs the plate (about 30–60 minutes; do Parts B and A while you wait). When the solvent front is about 1 cm from the top, remove the plate and **immediately** mark the solvent front with a pencil line. Let the plate dry in the fume hood. Pour the used solvent into the non-halogenated organic waste container.'));
+c.push(step('C.5','**View the spots:** Look at the dry plate under the UV lamp (do not look into the lamp). Lightly circle each dark spot with a pencil. Sketch the plate on your report sheet.'));
+c.push(step('C.6','Measure the distance from the origin to the solvent front, and from the origin to the center of each spot, to the nearest 0.1 cm. Calculate the R_{f} value of each spot.'));
+c.push(step('C.7','Identify the two bases in your unknown by matching the R_{f} values of its spots to those of the known bases.'));
+c.push(step('C.8','Put the used TLC plate in the solid waste container and the capillary tubes in the broken glass box.'));
 // Pre-lab
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
-const PL=[['1.','Where must you dispense and use methylene chloride, and which waste container do its test tubes go in?',800],
- ['2.','Where do the titration flasks and the iodine left in your buret go at the end of lab?',720],
- ['3.','You use one buret of iodine solution for every titration in Parts B, C, and D. Why do you never drain it between titrations? What should you do before a titration if the buret holds less than 5 mL more iodine than you expect to use?',1000],
- ['4.','In A.2, a crushed vitamin tablet leaves the water cloudy with some white solid at the bottom. Does this prove the vitamin is not water-soluble? Explain.',880],
- ['5.','What color shows the endpoint of the vitamin C titration? Explain why this color appears only after all of the vitamin C has reacted.',1000],
- ['6.','A 100-mg vitamin C tablet uses 12.50 mL of iodine solution. A juice titration then starts at a buret reading of 12.50 mL and ends at 14.75 mL. Calculate the standardization factor and the mg of vitamin C in the juice sample. Show your work.',1280],
- ['7.','Why is a small amount of acetic acid added to each sample before it is titrated?',0]];
+const PL=[['1.','Why must the alcohol for Part B be kept in an ice bath and away from hot plates? Give two reasons, one about safety and one about the chemistry of DNA.',1000],
+ ['2.','Where does each of the following go at the end of lab? (a) the alcohol and filtrate mixture from your DNA tube (b) the strawberry pulp and cheesecloth (c) the used TLC plate (d) used glass capillary tubes',1100],
+ ['3.','In the strawberry extraction, what does the detergent do? What does the salt do?',1100],
+ ['4.','In B.6, why is the alcohol added slowly down the side of the tube instead of being poured straight in and mixed? Where will you look for the DNA?',1000],
+ ['5.','Name two ways DNA and RNA differ in their structure.',900],
+ ['6.','The bases are colorless. How will you see them on the TLC plate, and what precaution must you take with the lamp?',900],
+ ['7.','A spot moves 2.9 cm while the solvent moves 7.2 cm. Calculate the R_{f} value. Show your work.',0]];
 PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space(sp));});
-// Report sheet
+// Report
 c.push(h2('Report Sheet',{pageBreak:true,before:0,rule:true}));
 c.push(...nameBlock());
-c.push(h3('A. Solubility of Vitamins',{before:120}));
-c.push(table([1900,1700,1700,1900,2160],[['Vitamin','A.2 Soluble in water?','A.3 Soluble in CH_{2}Cl_{2}?','Water- or fat-soluble?','A.4 Main function in the body'],
- ...Array.from({length:7},()=>['','','','',''])],{h:560}));
-c.push(h3('B. Standardization of the Iodine Solution'));
-c.push(table([5200,4160],[['**B.1** mg of vitamin C in tablet (from label)','mg'],['**B.2** Initial buret reading','mL'],['**B.3** Final buret reading','mL'],['Volume of iodine solution used','mL'],[['**B.4** Standardization factor','(show your calculation)'],'mg vitamin C / 1 mL iodine']].map(r=>[r[0],{t:r[1],align:AlignmentType.RIGHT}]),{header:0,h:[500,500,500,500,1300]}));
-c.push(h3('C. Analysis of Vitamin C',{pageBreak:true,before:0}));
-c.push(table([3360,3000,3000],[['','Fruit juice','Powdered drink'],
- ['Type and brand of sample','',''],
- ['**C.1 / C.3** Amount of sample used',{t:'mL',align:AlignmentType.RIGHT},{t:'g',align:AlignmentType.RIGHT}],
- ['**C.2 / C.4** Initial buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- ['Final buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- ['**C.5** Volume of iodine solution used',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- [['mg vitamin C in sample','(show your calculation)'],{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
- ['mg vitamin C per mL juice or per g powder',{t:'mg/mL',align:AlignmentType.RIGHT},{t:'mg/g',align:AlignmentType.RIGHT}],
- ['Label: mg vitamin C per serving; serving size (g)',{t:'',shade:'F2F2F2'},''],
- [['Expected mg vitamin C in sample from the label','(show your calculation)'],{t:'',shade:'F2F2F2'},{t:'mg',align:AlignmentType.RIGHT}]],{h:[0,600,520,520,520,520,1500,700,700,1500]}));
-c.push(h3('D. Heat Destruction of Vitamin C',{pageBreak:true,before:0}));
-c.push(table([3360,3000,3000],[['','Heated fruit juice','Heated powdered drink'],
- ['**D.4** Initial buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- ['Final buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- ['**D.5** Volume of iodine solution used',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
- [['mg vitamin C remaining after heating','(show your calculation)'],{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
- ['mg vitamin C destroyed (C.5 − D.5)',{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
- [['Percent destroyed','(show your calculation)'],{t:'%',align:AlignmentType.RIGHT},{t:'%',align:AlignmentType.RIGHT}]],{h:[0,520,520,520,1500,600,1500]}));
+c.push(h3('A. Nucleotide and Base-Pair Models',{before:120}));
+c.push(table([2600,6760],[[['**A.1** Draw deoxyribose and ribose.','Number the carbons 1′–5′ and circle C2′ in each.'],'']],{header:0,h:2600}));
+c.push(space(80)); c.push(checkRow('A.1','C2′ of deoxyribose and of ribose shown; DNA and RNA sugars named'));
+c.push(space(160));
+c.push(table([2600,6760],[[['**A.2** Draw the nucleotide.','Label the phosphate, the sugar, and the base, and circle the two bonds formed by condensation.'],'']],{header:0,h:2600}));
+c.push(space(80)); c.push(checkRow('A.2','nucleotide shown, with the two water molecules removed (condensation)'));
+c.push(new Paragraph({children:[],pageBreakBefore:true,spacing:{after:0}}));
+c.push(P('**A.3** Base pairing',{after:80}));
+c.push(table([2900,3060,3400],[['Pair','Number of hydrogen bonds','Do the N–H groups and the O or N atoms line up?'],['A–T','',''],['G–C','',''],['A–C','','']],{h:620,firstColBold:true}));
+c.push(space(80)); c.push(checkRow('A.3','A–T and G–C pairs shown, each hydrogen bond identified'));
+c.push(space(160));
+c.push(table([2600,6760],[[['**A.4** Draw your two-nucleotide strand as boxes','(phosphate, sugar, base). Label the 5′ end and the 3′ end.'],'']],{header:0,h:1900}));
+c.push(space(80)); c.push(checkRow('A.4','5′ and 3′ ends of both strands shown; antiparallel strands explained'));
+c.push(space(160));
+c.push(P('**A.5** For the DNA strand 5′-GATTCAGC-3′, write:',{after:80,keepNext:true}));
+c.push(table([4200,5160],[['(a) the complementary DNA strand, labeled 3′ and 5′',''],['(b) the RNA strand that pairs with the DNA strand, labeled 3′ and 5′','']],{header:0,h:800}));
+c.push(h3('B. Extracting DNA from Strawberries',{pageBreak:true,before:0}));
+c.push(table([4200,5160],[['**B.1** Mass of strawberry (g); fresh or frozen?',''],['Alcohol used (isopropyl or ethanol) and its volume (mL)',''],
+ ['**B.3** Appearance of the mashed mixture',''],['**B.4** Color and appearance of the filtrate',''],
+ ['**B.6** What you saw at the interface, and how long after adding the alcohol',''],['**B.7** Color, texture, and amount of material on the stick','']],{header:0,h:[520,520,900,900,1300,1300]}));
+c.push(P('**B.7** Class results for the variations (record the amount: none, a little, or a lot, and the appearance)',{before:200,after:80,keepNext:true}));
+c.push(table([3900,2000,3460],[['Tube','Amount of material','Appearance'],['Standard method (ice-cold alcohol, layered)','',''],['(1) Buffer without detergent','',''],['(2) Buffer without salt','',''],['(3) Room-temperature alcohol','',''],['(4) Ice-cold alcohol mixed in','','']],{h:680}));
+c.push(h3('C. TLC of the Nitrogen Bases',{pageBreak:true,before:0}));
+c.push(table([3600,5760],[['**C.5** Sketch of your TLC plate','Unknown letter: ________']],{header:0,h:4000}));
+c.push(P('**C.6** Distance moved by solvent: ____________ cm',{before:160,after:120}));
+c.push(table([900,1700,1300,1300,2130,2030],[['Spot','Base','N–H groups (from Figure 2)','C=O groups (from Figure 2)','C.6 Distance moved by spot (cm)','C.6 R_{f} value'],
+ ['A','Adenine','','','',''],['C','Cytosine','','','',''],['T','Thymine','','','',''],['U','Uracil','','','',''],
+ ['X','Unknown, spot 1',{t:'',shade:'F2F2F2'},{t:'',shade:'F2F2F2'},'',''],['X','Unknown, spot 2',{t:'',shade:'F2F2F2'},{t:'',shade:'F2F2F2'},'','']],{h:600,firstColBold:true}));
+c.push(P('**C.7** Bases identified in the unknown, and the R_{f} evidence:',{before:200,after:900}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
-const Q=[['Q.1','Which of the vitamins you tested are water-soluble? Which are fat-soluble?'],
- ['Q.2','Use the polar or nonpolar structure of the vitamins to explain your results in Part A.'],
- ['Q.3','Why do water-soluble vitamins need to be eaten more regularly than fat-soluble vitamins?'],
- ['Q.4','Why did you titrate a vitamin C tablet (Part B) before you titrated the juice and powdered drink? Why not use the concentration of iodine printed on the bottle?'],
- ['Q.5','A student adds several extra drops of iodine after the endpoint of the juice titration. Will the calculated mg of vitamin C in the juice be too high or too low? Explain.'],
- ['Q.6','Which of your samples had more vitamin C? For the powdered drink, how did your result compare with the amount expected from the label?'],
- ['Q.7','If the daily requirement for vitamin C is 75 mg, how many milliliters of the juice or grams of the powdered drink would you need to consume to meet it? Show your work.'],
- ['Q.8','Does heating affect the vitamin C content of a juice or drink? Compare the percent destroyed for your two samples.'],
- ['Q.9','If vitamin C tablets are stored in a warm, humid bathroom cabinet, what might happen to their vitamin C content over time? Explain.'],
- ['Q.10','If you want to keep most of the vitamin C in your vegetables, how should you prepare them for dinner?']];
-Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(i==Q.length-1?0:(i==4?1300:1500)));});
+const Q=[['Q.1','Draw the structure of a DNA nucleotide that contains cytosine (use Figures 1 and 2). Label the phosphate, the sugar, and the base, and number the carbons of the sugar 1′–5′. How would the structure change if this nucleotide were part of RNA?'],
+ ['Q.2','A section of one DNA strand has the sequence 5′-ATGCCGTA-3′. (a) Write the complementary DNA strand with its 3′ and 5′ ends labeled. (b) How many hydrogen bonds hold this section of the double helix together? Show how you counted.'],
+ ['Q.3','DNA that has a high percentage of G–C pairs needs a higher temperature to separate its two strands than DNA with mostly A–T pairs. Explain why, using Figure 3.'],
+ ['Q.4','Use your class results from B.7 to explain the role of the detergent, the salt, and the cold temperature of the alcohol. If a variation gave a result you did not expect, describe it and suggest a reason.'],
+ ['Q.5','The material you collected in Part B is called “crude” DNA. Name two other kinds of molecules that are probably mixed with it, and explain why they would end up in the same place as the DNA.'],
+ ['Q.6','Rank the four bases from the highest R_{f} to the lowest R_{f} on your plate. Use polarity and the number of N–H and C=O groups (your table in Part C) to explain the order. Compare thymine with uracil: what does the –CH_{3} group do to R_{f}?'],
+ ['Q.7','A student’s TLC plate showed no spots at all under the UV lamp, and the bottom edge of the plate had been dipped into solvent that was 2 cm deep. Explain what went wrong and how to fix it. Give one other reason a spot might be too faint to see.']];
+Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(i==Q.length-1?0:(i==0?2000:1300)));});
 build(c,OUT).then(()=>console.log('wrote',OUT));

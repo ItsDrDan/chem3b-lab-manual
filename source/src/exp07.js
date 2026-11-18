@@ -11,7 +11,7 @@ c.push(h3('Goals',{before:0}));
  'Write equations for the formation of an amide and for its hydrolysis in acid and in base.',
  'Use odor and litmus paper to detect the products of amide hydrolysis.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
-c.push(P('Amines and amides are the two main families of organic compounds that contain nitrogen. Amines are found in many drugs, in neurotransmitters, and in the smell of spoiled fish. The amide bond is the bond that links amino acids together in every protein (Experiment #13).'));
+c.push(P('Amines and amides are the two main families of organic compounds that contain nitrogen. Amines are found in many drugs, in neurotransmitters, and in the smell of spoiled fish. The amide bond is the bond that links amino acids together in every protein (Experiment #12).'));
 // A
 c.push(h3('A. Classification and Structure of Amines'));
 c.push(P('An **amine** is a derivative of ammonia (NH_{3}) in which one or more hydrogen atoms have been replaced by carbon groups (alkyl groups or aromatic rings). Amines are classified by the **number of carbon groups bonded to the nitrogen atom**, not by the carbon the nitrogen is attached to (this is different from the way alcohols were classified in Experiment #4):'));

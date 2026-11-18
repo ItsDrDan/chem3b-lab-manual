@@ -1,138 +1,157 @@
-const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3]; const {AlignmentType}=D;
+const eqP=(s,o={})=>P(s,{align:AlignmentType.CENTER,before:80,after:o.after??160,keepNext:o.keepNext,run:o.size?{size:o.size}:{}});
 const c=[];
-c.push(title('Experiment #8: Types of Carbohydrates'));
+c.push(title('Experiment #8: Tests for Carbohydrates'));
 c.push(h3('Goals',{before:0}));
-['Identify the functional groups of carbohydrates and classify monosaccharides as aldoses or ketoses.',
- 'Use models and Fischer projections to tell D and L sugars apart.',
- 'Draw Haworth (ring) structures of monosaccharides and identify the α and β anomers.',
- 'Draw disaccharides and polysaccharides, and name the glycosidic bonds that join their units.',
- 'Describe common carbohydrates and their sources.'].forEach(s=>c.push(bullet(s)));
+['Observe physical and chemical properties of common carbohydrates.','Use chemical tests to distinguish between monosaccharides, disaccharides, and polysaccharides, and between aldoses and ketoses.','Identify an unknown carbohydrate.','Relate the process of digestion to the hydrolysis of carbohydrates.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
-c.push(P('**Carbohydrates** are the sugars, starches, and fibers in our food and in plant and animal tissues. Their name comes from their formulas: many carbohydrates fit the pattern C_{n}(H_{2}O)_{n}, as if they were “hydrates of carbon.” Structurally, a carbohydrate is a chain of carbons that carries many hydroxyl (–OH) groups and one carbonyl (C=O) group, or a larger molecule built from such units. In this experiment you will build models and draw structures to see how sugars are put together. The chemical tests for carbohydrates follow in Experiment #9.'));
-// A
-c.push(h3('A. Monosaccharides'));
-c.push(P('A **monosaccharide** is a single sugar unit that cannot be broken down into smaller sugars by hydrolysis. Most of the monosaccharides in food have six carbons (**hexoses**), with the formula C_{6}H_{12}O_{6}. A monosaccharide whose carbonyl is an aldehyde (–CHO, at carbon 1) is an **aldose**; one whose carbonyl is a ketone (C=O, usually at carbon 2) is a **ketose**. Glucose and galactose are aldohexoses, and fructose is a ketohexose (Table 1 and Figure 1). Glucose, also called **blood sugar** or dextrose, is the most common monosaccharide and the main fuel for our cells.'));
-c.push(P('**Table 1: Common Monosaccharides**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
-c.push(table([1800,2300,1500,3760],[['Monosaccharide','Type','Formula','Sources'],
- ['Glucose','Aldohexose','C_{6}H_{12}O_{6}','Fruit juices, honey, corn syrup; hydrolysis of starch, maltose, sucrose, and lactose'],
- ['Galactose','Aldohexose','C_{6}H_{12}O_{6}','Hydrolysis of lactose (milk sugar)'],
- ['Fructose','Ketohexose','C_{6}H_{12}O_{6}','Fruit juices, honey; hydrolysis of sucrose']],{firstColBold:true}));
-c.push(h4('Fischer Projections and D and L Sugars'));
-c.push(P('A **Fischer projection** draws a sugar chain straight up and down, with the carbonyl group at or near the top and carbon 1 at the top. Each carbon in the chain is the crossing point of a vertical and a horizontal line. By agreement, the **horizontal** bonds point **toward you** (out of the page), and the **vertical** bonds point **away from you** (behind the page).',{keepNext:true}));
-c.push(...img(F+'fig8_1.png',540,254,'**Figure 1:** Fischer projections of two aldoses (D-glucose and D-galactose) and a ketose (D-fructose). Carbons are numbered from the top.'));
-c.push(P('A carbon bonded to four different groups is a **chiral carbon**. A molecule with a chiral carbon has a mirror image that cannot be stacked exactly on top of it, just as your left hand cannot be stacked on your right hand. The simplest aldose, **glyceraldehyde** (C_{3}H_{6}O_{3}), has one chiral carbon, so it exists as two mirror-image forms called **D** and **L** (Figure 2). In the Fischer projection, D-glyceraldehyde has the –OH on its chiral carbon on the **right**, and L-glyceraldehyde has it on the **left**.',{keepNext:true}));
-c.push(...img(F+'fig8t_1.png',420,177,'**Figure 2:** L- and D-glyceraldehyde are mirror images. The central carbon is chiral.'));
-c.push(P('Larger sugars have several chiral carbons. To decide whether a sugar is D or L, look only at the chiral carbon **farthest from the carbonyl group** (carbon 5 in a hexose). If its –OH is on the right, the sugar is **D**; if it is on the left, the sugar is **L**. Almost all sugars in nature are D sugars. In Figure 1, glucose and galactose differ only at carbon 4, and all three sugars have the C5 –OH on the right.'));
-c.push(h4('Haworth Structures: Ring Formation and Anomers'));
-c.push(P('In water, more than 99% of glucose molecules are rings, not open chains. The ring forms when the –OH on carbon 5 adds to the aldehyde carbonyl on carbon 1, making a cyclic **hemiacetal** (Figure 3). A **Haworth structure** draws the ring as a flat hexagon seen slightly from above: the ring oxygen is at the back right, carbon 1 is on the right, and the thick lines show the edge of the ring nearest you. Each –OH or –CH_{2}OH is drawn straight **up** or straight **down** from its ring carbon (the H atoms are usually left out).',{keepNext:true}));
-c.push(...img(F+'fig8t_2.png',624,199,'**Figure 3:** The –OH on carbon 5 of D-glucose adds to the carbonyl on carbon 1 to close the ring, giving the α or β anomer.'));
-c.push(P('Carbon 1 was the carbonyl carbon, so when the ring closes it becomes a new chiral carbon called the **anomeric carbon**. Its new –OH can point down or up, giving two ring forms called **anomers**. For D sugars drawn in the usual Haworth orientation:'));
-c.push(bullet('**α anomer:** the –OH on the anomeric carbon points **down** (on the opposite side of the ring from the –CH_{2}OH on carbon 5).'));
-c.push(bullet('**β anomer:** the –OH on the anomeric carbon points **up** (on the same side as the –CH_{2}OH).'));
-c.push(P('In solution, a ring can open and close again, so the α and β anomers slowly change into each other until they reach a mixture of about 36% α and 64% β for glucose.',{before:80}));
-c.push(P('To turn a Fischer projection of a D sugar into a Haworth structure, use three rules: (1) a group on the **right** in the Fischer projection points **down** in the Haworth structure; (2) a group on the **left** points **up**; and (3) the –CH_{2}OH on carbon 5 of a D sugar points **up**. For example, D-glucose has its C2 –OH on the right (down), its C3 –OH on the left (up), and its C4 –OH on the right (down), as in Figure 3. Galactose follows the same rules, so its C4 –OH points up.'));
-c.push(P('Fructose forms a **five-membered ring**. Its carbonyl is on carbon 2, so the –OH on carbon 5 adds to carbon 2, and carbon 2 becomes the anomeric carbon. The ring holds four carbons and one oxygen, with carbon 1 (a –CH_{2}OH group) and the anomeric –OH both attached to carbon 2. The α and β labels follow the same rule: in α-D-fructose the anomeric –OH points down, opposite the –CH_{2}OH on carbon 5.'));
-// B
-c.push(h3('B. Disaccharides'));
-c.push(P('A **disaccharide** is two monosaccharides joined by a **glycosidic bond** (also called a glycosidic linkage): a C–O–C bond from the anomeric carbon of one sugar to an –OH carbon of the other. Like an esterification, forming the bond is a **condensation** reaction that releases one molecule of water. The reverse reaction, **hydrolysis**, adds water across the glycosidic bond and splits the disaccharide back into two monosaccharides. Hydrolysis happens with an acid catalyst or, in the body, with digestive enzymes.'));
-c.push(P('A glycosidic bond is named by the anomer (α or β) of the sugar that supplies its anomeric carbon, followed by the numbers of the two carbons it connects. In **maltose**, carbon 1 of an α-glucose is bonded to carbon 4 of a second glucose, so maltose has an **α-1,4 glycosidic bond** (Figure 4). The second glucose in maltose still has a free hemiacetal –OH on its carbon 1, so that ring can open and close, and maltose exists as both α and β forms. In **sucrose**, the bond joins carbon 1 of glucose to carbon 2 of fructose, which uses up the anomeric carbons of both sugars. Table 2 lists three common disaccharides.'));
-c.push(P('**Table 2: Common Disaccharides**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
-c.push(table([1900,2600,2160,2700],[['Disaccharide','Monosaccharide units','Glycosidic bond','Sources'],
- ['Maltose','Glucose + glucose','α-1,4','Germinating grains (malt); hydrolysis of starch'],
- ['Lactose','Galactose + glucose','β-1,4 (from galactose C1)','Milk, yogurt, ice cream'],
- ['Sucrose','Glucose + fructose','α-1,β-2 (glucose C1 to fructose C2)','Table sugar: sugar cane and sugar beets']],{firstColBold:true}));
-c.push(...img(F+'fig8_2.png',480,345,'**Figure 4:** Haworth structures of maltose and sucrose. The bond written α(1→4) in the figure is the same as α-1,4 in the text. (Reducing and nonreducing sugars are tested in Experiment #9.)'));
-// C
-c.push(h3('C. Polysaccharides'));
-c.push(P('A **polysaccharide** is a polymer of hundreds to many thousands of monosaccharide units joined by glycosidic bonds. Starch, glycogen, and cellulose are all made of glucose only. They differ in the type of glycosidic bond (α or β) and in how much the chain branches (Table 3).'));
-c.push(P('**Table 3: Common Polysaccharides of Glucose**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
-c.push(table([1900,2200,1900,3360],[['Polysaccharide','Glycosidic bonds','Branching','Found in; role'],
- ['Amylose (about 20% of starch)','α-1,4','None','Rice, wheat, potatoes, beans, cereals; plant energy storage'],
- ['Amylopectin (about 80% of starch)','α-1,4 and α-1,6','About every 25 units','Same foods as amylose; plant energy storage'],
- ['Glycogen','α-1,4 and α-1,6','About every 10–15 units','Liver and muscle; animal energy storage'],
- ['Cellulose','β-1,4','None','Wood, cotton, paper, plant cell walls; structure (dietary fiber)']],{firstColBold:true}));
-c.push(P('**Starch** is the form in which plants store glucose. It does not dissolve well in cold water, and it is a mixture of two polysaccharides. **Amylose** is an unbranched chain of 250 to 4000 α-D-glucose units joined by α-1,4 glycosidic bonds. **Amylopectin** has the same α-1,4 chains, but about every 25 glucose units a side chain branches off. At each branch point, carbon 1 of the first glucose in the branch is bonded to carbon 6 (the –CH_{2}OH carbon) of a glucose in the main chain, an **α-1,6 glycosidic bond** (Figure 5).',{before:160,keepNext:true}));
-c.push(...img(F+'fig8t_3.png',520,275,'**Figure 5:** Part of amylopectin: α-1,4 bonds along the chain and an α-1,6 bond at a branch point. Amylose has only the α-1,4 chain.'));
-c.push(P('**Glycogen** is the form in which animals store glucose, mainly in the liver and in muscle. It is built like amylopectin, but it branches much more often, about every 10–15 glucose units. Each branch ends in a glucose unit that enzymes can remove, so a highly branched molecule can release many glucose molecules at once when the body needs energy.'));
-c.push(P('**Cellulose** is the main structural material of plants; cotton is almost pure cellulose. Like amylose, cellulose is an unbranched chain of glucose, but its units are **β-D-glucose** joined by **β-1,4 glycosidic bonds**. In a Haworth drawing, every other glucose unit in cellulose is turned over (Figure 6). This makes each cellulose chain long and straight, so neighboring chains lie side by side and are held together by many hydrogen bonds (Figure 7). The result is strong, rigid fibers that do not dissolve in water. Humans make enzymes (amylases) that hydrolyze α-glycosidic bonds, but not enzymes that hydrolyze β-1,4 bonds, so we digest starch but not cellulose. Cellulose passes through our digestive tract as **dietary fiber**.',{keepNext:true}));
-c.push(...img(F+'fig8t_4.png',624,178,'**Figure 6:** Part of a cellulose chain. β-1,4 glycosidic bonds join the β-D-glucose units, and every other unit is drawn turned over.'));
-c.push(...img(F+'fig8t_5.png',540,323,'**Figure 7:** Simple models of four glucose polymers (each hexagon is one glucose unit; not to scale).'));
+c.push(P('The structures of monosaccharides, disaccharides, and polysaccharides are covered in Workshop: Types of Carbohydrates (after Experiment #15). This experiment uses chemical tests to tell those types apart. Here is a short recap of the structural features the tests detect:',{after:100}));
+c.push(bullet('An **aldose** has an aldehyde group (–CHO) at C1; a **ketose** has a ketone group (C=O) in the chain, usually at C2. Glucose and galactose are aldoses; fructose is a ketose.'));
+c.push(bullet('In water, most monosaccharide molecules are rings. The former carbonyl carbon is the **anomeric carbon**, and the –OH on it is a **hemiacetal** –OH. A ring with a free hemiacetal –OH can open again to the chain form, which has a reactive carbonyl group.'));
+c.push(bullet('A **glycosidic bond** joins two sugar units. When an anomeric carbon is used in a glycosidic bond, that ring is locked closed. Water, with an acid or enzyme catalyst, can break a glycosidic bond (**hydrolysis**).'));
+c.push(bullet('Starch is a polysaccharide made of glucose. Its unbranched part, **amylose**, coils into a helix; its branched part, **amylopectin**, has only short coiled sections.'));
+c.push(P('Table 1 lists the carbohydrates in this experiment. See Workshop: Types of Carbohydrates for their structures.',{before:100,keepNext:true}));
+c.push(P('**Table 1: Carbohydrates Used in This Experiment**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
+c.push(table([1600,2100,5660],[['Carbohydrate','Type','Made of'],
+ ['Glucose','Monosaccharide, aldose','One glucose unit (also called dextrose or blood sugar)'],
+ ['Fructose','Monosaccharide, ketose','One fructose unit (fruit sugar)'],
+ ['Galactose','Monosaccharide, aldose','One galactose unit (part of lactose)'],
+ ['Maltose','Disaccharide','Glucose + glucose, α(1→4) glycosidic bond; formed when starch is broken down'],
+ ['Lactose','Disaccharide','Galactose + glucose, β(1→4) glycosidic bond (milk sugar)'],
+ ['Sucrose','Disaccharide','Glucose + fructose, α,β(1→2) glycosidic bond (table sugar)'],
+ ['Starch','Polysaccharide','Many glucose units: **amylose** (unbranched chains, α(1→4)) and **amylopectin** (branched, with α(1→6) branch points)']],{firstColBold:true}));
+c.push(P('Each test in this experiment detects one structural feature. Table 2 summarizes the four tests. Sections A–D explain them, and sections E and F explain how the same tests follow hydrolysis and detect carbohydrates in foods.',{before:160,keepNext:true}));
+c.push(P('**Table 2: Summary of the Carbohydrate Tests**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
+c.push(table([1500,2050,1950,2110,1750],[['Test','Reagent and its color','What it detects','Positive result','Negative result'],
+ ['Fermentation (A)','Baker’s yeast in a fermentation tube','Sugars that yeast can use for food','Gas (CO_{2}) collects at the top of the closed arm','No gas; the closed arm stays full of liquid'],
+ ['Benedict’s (B)','Cu^{2+} (copper(II) sulfate) in basic citrate solution; clear **blue**','Reducing sugars (a free hemiacetal –OH that can open to a C=O)','Green, yellow, orange, or brick-red solid (Cu_{2}O) after heating','Stays clear blue'],
+ ['Seliwanoff’s (C)','Resorcinol in 3–6 M HCl; **colorless**','Ketoses (fructose), which react much faster than aldoses','Deep red within about 1 minute of heating','Colorless at 1 minute; aldoses turn light pink only after longer heating'],
+ ['Iodine (D)','I_{2} dissolved in KI solution; **yellow-brown**','Amylose (starch) and other polysaccharides with coiled chains','Blue-black (amylose); red-purple to red-brown (amylopectin, glycogen)','Stays yellow-brown']],{firstColBold:true}));
+c.push(h3('A. Fermentation Test'));
+c.push(P('Yeast cells use some sugars as food. Enzymes in the yeast break the sugar down to ethanol and carbon dioxide gas; this process is **fermentation**:',{keepNext:true}));
+c.push(eqP('C_{6}H_{12}O_{6} (glucose)   →   2 C_{2}H_{5}OH (ethanol)  +  2 CO_{2}(g)',{keepNext:true}));
+c.push(P('In this experiment, the sugar solution and yeast are placed in a **fermentation tube**, which has a closed vertical arm and an open bulb with an open neck (Figure 1). The closed arm starts completely full of liquid. If the sugar ferments, CO_{2} bubbles rise and collect at the top of the closed arm, pushing the liquid down. That gas pocket is a positive result. If air is trapped in the arm at the start, it looks just like CO_{2}, so the arm must be bubble-free.',{keepNext:true}));
+c.push(...img(F+'fig8_4.png',400,241,'**Figure 1:** Fermentation tubes: negative (left) and positive (right).'));
+c.push(P('Yeast ferments glucose and fructose. It also ferments sucrose, because yeast has an enzyme (invertase) that first splits sucrose into glucose and fructose. Yeast does not have the enzyme that splits lactose, and it ferments galactose very slowly or not at all during one lab period, so lactose and galactose give negative results. Yeast does ferment maltose, because it has an enzyme that splits maltose into two glucose units, although maltose may start more slowly than glucose. Yeast also cannot break down starch, so starch is negative.'));
+c.push(h3('B. Benedict’s Test for Reducing Sugars'));
+c.push(P('**Benedict’s reagent** is a clear blue solution of copper(II) ions (Cu^{2+}) in a basic sodium carbonate and sodium citrate solution. When it is heated with a sugar that has an aldehyde group, the aldehyde is **oxidized** to a carboxylic acid (as its carboxylate ion in the basic solution), and the blue Cu^{2+} is **reduced** to copper(I) oxide (Cu_{2}O), a brick-red solid:',{keepNext:true}));
+c.push(eqP('R–CHO  +  2 Cu^{2+}  +  5 OH^{–}   →   R–COO^{–}  +  Cu_{2}O(s)  +  3 H_{2}O',{after:40,keepNext:true}));
+c.push(eqP('*sugar (aldehyde)  +  blue copper(II) ions   →   oxidized sugar  +  brick-red solid*',{after:160,size:20}));
+c.push(P('Because these sugars reduce Cu^{2+}, they are called **reducing sugars**. The color you see depends on how much Cu_{2}O forms: a small amount of reducing sugar gives a **green** mixture (yellow solid mixed with blue solution), and more sugar gives **yellow**, then **orange**, then a **brick-red** solid. A sample that stays clear blue is negative.'));
+c.push(P('Any sugar whose ring can open is a reducing sugar. This includes all common monosaccharides and the disaccharides that have a free hemiacetal –OH, such as maltose (Figure 2) and lactose.'));
+c.push(P('**Sucrose is not a reducing sugar.** Its glycosidic bond joins the anomeric carbon of glucose (C1) to the anomeric carbon of fructose (C2), so neither ring has a free hemiacetal –OH and neither ring can open (Figure 2). Starch has only one free end on each very long chain, so it gives little or no color with Benedict’s reagent.',{keepNext:true}));
+c.push(...img(F+'fig8_2.png',480,345,'**Figure 2:** Haworth structures of maltose (a reducing sugar) and sucrose (a nonreducing sugar).'));
+c.push(P('**Ketoses** such as fructose have no aldehyde group, but they are also reducing sugars. In the basic Benedict’s solution, a ketose rearranges through an **enediol** intermediate into an aldose (Figure 3), and that aldehyde is then oxidized. (Fructose can form glucose or mannose this way.)',{keepNext:true}));
+c.push(...img(F+'fig8_3.png',500,151,'**Figure 3:** In basic solution, a ketose rearranges to an aldose through an enediol (C1 and C2 shown).'));
+c.push(h3('C. Seliwanoff’s Test for Ketoses'));
+c.push(P('**Seliwanoff’s reagent** is a colorless solution of 0.05% resorcinol in hydrochloric acid (3–6 M). Hot acid removes water molecules from six-carbon sugars (dehydration) to form a compound called hydroxymethylfurfural, which then combines with resorcinol to give a red color. **Ketoses react much faster than aldoses.** With a ketose such as fructose, a **deep red** color forms within about 1 minute of heating. Aldoses such as glucose and galactose react slowly: the solution is still colorless at 1 minute and turns only **light pink** after several minutes. A sample that stays colorless is negative, so record each result as fast, slow, or no color change.'));
+c.push(P('Sucrose is not a ketose, but it contains a fructose unit. The hot HCl in the reagent hydrolyzes sucrose into glucose and fructose (section E), so sucrose also gives a red color, often almost as quickly as fructose. The test is most sensitive for fructose.'));
+c.push(h3('D. Iodine Test for Polysaccharides'));
+c.push(P('**Iodine reagent** is iodine (I_{2}) dissolved in potassium iodide solution, which is **yellow-brown**. The long, unbranched chains of **amylose** coil into a helix. Iodine fits inside the helix and forms a **blue-black** complex, so a blue-black color is a positive test for starch. The branched polysaccharides **amylopectin** and **glycogen** have only short coiled sections, so they give **red-purple to red-brown** colors; this is also a positive (+) iodine test, for a branched polysaccharide. Monosaccharides and disaccharides are too small to hold iodine, and cellulose does not form the complex, so these samples stay the yellow-brown color of the reagent (negative). The blue-black color fades when the mixture is hot, so do the iodine test at room temperature.'));
+c.push(h3('E. Hydrolysis of Disaccharides and Polysaccharides'));
+c.push(P('**Hydrolysis** is the reverse of the reaction that forms a glycosidic bond: water breaks the bond and splits the carbohydrate into smaller sugars. In the laboratory, the reaction is carried out by heating with an acid (H^{+}) catalyst. For example, sucrose is hydrolyzed to glucose and fructose:',{keepNext:true}));
+c.push(eqP('sucrose  +  H_{2}O   →   glucose  +  fructose      (H^{+}, heat)'));
+c.push(P('Starch is hydrolyzed in steps: first to shorter chains (dextrins), then to maltose, and finally to glucose. In the body, the enzyme amylase in saliva and from the pancreas carries out the same hydrolysis, and enzymes in the small intestine finish the job. The glucose produced supplies energy; carbohydrates provide roughly half of the calories in a typical diet.'));
+c.push(P('You can follow hydrolysis with the tests above. As starch is hydrolyzed, its amylose chains are cut into pieces too short to hold iodine, so the blue-black iodine color fades or disappears. Hydrolysis of sucrose releases glucose and fructose, which are reducing sugars, so a sample that was negative with Benedict’s reagent becomes positive. Because Benedict’s reagent must be basic to work, the acid in the hydrolyzed samples is first **neutralized** with sodium hydroxide (NaOH). Red litmus paper turning blue shows that the acid is used up. Add NaOH only until this happens, because excess base also destroys the iodine color and gives a false negative iodine test. The tubes heated with water instead of acid are **controls** that show what happens without the acid catalyst.'));
+c.push(h3('F. Testing Foods for Carbohydrates'));
+c.push(P('The same tests can show which carbohydrates are in foods such as table sugar, honey, fruit juice, milk, flour, cereal, bread, crackers, and pasta. For example, a blue-black iodine test shows starch, a positive Benedict’s test shows reducing sugars (such as glucose, fructose, maltose, or lactose), and a fast red Seliwanoff’s test shows fructose or sucrose. Use the results from Parts B–D as your reference.'));
 // Hazards
 c.push(h3('Hazards and Safety Instructions'));
-c.push(P('This experiment uses molecular model kits, drawings, and reference sources only. No chemicals are dispensed.',{after:100}));
-c.push(bullet('**Eye Protection:** Wear safety goggles if other experiments or chemicals are in use in the room, or as your instructor directs. Gloves are not needed for model building.'));
-c.push(bullet('**General Lab Rules:** Follow all of the usual lab rules, including no food or drink in the lab. Do not taste any sugar samples in the lab.'));
-c.push(bullet('**Small Parts:** Model pieces are small. Never put them in your mouth, and pick up any that fall on the floor so no one slips on them.'));
-c.push(bullet('**Bending Bonds:** Flexible bonds (used for double bonds and rings) can snap if bent too far. Bend them gently and point the model away from your face.'));
-c.push(bullet('**Stockroom Models:** Handle any prebuilt sugar models from the stockroom gently, and do not take them apart unless your instructor says so.'));
+c.push(P('Wear safety goggles at all times. Wear gloves when handling Seliwanoff’s reagent, HCl, NaOH, Benedict’s reagent, and iodine reagent.',{after:100}));
+c.push(bullet('**Corrosive Acids and Bases:** Seliwanoff’s reagent is made with **hydrochloric acid**, which is corrosive to skin and eyes, and it also contains resorcinol, which is harmful and irritating. Dispense it carefully with gloves on, and keep the mouth of the test tube pointed away from everyone while it heats. 10% HCl and 10% NaOH (Part E) also burn skin and eyes. If any gets on your skin or in your eyes, rinse with water for 15 minutes and tell your instructor.'));
+c.push(bullet('**Heavy Metal (Benedict’s Reagent):** Benedict’s reagent contains copper(II) sulfate, which is harmful if swallowed, irritates skin and eyes, and is toxic to aquatic life. Never pour it down the drain.'));
+c.push(bullet('**Staining and Irritating (Iodine Reagent):** Iodine reagent stains skin and clothing and can irritate skin and eyes.'));
+c.push(bullet('**Thermal Hazards:** The boiling water bath can cause steam burns, and hot test tubes can crack or splash. Move test tubes with a test tube holder or tongs, never heat a stoppered tube, and set hot glassware on a wire mesh to cool. Check glassware for cracks before heating, and do not let the water bath boil dry or boil over.'));
+c.push(bullet('**Do Not Eat or Taste:** The food samples are laboratory materials once they are in the lab. Never taste any sample or reagent.'));
 c.push(h3('Waste Instructions'));
-c.push(bullet('**No chemical waste** is produced in this experiment.'));
-c.push(bullet('**Model kit:** take every model apart, and return all atoms and bonds to the correct compartments of the kit. Count the pieces against the kit list (or as your instructor directs), and report missing or broken pieces to your instructor. Return any stockroom models in one piece.'));
-c.push(bullet('**Trash:** scrap paper and broken model pieces (show broken pieces to your instructor first).'));
+c.push(bullet('**Drain, with plenty of water:** the contents of the fermentation tubes (yeast and sugar solution, Part A).'));
+c.push(bullet('**Halogenated waste container:** every iodine test (the spot plate from Part D, E.3, and F.4). Rinse the spot plate with a small amount of acetone into the same container.'));
+c.push(bullet('**Aqueous waste container:** all Benedict’s test tubes (Part B, E.4, F.2), which contain dissolved copper and sugars in water. Rinse each tube with a little water into the same container.'));
+c.push(bullet('**Non-halogenated organic waste container:** all Seliwanoff’s test tubes (Part C, F.3), which contain resorcinol (an organic reagent) and HCl. Rinse each tube with a little water into the same container. Never pour Benedict’s or Seliwanoff’s reagent down the drain.'));
+c.push(bullet('**Trash:** used litmus paper and leftover solid food samples.'));
 // Procedure
-c.push(h2('Procedure',{pageBreak:true,before:0}));
-c.push(note('Instructor Notes:','Give each pair of students one model kit with at least 6 carbon atoms, 12 hydrogen atoms, 6 oxygen atoms, and 2 flexible bonds, so they can build both glyceraldehyde models at once. If a prebuilt maltose model is available from the stockroom, set it out for B.1. Before lab, a short review of chiral carbons and of hemiacetal formation (an alcohol adding to an aldehyde or ketone) helps students with Parts A and B. Initial each group’s report sheet at the A.1 Instructor check.'));
-c.push(h3('A. Monosaccharides'));
-c.push(materials('Molecular model kit'));
-c.push(step('A.1','Build a model of glyceraldehyde, HOCH_{2}CH(OH)CHO. Start with the central carbon and attach four different groups to it: –CHO (a carbon with a double-bonded oxygen and an H), –CH_{2}OH, –OH, and –H. Hold the model so the –CHO group is at the top and the –CH_{2}OH group is at the bottom, with both pointing away from you, and the –H and –OH pointing toward you. This is the Fischer projection orientation. Then build a second model that is the mirror image of the first. Try to place one model exactly on top of the other so that all four groups match. Decide which model is D-glyceraldehyde and which is L-glyceraldehyde (Figure 2), and draw the Fischer projection of each. **Instructor check:** show both models to your instructor.'));
-c.push(step('A.2','Draw the Fischer projection of D-glucose and number its carbons. Circle the chiral carbon that makes it a D sugar. Then draw the Haworth structures of α-D-glucose and β-D-glucose (Figure 3), and label the anomeric carbon in each.'));
-c.push(step('A.3','Draw the Fischer projections of D-galactose and D-fructose (Figure 1). Then draw the Haworth structure of the α anomer of each: α-D-galactose (a six-membered ring, like glucose) and α-D-fructose (a five-membered ring, closed between C5 and C2). Use the three rules in the Introduction, and label the anomeric carbon in each.'));
-c.push(h3('B. Disaccharides'));
-c.push(materials('Prebuilt maltose model (if available from the stockroom); Table 2; Figure 4'));
-c.push(step('B.1','Using Haworth structures, draw α-maltose: two α-D-glucose units joined by an α-1,4 glycosidic bond, with the free –OH on carbon 1 of the second glucose pointing down (α). Label the glycosidic bond. If a maltose model is available, compare it with your drawing.'));
-c.push(step('B.2','Write the equation for the hydrolysis of α-maltose: add H_{2}O across the glycosidic bond, and draw the two glucose molecules that form.'));
-c.push(step('B.3','Using Haworth structures, write the equation for the formation of α-lactose from **β-D-galactose** and **α-D-glucose**. Join carbon 1 of galactose to carbon 4 of glucose with a β-1,4 glycosidic bond, and show the water molecule that is released.'));
-c.push(step('B.4','Draw the Haworth structure of sucrose and circle the glycosidic bond. Label the anomeric carbon of each unit that takes part in the bond.'));
-c.push(h3('C. Polysaccharides'));
-c.push(materials('Table 3; Figures 5–7'));
-c.push(step('C.1','Draw a portion of amylose using four α-D-glucose units. Label each glycosidic bond, and put brackets around one repeating unit.'));
-c.push(step('C.2','Draw a portion of amylopectin that shows one branch point: two glucose units of the main chain and one glucose unit of the branch. Label the α-1,4 and α-1,6 glycosidic bonds. Describe how the structure of amylopectin differs from the structure of amylose.'));
-c.push(step('C.3','Draw a portion of cellulose using four β-D-glucose units. Label each glycosidic bond.'));
+c.push(h2('Procedure',{before:360}));
+c.push(note('Instructor Notes:','Start Part A first, because the fermentation tubes need time. At the beginning of lab, each group sets up a **boiling water bath** at its bench: a 400-mL beaker about half full of water on a hot plate. This bath is used in Parts B, C, E, and F. The fermentation tubes go in the large classroom water bath, which should be warm (about 37 °C, or as your instructor directs), not boiling. Each student or group receives one unknown carbohydrate solution, labeled with a letter or number. Seliwanoff’s reagent is 0.05% resorcinol in 3–6 M hydrochloric acid. Use fresh baker’s yeast (small packets work well) that does not contain sorbitan monostearate, which can interfere with fermentation. Discard all carbohydrate solutions at the end of lab.'));
+c.push(h3('A. Fermentation Test'));
+c.push(materials('Fermentation tubes, baker’s yeast, balance, spatula, dropper or pipet, 2% carbohydrate solutions: glucose, fructose, sucrose, lactose, starch, and unknown'));
+c.push(step('A.1','Each group in the class will be given 1 or 2 fermentation tubes and the carbohydrate solution(s) to test. You are making samples for the entire class to observe. Label each tube with the name of its solution.'));
+c.push(step('A.2','Add about **0.2 g** of yeast to the fermentation tube, then add a small amount of your carbohydrate solution. *Your goal is to observe CO_{2} gas formation, so removing all air bubbles from the closed arm is crucial!* **Gently** tilt and rotate the tube so the solution flows into the closed arm. Use a pipet to mix the solution if any solid is stuck. Fill the rest of the tube until the closed arm is completely full and the open bulb is about ¾ full (Figure 1).'));
+c.push(step('A.3','Place the fermentation tube in the classroom water bath. During the last 30 minutes of the lab, observe all of the class’s tubes and record whether gas has collected at the top of each closed arm (none, small, or large gas pocket).'));
+c.push(h3('B. Benedict’s Test for Reducing Sugars'));
+c.push(materials('7 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, boiling water bath, Benedict’s reagent, distilled water, 2% carbohydrate solutions: glucose, fructose, sucrose, lactose, starch, and unknown'));
+c.push(step('B.1','Label seven test tubes. Place 10 drops of glucose, fructose, sucrose, lactose, starch, distilled water, and your unknown in separate tubes.'));
+c.push(step('B.2','Add 2 mL of Benedict’s reagent to each tube and mix. Heat the tubes in the boiling water bath for 3–4 minutes.'));
+c.push(step('B.3','Remove the tubes and record the color of each mixture and any solid. A green, yellow, orange, or brick-red color or solid shows a reducing sugar (+); clear blue is negative (–). The water tube shows what a negative test looks like.'));
+c.push(h3('C. Seliwanoff’s Test for Ketoses'));
+c.push(materials('7 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, boiling water bath, timer, Seliwanoff’s reagent, distilled water, 2% carbohydrate solutions: glucose, fructose, sucrose, lactose, starch, and unknown'));
+c.push(step('C.1','Label seven test tubes. Place 10 drops of glucose, fructose, sucrose, lactose, starch, distilled water, and your unknown in separate tubes. Add 2 mL of Seliwanoff’s reagent to each.'));
+c.push(caution('Seliwanoff’s reagent contains hydrochloric acid. Wear gloves, dispense it carefully, and keep the tubes pointed away from everyone.'));
+c.push(step('C.2','Place all of the test tubes in the boiling water bath at the same time and start a timer. After **1 minute**, record the color in each tube. A deep red color that forms this quickly shows a ketose.'));
+c.push(step('C.3','Keep heating and record the colors again at **5 minutes**. Classify each result as a **fast** color change (red by 1 minute), a **slow** color change (pink or red only by 5 minutes), or **no** color change.'));
+c.push(h3('D. Iodine Test for Polysaccharides'));
+c.push(materials('Spot plate, iodine reagent, acetone (for rinsing the spot plate), 2% carbohydrate solutions (in bottles with a pipet for each; dropper bottles are not used because the solutions grow mold): glucose, fructose, sucrose, lactose, starch, and unknown'));
+c.push(step('D.1','Place 5 drops of glucose, fructose, sucrose, lactose, starch, and your unknown in separate wells of a spot plate. Record which well holds which sample. Add 1 drop of iodine reagent to each well.'));
+c.push(step('D.2','Record the color in each well. A blue-black color is a positive test for amylose (starch). Red-purple or red-brown is also positive (+) and indicates a branched polysaccharide (amylopectin or glycogen). Yellow-brown (the color of the reagent) is negative.'));
+c.push(step('D.3','Complete this step after you read the fermentation tubes in A.3 (during the last 30 minutes of lab). Use your results from Parts A–D to identify your unknown carbohydrate.'));
+c.push(h3('E. Hydrolysis of Disaccharides and Polysaccharides'));
+c.push(materials('4 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, boiling water bath, stirring rod, spot plate, 10% HCl, 10% NaOH, red litmus paper, distilled water, iodine reagent, Benedict’s reagent, 2% carbohydrate solutions: sucrose and starch'));
+c.push(step('E.1','Place 3 mL of 2% starch in each of two test tubes and 3 mL of 2% sucrose in each of two more test tubes. To one sucrose tube and one starch tube, add 20 drops of 10% HCl. To the other two tubes, add 20 drops of distilled water. Label the four tubes and heat them in the boiling water bath for 10 minutes.'));
+c.push(step('E.2','Remove the test tubes from the water bath and let them cool. To each tube that contains HCl, add 10% NaOH one drop at a time (about 20–25 drops, until the litmus paper turns blue), mixing after each few drops. Touch a stirring rod to the mixture and then to red litmus paper. Stop adding NaOH as soon as the litmus paper turns blue; this shows that the HCl has been neutralized. Rinse the stirring rod between tubes.'));
+c.push(step('E.3','**Iodine test:** Place 5 drops of each of the four solutions in separate wells of a spot plate. Add 1 drop of iodine reagent to each. Record the colors and decide whether hydrolysis occurred in each.'));
+c.push(step('E.4','**Benedict’s test:** Add 2 mL of Benedict’s reagent to each of the four test tubes and heat them in the boiling water bath for 3–4 minutes. Record the colors and decide whether hydrolysis occurred in each.'));
+c.push(h3('F. Testing Foods for Carbohydrates'));
+c.push(materials('3 test tubes, test tube rack, test tube holder, spatula, distilled water, boiling water bath, spot plate, a food product (provided by your instructor), Benedict’s reagent, Seliwanoff’s reagent, iodine reagent'));
+c.push(step('F.1','Record the name of your food product. Place a small amount of it (about the size of a pea, or 10 drops of a liquid) in each of three test tubes. Add a small amount of distilled water (about 2 mL) to each and mix until most of the food has dissolved or is well dispersed.'));
+c.push(step('F.2','**Benedict’s test:** Add 2 mL of Benedict’s reagent to the first tube and heat in the boiling water bath for 3–4 minutes. Record your results.'));
+c.push(step('F.3','**Seliwanoff’s test:** *Cautiously* add 2 mL of Seliwanoff’s reagent to the second tube. Heat in the boiling water bath for 1 minute. Record your results.'));
+c.push(step('F.4','**Iodine test:** Place 5 drops of the mixture from the third tube in a well of a spot plate. Add 1 drop of iodine reagent. Record your results.'));
 // Pre-lab
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
-const PL=[['1.','This experiment uses no chemicals. Give two safety rules that still apply, and describe what you must do with your model kit at the end of lab.',1050],
- ['2.','What does the D in D-glucose mean? Which carbon of glucose do you look at to decide whether it is D or L?',1050],
- ['3.','In A.1, how will you hold your glyceraldehyde model so that you can draw its Fischer projection? Which bonds point toward you?',1050],
- ['4.','In a Haworth structure of D-glucose, how can you tell the α anomer from the β anomer? Which carbon is the anomeric carbon?',1050],
- ['5.','Using Table 2, name the two monosaccharides that make up lactose and the type of glycosidic bond that joins them.',1050],
- ['6.','Amylose and cellulose are both unbranched chains of glucose. What is the difference between their glycosidic bonds, and why can humans digest one but not the other?',1050],
- ['7.','Which polysaccharide do animals use to store glucose, and where in the body is it stored?',0]];
+const PL=[['1.','Seliwanoff’s reagent contains hydrochloric acid. Give two precautions you will take when you add it and heat it, and name the waste container its test tubes go in.',603],
+ ['2.','Where does each of the following go at the end of lab? (a) the fermentation tube contents (b) the spot plate from the iodine tests (c) the Benedict’s test tubes. Why must Benedict’s reagent never be poured down the drain?',682],
+ ['3.','Describe what a positive and a negative Benedict’s test look like. In a positive test, which substance is oxidized, which is reduced, and what forms the colored solid?',682],
+ ['4.','Fructose has no aldehyde group, yet it gives a positive Benedict’s test. Sucrose contains a fructose unit, yet it gives a negative Benedict’s test. Explain both results.',682],
+ ['5.','In Seliwanoff’s test, sample X turns deep red after 1 minute, and sample Y is colorless at 1 minute but light pink at 5 minutes. What does each result tell you? Why can sucrose also turn red in this test?',682],
+ ['6.','In A.2, why must all of the air be removed from the closed arm of the fermentation tube? What will you see in the tube if a sugar ferments?',603],
+ ['7.','In Part E, why must the HCl tubes be neutralized before the Benedict’s test, and why do you stop adding NaOH as soon as the litmus paper turns blue? What is the purpose of the tubes heated with water?',0]];
 PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space(sp));});
 // Report
 c.push(h2('Report Sheet',{pageBreak:true,before:0,rule:true}));
 c.push(...nameBlock());
-const hdr=t=>({t,span:2,align:AlignmentType.LEFT});
-const two=(hd,a,b,h)=>table([4680,4680],[[hdr(hd)],[{t:'**'+a+'**'},{t:'**'+b+'**'}],['','']],{header:1,h:[0,0,h]});
-c.push(h3('A. Monosaccharides',{before:120}));
-c.push(table([4680,4680],[[hdr('A.1 Fischer projections of glyceraldehyde')],[{t:'**L-Glyceraldehyde**'},{t:'**D-Glyceraldehyde**'}],['',''],
- [{t:'**Can the two models be placed exactly on top of each other? How does L-glyceraldehyde differ from D-glyceraldehyde?**',span:2}],[{t:'',span:2}]],{header:1,h:[0,0,1760,0,968]}));
-c.push(space(120));
-c.push(checkRow('A.1','D- and L-glyceraldehyde models shown'));
-c.push(space(141));
-c.push(table([3120,3120,3120],[[{t:'A.2 D-Glucose',span:3,align:AlignmentType.LEFT}],[{t:'**Fischer projection of D-glucose** (number the carbons; circle the carbon that makes it D)'},{t:'**Haworth structure of α-D-glucose**'},{t:'**Haworth structure of β-D-glucose**'}],['','','']],{header:1,h:[0,0,2816]}));
-c.push(P('',{pageBreak:true,after:0}));
-c.push(two('A.3 D-Galactose','Fischer projection of D-galactose','Haworth structure of α-D-galactose',3000)); c.push(space(141));
-c.push(two('A.3 D-Fructose','Fischer projection of D-fructose','Haworth structure of α-D-fructose',3000));
-c.push(h3('B. Disaccharides',{pageBreak:true,before:0}));
-const box=(hd,h,extra)=>{const rows=[[{t:hd,align:AlignmentType.LEFT}],['']]; const hs=[0,h]; if(extra){rows.push([extra]); hs.push(450);} return table([9360],rows,{header:1,h:hs});};
-c.push(box('B.1 Haworth structure of α-maltose',2050,'Type of glycosidic bond: ______________________')); c.push(space(141));
-c.push(box('B.2 Equation for the hydrolysis of α-maltose',1700));
-c.push(space(141));
-c.push(box('B.3 Equation for the formation of α-lactose from β-D-galactose and α-D-glucose',2150));
-c.push(space(141));
-c.push(box('B.4 Haworth structure of sucrose (circle the glycosidic bond)',1900,'The glycosidic bond joins carbon ____ of ______________ to carbon ____ of ______________.'));
-c.push(h3('C. Polysaccharides',{pageBreak:true,before:0}));
-c.push(box('C.1 A portion of amylose (four α-D-glucose units; label the bonds and bracket one repeating unit)',2700)); c.push(space(141));
-c.push(table([9360],[[{t:'C.2 A portion of amylopectin with one branch point (label the α-1,4 and α-1,6 bonds)',align:AlignmentType.LEFT}],[''],['**How does amylopectin differ from amylose?**'],['']],{header:1,h:[0,2640,0,968]})); c.push(space(141));
-c.push(box('C.3 A portion of cellulose (four β-D-glucose units; label the bonds)',2700));
+c.push(h3('Parts A–D: Results of the Carbohydrate Tests',{before:120}));
+c.push(P('Record the color or observation, then + (positive) or – (negative). For Seliwanoff’s test, also write fast, slow, or none in C.3.',{after:100}));
+const NA={t:'(not tested)',shade:'F2F2F2'};
+c.push(table([1500,1560,1600,1500,1600,1600],[['Sample','A.3 Fermentation (gas in closed arm?)','B.3 Benedict’s (color; + or –)','C.2 Seliwanoff’s at 1 min','C.3 Seliwanoff’s at 5 min (fast, slow, none)','D.2 Iodine (color; + or –)'],
+ ...['Glucose','Fructose','Sucrose','Lactose','Starch'].map(n=>[n,'','','','','']),['Water',NA,'','','',NA],[['Unknown','letter or number: ______'],'','','','','']],{h:820,firstColBold:true}));
+c.push(h3('D.3 Identifying the Unknown Carbohydrate',{pageBreak:true,before:0}));
+c.push(P('Unknown letter or number: ____________',{after:100}));
+c.push(table([2000,3200,4160],[['Test','Result with the unknown','Carbohydrates consistent with this result'],
+ ['A. Fermentation','',''],['B. Benedict’s','',''],['C. Seliwanoff’s','',''],['D. Iodine','','']],{h:900,firstColBold:true}));
+c.push(table([9360],[['**Identity of the unknown:** ______________________   Explain how your results rule out the other carbohydrates:']],{header:0,h:1500}));
+c.push(h3('E. Hydrolysis of Disaccharides and Polysaccharides'));
+c.push(table([2160,1800,1800,1800,1800],[['','Sucrose + H_{2}O','Sucrose + HCl','Starch + H_{2}O','Starch + HCl'],
+ ['**E.2** Litmus turned blue after NaOH? (drops of NaOH)',{t:'(no HCl)',shade:'F2F2F2'},'',{t:'(no HCl)',shade:'F2F2F2'},''],
+ ['**E.3** Iodine test (color)','','','',''],['**E.4** Benedict’s test (color)','','','',''],
+ ['Did hydrolysis occur? If so, name the products.','','','','']],{h:[0,700,800,800,1100]}));
+c.push(h3('F. Testing Foods for Carbohydrates',{pageBreak:true,before:0}));
+c.push(P('Food product: ______________________________',{after:100}));
+c.push(table([3400,5960],[['Test','Observation (color) and result (+ or –)'],
+ ['**F.2** Benedict’s test',''],['**F.3** Seliwanoff’s test (1 minute)',''],['**F.4** Iodine test',''],['Carbohydrate(s) that may be present (explain using your results)','']],{h:[0,800,800,800,1500]}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
-c.push(step('Q.1','How does the structure of D-glucose compare with the structure of D-galactose? Name the carbon where they differ, and describe the difference in both the Fischer projection and the Haworth structure.',{left:0,after:0})); c.push(space(994));
-c.push(step('Q.2','What type of glycosidic bond is found in maltose? Which carbon of each glucose unit takes part in it?',{left:0,after:0})); c.push(space(765));
-c.push(step('Q.3','Explain why maltose exists as both α and β forms, but sucrose does not.',{left:0,after:0})); c.push(space(994));
-c.push(step('Q.4','What monosaccharide forms from the complete hydrolysis of amylose? What two monosaccharides form from the complete hydrolysis of lactose?',{left:0,after:0})); c.push(space(765));
-c.push(step('Q.5','What is the difference between the structures of amylose and cellulose? Explain how this difference makes cellulose a strong structural material.',{left:0,after:0})); c.push(space(994));
-c.push(step('Q.6','A student draws the Haworth structure of a D-aldohexose with the –OH on carbon 1 pointing up. Is this the α or β anomer? If the student’s sugar is dissolved in water, what will happen to its anomers over time, and why?',{left:0,after:0})); c.push(space(994));
-c.push(step('Q.7','Glycogen and amylopectin are both branched polymers of glucose. How is glycogen different, and why is that useful when the body needs glucose quickly?',{left:0,after:0}));
+c.push(step('Q.1','From your results in Part A, which sugars give a positive fermentation test? Explain why lactose does not.',{left:0,after:0})); c.push(space(1100));
+c.push(step('Q.2','From your results in Part B, list the sugars that are reducing sugars and those that are not.',{left:0,after:0}));
+c.push(P('Reducing sugars:',{indent:{left:540},before:200,after:700})); c.push(P('Nonreducing sugars:',{indent:{left:540},after:700}));
+c.push(step('Q.3','From your results in Part C, which sugars contain a ketose or a ketose unit? Explain the result for sucrose.',{left:0,after:0})); c.push(space(1100));
+c.push(step('Q.4','From your results in Part D, which carbohydrates give a blue-black color in the iodine test? Why do the other samples not give this color?',{left:0,after:0})); c.push(space(1100));
+c.push(step('Q.5','What type of carbohydrate(s) would give each set of test results below?',{left:0,after:120}));
+c.push(P('a. A reddish-orange solid with Benedict’s reagent and a deep red color with Seliwanoff’s reagent within 1 minute.',{indent:{left:540},after:900}));
+c.push(P('b. A color change with Benedict’s reagent, a light pink color with Seliwanoff’s reagent only after 5 minutes, and no gas in the fermentation test.',{indent:{left:540},after:900}));
+c.push(P('c. No color change with Benedict’s or Seliwanoff’s reagent, but a blue-black color with iodine reagent.',{indent:{left:540},after:900}));
+c.push(step('Q.6','How do the Benedict’s test results in Part E show that hydrolysis of sucrose and starch occurred? Why do the tubes heated with water give different results?',{left:0,after:0})); c.push(space(1200));
+c.push(step('Q.7','How do the iodine test results in Part E show that hydrolysis of starch occurred?',{left:0,after:0})); c.push(space(1000));
+c.push(step('Q.8','Predict whether each carbohydrate below will give a positive (+) or negative (–) result in each test. In the iodine test, count blue-black, red-purple, and red-brown as positive (+).',{left:0,after:120,keepNext:true}));
+c.push(table([1960,1850,1850,1850,1850],[['','Benedict’s','Seliwanoff’s (1 min)','Fermentation','Iodine'],
+ ...['Glucose','Fructose','Galactose','Sucrose','Lactose','Maltose','Amylose','Amylopectin'].map(n=>[n,'','','',''])],{h:520,firstColBold:true}));
 build(c,OUT).then(()=>console.log('wrote',OUT));

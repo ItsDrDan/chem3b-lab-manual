@@ -1,6 +1,6 @@
 import json,sys
 rows=[l.rstrip('\n') for l in open(sys.argv[1])]
-titles=['To the Student','Laboratory Safety','Laboratory Safety Agreement','Chemical Waste Disposal','Laboratory Notebooks and Reports','Measurements and Uncertainty']+[f'Experiment #{n}:' for n in range(1,17)]+['Workshop:']+[f'Appendix {x}:' for x in 'ABCDEF']
+titles=['To the Student','Laboratory Safety','Laboratory Safety Agreement','Chemical Waste Disposal','Laboratory Notebooks and Reports','Measurements and Uncertainty']+[f'Experiment #{n}:' for n in range(1,16)]+['Workshop: Types','Workshop: Chirality']+[f'Appendix {x}:' for x in 'ABCDEF']
 found={}
 for l in rows:
     p=int(l[:3]); head=l[16:63].strip()

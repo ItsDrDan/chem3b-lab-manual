@@ -62,7 +62,7 @@ c.push(xtable([2700,6660],[['Item','What it is used for'],
  ['**Mortar and pestle**','Grinding a solid, such as a tablet, into a fine powder.'],
  ['**Wash bottle**','Rinsing glassware and adding small amounts of distilled water.'],
  ['**Hot plate**','Heating water baths and solutions without an open flame. The surface stays hot after it is turned off.'],
- ['**TLC plate and developing chamber**','Thin-layer chromatography: the plate stands in a shallow layer of solvent in a covered beaker (Experiments #11, #12, and #16).'],
+ ['**TLC plate and developing chamber**','Thin-layer chromatography: the plate stands in a shallow layer of solvent in a covered beaker (Experiments #10, #11, and #15).'],
  ['**Ring stand with ring and clamp**','Holding a funnel, flask, or buret (with a buret clamp) at a fixed height.']],{}));
 
 // ======================= APPENDIX B =======================
@@ -199,7 +199,7 @@ c.push(note('In a polar covalent bond, the more electronegative atom carries a p
 // ======================= APPENDIX E =======================
 c.push(ptitle('Appendix E: Biomolecules Reference Sheet'));
 c.push(h3('E.1 Monosaccharides',{before:120}));
-c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with C1 at the top, so the carbonyl carbon is as near the top as possible; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Experiment #8).',{keepNext:true}));
+c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with C1 at the top, so the carbonyl carbon is as near the top as possible; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Workshop: Types of Carbohydrates).',{keepNext:true}));
 c.push(...fig(F+'figapp_e1.png','**Figure E.1:** The D-aldoses with three to six carbons.'));
 c.push(...fig(F+'figapp_e2.png','**Figure E.2:** Dihydroxyacetone and the D-ketoses with four to six carbons. Dihydroxyacetone has no chirality center, so it is neither D nor L.'));
 c.push(h3('E.2 The 20 Common Amino Acids',{pageBreak:true,before:0}));
@@ -219,7 +219,7 @@ c.push(xtable([1872,1872,1872,1872,1872],[
  ['Asp','Glu','Lys','Arg','His'].map(aa)],{header:1,repeat:false}));
 c.push(note('Some textbooks place glycine, cysteine, tyrosine, or tryptophan in a different class, because their side chains are only weakly polar or weakly nonpolar. The essential amino acids for adults (which must come from the diet) are His, Ile, Leu, Lys, Met, Phe, Thr, Trp, and Val.'));
 c.push(h3('E.3 Common Fatty Acids'));
-c.push(P('Fatty acids are long-chain carboxylic acids, usually with an even number of carbons. Table E.2 gives each fatty acid’s number of carbons and C=C double bonds (for example, 18:1 means 18 carbons and one double bond), the positions of its double bonds counted from the carboxyl carbon (C1), and its omega (ω) family, which gives the position of the first double bond counted from the CH_{3} end. The double bonds in natural fatty acids are *cis*, which bends the chain. The melting points match Table 2 in Experiment #10, which lists all of these fatty acids except arachidonic acid.',{keepNext:true}));
+c.push(P('Fatty acids are long-chain carboxylic acids, usually with an even number of carbons. Table E.2 gives each fatty acid’s number of carbons and C=C double bonds (for example, 18:1 means 18 carbons and one double bond), the positions of its double bonds counted from the carboxyl carbon (C1), and its omega (ω) family, which gives the position of the first double bond counted from the CH_{3} end. The double bonds in natural fatty acids are *cis*, which bends the chain. The melting points match Table 2 in Experiment #9, which lists all of these fatty acids except arachidonic acid.',{keepNext:true}));
 c.push(cap('**Table E.2: Structures of Some Common Fatty Acids**'));
 c.push(xtable([2560,6800],[['Fatty acid','Structure (skeletal formula)'],
  ...[['Lauric acid','12:0','saturated','','44','lauric'],['Myristic acid','14:0','saturated','','54','myristic'],['Palmitic acid','16:0','saturated','','63','palmitic'],['Stearic acid','18:0','saturated','','70','stearic'],

@@ -21,7 +21,7 @@ c.push(bullet('**Wedges and dashes:** a solid wedge points toward you, a dashed 
 c.push(bullet('**Fischer projection:** the carbon chain is drawn vertically, with C1 at the top, so the carbonyl carbon (the most oxidized end) is as near the top as possible. Horizontal lines point toward you, and vertical lines point away from you.'));
 c.push(bullet('**D and L sugars:** look at the chiral carbon farthest from the carbonyl group (the one just above the bottom –CH_{2}OH). If its –OH points to the **right**, the sugar is **D**; to the **left**, it is **L**. The enantiomer of a D sugar is the L sugar, with every chiral carbon reversed.'));
 c.push(h3('Sugar Rings: Hemiacetals, Hemiketals, Acetals, and Ketals'));
-c.push(P('When a sugar forms a ring, the –OH on one carbon adds to the carbonyl group (Experiment #8 and Appendix E). Look at the carbon that is bonded to **two oxygen atoms** (the anomeric carbon):'));
+c.push(P('When a sugar forms a ring, the –OH on one carbon adds to the carbonyl group (Workshop: Types of Carbohydrates and Appendix E). Look at the carbon that is bonded to **two oxygen atoms** (the anomeric carbon):'));
 c.push(table([2600,6760],[['Group on the anomeric carbon','Name'],
  ['–OH and –OR, plus an H','**Hemiacetal** (formed from an aldehyde)'],
  ['–OH and –OR, no H (two carbon groups)','**Hemiketal** (formed from a ketone)'],
