@@ -23,7 +23,7 @@ APXT = {'Appendix A:':'Appendix A: Common Laboratory Equipment','Appendix B:':'A
  'Appendix E:':'Appendix E: Biomolecules Reference Sheet','Appendix F:':'Appendix F: Periodic Table and Reference Data'}
 SUBS = ['Introduction','Hazards and Safety Instructions','Waste Instructions','Procedure','Pre-Lab Questions',
  'Report Sheet: Data Collection','Post-Lab Report: Questions and Problems']
-AUTH = 'Daniel Kwasniewski, Ph.D. and Alexandra Aloia'
+AUTH = 'Alexandra Aloia and Daniel Kwasniewski, Ph.D.'
 ROMAN = {'i':1,'ii':2,'iii':3,'iv':4,'v':5,'vi':6,'vii':7,'viii':8,'ix':9,'x':10}
 
 src = PdfReader(sys.argv[1]); N = len(src.pages)

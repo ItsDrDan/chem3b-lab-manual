@@ -1,6 +1,6 @@
 # CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry
 
-**Daniel Kwasniewski, Ph.D. and Alexandra Aloia**
+**Alexandra Aloia and Daniel Kwasniewski, Ph.D.**
 
 **Website:** https://itsdrdan.github.io/chem3b-lab-manual/
 
@@ -52,7 +52,7 @@ Every experiment, and the Types of Carbohydrates workshop, has the same parts: G
 
 Suggested attribution:
 
-> *CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry* by Daniel Kwasniewski and Alexandra Aloia, licensed under CC BY 4.0. https://github.com/ItsDrDan/chem3b-lab-manual
+> *CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry* by Alexandra Aloia and Daniel Kwasniewski, licensed under CC BY 4.0. https://github.com/ItsDrDan/chem3b-lab-manual
 
 If you adapt the manual, say what you changed. Every figure in the manual is original and covered by the same license.
 

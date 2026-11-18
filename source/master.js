@@ -74,7 +74,7 @@ if(process.env.PART){const part=process.env.PART; const keep=sections.filter(x=>
   sections.length=0; sections.push(...keep);}
 sections.forEach(x=>delete x.__tag);
 
-const doc=new Document({evenAndOddHeaderAndFooters:true,creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:docTitle,description:'CC BY 4.0',
+const doc=new Document({evenAndOddHeaderAndFooters:true,creator:'Alexandra Aloia and Daniel Kwasniewski, Ph.D.',title:docTitle,description:'CC BY 4.0',
   features:{updateFields:!process.env.PROOF && !process.env.NOPROMPT},
   styles:{default:{document:{run:{font:TNR,size:24,language:L.LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
