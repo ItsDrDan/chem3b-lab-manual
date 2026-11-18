@@ -53,3 +53,17 @@ These changes were requested by Daniel and Alexandra. Detailed per-lab notes, wi
   - The TLC solvent (20 mL isopropyl alcohol + 10 mL 0.5 M NH₄OH on silica), with 1-butanol : acetic acid : water 4:1:1 as the fallback.
   - About 0.1% nucleobase standards.
   - Whether the detergent filtrate and strawberry pulp can go to drain or trash. Currently they go to non-halogenated organic waste and solid waste.
+
+## Decisions recorded (Daniel, 2026-11-17) and applied
+
+- **Exp 4, both 2° alcohols:** Part C now tests 2-propanol **and** 2-butanol (7 tubes). The report table, hazards and Instructor Notes are updated. Pre-lab Q4's prediction compound changed from 2-butanol to 2-pentanol, so it doesn't duplicate a tested compound.
+- **Exp 4, warm bath:** each pair sets up its own 50–60 °C water bath at the start of Part C (for practice) and uses it only for tubes still clear after 10 minutes.
+- **Exp 4, alcohol oxidation:** explained to Daniel. The chromate test was the bench oxidation; the Lucas test is a substitution. Oxidation remains in the Exp 4 introduction and models, and at the bench in Exp 5 (Tollens'). No change; a bench oxidation (e.g. KMnO₄) can be added later if wanted.
+- **Exp 5:** A.7 (ketone reduction) stays required. Q.4 now uses C₄H₈O (butanal vs 2-butanone), with "both have an unbranched carbon chain" so that 2-methylpropanal is excluded.
+- **Exp 7 (Snatoms):** the kit's nitrogen has three bonding sites. A.4 now tells students to balance an H on top of the nitrogen for the fourth group, and the Instructor Note matches. The Exp 5 and Exp 7 kit notes now say "black bond pieces" instead of "flexible bonds".
+- **Exp 13 class peptide:** at the start of lab each group tells the instructor its amino acid; the instructor writes the choices on the board (no repeats), starts the chain with Gly, and adds each condensation to a three-letter-abbreviation equation on the board. When all groups have condensed, the instructor calls groups up for hydrolysis from the C-terminus. A.2 (condensation) and A.4 (hydrolysis) each have an **Instructor stamp or signature** box (`checkRow(...,{stamp:true})`).
+- **Exp 16 TLC:** confirmed as ordinary silica-gel TLC, like Exps 11 and 12 (not spin columns). The Instructor Note now says Part C needs no new equipment: plates, capillaries, chamber and UV lamp from Exp 11, and the solvent from Exp 12.
+
+Still open: Exp 13 chain size vs class size; Exp 16 (base cards, B.7 variations, isopropyl vs ethanol, placement). Several other labs (e.g. Exp 2) still describe peg-and-hole kits rather than Snatoms (earlier decision D-14).
+
+Rebuilt after these decisions: 270 pages (Contents regenerated), Word files rebuilt, PDF re-exported and cut with `source/tools/cut_pdfs.py`, which checks every page number and section start.

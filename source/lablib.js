@@ -56,7 +56,7 @@ const gap=(n=1)=>Array.from({length:n},()=>new Paragraph({children:[],spacing:{a
 const space=tw=>new Paragraph({children:[],spacing:{before:0,after:sc('space',tw)}});
 const nameBlock=()=>[P('Name ___________________________________  Date ________________________________',{after:280}),P('Lab Partner ______________________________  Section ______________________________',{after:280})];
 // Instructor check box for a model or demonstration step: checkRow('A.3','both D and L models shown')
-const checkRow=(lab,s,o={})=>table([6560,2800],[[ '☐ **'+(lab?lab+' ':'')+'Instructor check:** '+s, 'Initials or stamp:' ]],{header:0,h:o.h??620,noscale:true});
+const checkRow=(lab,s,o={})=>table([6160,3200],[[ '☐ **'+(lab?lab+' ':'')+'Instructor check:** '+s, o.stamp?['**Instructor stamp or signature:**']:'Initials or stamp:' ]],{header:0,h:o.h??(o.stamp?900:620),noscale:true});
 // Stamp box under the Pre-Lab Questions heading, and the Lab Check-Out box that closes the Report Sheet (data collection)
 const prelabStamp=()=>[table([6160,3200],[['Name ______________________   Section ________',['**Pre-Lab check:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true}),new Paragraph({children:[],spacing:{before:0,after:140}})];
 const checkoutBox=()=>[new Paragraph({children:[],spacing:{before:0,after:160}}),table([6160,3200],[[['**Lab Check-Out** (end of data collection): ☐ bench and sink clean   ☐ equipment and kits returned   ☐ waste in the correct containers'],['**Check-out:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true})];
