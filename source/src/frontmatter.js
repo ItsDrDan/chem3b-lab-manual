@@ -23,9 +23,9 @@ function cover(F){
 
 function copyright(){
   const c=[];
-  c.push(space(2400));
+  c.push(space(2000));
   c.push(P('**CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry**',{after:80}));
-  c.push(P('Daniel Kwasniewski and Alexandra Aloia, Department of Chemistry, Fresno City College. 2026 Edition.',{after:280}));
+  c.push(P('Daniel Kwasniewski and Alexandra Aloia, Department of Chemistry, Fresno City College. 2026 Edition (Fall 2026), version 1.0, November 2026.',{after:280}));
   c.push(P('**License.** This work is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). You may share (copy and redistribute in any medium or format) and adapt (remix, transform, and build upon) this material for any purpose, including commercially, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. License text: https://creativecommons.org/licenses/by/4.0/',{after:200}));
   c.push(P('**Suggested attribution.** *CHEM 3B Laboratory Manual: Introductory Organic and Biological Chemistry* by Daniel Kwasniewski and Alexandra Aloia, Fresno City College, licensed under CC BY 4.0. https://itsdrdan.github.io/chem3b-lab-manual/',{after:200}));
   c.push(P('**Figures.** The cover illustration and all figures and structures were drawn for this edition by the authors and are covered by the same license.',{after:200}));

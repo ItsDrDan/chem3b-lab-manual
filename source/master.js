@@ -24,15 +24,18 @@ function collect(name){
   return got[0].children;
 }
 
-const page={size:{width:12240,height:15840},margin:{top:1440,right:1440,bottom:1440,left:1440,header:708,footer:708}};
-const hdr=t=>new Header({children:[new Paragraph({alignment:AlignmentType.RIGHT,border:{bottom:{style:BorderStyle.SINGLE,size:4,color:'8EA9DB',space:4}},children:[new TextRun({text:t,font:TNR,size:18,italics:true,color:'595959'})]})]});
-const ftr=()=>new Footer({children:[new Paragraph({tabStops:[{type:TabStopType.RIGHT,position:W}],children:[new TextRun({text:'CHEM 3B Laboratory Manual',font:TNR,size:18,color:'595959'}),new TextRun({children:['\t',PageNumber.CURRENT],font:TNR,size:22})]})]});
+// Printed and bound double-sided: mirror margins with a 1.25-inch inside (binding) margin and a 0.75-inch outside margin.
+// The text width stays 6.5 inches, so the page layout is the same as with plain 1-inch margins.
+const page={size:{width:12240,height:15840},margin:{top:1440,right:1080,bottom:1440,left:1800,header:708,footer:708}};
+// Running header and page number sit on the outside edge: right on odd (right-hand) pages, left on even pages.
+const hdr=(t,even)=>new Header({children:[new Paragraph({alignment:even?AlignmentType.LEFT:AlignmentType.RIGHT,border:{bottom:{style:BorderStyle.SINGLE,size:4,color:'8EA9DB',space:4}},children:[new TextRun({text:t,font:TNR,size:18,italics:true,color:'595959'})]})]});
+const ftr=even=>new Footer({children:[new Paragraph({tabStops:[{type:TabStopType.RIGHT,position:W}],children:even?[new TextRun({children:[PageNumber.CURRENT],font:TNR,size:22}),new TextRun({text:'\tCHEM 3B Laboratory Manual',font:TNR,size:18,color:'595959'})]:[new TextRun({text:'CHEM 3B Laboratory Manual',font:TNR,size:18,color:'595959'}),new TextRun({children:['\t',PageNumber.CURRENT],font:TNR,size:22})]})]});
 const empty=()=>new Footer({children:[new Paragraph({children:[]})]});
 const emptyH=()=>new Header({children:[new Paragraph({children:[]})]});
 
 const sections=[];
 const add=(children,o={})=>sections.push({__tag:o.tag||'front',properties:Object.assign({page:Object.assign({},page,o.pageNumbers?{pageNumbers:o.pageNumbers}:{})},o.odd?{type:D.SectionType.ODD_PAGE}:{}),
-  headers:{default:o.header?hdr(o.header):emptyH()},footers:{default:o.nofoot?empty():ftr()},children});
+  headers:{default:o.header?hdr(o.header):emptyH(),even:o.header?hdr(o.header,true):emptyH()},footers:{default:o.nofoot?empty():ftr(),even:o.nofoot?empty():ftr(true)},children});
 
 // Static table of contents (page numbers measured from a Word page map; see remap.sh)
 const TOC_TITLES=[['To the Student','To the Student'],['Laboratory Safety','Laboratory Safety'],['Laboratory Safety Agreement','Laboratory Safety Agreement'],
@@ -71,7 +74,7 @@ if(process.env.PART){const part=process.env.PART; const keep=sections.filter(x=>
   sections.length=0; sections.push(...keep);}
 sections.forEach(x=>delete x.__tag);
 
-const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:docTitle,description:'CC BY 4.0',
+const doc=new Document({evenAndOddHeaderAndFooters:true,creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:docTitle,description:'CC BY 4.0',
   features:{updateFields:!process.env.PROOF && !process.env.NOPROMPT},
   styles:{default:{document:{run:{font:TNR,size:24,language:L.LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
@@ -81,4 +84,9 @@ const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',
       {id:'TOC1',name:'toc 1',basedOn:'Normal',next:'Normal',run:{font:TNR,size:24},paragraph:{spacing:{before:60,after:60}}}]},
   numbering:{config:[{reference:'bul',levels:[{level:0,format:LevelFormat.BULLET,text:'•',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:720,hanging:360}}}},{level:1,format:LevelFormat.BULLET,text:'◦',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:1440,hanging:360}}}}]}]},
   sections});
-Packer.toBuffer(doc).then(b=>{fs.writeFileSync(OUT,b);console.log('wrote',OUT,sections.length,'sections');});
+// docx cannot set mirror margins, so add <w:mirrorMargins/> to word/settings.xml after packing.
+const {unzipSync,zipSync,strFromU8,strToU8}=require('fflate');
+function mirror(buf){const z=unzipSync(new Uint8Array(buf)); let x=strFromU8(z['word/settings.xml']);
+  if(!x.includes('<w:mirrorMargins/>')) x=x.replace(/(<w:settings[^>]*>(<w:displayBackgroundShape\/>)?)/,'$1<w:mirrorMargins/>');
+  z['word/settings.xml']=strToU8(x); return Buffer.from(zipSync(z,{level:6}));}
+Packer.toBuffer(doc).then(b=>{b=mirror(b);fs.writeFileSync(OUT,b);console.log('wrote',OUT,sections.length,'sections');});

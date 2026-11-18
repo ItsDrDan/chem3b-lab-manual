@@ -2,7 +2,8 @@
 usage (from the repo root, with pypdf installed):
     python3 source/tools/cut_pdfs.py <exported full manual.pdf>
 Writes pdf/CHEM3B_Lab_Manual_OER.pdf and pdf/experiments/*.pdf, using source/tocpages.json for the section starts.
-Checks every printed page number (printed page = PDF page - 12) and every section start; stops on a mismatch.
+Checks every printed page number and every section start; stops on a mismatch. The Contents page (i) and printed page 1
+are found from the footers, so the front-matter length can change.
 The manual is laid out for binding: a blank page backs the cover, and every lab, the workshop and the appendices
 start on a right-hand (odd) page, so Word adds fully blank pages (no header or number) where needed. Those blank pages
 stay in the full PDF but are left off the end of the single-section PDFs."""
@@ -11,7 +12,6 @@ from pypdf import PdfReader, PdfWriter
 from pypdf.annotations import Link
 from pypdf.generic import NameObject, TextStringObject, DictionaryObject, BooleanObject
 
-OFF = 12  # cover, blank, license, Contents (i) and front matter ii-ix come before printed page 1
 NAMES = {1:'Exp01_FunctionalGroups',2:'Exp02_StructuresOfAlkanes',3:'Exp03_Hydrocarbons',4:'Exp04_AlcoholsPhenols',
  5:'Exp05_AldehydesKetones',6:'Exp06_CarboxylicAcidsEsters',7:'Exp07_AminesAmides',8:'Exp08_TestsForCarbohydrates',
  9:'Exp09_Lipids',10:'Exp10_Aspirin',11:'Exp11_AminoAcids',12:'Exp12_PeptidesProteins',13:'Exp13_Enzymes',
@@ -30,7 +30,11 @@ src = PdfReader(sys.argv[1]); N = len(src.pages)
 toc = json.load(open('source/tocpages.json'))
 lines = [[l.strip() for l in p.extract_text().split('\n')] for p in src.pages]
 blank = {i for i in range(N) if not ''.join(lines[i]).strip()}
-bad = [i+1 for i in range(OFF, N) if i not in blank and not re.search(r'CHEM 3B Laboratory Manual\s*%d\b' % (i-OFF+1), ' '.join(lines[i]))]
+# footer number of each page: 'CHEM 3B Laboratory Manual 3' (odd pages) or '2 CHEM 3B Laboratory Manual' (even pages, mirrored)
+foot = [next((m[1] or m[2] for l in ls for m in [re.fullmatch(r'CHEM 3B Laboratory Manual\s+(\S+)|(\S+)\s+CHEM 3B Laboratory Manual', l)] if m), None) for ls in lines]
+CONTENTS = foot.index('i')  # PDF page index of the Contents page (printed i)
+OFF = foot.index('1')       # PDF page index of printed page 1 (Experiment 1)
+bad = [i+1 for i in range(OFF, N) if i not in blank and not re.search(r'CHEM 3B Laboratory Manual\s*%d\b|\b%d\s+CHEM 3B Laboratory Manual' % (i-OFF+1, i-OFF+1), ' '.join(lines[i]))]  # odd pages: title then number; even pages (mirrored): number then title
 if bad: sys.exit(f'printed page numbers do not match on PDF pages {bad[:10]}')
 nlabs = max(int(k.split('#')[1].rstrip(':')) for k in toc if k.startswith('Experiment'))
 starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc[k])+OFF-1 for k, *_ in WS] + [int(toc['Appendix A:'])+OFF-1]
@@ -40,7 +44,7 @@ for n in range(1, nlabs+1):
     if not t or not t[0].startswith(f'Experiment {n}:'): sys.exit(f'Experiment {n} does not start on PDF page {starts[n-1]+1}')
     titles[n] = t[0]
 apx = [(k, int(v)+OFF-1) for k, v in toc.items() if k.startswith('Appendix')]
-front = [('Cover',0),('License and Acknowledgments',2),('Contents',3)] + [(k, ROMAN[v]+2) for k, v in toc.items() if v in ROMAN]
+front = [('Cover',0),('License and Acknowledgments',2),('Contents',CONTENTS)] + [(k, ROMAN[v]-1+CONTENTS) for k, v in toc.items() if v in ROMAN]
 if 1 not in blank: sys.exit('PDF page 2 (back of the cover) is not blank')
 odd = [s - OFF + 1 for s in starts if (s - OFF + 1) % 2 == 0]
 if odd: sys.exit(f'sections starting on an even (left-hand) page: {odd}')
@@ -60,11 +64,10 @@ def finish(w, title):
     root[NameObject('/ViewerPreferences')] = DictionaryObject({NameObject('/DisplayDocTitle'): BooleanObject(True)})
     root[NameObject('/PageMode')] = NameObject('/UseOutlines')
 
-CONTENTS = 3  # PDF page index of the Contents page
 
 def toc_target(k):
     v = toc[k]
-    return ROMAN[v] + 2 if v in ROMAN else int(v) + OFF - 1
+    return ROMAN[v] - 1 + CONTENTS if v in ROMAN else int(v) + OFF - 1
 
 def contents_links(w):
     """Make every Contents entry clickable: a link over the whole line (title, dots, page number)."""

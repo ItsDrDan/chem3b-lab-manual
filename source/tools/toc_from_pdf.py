@@ -13,8 +13,10 @@ r = PdfReader(sys.argv[1])
 pages = []
 for p in r.pages:
     t = p.extract_text()
-    m = re.search(r'CHEM 3B Laboratory Manual\s*([ivx]+|\d+)\s*$', t.strip()) or re.search(r'CHEM 3B Laboratory Manual\s*([ivx]+|\d+)\b', t)
-    pages.append(([l.strip() for l in t.split('\n') if l.strip()], m[1] if m else None))
+    # footer: 'CHEM 3B Laboratory Manual 3' on odd pages, '2 CHEM 3B Laboratory Manual' on even pages (mirrored)
+    m = re.search(r'^\s*(?:CHEM 3B Laboratory Manual\s+([ivx]+|\d+)|([ivx]+|\d+)\s+CHEM 3B Laboratory Manual)\s*$', t, re.M)
+    ls = [l.strip() for l in t.split('\n') if l.strip() and 'CHEM 3B Laboratory Manual' not in l]
+    pages.append((ls, (m[1] or m[2]) if m else None))
 
 def heading(k, ls):
     if k.startswith('Experiment #'):

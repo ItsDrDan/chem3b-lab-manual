@@ -12,7 +12,7 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 ## Download
 
-**Full manual:** [PDF (289 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
+**Full manual:** [PDF (291 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
 
 | # | Experiment | PDF | Word | Pages |
 |---|---|---|---|---|
@@ -37,6 +37,8 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 | | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 255–277 |
 
 Page numbers are the manual's printed page numbers. Each experiment PDF and Word file keeps them (with the same running header), so a single lab matches the full manual. Every PDF has bookmarks for its sections.
+
+**Printing:** the full PDF is laid out to be printed double-sided (flip on the long edge) and bound: a 1.25-inch inside (binding) margin, a 0.75-inch outside margin, page numbers and running heads on the outside edge, and every lab, workshop and the appendices starting on a right-hand page (blank pages are added where needed). Print single labs double-sided too.
 
 **Accessibility:** the Word files have real heading levels, alt text on every figure, document language, and repeating table headers. The PDFs have bookmarks and a document language but are not yet tagged for screen readers; for a screen reader, use the Word file.
 
