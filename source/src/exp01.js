@@ -28,7 +28,7 @@ c.push(h3('Goals',{before:0}));
  'Predict the shape and bond angle, polarity, strongest intermolecular force, and molar mass of a compound.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
 c.push(P('There are millions of organic compounds, but they can be sorted into a small number of **families**. Each family has a unique structural feature called a **functional group**: a specific atom or group of atoms bonded in a specific way. Compounds with the same functional group have similar properties and undergo the same types of chemical reactions, so learning the functional groups now prepares you for the rest of the semester (hydrocarbons in Experiment #3, alcohols in #4, aldehydes and ketones in #5, carboxylic acids and esters in #6, and amines and amides in #7).'));
-c.push(P('In this lab, you will build three-dimensional models of organic compounds, practice drawing them in different two-dimensional formats, and identify their functional groups. You will also review four ideas from general chemistry that help predict how a molecule behaves: **molecular shape**, **polarity**, **intermolecular forces (IMFs)**, and **molar mass**. Everything you need is explained below, so do not worry if you have forgotten some of it.'));
+c.push(P('In this lab, you will build three-dimensional models of organic compounds, practice drawing them in different two-dimensional formats, and identify their functional groups. You will also review four ideas from general chemistry that help predict how a molecule behaves: **molecular shape**, **polarity**, **intermolecular forces (IMFs)**, and **molar mass**. Everything you need is explained in this Introduction, so do not worry if you have forgotten some of it.'));
 // ---------- A ----------
 c.push(h3('A. Structures, Functional Groups, Shape, and Molar Mass'));
 c.push(h4('Two- and Three-Dimensional Representations'));
@@ -40,7 +40,7 @@ c.push(bullet('A **condensed structural formula** groups each carbon with the hy
 c.push(bullet('A **line-angle structural formula** (also called a **line structure** or **skeletal structure**) is the simplest. C and H atoms are not written, and C–H bonds are not drawn. A carbon atom is at every corner and at every line end, and each carbon has enough hydrogens to give it four bonds. All **heteroatoms** (atoms other than C and H, such as O, N, and Cl) and the hydrogens bonded to them are written.'));
 c.push(...img(F+'fig1_2.png',624,231,'**Figure 2:** The same compound, 3-ethyl-2-methylhexane (C_{9}H_{20}), in three formats.'));
 c.push(h4('The Functional Groups'));
-c.push(P('In Figures 3–8, the atoms and bonds of each functional group are shown in blue.'));
+c.push(P('In Figures 3–8, the atoms and bonds of each functional group are highlighted in blue, and each structure is labeled with its family name.'));
 c.push(P('**Hydrocarbons** contain only carbon and hydrogen atoms. **Alkanes** contain only single bonds, **alkenes** contain at least one carbon-carbon double bond (C=C), and **alkynes** contain at least one carbon-carbon triple bond (C≡C) (Figure 3).',{keepNext:true}));
 c.push(...img(F+'fig1_3.png',560,132,'**Figure 3:** Hydrocarbons: an alkane, an alkene, and an alkyne.'));
 c.push(P('An **alkyl halide** (haloalkane) has a halogen atom (F, Cl, Br, or I) bonded to a carbon. Alkyl halides are classified by the carbon that holds the halogen: it is **primary (1°)** if that carbon is bonded to one other carbon, **secondary (2°)** if it is bonded to two, and **tertiary (3°)** if it is bonded to three (Figure 4).',{keepNext:true}));
@@ -75,7 +75,7 @@ c.push(P('The last three columns give the molecular shape.',{before:80,run:{size
 c.push(h3('B. Polarity and Intermolecular Forces'));
 c.push(P('**Bond polarity.** **Electronegativity** is the ability of an atom to attract the shared electrons in a bond. Electronegativity values (Appendix D): H 2.20, C 2.55, N 3.04, Cl 3.16, O 3.44. When the two atoms in a bond have different electronegativities (a difference of about 0.5 or more), the electrons are shared unequally and the bond is **polar**: the more electronegative atom has a partial negative charge (δ−) and the other atom has a partial positive charge (δ+). C–O, C=O, O–H, N–H, C–N, and C–Cl bonds are polar. C–C bonds are nonpolar, and **C–H bonds are treated as nonpolar** (difference 0.35).'));
 c.push(P('**Molecular polarity.** A molecule is **polar** if it has polar bonds *and* its shape does not let the bond dipoles cancel, so one end of the molecule is partly negative and the other end partly positive (a **dipole**). Carbon dioxide, CO_{2}, has two polar C=O bonds, but they point in opposite directions in the linear molecule and cancel, so CO_{2} is **nonpolar**. Water, H_{2}O, has two polar O–H bonds, and the two lone pairs on oxygen make the molecule bent, so the bond dipoles do not cancel and water is **polar** (Figure 9). Hydrocarbons contain only C–C and C–H bonds, so they are **nonpolar**. Most molecules with an O, N, or halogen atom in an unsymmetrical position are polar. Building a model helps you see whether the bond dipoles cancel.',{keepNext:true}));
-c.push(...img(F+'fig1_9.png',520,171,'**Figure 9:** Bond dipoles (red arrows point toward the δ− atom) cancel in CO_{2} but not in H_{2}O.'));
+c.push(...img(F+'fig1_9.png',520,171,'**Figure 9:** Bond dipoles (crossed arrows that point toward the δ− atom) cancel in linear CO_{2} but not in bent H_{2}O, which has a net dipole.'));
 c.push(P('**Intermolecular forces (IMFs)** are attractions *between* molecules (or between ions and molecules). The larger the partial (or full) charges, the stronger the attraction. Stronger IMFs hold molecules together more tightly, which raises boiling points and affects solubility (“like dissolves like”: polar substances dissolve in polar solvents such as water, and nonpolar substances dissolve in nonpolar solvents). IMFs also hold together the shapes of proteins and DNA in the body. Figure 10 lists the four types from strongest to weakest.',{keepNext:true}));
 c.push(...img(F+'fig1_10.png',460,179,'**Figure 10:** The four types of intermolecular forces, from strongest (top) to weakest (bottom).'));
 c.push(P('To find the **strongest IMF in a pure substance** (between two molecules of the same compound), check in this order:',{keepNext:true}));
@@ -94,25 +94,25 @@ c.push(bullet('**No chemical waste** is produced in this experiment.'));
 c.push(bullet('**Model kit:** Take all of your models apart, put every piece back in the kit, and return the kit to the front of the room (or as your instructor directs). Tell your instructor about any missing or broken pieces so the kit is complete for the next class.'));
 // ---------- Procedure ----------
 c.push(h2('Procedure',{before:360}));
-c.push(note('Instructor Notes:','No chemicals are used. Students may work with a partner (or as the instructor directs), but each student completes their own report sheet. Check each student’s completed Part A and Part B tables and initial the instructor check box (B.5). Count the kit pieces when the kits are returned.'));
+c.push(note('Instructor Notes:','No chemicals are used. Students may work with a partner (or as the instructor directs), but each student completes their own Report Sheet. Check each student’s completed Part A and Part B tables and initial the Instructor check box (B.5). Count the kit pieces when the kits are returned (Lab Check-Out).'));
 c.push(h4('The Molecular Model Kit'));
 c.push(P('A molecular model kit contains colored pieces that represent the atoms found in organic compounds. Table 3 shows a common color scheme, but colors vary from kit to kit, so check the key that comes with your kit. Each atom has the correct number of bonding sites for that element. For a **single bond**, join two atoms with one connection; for a **double bond** or **triple bond**, use two or three bond pieces (or flexible bonds), as your kit’s directions show. Lone pairs are usually not represented by pieces, so count them on paper.'));
 c.push(cap('**Table 3: Common Model Kit Atoms (check the key in your kit)**'));
 c.push(table([2340,2340,2340,2340],[['Color','Element','Number of bonds','Lone pairs (neutral)'],
  ['Black','Carbon','4','0'],['White','Hydrogen','1','0'],['Red','Oxygen','2','2'],['Blue','Nitrogen','3','1'],['Green','Halogen (F, Cl, Br, I)','1','3'],['Yellow','Sulfur','2','2'],['Purple','Phosphorus','3','1']].map((r,i)=>i?r.map(x=>({t:x,align:AlignmentType.CENTER})):r)));
-c.push(h3('A. Structure, Shape, and Molar Mass'));
+c.push(h3('A. Structures, Functional Groups, Shape, and Molar Mass'));
 c.push(materials('Molecular model kit, periodic table, calculator'));
-c.push(step('A.1','Build a model of each of the six structures (1–6) in the Part A table on your report sheet. Check that every atom has the correct number of bonds (Table 3). For a line-angle structure, first add the carbon at each corner and line end and the hydrogens that give each carbon four bonds.'));
-c.push(step('A.2','Name the functional group (family) of each compound. If it is an alkyl halide or an amine, classify it as primary (1°), secondary (2°), or tertiary (3°). A compound with only C–C and C–H single bonds (such as methane) is an alkane. Write “none” only if the compound is not organic (it has no carbon).'));
+c.push(step('A.1','Build a model of each of the six structures (1–6) in the Part A table on your Report Sheet. Check that every atom has the correct number of bonds (Table 3). For a line-angle structure, first add the carbon at each corner and line end and the hydrogens that give each carbon four bonds.'));
+c.push(step('A.2','Name the functional group (family) of each compound. If it is an alkyl halide or an amine, classify it as primary (1°), secondary (2°), or tertiary (3°). A hydrocarbon with only single bonds (such as methane) is an alkane. Write “none” only if the compound is not organic (it has no carbon).'));
 c.push(step('A.3','Determine the molecular shape and the ideal bond angle around the central atom. Count the electron groups (bonded atoms plus lone pairs) and use Table 2. If the molecule has two identical central atoms, describe either one; for a larger molecule, use the center-most atom.'));
 c.push(step('A.4','Write the molecular formula of each compound and calculate its molar mass in g/mol. Show your work.'));
 c.push(h3('B. Polarity and Intermolecular Forces'));
 c.push(materials('Molecular model kit'));
-c.push(step('B.1','Take apart your Part A models. Build a model of each of the six structures (1–6) in the Part B table on your report sheet.'));
+c.push(step('B.1','Take apart your Part A models. Build a model of each of the six structures (1–6) in the Part B table on your Report Sheet.'));
 c.push(step('B.2','Name the functional group (family) of each compound. If it is an alkyl halide or an amine, classify it as 1°, 2°, or 3°.'));
 c.push(step('B.3','Determine whether each molecule is polar (P) or nonpolar (NP). Find the polar bonds, then use the shape of your model to decide whether their dipoles cancel.'));
-c.push(step('B.4','Determine the strongest intermolecular force in the pure substance (between two molecules of the same compound), using the steps at the end of Introduction Part B.'));
-c.push(step('B.5','When both tables are complete, show your report sheet to your instructor for an instructor check. Then take apart all models, check that every piece is in the kit, and return the kit.'));
+c.push(step('B.4','Determine the strongest intermolecular force in the pure substance (between two molecules of the same compound), using the three checks under “To find the strongest IMF in a pure substance” in Introduction Part B.'));
+c.push(step('B.5','When both tables are complete, show your Report Sheet to your instructor. **Instructor check:** your instructor checks your Part A and Part B tables. Then take apart all models, check that every piece is in the kit, and return the kit.'));
 // ---------- Pre-lab ----------
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
 const PL=[['1.','Model kit pieces are small, and some kits use magnetic atoms. Give two safety precautions you must follow when using the kit, and explain the reason for each.',943],
@@ -126,17 +126,17 @@ PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space
 // ---------- Report ----------
 c.push(h2('Report Sheet',{pageBreak:true,before:0,rule:true}));
 c.push(...nameBlock());
-c.push(h3('A. Structure, Shape, and Molar Mass',{before:120}));
+c.push(h3('A. Structures, Functional Groups, Shape, and Molar Mass',{before:120}));
 c.push(dataTable([520,2600,1900,1900,2440],['','A.1 Structure (build it)','A.2 Functional group (1°, 2°, 3°?)','A.3 Shape and bond angle','A.4 Molecular formula and molar mass (show work)'],
  [['1','fig1_a1c'],['2','fig1_a2c'],['3','fig1_a3c'],['4','fig1_a4c'],['5','fig1_a5c'],['6','fig1_a6c']],1300));
-c.push(h3('B. Polarity and Intermolecular Forces',{pageBreak:true,before:0}));
+c.push(h3('B. Polarity and Intermolecular Forces',{before:240}));
 c.push(dataTable([520,2600,2240,1600,2400],['','B.1 Structure (build it)','B.2 Functional group (1°, 2°, 3°?)','B.3 Polarity (P or NP)','B.4 Strongest IMF (pure substance)'],
  [['1','fig1_b1c'],['2','fig1_b2c'],['3','fig1_b3c'],['4','fig1_b4c'],['5','fig1_b5c'],['6','fig1_b6c']],1250));
 c.push(P('',{after:120}));
-c.push(checkRow('B.5','tables complete; kit returned with all pieces ☐ yes ☐ no'));
+c.push(checkRow('B.5','Part A and Part B tables complete'));
 // ---------- Questions ----------
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
-const Q=[['Q.1','Draw compound 6 from Part A as a complete (expanded) structural formula and as a condensed structural formula. Explain your 1°, 2°, or 3° classification.',1680],
+const Q=[['Q.1','Draw compound 6 from Part A as a complete (expanded) structural formula and as a condensed structural formula. Explain why it is classified as 1°, 2°, or 3°.',1680],
  ['Q.2','Compounds 1 and 4 in Part A both have four electron groups around the central atom. Explain why they have different molecular shapes and actual bond angles. Is compound 4 an amine? Explain.',1360],
  ['Q.3','Compounds 1 and 3 in Part B have the same molecular formula, C_{2}H_{4}O_{2}. Which would you predict has the higher boiling point? Explain using the strongest IMF in each.',1200],
  ['Q.4','Explain why compounds 4 and 5 in Part B are nonpolar. Which would dissolve better in water, compound 4 or compound 1? Explain using “like dissolves like.”',1200],

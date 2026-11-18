@@ -4,15 +4,15 @@ const eqP=(s,o={})=>P(s,{align:AlignmentType.CENTER,before:80,after:o.after??160
 const c=[];
 c.push(title('Experiment #8: Tests for Carbohydrates'));
 c.push(h3('Goals',{before:0}));
-['Observe physical and chemical properties of common carbohydrates.','Use chemical tests to distinguish between monosaccharides, disaccharides, and polysaccharides, and between aldoses and ketoses.','Identify an unknown carbohydrate.','Relate the process of digestion to the hydrolysis of carbohydrates.'].forEach(s=>c.push(bullet(s)));
+['Observe physical and chemical properties of common carbohydrates.','Use chemical tests to distinguish between monosaccharides, disaccharides, and polysaccharides, and between aldoses and ketoses.','Identify an unknown carbohydrate.','Relate digestion to the hydrolysis of carbohydrates, and test a food for carbohydrates.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
 c.push(P('The structures of monosaccharides, disaccharides, and polysaccharides are covered in Workshop: Types of Carbohydrates (after Experiment #15). This experiment uses chemical tests to tell those types apart. Here is a short recap of the structural features the tests detect:',{after:100}));
 c.push(bullet('An **aldose** has an aldehyde group (–CHO) at C1; a **ketose** has a ketone group (C=O) in the chain, usually at C2. Glucose and galactose are aldoses; fructose is a ketose.'));
 c.push(bullet('In water, most monosaccharide molecules are rings. The former carbonyl carbon is the **anomeric carbon**, and the –OH on it is a **hemiacetal** –OH. A ring with a free hemiacetal –OH can open again to the chain form, which has a reactive carbonyl group.'));
 c.push(bullet('A **glycosidic bond** joins two sugar units. When an anomeric carbon is used in a glycosidic bond, that ring is locked closed. Water, with an acid or enzyme catalyst, can break a glycosidic bond (**hydrolysis**).'));
 c.push(bullet('Starch is a polysaccharide made of glucose. Its unbranched part, **amylose**, coils into a helix; its branched part, **amylopectin**, has only short coiled sections.'));
-c.push(P('Table 1 lists the carbohydrates in this experiment. See Workshop: Types of Carbohydrates for their structures.',{before:100,keepNext:true}));
-c.push(P('**Table 1: Carbohydrates Used in This Experiment**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
+c.push(P('Table 1 lists the carbohydrates that you will test or make predictions about. See Workshop: Types of Carbohydrates for their structures.',{before:100,keepNext:true}));
+c.push(P('**Table 1: Carbohydrates in This Experiment**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
 c.push(table([1600,2100,5660],[['Carbohydrate','Type','Made of'],
  ['Glucose','Monosaccharide, aldose','One glucose unit (also called dextrose or blood sugar)'],
  ['Fructose','Monosaccharide, ketose','One fructose unit (fruit sugar)'],
@@ -32,8 +32,8 @@ c.push(h3('A. Fermentation Test'));
 c.push(P('Yeast cells use some sugars as food. Enzymes in the yeast break the sugar down to ethanol and carbon dioxide gas; this process is **fermentation**:',{keepNext:true}));
 c.push(eqP('C_{6}H_{12}O_{6} (glucose)   →   2 C_{2}H_{5}OH (ethanol)  +  2 CO_{2}(g)',{keepNext:true}));
 c.push(P('In this experiment, the sugar solution and yeast are placed in a **fermentation tube**, which has a closed vertical arm and an open bulb with an open neck (Figure 1). The closed arm starts completely full of liquid. If the sugar ferments, CO_{2} bubbles rise and collect at the top of the closed arm, pushing the liquid down. That gas pocket is a positive result. If air is trapped in the arm at the start, it looks just like CO_{2}, so the arm must be bubble-free.',{keepNext:true}));
-c.push(...img(F+'fig8_4.png',400,241,'**Figure 1:** Fermentation tubes: negative (left) and positive (right).'));
-c.push(P('Yeast ferments glucose and fructose. It also ferments sucrose, because yeast has an enzyme (invertase) that first splits sucrose into glucose and fructose. Yeast does not have the enzyme that splits lactose, and it ferments galactose very slowly or not at all during one lab period, so lactose and galactose give negative results. Yeast does ferment maltose, because it has an enzyme that splits maltose into two glucose units, although maltose may start more slowly than glucose. Yeast also cannot break down starch, so starch is negative.'));
+c.push(...img(F+'fig8_4.png',400,241,'**Figure 1:** Two fermentation tubes. Negative (left): the closed arm stays full of liquid, with no gas. Positive (right): CO_{2} gas collects at the top of the closed arm.'));
+c.push(P('Yeast ferments glucose and fructose. It also ferments sucrose, because yeast has an enzyme (invertase) that first splits sucrose into glucose and fructose. Yeast also ferments maltose, because it has an enzyme that splits maltose into two glucose units, although maltose may start more slowly than glucose. Yeast does not have the enzyme that splits lactose, and it ferments galactose very slowly or not at all during one lab period, so lactose and galactose give negative results. Yeast also cannot break down starch, so starch is negative.'));
 c.push(h3('B. Benedict’s Test for Reducing Sugars'));
 c.push(P('**Benedict’s reagent** is a clear blue solution of copper(II) ions (Cu^{2+}) in a basic sodium carbonate and sodium citrate solution. When it is heated with a sugar that has an aldehyde group, the aldehyde is **oxidized** to a carboxylic acid (as its carboxylate ion in the basic solution), and the blue Cu^{2+} is **reduced** to copper(I) oxide (Cu_{2}O), a brick-red solid:',{keepNext:true}));
 c.push(eqP('R–CHO  +  2 Cu^{2+}  +  5 OH^{–}   →   R–COO^{–}  +  Cu_{2}O(s)  +  3 H_{2}O',{after:40,keepNext:true}));
@@ -45,7 +45,7 @@ c.push(...img(F+'fig8_2.png',480,345,'**Figure 2:** Haworth structures of maltos
 c.push(P('**Ketoses** such as fructose have no aldehyde group, but they are also reducing sugars. In the basic Benedict’s solution, a ketose rearranges through an **enediol** intermediate into an aldose (Figure 3), and that aldehyde is then oxidized. (Fructose can form glucose or mannose this way.)',{keepNext:true}));
 c.push(...img(F+'fig8_3.png',500,151,'**Figure 3:** In basic solution, a ketose rearranges to an aldose through an enediol (C1 and C2 shown).'));
 c.push(h3('C. Seliwanoff’s Test for Ketoses'));
-c.push(P('**Seliwanoff’s reagent** is a colorless solution of 0.05% resorcinol in hydrochloric acid (3–6 M). Hot acid removes water molecules from six-carbon sugars (dehydration) to form a compound called hydroxymethylfurfural, which then combines with resorcinol to give a red color. **Ketoses react much faster than aldoses.** With a ketose such as fructose, a **deep red** color forms within about 1 minute of heating. Aldoses such as glucose and galactose react slowly: the solution is still colorless at 1 minute and turns only **light pink** after several minutes. A sample that stays colorless is negative, so record each result as fast, slow, or no color change.'));
+c.push(P('**Seliwanoff’s reagent** is a colorless solution of 0.05% resorcinol in hydrochloric acid (3–6 M). Hot acid removes water molecules from six-carbon sugars (dehydration) to form a compound called hydroxymethylfurfural, which then combines with resorcinol to give a red color. **Ketoses react much faster than aldoses.** With a ketose such as fructose, a **deep red** color forms within about 1 minute of heating. Aldoses such as glucose and galactose react slowly: the solution is still colorless at 1 minute and turns only **light pink** after several minutes. A sample that stays colorless is negative. In Part C, you will classify each result as a fast, slow, or no color change.'));
 c.push(P('Sucrose is not a ketose, but it contains a fructose unit. The hot HCl in the reagent hydrolyzes sucrose into glucose and fructose (section E), so sucrose also gives a red color, often almost as quickly as fructose. The test is most sensitive for fructose.'));
 c.push(h3('D. Iodine Test for Polysaccharides'));
 c.push(P('**Iodine reagent** is iodine (I_{2}) dissolved in potassium iodide solution, which is **yellow-brown**. The long, unbranched chains of **amylose** coil into a helix. Iodine fits inside the helix and forms a **blue-black** complex, so a blue-black color is a positive test for starch. The branched polysaccharides **amylopectin** and **glycogen** have only short coiled sections, so they give **red-purple to red-brown** colors; this is also a positive (+) iodine test, for a branched polysaccharide. Monosaccharides and disaccharides are too small to hold iodine, and cellulose does not form the complex, so these samples stay the yellow-brown color of the reagent (negative). The blue-black color fades when the mixture is hot, so do the iodine test at room temperature.'));
@@ -92,20 +92,20 @@ c.push(step('C.3','Keep heating and record the colors again at **5 minutes**. Cl
 c.push(h3('D. Iodine Test for Polysaccharides'));
 c.push(materials('Spot plate, iodine reagent, acetone (for rinsing the spot plate), 2% carbohydrate solutions (in bottles with a pipet for each; dropper bottles are not used because the solutions grow mold): glucose, fructose, sucrose, lactose, starch, and unknown'));
 c.push(step('D.1','Place 5 drops of glucose, fructose, sucrose, lactose, starch, and your unknown in separate wells of a spot plate. Record which well holds which sample. Add 1 drop of iodine reagent to each well.'));
-c.push(step('D.2','Record the color in each well. A blue-black color is a positive test for amylose (starch). Red-purple or red-brown is also positive (+) and indicates a branched polysaccharide (amylopectin or glycogen). Yellow-brown (the color of the reagent) is negative.'));
+c.push(step('D.2','Record the color in each well. A blue-black color is a positive test for amylose (starch). Red-purple or red-brown is also positive (+) and indicates a branched polysaccharide (amylopectin or glycogen). Yellow-brown (the color of the reagent) is negative (–).'));
 c.push(step('D.3','Complete this step after you read the fermentation tubes in A.3 (during the last 30 minutes of lab). Use your results from Parts A–D to identify your unknown carbohydrate.'));
 c.push(h3('E. Hydrolysis of Disaccharides and Polysaccharides'));
 c.push(materials('4 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, boiling water bath, stirring rod, spot plate, 10% HCl, 10% NaOH, red litmus paper, distilled water, iodine reagent, Benedict’s reagent, 2% carbohydrate solutions: sucrose and starch'));
 c.push(step('E.1','Place 3 mL of 2% starch in each of two test tubes and 3 mL of 2% sucrose in each of two more test tubes. To one sucrose tube and one starch tube, add 20 drops of 10% HCl. To the other two tubes, add 20 drops of distilled water. Label the four tubes and heat them in the boiling water bath for 10 minutes.'));
-c.push(step('E.2','Remove the test tubes from the water bath and let them cool. To each tube that contains HCl, add 10% NaOH one drop at a time (about 20–25 drops, until the litmus paper turns blue), mixing after each few drops. Touch a stirring rod to the mixture and then to red litmus paper. Stop adding NaOH as soon as the litmus paper turns blue; this shows that the HCl has been neutralized. Rinse the stirring rod between tubes.'));
+c.push(step('E.2','Remove the test tubes from the water bath and let them cool. To each tube that contains HCl, add 10% NaOH one drop at a time, and mix after every few drops. After every few drops, touch a stirring rod to the mixture and then to red litmus paper. Stop adding NaOH as soon as the litmus paper turns blue (usually after about 20–25 drops); this shows that the HCl has been neutralized. Record the number of drops. Rinse the stirring rod between tubes. Do not add NaOH to the two water tubes.'));
 c.push(step('E.3','**Iodine test:** Place 5 drops of each of the four solutions in separate wells of a spot plate. Add 1 drop of iodine reagent to each. Record the colors and decide whether hydrolysis occurred in each.'));
 c.push(step('E.4','**Benedict’s test:** Add 2 mL of Benedict’s reagent to each of the four test tubes and heat them in the boiling water bath for 3–4 minutes. Record the colors and decide whether hydrolysis occurred in each.'));
 c.push(h3('F. Testing Foods for Carbohydrates'));
-c.push(materials('3 test tubes, test tube rack, test tube holder, spatula, distilled water, boiling water bath, spot plate, a food product (provided by your instructor), Benedict’s reagent, Seliwanoff’s reagent, iodine reagent'));
-c.push(step('F.1','Record the name of your food product. Place a small amount of it (about the size of a pea, or 10 drops of a liquid) in each of three test tubes. Add a small amount of distilled water (about 2 mL) to each and mix until most of the food has dissolved or is well dispersed.'));
-c.push(step('F.2','**Benedict’s test:** Add 2 mL of Benedict’s reagent to the first tube and heat in the boiling water bath for 3–4 minutes. Record your results.'));
-c.push(step('F.3','**Seliwanoff’s test:** *Cautiously* add 2 mL of Seliwanoff’s reagent to the second tube. Heat in the boiling water bath for 1 minute. Record your results.'));
-c.push(step('F.4','**Iodine test:** Place 5 drops of the mixture from the third tube in a well of a spot plate. Add 1 drop of iodine reagent. Record your results.'));
+c.push(materials('3 test tubes, test tube rack, test tube holder, spatula, dropper, distilled water, boiling water bath, spot plate, a food product (provided by your instructor), Benedict’s reagent, Seliwanoff’s reagent, iodine reagent'));
+c.push(step('F.1','Record the name of your food product. Label three test tubes 1 (Benedict’s), 2 (Seliwanoff’s), and 3 (iodine). Place a small amount of the food (about the size of a pea, or 10 drops of a liquid) in each tube. Add a small amount of distilled water (about 2 mL) to each and mix until most of the food has dissolved or is well dispersed.'));
+c.push(step('F.2','**Benedict’s test:** Add 2 mL of Benedict’s reagent to tube 1 and heat in the boiling water bath for 3–4 minutes. Record your results.'));
+c.push(step('F.3','**Seliwanoff’s test:** *Cautiously* add 2 mL of Seliwanoff’s reagent to tube 2. Heat in the boiling water bath for 1 minute. Record your results.'));
+c.push(step('F.4','**Iodine test:** Place 5 drops of the mixture from tube 3 in a well of a spot plate. Add 1 drop of iodine reagent. Record your results.'));
 // Pre-lab
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
 const PL=[['1.','Seliwanoff’s reagent contains hydrochloric acid. Give two precautions you will take when you add it and heat it, and name the waste container its test tubes go in.',603],
@@ -124,7 +124,7 @@ c.push(P('Record the color or observation, then + (positive) or – (negative). 
 const NA={t:'(not tested)',shade:'F2F2F2'};
 c.push(table([1500,1560,1600,1500,1600,1600],[['Sample','A.3 Fermentation (gas in closed arm?)','B.3 Benedict’s (color; + or –)','C.2 Seliwanoff’s at 1 min','C.3 Seliwanoff’s at 5 min (fast, slow, none)','D.2 Iodine (color; + or –)'],
  ...['Glucose','Fructose','Sucrose','Lactose','Starch'].map(n=>[n,'','','','','']),['Water',NA,'','','',NA],[['Unknown','letter or number: ______'],'','','','','']],{h:820,firstColBold:true}));
-c.push(h3('D.3 Identifying the Unknown Carbohydrate',{pageBreak:true,before:0}));
+c.push(h3('D.3 Identifying the Unknown Carbohydrate',{before:240}));
 c.push(P('Unknown letter or number: ____________',{after:100}));
 c.push(table([2000,3200,4160],[['Test','Result with the unknown','Carbohydrates consistent with this result'],
  ['A. Fermentation','',''],['B. Benedict’s','',''],['C. Seliwanoff’s','',''],['D. Iodine','','']],{h:900,firstColBold:true}));
@@ -134,7 +134,7 @@ c.push(table([2160,1800,1800,1800,1800],[['','Sucrose + H_{2}O','Sucrose + HCl',
  ['**E.2** Litmus turned blue after NaOH? (drops of NaOH)',{t:'(no HCl)',shade:'F2F2F2'},'',{t:'(no HCl)',shade:'F2F2F2'},''],
  ['**E.3** Iodine test (color)','','','',''],['**E.4** Benedict’s test (color)','','','',''],
  ['Did hydrolysis occur? If so, name the products.','','','','']],{h:[0,700,800,800,1100]}));
-c.push(h3('F. Testing Foods for Carbohydrates',{pageBreak:true,before:0}));
+c.push(h3('F. Testing Foods for Carbohydrates',{before:240}));
 c.push(P('Food product: ______________________________',{after:100}));
 c.push(table([3400,5960],[['Test','Observation (color) and result (+ or –)'],
  ['**F.2** Benedict’s test',''],['**F.3** Seliwanoff’s test (1 minute)',''],['**F.4** Iodine test',''],['Carbohydrate(s) that may be present (explain using your results)','']],{h:[0,800,800,800,1500]}));
@@ -149,9 +149,9 @@ c.push(step('Q.5','What type of carbohydrate(s) would give each set of test resu
 c.push(P('a. A reddish-orange solid with Benedict’s reagent and a deep red color with Seliwanoff’s reagent within 1 minute.',{indent:{left:540},after:900}));
 c.push(P('b. A color change with Benedict’s reagent, a light pink color with Seliwanoff’s reagent only after 5 minutes, and no gas in the fermentation test.',{indent:{left:540},after:900}));
 c.push(P('c. No color change with Benedict’s or Seliwanoff’s reagent, but a blue-black color with iodine reagent.',{indent:{left:540},after:900}));
-c.push(step('Q.6','How do the Benedict’s test results in Part E show that hydrolysis of sucrose and starch occurred? Why do the tubes heated with water give different results?',{left:0,after:0})); c.push(space(1200));
-c.push(step('Q.7','How do the iodine test results in Part E show that hydrolysis of starch occurred?',{left:0,after:0})); c.push(space(1000));
+c.push(step('Q.6','How do the iodine test results in Part E (E.3) show that hydrolysis of starch occurred? Why does the starch tube heated with water give a different result?',{left:0,after:0})); c.push(space(1200));
+c.push(step('Q.7','How do the Benedict’s test results in Part E (E.4) show that hydrolysis of sucrose and starch occurred? Why do the tubes heated with water give different results?',{left:0,after:0})); c.push(space(1000));
 c.push(step('Q.8','Predict whether each carbohydrate below will give a positive (+) or negative (–) result in each test. In the iodine test, count blue-black, red-purple, and red-brown as positive (+).',{left:0,after:120,keepNext:true}));
-c.push(table([1960,1850,1850,1850,1850],[['','Benedict’s','Seliwanoff’s (1 min)','Fermentation','Iodine'],
+c.push(table([1960,1850,1850,1850,1850],[['','Fermentation','Benedict’s','Seliwanoff’s (1 min)','Iodine'],
  ...['Glucose','Fructose','Galactose','Sucrose','Lactose','Maltose','Amylose','Amylopectin'].map(n=>[n,'','','',''])],{h:520,firstColBold:true}));
 build(c,OUT).then(()=>console.log('wrote',OUT));

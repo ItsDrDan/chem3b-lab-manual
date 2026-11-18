@@ -12,13 +12,13 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 ## Download
 
-**Full manual:** [PDF (287 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
+**Full manual:** [PDF (289 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
 
 | # | Experiment | PDF | Word | Pages |
 |---|---|---|---|---|
 | | Front matter and safety (To the Student, Laboratory Safety, Safety Agreement, Chemical Waste Disposal, Notebooks and Reports, Measurements and Uncertainty) | [PDF](pdf/experiments/00_FrontMatter_Safety.pdf) | in the full manual | i–ix |
 | 1 | Functional Groups | [PDF](pdf/experiments/Exp01_FunctionalGroups.pdf) | [Word](docx/experiments/Exp01_FunctionalGroups.docx) | 1–13 |
-| 2 | Structures of Alkanes | [PDF](pdf/experiments/Exp02_StructuresOfAlkanes.pdf) | [Word](docx/experiments/Exp02_StructuresOfAlkanes.docx) | 15–29 |
+| 2 | Structures of Alkanes | [PDF](pdf/experiments/Exp02_StructuresOfAlkanes.pdf) | [Word](docx/experiments/Exp02_StructuresOfAlkanes.docx) | 15–30 |
 | 3 | Hydrocarbons | [PDF](pdf/experiments/Exp03_Hydrocarbons.pdf) | [Word](docx/experiments/Exp03_Hydrocarbons.docx) | 31–46 |
 | 4 | Alcohols and Phenols | [PDF](pdf/experiments/Exp04_AlcoholsPhenols.pdf) | [Word](docx/experiments/Exp04_AlcoholsPhenols.docx) | 47–62 |
 | 5 | Aldehydes and Ketones | [PDF](pdf/experiments/Exp05_AldehydesKetones.pdf) | [Word](docx/experiments/Exp05_AldehydesKetones.docx) | 63–79 |
@@ -30,11 +30,11 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 | 11 | Amino Acids | [PDF](pdf/experiments/Exp11_AminoAcids.pdf) | [Word](docx/experiments/Exp11_AminoAcids.docx) | 153–166 |
 | 12 | Peptides and Proteins | [PDF](pdf/experiments/Exp12_PeptidesProteins.pdf) | [Word](docx/experiments/Exp12_PeptidesProteins.docx) | 167–180 |
 | 13 | Enzymes | [PDF](pdf/experiments/Exp13_Enzymes.pdf) | [Word](docx/experiments/Exp13_Enzymes.docx) | 181–194 |
-| 14 | Vitamins | [PDF](pdf/experiments/Exp14_Vitamins.pdf) | [Word](docx/experiments/Exp14_Vitamins.docx) | 195–208 |
-| 15 | Nucleic Acids and DNA Extraction | [PDF](pdf/experiments/Exp15_NucleicAcids.pdf) | [Word](docx/experiments/Exp15_NucleicAcids.docx) | 209–227 |
-| W | Workshop: Types of Carbohydrates (model building: monosaccharides, disaccharides, polysaccharides) | [PDF](pdf/experiments/Workshop_Carbohydrates.pdf) | [Word](docx/experiments/Workshop_Carbohydrates.docx) | 229–243 |
-| W | Workshop: Chirality Stations (directions and the 20-station answer sheet) | [PDF](pdf/experiments/Workshop_Chirality.pdf) | [Word](docx/experiments/Workshop_Chirality.docx) | 245–252 |
-| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 253–275 |
+| 14 | Vitamins | [PDF](pdf/experiments/Exp14_Vitamins.pdf) | [Word](docx/experiments/Exp14_Vitamins.docx) | 195–209 |
+| 15 | Nucleic Acids and DNA Extraction | [PDF](pdf/experiments/Exp15_NucleicAcids.pdf) | [Word](docx/experiments/Exp15_NucleicAcids.docx) | 211–229 |
+| W | Workshop: Types of Carbohydrates (model building: monosaccharides, disaccharides, polysaccharides) | [PDF](pdf/experiments/Workshop_Carbohydrates.pdf) | [Word](docx/experiments/Workshop_Carbohydrates.docx) | 231–246 |
+| W | Workshop: Chirality Stations (directions and the 20-station answer sheet) | [PDF](pdf/experiments/Workshop_Chirality.pdf) | [Word](docx/experiments/Workshop_Chirality.docx) | 247–254 |
+| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 255–277 |
 
 Page numbers are the manual's printed page numbers. Each experiment PDF and Word file keeps them (with the same running header), so a single lab matches the full manual. Every PDF has bookmarks for its sections.
 

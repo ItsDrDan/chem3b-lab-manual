@@ -16,20 +16,20 @@ function picRun(file,scale=1,maxW=1e9,alt){let [w,h]=pngSize(file);let s=Math.mi
 function fig(file,caption,scale=1){const [w,h]=pngSize(file);return img(file,Math.round(w*scale),Math.round(h*scale),caption);}
 // table with image-capable cells. cell: string | array of strings | {t, span, shade, align, bold, img:[file,scale,maxW], size}
 const bd={style:BorderStyle.SINGLE,size:6,color:'000000'}; const borders={top:bd,bottom:bd,left:bd,right:bd};
-function xcell(cv,w,hdr){
+function xcell(cv,w,hdr,keep){
   const o=(cv&&typeof cv=='object'&&!Array.isArray(cv))?cv:{t:cv};
   const kids=[];
-  if(o.img){kids.push(new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:40,after:o.t?20:40},children:[picRun(o.img[0],o.img[1]??1,o.img[2]??1e9,o.alt||('Structure: '+(Array.isArray(o.t)?o.t.join(', '):(o.t||''))))]}));}
+  if(o.img){kids.push(new Paragraph({alignment:AlignmentType.CENTER,keepNext:keep,spacing:{before:40,after:o.t?20:40},children:[picRun(o.img[0],o.img[1]??1,o.img[2]??1e9,o.alt||('Structure: '+(Array.isArray(o.t)?o.t.join(', '):(o.t||''))))]}));}
   const arr=o.t==null?[]:(Array.isArray(o.t)?o.t:[o.t]);
-  arr.forEach(t=>kids.push(new Paragraph({alignment:hdr?AlignmentType.CENTER:(o.align??(o.img?AlignmentType.CENTER:undefined)),children:runs(t,{bold:hdr||o.bold,size:o.size||20}),spacing:{after:0}})));
-  if(!kids.length)kids.push(new Paragraph({children:[]}));
+  arr.forEach(t=>kids.push(new Paragraph({alignment:hdr?AlignmentType.CENTER:(o.align??(o.img?AlignmentType.CENTER:undefined)),children:runs(t,{bold:hdr||o.bold,size:o.size||20}),keepNext:keep,spacing:{after:0}})));
+  if(!kids.length)kids.push(new Paragraph({keepNext:keep,children:[]}));
   return new TableCell({borders,width:{size:w,type:WidthType.DXA},columnSpan:o.span,verticalAlign:o.valign||VerticalAlign.CENTER,
     shading:(hdr||o.shade)?{fill:o.shade||'E7ECF5',type:ShadingType.CLEAR,color:'auto'}:undefined,margins:{top:50,bottom:50,left:90,right:90},children:kids});
 }
 function xtable(widths,rows,o={}){
   return new Table({width:{size:widths.reduce((a,b)=>a+b,0),type:WidthType.DXA},columnWidths:widths,layout:TableLayoutType.FIXED,
-    rows:rows.map((r,ri)=>{const hdr=ri<(o.header??1);let ci=0;
-      return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat!==false,children:r.map(cv=>{const span=(cv&&typeof cv=='object'&&!Array.isArray(cv)&&cv.span)||1;const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0);ci+=span;return xcell(cv,w,hdr);})});})});
+    rows:rows.map((r,ri)=>{const hdr=ri<(o.header??1);let ci=0; const keep=(o.keep??(rows.length<=14&&!rows.some(rr=>rr.some(cv=>cv&&cv.img))))&&ri<rows.length-1; // keep short text-only tables on one page
+      return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat!==false,children:r.map(cv=>{const span=(cv&&typeof cv=='object'&&!Array.isArray(cv)&&cv.span)||1;const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0);ci+=span;return xcell(cv,w,hdr,keep);})});})});
 }
 const M=F+'figapp_mol/';
 
@@ -165,7 +165,7 @@ c.push(xtable([2300,2700,4360],[['Structure','IUPAC name','How the name was foun
 // ======================= APPENDIX D =======================
 c.push(ptitle('Appendix D: Molecular Shapes and Electronegativity'));
 c.push(h3('D.1 VSEPR Shapes of Organic Molecules',{before:120}));
-c.push(P('Valence-shell electron-pair repulsion (VSEPR) theory predicts the shape around a central atom. Count the **electron groups** around the atom: each bonded atom counts as one group (a single, double, or triple bond each count as one), and each lone pair counts as one group. The groups spread out as far apart as possible, which sets the electron geometry; the molecular shape describes only where the atoms are. In the drawings, a plain line is in the plane of the page, a solid wedge points toward you, and a hashed wedge points away from you.',{keepNext:true}));
+c.push(P('Valence-shell electron-pair repulsion (VSEPR) theory predicts the shape around a central atom. Count the **electron groups** around the atom: each bonded atom counts as one group (a single, double, or triple bond each count as one), and each lone pair counts as one group. The groups spread out as far apart as possible, which sets the electron geometry; the molecular shape describes only where the atoms are. In the drawings, a plain line is in the plane of the page, a solid wedge points toward you, and a dashed (hashed) wedge points away from you.',{keepNext:true}));
 c.push(cap('**Table D.1: VSEPR Shapes Found in Organic Molecules**'));
 const v=k=>({img:[F+'figapp_v_'+k+'.png',0.72]});
 c.push(xtable([1100,700,1800,1100,2300,2360],[['Electron groups','Lone pairs','Electron geometry → molecular shape','Bond angle','Where it is found (hybridization)','Example'],
@@ -191,19 +191,19 @@ c.push(note('A dash (—) means that no value is assigned because the element fo
 c.push(P('The difference in electronegativity (ΔEN) between two bonded atoms predicts the type of bond (Table D.3). These cutoffs are guidelines; bond type changes gradually, and textbooks use slightly different values.',{keepNext:true,before:120}));
 c.push(cap('**Table D.3: Electronegativity Difference and Bond Type**'));
 c.push(xtable([1900,2300,5160],[['ΔEN (rounded to 0.1)','Bond type','Examples (ΔEN)'],
- ['0 to 0.4','Nonpolar covalent','C–C (0), C–S (0.03), C–H (0.35)'],
- ['0.5 to 1.8','Polar covalent','C–N (0.49), C–Cl (0.61), N–H (0.84), C–O (0.89), O–H (1.24)'],
+ ['0–0.4','Nonpolar covalent','C–C (0), C–S (0.03), C–H (0.35)'],
+ ['0.5–1.8','Polar covalent','C–N (0.49), C–Cl (0.61), N–H (0.84), C–O (0.89), O–H (1.24)'],
  ['1.9 or more','Ionic','Na–Cl (2.23), K–F (3.16)']]));
 c.push(note('In a polar covalent bond, the more electronegative atom carries a partial negative charge (δ^{−}) and the other atom a partial positive charge (δ^{+}), as in C^{δ+}–O^{δ−}.'));
 
 // ======================= APPENDIX E =======================
 c.push(ptitle('Appendix E: Biomolecules Reference Sheet'));
 c.push(h3('E.1 Monosaccharides',{before:120}));
-c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with C1 at the top, so the carbonyl carbon is as near the top as possible; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Workshop: Types of Carbohydrates).',{keepNext:true}));
+c.push(P('Figures E.1 and E.2 show the D-monosaccharides with three to six carbons as **Fischer projections**. In a Fischer projection, the carbon chain is vertical with C1 at the top, so the carbonyl carbon is as near the top as possible; horizontal bonds point toward you and vertical bonds point away from you. In a **D** sugar, the –OH group on the chirality center (chiral carbon) farthest from the carbonyl group (the bottom one) is on the right; in its mirror image, the **L** sugar, every –OH is on the opposite side. Aldoses (Figure E.1) have an aldehyde group at C1, and ketoses (Figure E.2) have a ketone group at C2. The sugars in **bold** are the ones you will meet most often. In water, sugars with five or six carbons exist mainly as rings (Workshop: Types of Carbohydrates).',{keepNext:true}));
 c.push(...fig(F+'figapp_e1.png','**Figure E.1:** The D-aldoses with three to six carbons.'));
-c.push(...fig(F+'figapp_e2.png','**Figure E.2:** Dihydroxyacetone and the D-ketoses with four to six carbons. Dihydroxyacetone has no chirality center, so it is neither D nor L.'));
+c.push(...fig(F+'figapp_e2.png','**Figure E.2:** Dihydroxyacetone and the D-ketoses with four to six carbons. Dihydroxyacetone has no chirality center (chiral carbon), so it is neither D nor L.'));
 c.push(h3('E.2 The 20 Common Amino Acids',{pageBreak:true,before:0}));
-c.push(P('Table E.1 shows the 20 amino acids found in proteins, grouped by the type of side chain (R group). Each is drawn as it exists at physiological pH (about 7.4): the amino group is protonated (–NH_{3}^{+}) and the carboxyl group is ionized (–COO^{−}). The side chains of aspartate and glutamate are negatively charged, and those of lysine and arginine are positively charged; the histidine side chain is mostly neutral at pH 7.4. All the amino acids except glycine are chiral, and those in proteins are the **L** form, shown here with a wedge. (By the *R,S* system, every L-amino acid except cysteine is *S*; L-cysteine is *R*.)',{keepNext:true}));
+c.push(P('Table E.1 shows the 20 amino acids found in proteins, grouped by the type of side chain (R group). Each is drawn as it exists at physiological pH (about 7.4): the amino group is protonated (–NH_{3}^{+}) and the carboxyl group is ionized (–COO^{−}). The side chains of aspartate and glutamate are negatively charged, and those of lysine and arginine are positively charged; the histidine side chain is mostly neutral at pH 7.4. All the amino acids except glycine are chiral, and those in proteins are the **L** form, shown here with a wedge. (By the *R,S* system, every chiral L-amino acid except cysteine is *S*; L-cysteine is *R*.)',{keepNext:true}));
 c.push(cap('**Table E.1: The 20 Amino Acids, Their Abbreviations, and Side-Chain Classes**'));
 const AN={Gly:['Glycine','G'],Ala:['Alanine','A'],Val:['Valine','V'],Leu:['Leucine','L'],Ile:['Isoleucine','I'],Pro:['Proline','P'],Phe:['Phenylalanine','F'],Trp:['Tryptophan','W'],Met:['Methionine','M'],
  Ser:['Serine','S'],Thr:['Threonine','T'],Cys:['Cysteine','C'],Asn:['Asparagine','N'],Gln:['Glutamine','Q'],Tyr:['Tyrosine','Y'],Asp:['Aspartate (aspartic acid)','D'],Glu:['Glutamate (glutamic acid)','E'],Lys:['Lysine','K'],Arg:['Arginine','R'],His:['Histidine','H']};

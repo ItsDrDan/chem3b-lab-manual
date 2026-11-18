@@ -64,13 +64,13 @@ c.push(bullet('**Model kits:** take your models apart and return every piece to 
 c.push(h2('Procedure',{before:360}));
 c.push(note('Instructor Notes:','Cut cellulose TLC plates (no fluorescent indicator needed) to about 7.5 cm wide × 10 cm tall, two per group; plastic- or aluminum-backed plates can be cut with scissors, and glass-backed plates are scored by the stockroom. Set out each 1% amino acid solution and the unknowns in small labeled 10-mL beakers with capillary tubes. Aspartic acid gives a very faint spot, so have students apply it twice as many times as the other amino acids in B.3. Each plate takes about 20–30 minutes to develop, so students can build the models in Part A while the plates run. Set out the solvent components and the ninhydrin spray in the fume hood, and hair dryers near the hood.'));
 c.push(h3('A. Amino Acid Models'));
-c.push(materials('Organic model kit or prepared models from the stockroom'));
+c.push(materials('Model kit or prepared models from the stockroom'));
 c.push(step('A.1','Build models of glycine and alanine, and draw their structures. Then convert the alanine model into a model of serine by replacing one H on the –CH_{3} group with –OH, and draw serine. Using Table 1, state whether each amino acid is hydrophobic or hydrophilic.'));
 c.push(step('A.2','Form the **zwitterion** of glycine: remove the H from the –COOH group and place it on the N atom of the –NH_{2} group. Draw the glycine zwitterion with its charges. **Instructor check:** show your glycine zwitterion model to your instructor.'));
 c.push(step('A.3','Draw the ion that glycine forms in a **basic** solution (high pH), and give its net charge.'));
 c.push(step('A.4','Draw the ion that glycine forms in an **acidic** solution (low pH), and give its net charge.'));
 c.push(h3('B. Thin-Layer Chromatography of Amino Acids on Cellulose'));
-c.push(materials('Gloves, 2 cellulose TLC plates (about 7.5 cm × 10 cm), forceps or tweezers, pencil, ruler, glass capillary tubes, 1% amino acid solutions in small labeled beakers (phenylalanine, alanine, glutamic acid, serine, lysine, aspartic acid), unknown amino acid solution, 600-mL beaker (developing chamber), parafilm or plastic wrap, 10-mL and 25-mL graduated cylinders, isopropyl alcohol, 0.5 M NH_{4}OH, 0.2% ninhydrin spray (fume hood), hair dryer, paper towels'));
+c.push(materials('Gloves, 2 cellulose TLC plates (about 7.5 cm × 10 cm), forceps or tweezers, pencil, ruler, glass capillary tubes, 1% amino acid solutions in small labeled beakers (phenylalanine, alanine, glutamic acid, serine, lysine, aspartic acid), unknown amino acid solution, 600-mL beaker (developing chamber), parafilm or plastic wrap, 10-mL and 25-mL graduated cylinders, isopropyl alcohol, 0.5 M NH_{4}OH, dropper, 0.2% ninhydrin spray (fume hood), hair dryer, paper towels'));
 c.push(h4('Preparing and Spotting the Plates'));
 c.push(step('B.1','**Prepare the chamber (in the fume hood):** Mix 10 mL of 0.5 M NH_{4}OH and 20 mL of isopropyl alcohol and pour the mixture into a clean, dry 600-mL beaker. The solvent layer should be about 0.5 cm deep and must stay **below the origin line** (1.5 cm); if it is too deep, remove some with a dropper. Cover the beaker tightly with parafilm or plastic wrap, label it with your group’s initials, and let the air inside fill with solvent vapor while you mark and spot the plates.'));
 c.push(step('B.2','**Mark the plates:** Wearing gloves, pick up two cellulose plates by their edges; never touch the white coating. With a **pencil** (ink would dissolve and run in the solvent), press **lightly** so you do not scrape the cellulose, and draw an origin line 1.5 cm from the bottom of each plate and a stop line about 1 cm from the top. Make four small marks on each origin line, 1.5 cm apart and at least 1 cm from each side edge (Figure 5). Below the line, label Plate 1 **Phe, Ala, Glu, Unk** and Plate 2 **Ser, Lys, Asp, Unk**. Write your initials in pencil in an upper corner of each plate.',{keepNext:true}));
@@ -82,7 +82,7 @@ c.push(...img(F+'fig12c_6.png',380,207,'**Figure 6:** A cellulose plate developi
 c.push(step('B.5','**Mark the solvent front (in the fume hood):** Remove each plate with forceps as soon as the solvent reaches the stop line, and lay it flat on a paper towel. **Immediately** draw a light pencil line along the top edge of the wet solvent (the solvent front); it disappears as the plate dries. Let the plate dry completely, using a hair dryer on a low setting if needed. When both plates are done, pour the used solvent into the non-halogenated organic waste container.'));
 c.push(step('B.6','**Make the spots visible (in the fume hood):** Spray each dry plate lightly and evenly with ninhydrin solution; do not soak it. Warm the plate with the hair dryer (or on a hot plate on a low setting, as your instructor directs) for a few minutes until purple spots appear where ninhydrin reacts with the amino acids. **Immediately** outline each spot in pencil, because the colors fade.'));
 c.push(h4('Measurements and Identification'));
-c.push(step('B.7','Draw each plate on the report sheet. Record the color of each spot.'));
+c.push(step('B.7','Draw each plate on the Report Sheet. Record the color of each spot.'));
 c.push(step('B.8','For each plate, measure the distance in centimeters from the origin line to the solvent front, to the nearest 0.1 cm.'));
 c.push(step('B.9','Mark the center of each spot with a light pencil dot and measure its distance from the origin line to the nearest 0.1 cm (measure every spot of the unknown).'));
 c.push(step('B.10','Calculate the R_{f} value for each known amino acid and each unknown spot, using the solvent front distance from the same plate.'));
@@ -108,7 +108,7 @@ c.push(space(160));
 c.push(table([3120,3120,3120],[['**A.2** Glycine zwitterion','**A.3** Glycine in base (high pH)','**A.4** Glycine in acid (low pH)'],['','',''],['Net charge:','Net charge:','Net charge:']],{h:[400,2200,500]}));
 c.push(space(160));
 c.push(checkRow('A.2','glycine zwitterion model shown'));
-c.push(h3('B. Thin-Layer Chromatography of Amino Acids on Cellulose',{pageBreak:true,before:0}));
+c.push(h3('B. Thin-Layer Chromatography of Amino Acids on Cellulose',{before:240}));
 c.push(P('**B.3** Unknown letter: ____________',{after:160}));
 c.push(table([4680,4680],[[['**B.7** Plate 1 (Phe, Ala, Glu, Unk): show the origin, the solvent front, and each outlined spot, labeled with its color.'],['**B.7** Plate 2 (Ser, Lys, Asp, Unk): show the origin, the solvent front, and each outlined spot, labeled with its color.']],['','']],{header:0,h:[900,3600]}));
 const plateTable=(n,rows)=>{c.push(P('**B.8** Plate '+n+': distance from origin to solvent front: ____________ cm',{before:200,after:120,keepNext:true}));
@@ -121,11 +121,11 @@ c.push(P('Evidence (R_{f} values and colors that match, and on which plate):',{a
 c.push(table([3120,3120,3120],[[{t:'**B.12** Structures of the unknown amino acid: ____________________',span:3}],['In acidic solution','At physiological pH (7.4)','In basic solution'],['','','']],{header:0,h:[450,400,2400]}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
-const Q=[['Q.1','Draw the zwitterion of alanine and give its net charge.'],
- ['Q.2','Draw the form of alanine that is present in a strongly acidic solution. What is its net charge?'],
+const Q=[['Q.1','Valine has the R group –CH(CH_{3})_{2}. Draw the zwitterion of valine and give its net charge.'],
+ ['Q.2','Draw the form of valine that is present in a strongly acidic solution. What is its net charge?'],
  ['Q.3','List the six known amino acids in order from the highest R_{f} value to the lowest. Use the polarity and charge of their R groups to explain this order. Does your order agree with the trend described in the Introduction?'],
  ['Q.4','Why is the solvent front marked immediately after the plate is removed from the chamber? How would your R_{f} values change if you waited until the plate dried and marked the front too low?'],
  ['Q.5','Why must the known amino acids be run on the same plate as the unknown, instead of comparing the unknown with R_{f} values from a book? Why can an R_{f} value from Plate 1 be compared with one from Plate 2 only roughly?'],
- ['Q.6','Draw lysine and aspartic acid as they exist at physiological pH (7.4). Give the net charge of each.']];
+ ['Q.6','Draw lysine and aspartic acid as they exist in a strongly acidic solution (low pH). Give the net charge of each.']];
 Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(i==Q.length-1?0:(i==2||i==5?1600:1100)));});
 build(c,OUT).then(()=>console.log('wrote',OUT));

@@ -3,7 +3,7 @@ const F=process.argv[2]+'/'; const OUT=process.argv[3]; const {AlignmentType}=D;
 const c=[];
 c.push(title('Experiment #9: Lipids'));
 c.push(h3('Goals',{before:0}));
-['Observe the physical properties and solubility of some common lipids.','Draw the structure of a typical triacylglycerol.','Distinguish between saturated and unsaturated fats and oils using the bromine test.','Prepare a hand lotion and determine the function of its components.'].forEach(s=>c.push(bullet(s)));
+['Observe the physical properties and solubility of some common lipids.','Draw the condensation reaction that forms a triacylglycerol and the hydrolysis that reverses it.','Distinguish between saturated and unsaturated fats and oils using the bromine test.','Prepare a hand lotion and determine the function of its components.'].forEach(s=>c.push(bullet(s)));
 c.push(h2('Introduction'));
 c.push(h3('A. Lipids and Their Physical Properties',{before:120}));
 c.push(P('**Lipids** are a family of biomolecules grouped by solubility rather than by one shared structure. Lipids are mostly nonpolar, so they dissolve in nonpolar or low-polarity organic solvents such as hexane and methylene chloride (CH_{2}Cl_{2}) but not in water (“like dissolves like”). Lipids include fats and oils, waxes, phospholipids, and steroids (Table 1).'));
@@ -54,7 +54,7 @@ c.push(bullet('**Never pour melted fats, waxes, or lotion down the sink.** They 
 c.push(h2('Procedure',{before:360}));
 c.push(note('Instructor Notes:','At the start of lab, fill a 250-mL beaker 2/3 full of water and keep it at a gentle boil for Part C. Set out the bromine solution and CH_{2}Cl_{2} in the fume hood. Part B uses 1 drop of each lipid in 1 mL of CH_{2}Cl_{2}, so the drop counts depend on the bromine concentration and dropper size; run the test once before lab to confirm that the unsaturated samples need clearly different numbers of drops within the 50-drop limit, and adjust the lipid amount if needed. To dispense solids, glide a wood stick gently along the surface.'));
 c.push(h3('A. Physical Properties of Some Lipids and Fatty Acids'));
-c.push(materials('Test tubes and stoppers, test tube rack, droppers, wood sticks, spatulas, mortar and pestle, oleic acid, stearic acid, olive oil, safflower oil, lecithin, cholesterol, vitamin A capsules, methylene chloride (CH_{2}Cl_{2})'));
+c.push(materials('Test tubes and stoppers, test tube rack, droppers, wood sticks, spatulas, mortar and pestle, oleic acid, stearic acid, olive oil, safflower oil, lecithin, cholesterol, vitamin A capsules, distilled water, methylene chloride (CH_{2}Cl_{2})'));
 c.push(h4('Classification'));
 c.push(step('A.1','Use Table 1 and your textbook (or look up each structure) to classify each lipid as a triacylglycerol (fat or oil), fatty acid, steroid, phospholipid, or fat-soluble vitamin. Indicate whether each is hydrolyzable or non-hydrolyzable.'));
 c.push(h4('Appearance and Odor'));
@@ -70,12 +70,12 @@ c.push(step('B.1','**In the fume hood:** label four clean, dry test tubes. Add e
 c.push(step('B.2','**In the fume hood** (avoid contact with the bromine solution and its vapors): add 1% bromine solution to the first tube one drop at a time, swirling after each drop, and count the drops. Stop when a red-orange color stays for about 30 seconds, or when you have added 50 drops (record “more than 50”). Record the number of drops and whether the color faded quickly or stayed. Repeat with each of the other three tubes, using the same dropper.'));
 c.push(step('B.3','Decide whether each sample is saturated or unsaturated. Because each tube holds the same small amount of lipid, a sample that takes more drops before the color stays contains more C=C double bonds. Rank the unsaturated samples from fewest to most C=C double bonds.'));
 c.push(h3('C. Preparation of Hand Lotion'));
-c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolamine, glycerol, ethanol, distilled water, fragrance (optional), commercial hand lotion, balance, weighing paper, 10-mL and 50-mL graduated cylinders, two 100-mL beakers, 250-mL beaker (water bath), hot plate, thermometer, wire mesh, stirring rod, crucible tongs, pH paper'));
+c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolamine, glycerol, ethanol, distilled water, fragrance (optional), commercial hand lotion, balance, 10-mL and 50-mL graduated cylinders, two 100-mL beakers, 250-mL beaker (water bath), hot plate, thermometer, wire mesh, stirring rod, crucible tongs, pH paper'));
 c.push(P('**Your instructor will tell you whether to make all three lotions, or to make one assigned lotion and compare your results with other groups.**'));
-c.push(step('C.1','Follow the General Instructions below using all of the ingredients in the table.'));
+c.push(step('C.1','Follow the General Instructions (steps 1–4) using all of the ingredients in the table in step 1.'));
 c.push(step('C.2','Follow the General Instructions, but leave the **triethanolamine** out of Beaker 1.'));
 c.push(step('C.3','Follow the General Instructions, but leave the **stearic acid** out of Beaker 1.'));
-c.push(step('C.4','Determine the pH of a commercial hand lotion the same way (step 4 below) and record its brand. Compare it with your lotion(s).'));
+c.push(step('C.4','Determine the pH of a commercial hand lotion the same way (General Instructions, step 4) and record its brand. Compare it with your lotion(s).'));
 c.push(h4('General Instructions'));
 c.push(step('1.','Use a balance to weigh the solids directly into the beakers (tare the beaker first), and use graduated cylinders for the liquids:',{left:360,after:80,keepNext:true}));
 c.push(table([2900,1780,2900,1780],[['Beaker 1 (100 mL)','Amount','Beaker 2 (100 mL)','Amount'],['Stearic acid','3 g','Glycerol (glycerin)','2 mL'],['Cetyl alcohol','1 g','Distilled water','50 mL'],['Lanolin (anhydrous)','2 g','',''],['Triethanolamine','1 mL','','']]));
@@ -95,9 +95,9 @@ PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space
 c.push(h2('Report Sheet',{pageBreak:true,before:0,rule:true}));
 c.push(...nameBlock());
 c.push(h3('A. Physical Properties of Lipids and Fatty Acids',{before:120}));
-c.push(table([1460,2200,1500,1400,1400,1400],[['Lipid','A.1 Class; hydrolyzable or non-hydrolyzable?','A.2 Appearance','A.3 Odor','A.4 Soluble in water?','A.5 Soluble in CH_{2}Cl_{2}?'],
+c.push(table([1460,2200,1500,1400,1400,1400],[['Lipid','A.1 Class; hydrolyzable or non-hydrolyzable?','A.2 Appearance','A.3 Odor','A.4 In water: dissolves, cloudy, or separate layer?','A.5 Soluble in CH_{2}Cl_{2}?'],
  ...['Stearic acid','Oleic acid','Olive oil','Safflower oil','Lecithin','Cholesterol','Vitamin A'].map(n=>[n,'','','','',''])],{h:920,firstColBold:true}));
-c.push(h3('B. Bromine Test for Unsaturation',{pageBreak:true,before:0}));
+c.push(h3('B. Bromine Test for Unsaturation',{before:240}));
 c.push(table([2400,2000,2560,2400],[['Sample (1 drop in 1 mL CH_{2}Cl_{2})','B.2 Drops of bromine solution until the color stays','B.2 Did the red-orange color fade quickly or stay?','B.3 Saturated or unsaturated?'],
  [{t:'*Fatty acids*',span:4,shade:'F2F2F2',align:AlignmentType.CENTER}],['Stearic acid','','',''],['Oleic acid','','',''],[{t:'*Triacylglycerols (oils)*',span:4,shade:'F2F2F2',align:AlignmentType.CENTER}],['Olive oil','','',''],['Safflower oil','','','']],{h:[0,0,736,736,0,736,736],firstColBold:true}));
 c.push(table([9360],[['**B.3** Rank the unsaturated samples from fewest to most C=C double bonds, and explain using your drop counts:']],{header:0,h:1012}));
@@ -116,7 +116,7 @@ c.push(step('Q.3','What type of solvent is needed to remove an oil spot? Why?',{
 c.push(step('Q.4','a. Write the condensed structural formulas of stearic acid and oleic acid.',{left:0,after:0}));
 c.push(P('Stearic acid',{indent:{left:900},before:300,after:700})); c.push(P('Oleic acid',{indent:{left:900},after:700}));
 c.push(P('b. From your Part B results, how can you tell which fatty acid is unsaturated?',{indent:{left:540},after:1000}));
-c.push(P('c. The melting point of stearic acid is 70 °C and that of oleic acid is 13 °C. Explain the difference.',{indent:{left:540},after:1200}));
+c.push(P('c. Use Table 2: oleic acid (one C=C double bond) melts at 13 °C, and linoleic acid (two C=C double bonds) melts at −5 °C. Explain why more double bonds give a lower melting point.',{indent:{left:540},after:1200}));
 c.push(step('Q.5','How does leaving out triethanolamine (C.2) affect the properties and appearance of the hand lotion?',{left:0,after:0})); c.push(space(1200));
 c.push(step('Q.6','How does leaving out stearic acid (C.3) affect the properties and appearance of the hand lotion?',{left:0,after:0})); c.push(space(1200));
 c.push(step('Q.7','Stearic acid and triethanolamine react with each other when the lotion is made. What type of reaction is this, and why are both needed in a hand lotion? (Hint: think about acids, bases, and emulsifiers.)',{left:0,after:0}));

@@ -15,8 +15,8 @@ c.push(h3('Goals',{before:0}));
 c.push(h2('Introduction'));
 // A
 c.push(h3('A. Types of Hydrocarbons',{before:120}));
-c.push(P('**Hydrocarbons** are compounds that contain only carbon and hydrogen. **Alkanes** are **saturated** hydrocarbons: every carbon–carbon bond is a single bond, so each carbon holds the maximum number (a “saturation”) of hydrogen atoms. **Alkenes** (C=C double bond) and **alkynes** (C≡C triple bond) are **unsaturated** hydrocarbons. The double or triple bond is a very reactive site, and it is what the chemical tests in Parts E and F detect. In CHEM 3B, an **aromatic** compound is a hydrocarbon that contains a benzene ring (Figure 1). Although a benzene ring is drawn with three double bonds, it does not react like an alkene.',{keepNext:true}));
-c.push(...img(F+'fig3_1.png',624,144,'**Figure 1:** The four families of hydrocarbons. Red bonds are the reactive multiple bonds.'));
+c.push(P('**Hydrocarbons** are compounds that contain only carbon and hydrogen. **Alkanes** are **saturated** hydrocarbons: every carbon–carbon bond is a single bond, so each carbon holds the maximum possible number of hydrogen atoms (it is “saturated” with hydrogen). **Alkenes** (C=C double bond) and **alkynes** (C≡C triple bond) are **unsaturated** hydrocarbons. The double or triple bond is a very reactive site, and it is what the chemical tests in Parts E and F detect. In CHEM 3B, an **aromatic** compound is a hydrocarbon that contains a benzene ring (Figure 1). Although a benzene ring is drawn with three double bonds, it does not react like an alkene.',{keepNext:true}));
+c.push(...img(F+'fig3_1.png',624,144,'**Figure 1:** The four families of hydrocarbons. The C=C double bond and the C≡C triple bond (drawn in red) are the reactive multiple bonds; the benzene ring does not react like an alkene.'));
 c.push(P('Atoms can rotate freely around a single bond. A double bond cannot rotate: the two carbons of the double bond and the four atoms attached to them all lie in one flat plane. As a result, an alkene such as 2-butene can exist as two **cis–trans isomers** (geometric isomers). In the *cis* isomer, the carbon groups are on the **same side** of the double bond; in the *trans* isomer, they are on **opposite sides** (Figure 2). You will see this with model kits in Part A.',{keepNext:true}));
 c.push(...img(F+'fig3_2.png',520,137,'**Figure 2:** *cis*- and *trans*-2-butene. The condensed formula CH_{3}–CH=CH–CH_{3} does not show which isomer is meant.'));
 // B
@@ -45,7 +45,7 @@ c.push(bullet('**Aromatic compounds (negative test):** A benzene ring does not r
 c.push(...img(F+'fig3_3.png',600,336,'**Figure 3:** The bromine test. Only the alkene removes the red-orange color immediately.'));
 // F
 c.push(h3('F. Potassium Permanganate (Baeyer) Test'));
-c.push(P('Potassium permanganate (KMnO_{4}) in water is **purple**. It **oxidizes** an alkene: two –OH groups add to the two carbons of the double bond, forming a **diol** (a compound with two alcohol groups). At the same time, the permanganate is reduced to manganese dioxide (MnO_{2}), a **brown solid** (Figure 4). A **positive** test is a change from purple to a muddy brown color or brown precipitate within about 60 seconds. Alkanes and aromatic compounds do not react in that time, so the purple color **stays** (negative test). The hydrocarbon and the KMnO_{4} solution do not mix, so the tube must be shaken to bring them into contact.',{keepNext:true}));
+c.push(P('Potassium permanganate (KMnO_{4}) in water is **purple**. It **oxidizes** an alkene: two –OH groups add to the two carbons of the double bond, forming a **diol** (a compound with two alcohol groups). At the same time, the permanganate is reduced to manganese dioxide (MnO_{2}), a **brown solid** (Figure 4). A **positive** test is a change from purple to a muddy brown color or brown precipitate within 60 seconds. Alkanes and aromatic compounds do not react in that time, so the purple color **stays** (negative test). The hydrocarbon and the KMnO_{4} solution do not mix, so the tube must be shaken to bring them into contact.',{keepNext:true}));
 c.push(...img(F+'fig3_4.png',600,138,'**Figure 4:** The KMnO_{4} (Baeyer) test with cyclohexene.'));
 // G
 c.push(h3('G. Identifying an Unknown Hydrocarbon'));
@@ -81,17 +81,17 @@ c.push(step('A.1','Using a model kit, build models of ethene, propene, cyclobute
 c.push(step('A.2','Draw the condensed or skeletal structure of each on your report sheet.'));
 c.push(step('A.3','Hold one carbon of the double bond in your *cis*-2-butene model and try to twist the other carbon. Then build *trans*-2-butene (Figure 2). Record whether you can turn *cis*-2-butene into *trans*-2-butene without breaking a bond, and why. **Instructor check:** show your instructor your *cis*-2-butene and *trans*-2-butene models side by side.'));
 c.push(h3('B. Color, Odor, and Physical State'));
-c.push(materials('Test tubes (6), test tube rack, spatulas, droppers, NaCl(s), KI(s), benzoic acid(s), cyclohexane, toluene, distilled water'));
-c.push(step('B.1','Label three test tubes. Place a few crystals of NaCl, KI, and benzoic acid in separate tubes.'));
+c.push(materials('Test tubes (6), test tube rack, spatulas, droppers, NaCl(s), KI(s), benzoic acid(s), cyclohexane, toluene, distilled water; textbook, chemistry handbook, or reliable online source (for melting points)'));
+c.push(step('B.1','Label three test tubes. Place a few crystals of NaCl, KI, and benzoic acid in separate tubes. (If your instructor has set out display vials, skip B.1 and B.2 and go to B.3.)'));
 c.push(step('B.2','**In the fume hood:** label three more test tubes and add 10 drops of cyclohexane, toluene, and water to separate tubes.'));
-c.push(step('B.3','Observe each sample. Record its formula, color, physical state (solid, liquid, or gas), and odor. Check odors only by wafting (see Hazards).'));
+c.push(step('B.3','Observe each sample. Record its formula, color, physical state (solid, liquid, or gas), and odor. Check odors only by wafting (see the Odors rule in Hazards and Safety Instructions).'));
 c.push(step('B.4','State whether each substance has ionic or covalent bonds, and identify it as organic or inorganic. Look up the melting point of each in your textbook, the chemistry handbook in the lab, or a reliable online source.'));
 c.push(step('B.5','If you prepared tubes, pour the liquids into the non-halogenated organic waste container and put the solids in the solid waste container.'));
 c.push(h3('C. Solubility'));
 c.push(materials('Test tubes (5), test tube rack, spatula, droppers, NaCl(s), toluene, cyclohexane, distilled water'));
 c.push(step('C.1','**In the fume hood:** place 10 drops of cyclohexane and 10 drops of water in a test tube. Tap the bottom of the tube to mix, then let it stand. Record what you see. Identify the top and bottom layers as aqueous (polar) or organic (nonpolar).'));
-c.push(step('C.2','Place a few crystals of NaCl in one test tube and 10 drops of toluene in another. Add 15 drops of cyclohexane (a nonpolar solvent) to each. Tap the bottom of the tube to mix. Record whether each substance is soluble (S) or insoluble (I) in cyclohexane.'));
-c.push(step('C.3','Repeat C.2 with a fresh sample of NaCl and of toluene in two clean tubes, but add 15 drops of water (a polar solvent) instead. Record whether each is soluble (S) or insoluble (I) in water. Identify each substance as organic or inorganic.'));
+c.push(step('C.2','**In the fume hood:** place a few crystals of NaCl in one test tube and 10 drops of toluene in another. Add 15 drops of cyclohexane (a nonpolar solvent) to each. Tap the bottom of each tube to mix. Record whether each substance is soluble (S) or insoluble (I) in cyclohexane.'));
+c.push(step('C.3','**In the fume hood:** repeat C.2 with a fresh sample of NaCl and of toluene in two clean tubes, but add 15 drops of water (a polar solvent) instead. Record whether each is soluble (S) or insoluble (I) in water. Identify each substance as organic or inorganic.'));
 c.push(step('C.4','Pour the NaCl and water tube from C.3 into the aqueous waste container. Pour the contents of all other tubes into the non-halogenated organic waste container.'));
 c.push(h3('D. Combustion'));
 c.push(materials('Instructor demonstration in the fume hood: evaporating dishes, long-necked lighter, NaCl(s), cyclohexane, cyclohexene, toluene, and the unknowns'));
@@ -104,12 +104,12 @@ c.push(materials('4 dry test tubes, test tube rack, dropper bottle of 1% bromine
 c.push(caution('Work in the fume hood. Bromine fumes irritate the throat and sinuses. If bromine gets on your skin, rinse with water for 15 minutes and tell your instructor.'));
 c.push(step('E.1','Label four dry test tubes and place 15 drops of cyclohexane, cyclohexene, toluene, and your unknown in separate tubes. Carefully add 3–4 drops of the bromine solution to each and swirl. Within the first minute, record whether the red-orange color disappears immediately or stays.'));
 c.push(step('E.2','Place each tube that is still red-orange in direct sunlight or under a bright lamp for 5–10 minutes. Record whether the color fades. Then hold a strip of blue litmus paper moistened with distilled water just above the mouth of each tube (do not touch the liquid). A red color shows that HBr gas is being given off. **Do not smell the tubes.**'));
-c.push(step('E.3','Draw the condensed or skeletal structure of cyclohexane, cyclohexene, and toluene and of the product(s) of each with bromine. If you observed no reaction, write “No Reaction” (NR). Name the type of reaction (addition or substitution).'));
+c.push(step('E.3','Draw the condensed or skeletal structure of cyclohexane, cyclohexene, and toluene. Under each, draw the product(s) of its reaction with bromine, or write “No Reaction” (NR) if you observed no reaction. Then name the type of reaction (addition, substitution, or NR).'));
 c.push(step('E.4','Pour the contents of all tubes into the halogenated waste container.'));
 c.push(h3s('F. Potassium Permanganate (KMnO_{4}) Test'));
 c.push(materials('4 test tubes, test tube rack, 1% KMnO_{4} solution, cyclohexane, cyclohexene, toluene, unknown'));
 c.push(caution('KMnO_{4} stains skin and clothing.'));
-c.push(step('F.1','Label four test tubes and place 5 drops of cyclohexane, cyclohexene, toluene, and your unknown in separate tubes. Add 15 drops of 1% KMnO_{4} solution to each, and tap or gently shake the tube to mix the two layers. Watch for 60 seconds. A change from purple to brown (often with a brown precipitate) in 60 seconds or less is a positive test for a C=C double bond. Record the color of each after 60 seconds.'));
+c.push(step('F.1','**In the fume hood:** label four test tubes and place 5 drops of cyclohexane, cyclohexene, toluene, and your unknown in separate tubes. Add 15 drops of 1% KMnO_{4} solution to each, and tap or gently shake each tube to mix the two layers. Watch for 60 seconds. Record the color of each after 60 seconds and whether a brown precipitate formed. A change from purple to brown in 60 seconds or less is a positive test for a C=C double bond; a solution that stays purple is negative.'));
 c.push(step('F.2','Pour the contents of all tubes into the non-halogenated organic waste container.'));
 c.push(h3('G. Identification of the Unknown'));
 c.push(step('G.1','Use your results from Parts D, E, and F and Table 2 to classify your unknown as an alkane (saturated), an alkene (unsaturated), or an aromatic compound. Explain your reasoning in complete sentences. If your instructor gives you a list of possible compounds, name your unknown and draw its structure.'));
@@ -131,17 +131,17 @@ c.push(table([2400,6960],[['Name','A.2 Condensed or skeletal structure'],...['Et
 c.push(table([9360],[['**A.3** Can *cis*-2-butene be turned into *trans*-2-butene without breaking a bond? Why or why not?']],{header:0,h:1300}));
 c.push(space(120));
 c.push(checkRow('A.3','*cis*- and *trans*-2-butene models shown'));
-c.push(h3('B. Color, Odor, and Physical State',{pageBreak:true,before:0}));
+c.push(h3('B. Color, Odor, and Physical State',{before:240}));
 c.push(table([1500,1260,1260,1500,1260,1290,1290],[['Substance','B.3 Formula','B.3 Color and physical state','B.3 Odor','B.4 Melting point (°C)','B.4 Ionic or covalent?','B.4 Organic or inorganic?'],
  ...['Sodium chloride','Potassium iodide','Benzoic acid','Cyclohexane','Toluene','Water'].map(n=>[n,'','','','','',''])],{h:780,firstColBold:true}));
 c.push(h3('C. Solubility'));
 c.push(table([2400,3480,3480],[['C.1 Layer','Top or bottom?','Aqueous (polar) or organic (nonpolar)?'],['Water','',''],['Cyclohexane','','']],{h:520,firstColBold:true}));
 c.push(space(160));
 c.push(table([2400,2320,2320,2320],[['Solute','C.2 Soluble in cyclohexane? (S or I)','C.3 Soluble in water? (S or I)','C.3 Organic or inorganic?'],['NaCl','','',''],['Toluene','','','']],{h:620,firstColBold:true}));
-c.push(h3('D. Combustion',{pageBreak:true,before:0}));
+c.push(h3('D. Combustion',{before:240}));
 c.push(table([2200,1500,1900,2160,1600],[['Substance','D.1–D.2 Burns? (yes or no)','D.2 Flame color','D.2 Smoke or soot (none, a little, a lot)','D.3 Organic or inorganic?'],
  ['NaCl','',{t:'',shade:'F2F2F2'},{t:'',shade:'F2F2F2'},''],['Cyclohexane','','','',''],['Cyclohexene','','','',''],['Toluene','','','',''],['Unknown # _____','','','','']],{h:620,firstColBold:true}));
-c.push(h3('E. Bromine Test',{pageBreak:true,before:0}));
+c.push(h3('E. Bromine Test',{before:240}));
 c.push(table([2200,3580,3580],[['Sample','E.1 In the first minute: color disappears immediately, or stays?','E.2 In bright light: does the color fade? Litmus color?'],
  ['Cyclohexane','',''],['Cyclohexene','',''],['Toluene','',''],['Unknown # _____','','']],{h:760,firstColBold:true}));
 c.push(P('**E.3** Structures, products, and reaction types',{before:200,after:80,keepNext:true}));
@@ -165,7 +165,7 @@ c.push(qline('C.','CH_{2}=C(CH_{3})–CH_{2}–CH_{2}–CH_{3}'));
 c.push(qimg('D.',F+'fig3_q_cyclohexene.png',72,66));
 c.push(qimg('E.',F+'fig3_q_benzene.png',72,66));
 c.push(qline('F.','HC≡CH'));
-c.push(step('Q.2','What three properties can you use to distinguish between organic and inorganic compounds?',{left:0,after:0})); c.push(space(650));
+c.push(step('Q.2','Using your results from Parts B, C, and D, name three properties you can use to distinguish organic from inorganic compounds.',{left:0,after:0})); c.push(space(650));
 c.push(step('Q.3','A white solid has no odor, is soluble in water, and is not flammable. Would you expect it to be an organic or an inorganic substance? Explain.',{left:0,after:0})); c.push(space(650));
 c.push(step('Q.4','A clear liquid with a gasoline-like odor forms a layer when added to water. Would you expect it to be an organic or an inorganic substance? Explain.',{left:0,after:0})); c.push(space(650));
 c.push(step('Q.5','Complete the following reactions by drawing the product(s).',{left:0,after:200}));

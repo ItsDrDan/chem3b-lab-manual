@@ -38,13 +38,13 @@ function copyright(){
 function toStudent(){
   const c=[];
   c.push(title('To the Student'));
-  c.push(P('Chemistry 3B introduces the structures and reactions of organic compounds and the biomolecules built from them: carbohydrates, lipids, proteins, enzymes, and vitamins. It is designed for students heading into the health professions, such as nursing, dental hygiene, and kinesiology. In the laboratory you will see the ideas from lecture at work. Each functional group behaves in a predictable way, and a few simple tests let you identify an unknown compound, measure how pure a product is, or find out how much vitamin C is in a juice.'));
+  c.push(P('Chemistry 3B introduces the structures and reactions of organic compounds and the biomolecules built from them: carbohydrates, lipids, proteins, enzymes, vitamins, and nucleic acids. It is designed for students heading into the health professions, such as nursing, dental hygiene, and kinesiology. In the laboratory you will see the ideas from lecture at work. Each functional group behaves in a predictable way, and a few simple tests let you identify an unknown compound, measure how pure a product is, or find out how much vitamin C is in a juice.'));
   c.push(P('Chemical theories come from careful observation in the laboratory, and they are tested there too. A good theory lets you predict how a substance will behave under new conditions, but every prediction is an approximation. A goal of this course is for you to see how theory and experiment shape each other.'));
   c.push(h3('Course Laboratory Objectives'));
   c.push(P('After completing these experiments, you should be able to:',{after:80}));
   ['Draw and name the structures of common organic molecules and recognize their functional groups, including those found in biomolecules.',
    'Use functional groups to predict the physical and chemical properties of organic molecules.',
-   'Relate the structures of carbohydrates, lipids, proteins, and vitamins to their properties and functions.',
+   'Relate the structures of carbohydrates, lipids, proteins, vitamins, and nucleic acids to their properties and functions.',
    'Work safely with chemicals and dispose of chemical waste correctly.',
    'Collect, record, organize, and analyze experimental data, and recognize the limits of each measurement.'].forEach(s=>c.push(bullet(s)));
   c.push(h3('How Each Experiment Is Organized'));
@@ -53,9 +53,9 @@ function toStudent(){
    ['Introduction','the chemistry behind each part of the procedure: what every test or reagent does, and what a positive and a negative result look like. The lettered sections (A, B, C, …) match the lettered parts of the procedure.'],
    ['Hazards and Safety Instructions','the specific hazards of the chemicals and equipment in that lab, with first-aid steps.'],
    ['Waste Instructions','which waste container receives each tube, solution, or solid.'],
-   ['Procedure','Instructor Notes, then each part with its Materials list and numbered steps (A.1, A.2, …).'],
+   ['Procedure','Instructor Notes, then each part with its Materials list and numbered steps (A.1, A.2, …). Some steps end with an **Instructor check**.'],
    ['Pre-Lab Questions','questions on safety, waste, the procedure, and the expected test results. Answer them before you come to lab; your instructor stamps or signs the Pre-Lab check box at the start of lab.'],
-   ['Report Sheet: Data Collection','tables and boxes that follow the procedure step by step. Record your observations here as you work. Steps where you demonstrate a model have an Instructor check box. The Report Sheet ends with the Lab Check-Out box: clean up, then have your instructor stamp or sign it before you leave.'],
+   ['Report Sheet: Data Collection','tables and boxes that follow the procedure step by step. Record your observations here as you work. Steps that end with an Instructor check (for example, showing your models) have an Instructor check box. The Report Sheet ends with the Lab Check-Out box: clean up, then have your instructor stamp or sign it before you leave.'],
    ['Post-Lab Report: Questions and Problems','questions you answer after lab that connect your results to the chemistry.']].forEach(([a,b])=>c.push(bullet('**'+a+':** '+b)));
   c.push(h3('Before Every Lab'));
   ['Read the whole experiment, including the safety and waste instructions.','Answer the Pre-Lab Questions.','Prepare your laboratory notebook as your instructor directs (see Laboratory Notebooks and Reports).','Bring splash goggles, a lab coat, and closed-toe shoes, and dress for lab.'].forEach(s=>c.push(bullet(s)));
@@ -138,7 +138,7 @@ function waste(){
   c.push(P('**Table 1: Waste Containers Used in This Manual**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
   c.push(table([2500,4060,2800],[['Container','What goes in it','Examples'],
     ['**Halogenated waste**','Organic compounds that contain a halogen (F, Cl, Br, I), and any solution containing elemental bromine (Br_{2}) or iodine (I_{2}).','Methylene chloride (CH_{2}Cl_{2}), bromine test tubes, iodine test tubes, iodine titration flasks'],
-    ['**Non-halogenated organic waste**','Anything that contains organic solvents, organic reagents, or the organic compounds being tested, even if an acid or a metal reagent is also present.','Hexane, ethanol, acetone, alcohol and aldehyde test tubes, esters, Tollens’ and chromate test tubes'],
+    ['**Non-halogenated organic waste**','Anything that contains organic solvents, organic reagents, or the organic compounds being tested, even if an acid or a metal reagent is also present.','Hexane, ethanol, acetone, alcohol and aldehyde test tubes, esters, Tollens’ test tubes'],
     ['**Aqueous waste**','Other dissolved chemicals in water: acids, bases, salts, soluble metal compounds, and biomolecules mixed with these reagents.','HCl, NaOH, AgNO_{3}, Benedict’s and biuret test tubes'],
     ['**Solid waste**','Solid chemicals, filter papers, and chromatography plates or papers with chemicals on them.','Used TLC plates, filter paper, recovered solids']],{h:0}));
   c.push(h3('General Rules'));
@@ -160,14 +160,14 @@ function notebook(){
   c.push(h3('During Lab'));
   ['Record all data and observations directly in ink as you work, never on scrap paper to copy later.','Record everything you observe, including colors, odors, precipitates, gas bubbles, temperature changes, and anything unexpected. An observation that seems unimportant may explain a result later.','Record every measurement with its units and with all the digits the instrument gives (see Measurements and Uncertainty).','If you make a mistake, draw a single line through it so it can still be read. Do not erase, use correction fluid, or tear out pages.','Use unknown codes exactly as they are written on the sample.'].forEach(s=>c.push(bullet(s)));
   c.push(h3('After Lab'));
-  ['Show every calculation, with units, at least once. If you use a spreadsheet, write out one example calculation by hand.','Answer the Questions and Problems in complete sentences where a sentence is asked for.','Your data must be your own. Copying data from another student or making up data is academic dishonesty.'].forEach(s=>c.push(bullet(s)));
+  ['Show every calculation, with units, at least once. If you use a spreadsheet, write out one example calculation by hand.','Answer the Post-Lab Report questions (Questions and Problems) in complete sentences where a sentence is asked for.','Your data must be your own. Copying data from another student or making up data is academic dishonesty.'].forEach(s=>c.push(bullet(s)));
   return c;
 }
 
 function measurement(){
   const c=[];
   c.push(title('Measurements and Uncertainty'));
-    c.push(h3('Recording Measurements'));
+  c.push(h3('Recording Measurements'));
   c.push(P('Record all the digits you are certain of, plus one estimated digit. On a scale with markings, estimate between the smallest divisions. For example, a 100-mL graduated cylinder marked every 1 mL is read to the nearest 0.1 mL (for example, 46.3 mL), and a 50-mL buret marked every 0.1 mL is read to the nearest 0.01 mL (for example, 23.47 mL). On a digital balance, record every digit shown, including trailing zeros (12.300 g, not 12.3 g). These digits are the **significant figures** of the measurement.'));
   c.push(h3('Significant Figures in Calculations'));
   c.push(bulletT('**Multiplying and dividing:** the answer has the same number of significant figures as the measurement with the fewest significant figures.'));

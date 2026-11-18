@@ -45,12 +45,19 @@ const bd={style:BorderStyle.SINGLE,size:6,color:'000000'}; const borders={top:bd
 // cell content: string (markup) or array of strings
 function cell(c,w,o={}){const arr=Array.isArray(c)?c:[c];return new TableCell({borders,width:{size:w,type:WidthType.DXA},verticalAlign:o.valign||VerticalAlign.TOP,
   shading:o.shade?{fill:o.shade,type:ShadingType.CLEAR,color:'auto'}:undefined,columnSpan:o.span,margins:{top:60,bottom:60,left:100,right:100},
-  children:arr.map(t=>new Paragraph({alignment:o.align,children:runs(t,{bold:o.bold,size:o.size||22}),spacing:{after:0}}))});}
+  children:arr.map(t=>new Paragraph({alignment:o.align,keepNext:o.keep,children:runs(t,{bold:o.bold,size:o.size||22}),spacing:{after:0}}))});}
 // rows: array of arrays; header row bold+shaded; opts.heights per row (twips) ; opts.firstColBold
+// Keep a table on one page when it fits: every row but the last gets keep-with-next, so Word moves the whole table
+// to the next page instead of splitting it. Tables estimated taller than ~2/3 of a page still split (with a repeating header).
+function estH(widths,rows,o){let t=0; rows.forEach((r,ri)=>{const hdr=ri<(o.header??1); let h=hdr?0:(Array.isArray(o.h)?o.h[ri]:o.h)||0; if(h&&!o.noscale)h=sc('h',h);
+  let ci=0,lines=1; r.forEach(c=>{const isO=c&&typeof c=='object'&&!Array.isArray(c); const v=isO?c.t:c; const span=isO&&c.span||1; const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0); ci+=span;
+    const arr=Array.isArray(v)?v:[v]; const n=arr.reduce((a,x)=>a+Math.max(1,Math.ceil(String(x??'').replace(/[*_^{}]/g,'').length*105/Math.max(w-200,400))),0); lines=Math.max(lines,n);});
+  t+=Math.max(h,lines*265+140);}); return t;}
 function table(widths,rows,o={}){const total=widths.reduce((a,b)=>a+b,0);
+  const keep=o.keep??(rows.length>1&&estH(widths,rows,o)<=8600);
   return new Table({width:{size:total,type:WidthType.DXA},columnWidths:widths,layout:TableLayoutType.FIXED,rows:rows.map((r,ri)=>{
     const hdr=ri<(o.header??1); let h=hdr?null:(Array.isArray(o.h)?o.h[ri]:o.h); if(h&&!o.noscale)h=sc('h',h);
-    let ci=0; const cells=r.map(c=>{const isO=c&&typeof c=='object'&&!Array.isArray(c); let span=1,val=c; if(isO){span=c.span||1;val=c.t;} const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0); const res=cell(val,w,{bold:hdr||(o.firstColBold&&ci==0)||(isO&&c.bold),shade:hdr?'E7ECF5':(isO?c.shade:undefined),align:hdr?AlignmentType.CENTER:(isO?c.align:undefined),span:span>1?span:undefined}); ci+=span; return res;});
+    let ci=0; const cells=r.map(c=>{const isO=c&&typeof c=='object'&&!Array.isArray(c); let span=1,val=c; if(isO){span=c.span||1;val=c.t;} const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0); const res=cell(val,w,{keep:keep&&ri<rows.length-1,bold:hdr||(o.firstColBold&&ci==0)||(isO&&c.bold),shade:hdr?'E7ECF5':(isO?c.shade:undefined),align:hdr?AlignmentType.CENTER:(isO?c.align:undefined),span:span>1?span:undefined}); ci+=span; return res;});
     return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat!==false,height:h?{value:h,rule:HeightRule.ATLEAST}:undefined,children:cells});})});}
 const gap=(n=1)=>Array.from({length:n},()=>new Paragraph({children:[],spacing:{after:0}}));
 const space=tw=>new Paragraph({children:[],spacing:{before:0,after:sc('space',tw)}});
