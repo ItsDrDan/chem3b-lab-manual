@@ -35,7 +35,9 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 | 16 | Nucleic Acids and DNA Extraction | [PDF](pdf/experiments/Exp16_NucleicAcids.pdf) | [Word](docx/experiments/Exp16_NucleicAcids.docx) | 217–235 |
 | | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 236–258 |
 
-Page numbers are the manual's printed page numbers. Each experiment PDF keeps them, so a single lab matches the full manual.
+Page numbers are the manual's printed page numbers. Each experiment PDF and Word file keeps them (with the same running header), so a single lab matches the full manual. Every PDF has bookmarks for its sections.
+
+**Accessibility:** the Word files have real heading levels, alt text on every figure, document language, and repeating table headers. The PDFs have bookmarks and a document language but are not yet tagged for screen readers; for a screen reader, use the Word file.
 
 Every experiment has the same parts: Goals, Introduction, Hazards and Safety, Waste Instructions, Procedure, Pre-Lab Questions, Report Sheet, and Questions and Problems.
 
@@ -64,6 +66,6 @@ NOPROMPT=1 TOCJSON=tocpages.json node master.js fig out/CHEM3B_Lab_Manual.docx
 ```
 
 - `src/exp01.js` … `src/exp16.js` hold one experiment each. `src/frontmatter.js` holds the front matter and `src/appendix.js` the appendices. `lablib.js` has the shared styles and helpers.
-- Running a single lab file, for example `node src/exp04.js fig out/exp04.docx`, writes that experiment alone.
+- Running a single lab file, for example `node src/exp04.js fig out/exp04.docx`, writes that experiment alone (pages numbered from 1). To write one part exactly as it appears in the manual (running header and manual page numbers), use `PART=exp04 NOPROMPT=1 TOCJSON=tocpages.json node master.js fig out/exp04.docx` (`PART` can also be `front` or `appendix`); the files in `docx/experiments/` are made this way.
 - `fig/` has the figures as PNGs, along with the HTML/SVG source each one was drawn from. `svg2png.sh` re-renders them with headless Chrome.
 - The Contents page numbers come from `tocpages.json`. After a layout change on macOS with Microsoft Word, `./remap.sh N` re-measures every page and lists pages that spill. `toc_from_map.py` then turns the map into a new `tocpages.json`.

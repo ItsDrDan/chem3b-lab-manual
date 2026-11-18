@@ -54,3 +54,28 @@ Each of these changes pagination, so it needs a page-map pass after it is made. 
 - Rendering of the rebuilt DOCX as a PDF. Word's PDF export cannot be scripted on this Mac, so the visual check of the reflowed pages in Exps 10–15 waits for the next manual export.
 - Grayscale printing. The figures use dark lines on white, and no meaning depends on color alone (checked by eye on the PNGs), but nothing was test-printed.
 - Zoom and reflow on phones. The PDFs are fixed-layout.
+
+## Accessibility pass 2 (2026-11-17, after the round-2 lab edits)
+
+### Word files (fixed in the generator)
+| Check | Before | After |
+|---|---|---|
+| Heading levels | 24 skipped levels (H1 title → H3 "Goals" in every lab, and in the front matter) | **0 skipped levels.** Levels now follow the outline. `lablib.js` picks each heading's level from its parent heading, so the look is unchanged. |
+| Sub-headings | 195 bold "pseudo-headings" (e.g. "Classification of Alcohols") that screen readers could not navigate | `h4()` is now a real heading (Heading 3 or 4 by context), with a matching Heading 4 style |
+| Alt text | 164/164 (pass 1) | still 100%, including the new Exp 4, Exp 16 and Appendix A figures (captions or `fig/alt.json`) |
+| Single-lab Word files | page numbers started at 1, no running header | built with `PART=expNN`: same running header and page numbers as the full manual, document title = experiment title |
+| Text contrast in figures | not checked | every text color in the figure sources is ≥ 4.5:1 on white (darkest grays #444–#6d6d6d) |
+
+### PDFs
+| Check | Result |
+|---|---|
+| Bookmarks | **Added** to all 19 PDFs: front-matter sections; each experiment with Introduction, Hazards, Waste, Procedure, Pre-Lab, Report Sheet, Post-Lab Report; Appendices A–F. 143 bookmarks in the full manual. Spot-checked targets: all correct. |
+| Language, title | `/Lang en-US`, titles set, and the reader shows the title rather than the file name (`DisplayDocTitle`); opens with the bookmark panel |
+| Tags (structure for screen readers) | **Still not tagged.** Mac Word's scripted export goes through the macOS PDF engine, which writes no tags. The VBA `ExportAsFixedFormat` call with `DocStructureTags`/`CreateBookmarks` fails on Mac Word ("Invalid procedure call or argument", error 5), and the plain call writes no file. A tagged PDF needs Word's **interactive** Save As → PDF → "Best for electronic distribution and accessibility". Splitting a tagged PDF with pypdf drops the tags, so each section would need its own export from its `docx/experiments` file. |
+
+**Recommendation:** treat the Word files as the accessible format for screen-reader users (README now says so). Do the interactive tagged export when the manual is final, not on every draft.
+
+### Not checked by tool
+- No screen-reader run-through (VoiceOver/NVDA) and no Word Accessibility Checker run. Both should be done by a person before the accessibility claim is made.
+- Underscore fill-in blanks ("Name ______") and the empty spacing paragraphs are fine in print, but a screen reader reads them out. They are kept on purpose for the printed report sheets.
+- Long descriptions for complex diagrams (TLC setup, spot plates, the extraction steps) still use the caption only.

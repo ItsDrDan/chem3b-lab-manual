@@ -30,7 +30,7 @@ const empty=()=>new Footer({children:[new Paragraph({children:[]})]});
 const emptyH=()=>new Header({children:[new Paragraph({children:[]})]});
 
 const sections=[];
-const add=(children,o={})=>sections.push({properties:{page:Object.assign({},page,o.pageNumbers?{pageNumbers:o.pageNumbers}:{})},
+const add=(children,o={})=>sections.push({__tag:o.tag||'front',properties:{page:Object.assign({},page,o.pageNumbers?{pageNumbers:o.pageNumbers}:{})},
   headers:{default:o.header?hdr(o.header):emptyH()},footers:{default:o.nofoot?empty():ftr()},children});
 
 // Static table of contents (page numbers measured from a Word page map; see remap.sh)
@@ -54,14 +54,25 @@ add([new Paragraph({children:[new TextRun({text:'Contents',font:HF,size:56,bold:
   .forEach(([fn,h])=>add(FM[fn](),{header:h,pageNumbers:{formatType:NumberFormat.LOWER_ROMAN}}));
 let first=true;
 for(const [name,h] of LABS){const ch=collect(name); if(!ch)continue;
-  add(ch,{header:h,pageNumbers:first?{start:1,formatType:NumberFormat.DECIMAL}:undefined}); first=false;}
+  add(ch,{tag:name,header:h,pageNumbers:first?{start:1,formatType:NumberFormat.DECIMAL}:undefined}); first=false;}
+// PART=front|expNN|appendix writes only that part, with the manual's own running header and page numbers,
+// so a single-experiment Word file (and its PDF) matches the pages of the full manual.
+let docTitle='CHEM 3B Laboratory Manual';
+if(process.env.PART){const part=process.env.PART; const keep=sections.filter(x=>x.__tag===part); if(!keep.length) throw new Error('no part '+part);
+  if(part!=='front'){const pages=JSON.parse(fs.readFileSync(process.env.TOCJSON,'utf8')); const lab=LABS.find(([n])=>n===part);
+    const key=part==='appendix'?'Appendix A:':'Experiment #'+parseInt(part.slice(3))+':'; keep[0].properties.page.pageNumbers={start:parseInt(pages[key]),formatType:NumberFormat.DECIMAL};
+    docTitle=part==='appendix'?'CHEM 3B Laboratory Manual: Appendices A–F':lab[1];}
+  else docTitle='CHEM 3B Laboratory Manual: Front Matter and Safety';
+  sections.length=0; sections.push(...keep);}
+sections.forEach(x=>delete x.__tag);
 
-const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',
+const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:docTitle,description:'CC BY 4.0',
   features:{updateFields:!process.env.PROOF && !process.env.NOPROMPT},
   styles:{default:{document:{run:{font:TNR,size:24,language:L.LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
       {id:'Heading2',name:'Heading 2',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:40,bold:true,color:'000000'},paragraph:{spacing:{before:320,after:160},keepNext:true,outlineLevel:1}},
       {id:'Heading3',name:'Heading 3',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:28,bold:true,color:'000000'},paragraph:{spacing:{before:280,after:120},keepNext:true,outlineLevel:2}},
+      {id:'Heading4',name:'Heading 4',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:TNR,size:24,bold:true,italics:false,color:'000000'},paragraph:{spacing:{before:160,after:100},keepNext:true,outlineLevel:3}},
       {id:'TOC1',name:'toc 1',basedOn:'Normal',next:'Normal',run:{font:TNR,size:24},paragraph:{spacing:{before:60,after:60}}}]},
   numbering:{config:[{reference:'bul',levels:[{level:0,format:LevelFormat.BULLET,text:'•',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:720,hanging:360}}}},{level:1,format:LevelFormat.BULLET,text:'◦',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:1440,hanging:360}}}}]}]},
   sections});

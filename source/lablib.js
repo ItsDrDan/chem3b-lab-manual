@@ -17,7 +17,11 @@ function runs(s,base={}){
   push(s.slice(last)); return out;
 }
 const P=(s,o={})=>new Paragraph({children:runs(s,o.run||{}),spacing:{after:o.after??160,before:o.before??0,line:o.line??264},alignment:o.align,indent:o.indent,keepNext:o.keepNext,pageBreakBefore:o.pageBreak});
-const title=s=>new Paragraph({heading:HeadingLevel.HEADING_1,children:[new TextRun({text:s,font:HF,size:56,bold:true,color:BLUE})],spacing:{before:0,after:240}});
+// Heading levels follow the outline (H1 title → H2 → H3 → H4) so screen readers can navigate; the look of each
+// heading call is fixed, only its level adapts (e.g. 'Goals' right after a title is a level-2 heading).
+// PARENT: level of the last title/h2; CUR: level of the last title/h2/h3
+let PARENT=0,CUR=0; const HL=[null,HeadingLevel.HEADING_1,HeadingLevel.HEADING_2,HeadingLevel.HEADING_3,HeadingLevel.HEADING_4];
+const title=s=>{PARENT=1;CUR=1; return new Paragraph({heading:HeadingLevel.HEADING_1,children:[new TextRun({text:s,font:HF,size:56,bold:true,color:BLUE})],spacing:{before:0,after:240}});};
 // Section names used by every lab. The Report Sheet is the data-collection part (ends with the Lab Check-Out stamp);
 // the Questions and Problems are the post-lab report. finalize() adds the stamp boxes next to these headings.
 const H2NAME={'Report Sheet':'Report Sheet: Data Collection','Questions and Problems':'Post-Lab Report: Questions and Problems'};
@@ -26,9 +30,9 @@ const H2NAME={'Report Sheet':'Report Sheet: Data Collection','Questions and Prob
 let MODE=null; const SCALE={prelab:{space:0.8,h:1},report:{space:0.8,h:0.85}};
 const sc=(k,v)=>Math.round(v*((SCALE[MODE]||{})[k]??1));
 const H2KIND={'Pre-Lab Questions':'prelab','Report Sheet':'report','Questions and Problems':'questions'};
-const h2=(s,o={})=>{const p=new Paragraph({heading:HeadingLevel.HEADING_2,children:[new TextRun({text:H2NAME[s]||s,font:HF,size:40,bold:true})],spacing:{before:o.before??320,after:160},keepNext:true,pageBreakBefore:o.pageBreak,border:o.rule?{top:{style:BorderStyle.SINGLE,size:24,color:'000000',space:8}}:undefined}); p.__kind=H2KIND[s]; MODE=H2KIND[s]||null; return p;};
-const h3=(s,o={})=>new Paragraph({heading:HeadingLevel.HEADING_3,children:[new TextRun({text:s,font:HF,size:28,bold:true})],spacing:{before:o.before??280,after:120},keepNext:true,pageBreakBefore:o.pageBreak});
-const h4=s=>new Paragraph({children:runs('**'+s+'**'),spacing:{before:160,after:100},keepNext:true});
+const h2=(s,o={})=>{PARENT=2;CUR=2; const p=new Paragraph({heading:HeadingLevel.HEADING_2,children:[new TextRun({text:H2NAME[s]||s,font:HF,size:40,bold:true})],spacing:{before:o.before??320,after:160},keepNext:true,pageBreakBefore:o.pageBreak,border:o.rule?{top:{style:BorderStyle.SINGLE,size:24,color:'000000',space:8}}:undefined}); p.__kind=H2KIND[s]; MODE=H2KIND[s]||null; return p;};
+const h3=(s,o={})=>{const lv=PARENT+1; CUR=lv; return new Paragraph({heading:HL[lv],children:[new TextRun({text:s,font:HF,size:28,bold:true,color:'000000'})],spacing:{before:o.before??280,after:120},keepNext:true,pageBreakBefore:o.pageBreak});};
+const h4=s=>new Paragraph({heading:HL[Math.min(CUR+1,4)],children:runs('**'+s+'**',{color:'000000'}),spacing:{before:160,after:100},keepNext:true});
 const bullet=(s,lvl=0)=>new Paragraph({children:runs(s),numbering:{reference:'bul',level:lvl},spacing:{after:80,line:264}});
 const step=(lab,s,o={})=>new Paragraph({children:[new TextRun({text:lab+' ',bold:true,font:TNR,size:24}),...runs(s)],indent:{left:o.left??540,hanging:o.left===0?0:540},spacing:{after:o.after??140,line:264},keepNext:o.keepNext});
 const sub=(s)=>new Paragraph({children:runs(s),indent:{left:540},spacing:{after:140,line:264}});
@@ -67,7 +71,8 @@ function build(children,out){
   const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',styles:{default:{document:{run:{font:TNR,size:24,language:LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
       {id:'Heading2',name:'Heading 2',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:40,bold:true,color:'000000'},paragraph:{spacing:{before:320,after:160},keepNext:true,outlineLevel:1}},
-      {id:'Heading3',name:'Heading 3',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:28,bold:true,color:'000000'},paragraph:{spacing:{before:280,after:120},keepNext:true,outlineLevel:2}}]},
+      {id:'Heading3',name:'Heading 3',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:28,bold:true,color:'000000'},paragraph:{spacing:{before:280,after:120},keepNext:true,outlineLevel:2}},
+      {id:'Heading4',name:'Heading 4',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:TNR,size:24,bold:true,italics:false,color:'000000'},paragraph:{spacing:{before:160,after:100},keepNext:true,outlineLevel:3}}]},
     numbering:{config:[{reference:'bul',levels:[{level:0,format:LevelFormat.BULLET,text:'•',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:720,hanging:360}}}},{level:1,format:LevelFormat.BULLET,text:'◦',alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:1440,hanging:360}}}}]}]},
     sections:[{properties:{page:{size:{width:12240,height:15840},margin:{top:1440,right:1440,bottom:1440,left:1440}}},
       footers:{default:new Footer({children:[new Paragraph({tabStops:[{type:TabStopType.RIGHT,position:W}],children:[new TextRun({text:'CHEM 3B Laboratory Manual',font:TNR,size:20}),new TextRun({children:['\t',PageNumber.CURRENT],font:TNR,size:24})]})]})},
