@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="335" viewBox="0 0 820 335" style="background:#fff"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const RED='#c0392b', BLUE='#1f5fbf', GRAY='#555'; const y0=70, g=82;
+const tg=backbone(16,y0,[0,1,2].map(i=>[{l:i==1?'CH':'CH_2'},{l:'O'},{l:'C',up:{l:'O',order:2}},{l:'(CH_2)_{10}CH_3'}]),g);
+tg.forEach((r,i)=>{const p1=r.pos[1],p2=r.pos[2]; const mx=(p1.x+p1.hw+p2.x-p2.hw)/2; const yy=y0+i*g; line(mx-6,yy+16,mx+6,yy-16,{color:RED,w:2,dash:'4,3'});});
+label(150,y0+2*g+48,'glyceryl trilaurate (trilaurin)',{fs:15,bold:true});
+label(150,y0+2*g+68,'a triacylglycerol in coconut oil',{fs:13,color:GRAY});
+label(150,y0+2*g+86,'red dashed lines: ester bonds broken',{fs:13,color:RED,italic:true});
+const xe=Math.max(...tg.map(r=>r.end));
+txt(xe+14,y0+g+6,'+'); const n=txt(xe+38,y0+g+6,'3 NaOH',{bold:true});
+const x1=xe+38+n.w+16, x2=x1+90; arrow(x1,y0+g,x2,y0+g); label((x1+x2)/2,y0+g-12,'heat',{fs:14,italic:true});
+const gl=backbone(x2+18,y0,[[{l:'CH_2'},{l:'OH',color:BLUE}],[{l:'CH'},{l:'OH',color:BLUE}],[{l:'CH_2'},{l:'OH',color:BLUE}]],g);
+label(x2+58,y0+2*g+48,'glycerol',{fs:15,bold:true});
+const xg=Math.max(...gl.map(r=>r.end));
+txt(xg+16,y0+g+6,'+');
+const sa=[0,1,2].map(i=>chain(xg+46,y0+i*g,[{l:'CH_3(CH_2)_{10}'},{l:'C',up:{l:'O',order:2}},{l:'O^- Na^+',color:BLUE}]));
+const xs=(xg+46+Math.max(...sa.map(r=>r.end)))/2;
+label(xs,y0+2*g+48,'3 sodium laurate',{fs:15,bold:true});
+label(xs,y0+2*g+68,'(soap, a carboxylate salt)',{fs:13,color:GRAY});
+</script>

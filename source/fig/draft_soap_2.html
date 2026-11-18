@@ -1,0 +1,35 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="860" height="375" viewBox="0 0 860 375" style="background:#fff" font-family="Times New Roman, Times, serif"></svg>
+<meta charset="utf-8"><style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',18); const BLUE='#1f5fbf', GRAY='#555', OIL='#f6e3a1';
+// left: one soap molecule
+const y=95;
+const m=chain(45,y,[{l:'CH_3(CH_2)_{10}'},{l:'C',up:{l:'O',order:2}},{l:'O^- Na^+',color:BLUE}]);
+const tailEnd=m.pos[0].x+m.pos[0].hw;
+// brackets
+function brace(xa,xb,yy,text,col){line(xa,yy,xb,yy,{color:col});line(xa,yy,xa,yy-8,{color:col});line(xb,yy,xb,yy-8,{color:col});
+  text.forEach((t,i)=>label((xa+xb)/2,yy+20+i*17,t,{fs:14,color:col}));}
+brace(45,tailEnd+2,y+22,['nonpolar tail','(attracts oil and grease)'],'#000');
+brace(tailEnd+12,m.end,y+22,['polar, ionic head','(attracts water)'],BLUE);
+label((45+m.end)/2,30,'One soap molecule (sodium laurate)',{fs:16,bold:true});
+// symbol
+const sy=250, sx=60; el('path',{d:`M${sx} ${sy} l 15 -9 l 15 9 l 15 -9 l 15 9 l 15 -9 l 15 9 l 15 -9 l 15 9 l 15 -9 l 15 9`,fill:'none',stroke:'#000','stroke-width':2});
+el('circle',{cx:sx+162,cy:sy,r:12,fill:'#dbe6f7',stroke:BLUE,'stroke-width':2}); label(sx+162,sy+5,'−',{fs:18,color:BLUE,bold:true});
+label(sx+75,sy+32,'tail',{fs:14}); label(sx+162,sy+32,'head',{fs:14,color:BLUE});
+label(sx+100,sy-30,'drawn as a symbol:',{fs:14,color:GRAY,italic:true});
+// right: micelle around an oil droplet
+const cx=640, cy=190, R=70, N=16;
+el('circle',{cx,cy,r:R+6,fill:OIL,stroke:'#c9a84a','stroke-width':1.5});
+label(cx,cy-4,'oil or',{fs:15}); label(cx,cy+14,'grease',{fs:15});
+for(let i=0;i<N;i++){const a=2*Math.PI*i/N; const c=Math.cos(a), s=Math.sin(a);
+  const r0=R-30, r1=R+38; // tail from r0 to r1, head at r1+12
+  const steps=6; let d=''; for(let k=0;k<=steps;k++){const r=r0+(r1-r0)*k/steps; const off=(k%2?6:-6); const x=cx+r*c - off*s, yy=cy+r*s + off*c; d+=(k?' L':'M')+x.toFixed(1)+' '+yy.toFixed(1);}
+  el('path',{d,fill:'none',stroke:'#000','stroke-width':1.8});
+  const hx=cx+(r1+12)*c, hy=cy+(r1+12)*s; el('circle',{cx:hx,cy:hy,r:11,fill:'#dbe6f7',stroke:BLUE,'stroke-width':2}); label(hx,hy+5,'−',{fs:16,color:BLUE,bold:true});
+  if(i%3==0){const nx=cx+(r1+40)*Math.cos(a+0.2), ny=cy+(r1+40)*Math.sin(a+0.2); label(nx,ny+5,'Na^+',{fs:14,color:BLUE});}
+}
+label(cx,24,'A micelle in water',{fs:16,bold:true});
+label(cx+170,cy-125,'water',{fs:15,italic:true,color:GRAY});
+label(cx,362,'tails point into the oil; charged heads face the water',{fs:14,color:GRAY});
+</script>
