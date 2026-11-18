@@ -106,10 +106,13 @@ def washbottle():
 def hotplate():
     o=r(26,80,104,56,'#e9ecef',4)+r(30,70,96,10,'#c9ced3',2)+c(52,110,8,DK,1)+c(104,110,8,DK,1)+r(68,104,20,10,'#fbfbf8',1,1)
     return o
-def bunsen():
-    o=p('M44,140 L112,140 L104,128 L52,128 Z',MT)+r(70,40,16,88,'#b9c0c6')+r(68,96,20,10,DK,1,1)+r(66,36,24,6,MT,1,1.2)
-    o+=p('M86,118 L112,118',sw=4,st=MT)+p('M112,118 L126,118',sw=6,st=RB)
-    o+=p('M78,32 Q70,20 78,6 Q86,20 78,32 Z','#7fb3e6',1.2)
+def tlcchamber():
+    # beaker developing chamber: shallow solvent, plate leaning in it, plastic-wrap cover
+    o=p('M49,131 L49,135 Q49,140 54,140 L102,140 Q107,140 107,135 L107,131 Z',LQ,0)
+    o+=p('M42,30 L49,37 L49,135 Q49,140 54,140 L102,140 Q107,140 107,135 L107,33 L110,30')
+    o+=p('M40,28 Q78,22 112,28',sw=1.4)
+    o+=r(63,52,30,84,'#fbfbf8',1,1.4)+l(66,118,90,118,1.0,'#5a6168')
+    for x in (71,78,85): o+=c(x,118,2,DK,0.8)
     return o
 def ringstand():
     o=r(20,128,82,10,DK,2,1.2)+r(34,8,6,122,MT,1,1.2)
@@ -121,7 +124,7 @@ A1=[('Beaker',beaker),('Erlenmeyer flask',erlenmeyer),('Graduated cylinder',grad
     ('Funnel',funnel),('Büchner funnel and|filter flask',buchner),('Watch glass',watchglass),('Evaporating dish',evapdish)]
 A2=[('Stirring rod',stirrod),('Thermometer',thermometer),('Test tube holder',ttholder),('Test tube rack',ttrack),
     ('Crucible tongs',tongs),('Spatula',spatula),('Spot plate',spotplate),('Mortar and pestle',mortar),
-    ('Wash bottle',washbottle),('Hot plate',hotplate),('Bunsen burner',bunsen),('Ring stand with|ring and clamp',ringstand)]
+    ('Wash bottle',washbottle),('Hot plate',hotplate),('TLC plate in a|developing chamber',tlcchamber),('Ring stand with|ring and clamp',ringstand)]
 def page(items,fn):
     W,H=624,3*178
     s=f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="background:#fff" font-family="Times New Roman, Times, serif">'

@@ -104,7 +104,7 @@ c.push(table([9360],[['**B.3** Rank the unsaturated samples from fewest to most 
 c.push(h3('C. Preparation of Hand Lotion'));
 c.push(table([3120,3120,3120],[['C.1 (all ingredients)','C.2 (without triethanolamine)','C.3 (without stearic acid)'],
  [{t:'**Description of the lotion** (smoothness, thickness, appearance)',span:3,shade:'F2F2F2'}],['','',''],[{t:'**pH (step 4)**',span:3,shade:'F2F2F2'}],['','',''],
- [{t:'**C.4 Commercial hand lotion:**   Brand ______________________    pH ________',span:3}]],{h:[0,0,2392,0,552,552]}));
+ [{t:'**C.4 Commercial hand lotion:**   Brand ______________________    pH ________',span:3}]],{h:[0,0,1950,0,552,552]}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 c.push(step('Q.1','a. Draw the reaction for the condensation of glycerol with three molecules of ethanoic (acetic) acid.',{left:0,after:0})); c.push(space(1500));

@@ -10,7 +10,7 @@ const LABS=[['exp01','Experiment 1: Functional Groups'],['exp02','Experiment 2: 
  ['exp04','Experiment 4: Alcohols and Phenols'],['exp05','Experiment 5: Aldehydes and Ketones'],['exp06','Experiment 6: Carboxylic Acids and Esters'],
  ['exp07','Experiment 7: Amines and Amides'],['exp08','Experiment 8: Types of Carbohydrates'],['exp09','Experiment 9: Tests for Carbohydrates'],
  ['exp10','Experiment 10: Lipids'],['exp11','Experiment 11: Aspirin and Analgesics'],['exp12','Experiment 12: Amino Acids'],
- ['exp13','Experiment 13: Peptides and Proteins'],['exp14','Experiment 14: Enzymes'],['exp15','Experiment 15: Vitamins'],['appendix','Appendices']];
+ ['exp13','Experiment 13: Peptides and Proteins'],['exp14','Experiment 14: Enzymes'],['exp15','Experiment 15: Vitamins'],['exp16','Experiment 16: Nucleic Acids and DNA Extraction'],['appendix','Appendices']];
 
 // collect each lab's children without writing files
 function collect(name){

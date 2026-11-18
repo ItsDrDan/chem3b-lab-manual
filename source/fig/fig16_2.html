@@ -1,0 +1,22 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1150" height="360" viewBox="0 0 1150 360" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig16_lib.js"></script>
+<script>
+init('s',20); const G='#777';
+const r=42, cy=165;
+// purines: pointy-top hex, indices: 0 top=C6,1 C5,2 C4,3 N3,4 C2,5 N1 -> map [N1,C2,N3,C4,C5,C6]=[5,4,3,2,1,0]
+const pm=[5,4,3,2,1,0];
+purine(ringPts(120,cy,r,-90),pm,'A',{n9:'H',n9Color:G});
+purine(ringPts(400,cy,r,-90),pm,'G',{n9:'H',n9Color:G,g2al:'r'});
+// pyrimidines: 0 top=C4,1 C5,2 C6,3 N1,4 C2,5 N3 -> map [3,4,5,0,1,2]
+const ym=[3,4,5,0,1,2];
+pyrimidine(ringPts(650,cy,r,-90),ym,'C',{n1:'H',n1Color:G});
+pyrimidine(ringPts(860,cy,r,-90),ym,'T',{n1:'H',n1Color:G});
+pyrimidine(ringPts(1070,cy,r,-90),ym,'U',{n1:'H',n1Color:G});
+function name(x,a,b){label(x,290,a,{fs:19,bold:true}); label(x,314,b,{fs:16,color:'#444'});}
+name(150,'Adenine (A)','DNA and RNA'); name(425,'Guanine (G)','DNA and RNA');
+name(650,'Cytosine (C)','DNA and RNA'); name(870,'Thymine (T)','DNA only'); name(1070,'Uracil (U)','RNA only');
+label(285,32,'Purines (two rings)',{fs:21,bold:true}); label(870,32,'Pyrimidines (one ring)',{fs:21,bold:true});
+line(40,44,530,44,{w:1.2,color:'#999'}); line(590,44,1130,44,{w:1.2,color:'#999'});
+label(575,348,'The gray H is replaced by the sugar in a nucleotide (at N9 of a purine or N1 of a pyrimidine).',{fs:16,color:'#444'});
+</script>

@@ -1,0 +1,20 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="700" height="650" viewBox="0 0 700 650" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig16_lib.js"></script>
+<script>
+init('s',20); const r=42, xl=250, xr=xl+42+108+42;
+function pair(cy,top,bot,kp,kq){
+  const P=purine(ringPts(xl,cy,r,0),[0,1,2,3,4,5],kp,{nh2:'explicit',n9:'sugar'});
+  const Q=pyrimidine(ringPts(xr,cy,r,0),[1,2,3,4,5,0],kq,{nh2:'explicit',n1:'sugar'});
+  return [P,Q];}
+let [A,T]=pair(185,'','', 'A','T');
+hbond(A.N6h1,T.O4); hbond(T.H3,A.N1);
+label(350,40,'Adenine–Thymine (A–T): 2 hydrogen bonds',{fs:21,bold:true});
+label(xl-60,305,'Adenine (A)',{fs:18}); label(xr+30,305,'Thymine (T)',{fs:18});
+let [G,C]=pair(490,'','','G','C');
+hbond(G.O6,C.N4h0); hbond(G.H1,C.N3); hbond(G.N2h0,C.O2);
+label(350,345+0,'',{});
+label(350,365,'Guanine–Cytosine (G–C): 3 hydrogen bonds',{fs:21,bold:true});
+label(xl-90,632,'Guanine (G)',{fs:18}); label(xr+30,632,'Cytosine (C)',{fs:18});
+line(30,330,670,330,{w:1,color:'#aaa'});
+</script>

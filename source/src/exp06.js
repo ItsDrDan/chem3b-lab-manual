@@ -1,4 +1,4 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3]; const {AlignmentType}=D;
 const c=[];
 c.push(title('Experiment #6: Carboxylic Acids and Esters'));
@@ -98,6 +98,8 @@ c.push(table([2560,3400,3400],[['','Acetic acid','Benzoic acid'],
  ['**A.4** Hot water; then after cooling',SH,''],['**A.5** Observations after adding NaOH (red litmus turns blue)','',''],['**A.6** Observations after adding HCl (blue litmus turns red)','','']],{h:[0,1300,600,500,850,850,850]}));
 c.push(table([9360],[['**A.5** Equations for the reactions of acetic acid and benzoic acid with NaOH:'],['**A.6** Equations for the reactions of sodium acetate and sodium benzoate with HCl:']],{header:0,h:[1500,1500]}));
 c.push(h3('B. Esters',{pageBreak:true,before:0}));
+c.push(checkRow('B.1','ester formation shown with models (water removed, ester bond formed)'));
+c.push(space(120));
 c.push(table([9360],[['**B.1** Equation for the formation of methyl acetate from acetic acid and methanol:']],{header:0,h:1500}));
 c.push(P('',{after:120}));
 c.push(table([2900,1900,4560],[['B.2 Condensed structural formulas of the alcohol and the carboxylic acid','B.3 Odor','B.3 Name and condensed structural formula of the ester'],

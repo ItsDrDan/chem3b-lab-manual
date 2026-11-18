@@ -54,9 +54,9 @@ function toStudent(){
    ['Hazards and Safety Instructions','the specific hazards of the chemicals and equipment in that lab, with first-aid steps.'],
    ['Waste Instructions','which waste container receives each tube, solution, or solid.'],
    ['Procedure','Instructor Notes, then each part with its Materials list and numbered steps (A.1, A.2, …).'],
-   ['Pre-Lab Questions','questions on safety, waste, the procedure, and the expected test results. Answer them before you come to lab.'],
-   ['Report Sheet','tables and boxes that follow the procedure step by step. Record your observations here as you work.'],
-   ['Questions and Problems','post-lab questions that connect your results to the chemistry.']].forEach(([a,b])=>c.push(bullet('**'+a+':** '+b)));
+   ['Pre-Lab Questions','questions on safety, waste, the procedure, and the expected test results. Answer them before you come to lab; your instructor stamps or signs the Pre-Lab check box at the start of lab.'],
+   ['Report Sheet: Data Collection','tables and boxes that follow the procedure step by step. Record your observations here as you work. Steps where you demonstrate a model have an Instructor check box. The Report Sheet ends with the Lab Check-Out box: clean up, then have your instructor stamp or sign it before you leave.'],
+   ['Post-Lab Report: Questions and Problems','questions you answer after lab that connect your results to the chemistry.']].forEach(([a,b])=>c.push(bullet('**'+a+':** '+b)));
   c.push(h3('Before Every Lab'));
   ['Read the whole experiment, including the safety and waste instructions.','Answer the Pre-Lab Questions.','Prepare your laboratory notebook as your instructor directs (see Laboratory Notebooks and Reports).','Bring splash goggles, a lab coat, and closed-toe shoes, and dress for lab.'].forEach(s=>c.push(bullet(s)));
   c.push(P('Your instructor will tell you which parts of each experiment to complete and how to submit your work.',{before:120}));

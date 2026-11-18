@@ -1,4 +1,4 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D,runs}=L;
+const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D,runs}=L;
 const fs=require('fs');
 const F=process.argv[2]+'/'; const OUT=process.argv[3];
 const {Paragraph,AlignmentType,Table,TableRow,TableCell,ImageRun,WidthType,BorderStyle,ShadingType,HeightRule,VerticalAlign,TableLayoutType}=D;
@@ -118,9 +118,9 @@ c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
 const PL=[['1.','The Snatoms atoms contain small, strong magnets. Give two safety precautions you must follow when using the kit, and explain the reason for each.',943],
  ['2.','This lab produces no chemical waste. What must you do with your models and the kit before you leave, and why must you report missing pieces?',820],
  ['3.','Using Table 3, list the color and number of each atom you need to build ethanol, CH_{3}CH_{2}OH. How would you make the C=O double bond of an aldehyde with the kit?',943],
- ['4.','Draw propylamine, CH_{3}CH_{2}CH_{2}NH_{2}, as a complete (expanded) structural formula and as a line-angle structure. Name its functional group and classify it as 1°, 2°, or 3°.',1558],
+ ['4.','Draw propylamine, CH_{3}CH_{2}CH_{2}NH_{2}, as a complete (expanded) structural formula and as a line-angle structure. Name its functional group and classify it as 1°, 2°, or 3°.',1250],
  ['5.','Calculate the molar mass of ethanol, C_{2}H_{6}O. Show your work.',820],
- ['6.','For the oxygen atom in methanol, CH_{3}–OH, give the number of electron groups, the number of lone pairs, the molecular shape, and the ideal bond angle. Why is the actual C–O–H angle slightly smaller than the ideal angle?',1066],
+ ['6.','For the oxygen atom in methanol, CH_{3}–OH, give the number of electron groups, the number of lone pairs, the molecular shape, and the ideal bond angle. Why is the actual C–O–H angle slightly smaller than the ideal angle?',880],
  ['7.','Ethanol, CH_{3}CH_{2}OH, and dimethyl ether, CH_{3}–O–CH_{3}, have the same molar mass. Is each polar or nonpolar? What is the strongest IMF in each pure substance? Which would you predict has the higher boiling point, and why?',0]];
 PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space(sp));});
 // ---------- Report ----------
@@ -133,7 +133,7 @@ c.push(h3('B. Polarity and Intermolecular Forces',{pageBreak:true,before:0}));
 c.push(dataTable([520,2600,2240,1600,2400],['','B.1 Structure (build it)','B.2 Functional group (1°, 2°, 3°?)','B.3 Polarity (P or NP)','B.4 Strongest IMF (pure substance)'],
  [['1','fig1_b1c'],['2','fig1_b2c'],['3','fig1_b3c'],['4','fig1_b4c'],['5','fig1_b5c'],['6','fig1_b6c']],1250));
 c.push(P('',{after:120}));
-c.push(table([4680,4680],[['**B.5** Instructor check: both tables complete (initials)','Kit returned with all pieces:  ☐ yes   ☐ no (list missing pieces)']],{header:0,h:1000}));
+c.push(checkRow('B.5','tables complete; kit returned with all pieces ☐ yes ☐ no'));
 // ---------- Questions ----------
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 const Q=[['Q.1','Draw compound 6 from Part A as a complete (expanded) structural formula and as a condensed structural formula. Explain your 1°, 2°, or 3° classification.',1680],

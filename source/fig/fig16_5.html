@@ -1,0 +1,46 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1100" height="400" viewBox="0 0 1100 400" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig16_lib.js"></script>
+<script>
+init('s',16); const PINK='#e9a3ad', DPINK='#c74b5c', ALC='#e6f0fb', G='#444', GL='#7a8a99';
+function head(x,s){label(x,30,s,{fs:18,bold:true});}
+function cap(x,y,lines){lines.forEach((t,i)=>label(x,y+i*19,t,{fs:15,color:G}));}
+// (a) bag
+head(135,'(a) Mash');
+el('path',{d:'M55,80 L215,80 L225,290 Q135,305 45,290 Z',fill:'#fafafa',stroke:GL,'stroke-width':2.5});
+line(55,95,215,95,{w:3,color:GL}); 
+el('path',{d:'M52,210 Q135,190 222,210 L225,290 Q135,305 45,290 Z',fill:PINK,opacity:0.8});
+[[90,250,22],[140,262,18],[180,245,20],[115,228,14],[165,275,12]].forEach(([x,y,r])=>el('ellipse',{cx:x,cy:y,rx:r,ry:r*0.7,fill:DPINK,opacity:0.85}));
+cap(135,330,['1 strawberry + 10 mL','extraction buffer;','squeeze for 2 minutes']);
+// (b) filter
+head(400,'(b) Filter');
+el('path',{d:'M330,90 L470,90 L410,170 L410,215 L390,215 L390,170 Z',fill:'#fff',stroke:GL,'stroke-width':2.5});
+el('path',{d:'M338,96 L462,96 L404,166 L396,166 Z',fill:PINK,opacity:0.7});
+el('path',{d:'M335,92 Q400,120 465,92',fill:'none',stroke:'#b8a77a','stroke-width':3,'stroke-dasharray':'3 3'});
+el('path',{d:'M340,200 L340,300 Q340,310 350,310 L450,310 Q460,310 460,300 L460,200',fill:'none',stroke:GL,'stroke-width':2.5});
+el('rect',{x:342,y:265,width:116,height:43,fill:PINK,opacity:0.8});
+line(400,217,400,262,{w:2,color:DPINK,dash:'3 4'});
+txt(475,100,'cheesecloth',{fs:14,color:G});
+cap(400,340,['collect the filtrate','(the liquid)']);
+// (c) layer alcohol
+head(660,'(c) Layer cold alcohol');
+const tc='rotate(-25 660 280)';
+const g1=el('g',{transform:tc});
+el('path',{d:'M640,110 L640,280 Q640,300 660,300 Q680,300 680,280 L680,110',fill:'none',stroke:GL,'stroke-width':2.5},g1);
+el('path',{d:'M642,215 L642,280 Q642,298 660,298 Q678,298 678,280 L678,215 Z',fill:PINK,opacity:0.85},g1);
+el('rect',{x:642,y:170,width:36,height:45,fill:ALC},g1);
+// pipet
+line(662,72,604,140,{w:5,color:'#9aa'}); el('ellipse',{cx:671,cy:61,rx:10,ry:16,fill:'#bbb',transform:'rotate(40 671 61)'}); txt(690,95,'dropper of',{fs:14,color:G}); txt(690,111,'ice-cold alcohol',{fs:14,color:G});
+cap(660,340,['equal volume of ice-cold','alcohol, slowly down the','side: it floats on top']);
+// (d) spool
+head(935,'(d) Spool the DNA');
+el('path',{d:'M915,110 L915,280 Q915,300 935,300 Q955,300 955,280 L955,110',fill:'none',stroke:GL,'stroke-width':2.5});
+el('path',{d:'M917,215 L917,280 Q917,298 935,298 Q953,298 953,280 L953,215 Z',fill:PINK,opacity:0.85});
+el('rect',{x:917,y:150,width:36,height:65,fill:ALC});
+el('path',{d:'M921,214 q4,-12 8,-2 q4,-14 8,-1 q4,-12 8,0 q3,-8 6,1',fill:'none',stroke:'#999','stroke-width':3});
+line(938,60,935,205,{w:6,color:'#b88a4a'});
+el('ellipse',{cx:936,cy:192,rx:11,ry:15,fill:'#fff',stroke:'#888','stroke-width':2});
+line(948,192,1000,170,{w:1}); txt(1004,168,'white strands',{fs:14,color:G}); line(960,214,1000,214,{w:1}); txt(1004,212,'interface',{fs:14,color:G}); txt(1004,228,'(alcohol on top,',{fs:14,color:G}); txt(1004,244,'filtrate below)',{fs:14,color:G});
+line(942,120,1000,120,{w:1}); txt(1004,124,'wooden stick',{fs:14,color:G});
+cap(935,340,['look for white strands','at the interface;','wind them onto the stick']);
+</script>

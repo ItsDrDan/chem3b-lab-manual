@@ -1,10 +1,11 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3];
 const {AlignmentType}=D;
 const c=[];
 c.push(title('Experiment #7: Amines and Amides'));
 c.push(h3('Goals',{before:0}));
 ['Draw condensed structural formulas of amines and classify them as primary, secondary, tertiary, or quaternary.',
+ 'Use molecular models to build and classify the four amine isomers of C_{3}H_{9}N, and to show how an amine acts as a base by accepting H^{+} to form an ammonium ion.',
  'Observe the odor, water solubility, and basicity of amines.',
  'Convert amines to amine salts with HCl and explain the changes in solubility and odor.',
  'Write equations for the formation of an amide and for its hydrolysis in acid and in base.',
@@ -18,7 +19,7 @@ c.push(bullet('**Primary (1°):** one carbon group on N (R–NH_{2})'));
 c.push(bullet('**Secondary (2°):** two carbon groups on N (R_{2}NH)'));
 c.push(bullet('**Tertiary (3°):** three carbon groups on N (R_{3}N)'));
 c.push(bullet('**Quaternary (4°) ammonium ion:** four carbon groups on N. The nitrogen has four bonds and no lone pair, so it carries a positive charge (R_{4}N^{+}).'));
-c.push(P('Ammonia itself has no carbon groups and is not an amine. When the nitrogen is bonded directly to a benzene ring, the compound is an **aromatic amine**. The simplest one is **aniline** (C_{6}H_{5}–NH_{2}), a primary amine. In an amine name, a carbon group on the nitrogen of aniline is shown with the prefix *N*-, so *N*-methylaniline (C_{6}H_{5}–NH–CH_{3}) has one methyl group and one benzene ring on N and is a secondary amine. Figure 1 shows ammonia and an example of each class of amine.',{keepNext:true}));
+c.push(P('Ammonia itself has no carbon groups and is not an amine. When the nitrogen is bonded directly to a benzene ring, the compound is an **aromatic amine**. The simplest one is **aniline** (C_{6}H_{5}–NH_{2}), a primary amine. In an amine name, a carbon group on the nitrogen of aniline is shown with the prefix *N*-, so *N*-methylaniline (C_{6}H_{5}–NH–CH_{3}) has one methyl group and one benzene ring on N and is a secondary amine. Amines with the same molecular formula (isomers) can belong to different classes; in A.3 you will build the four amines with the formula C_{3}H_{9}N and classify each one. Figure 1 shows ammonia and an example of each class of amine.',{keepNext:true}));
 c.push(...img(F+'fig7_1.png',624,127,'**Figure 1:** Ammonia and the classes of amines. Carbon groups bonded to nitrogen are shown in blue.'));
 c.push(P('Many physiologically active compounds and medications contain amine groups (Figure 2).',{keepNext:true}));
 c.push(...img(F+'fig7_2.png',560,157,'**Figure 2:** Amines in medicine and in the body. Each N atom is classified by counting the carbon groups bonded to it.'));
@@ -26,7 +27,7 @@ c.push(...img(F+'fig7_2.png',560,157,'**Figure 2:** Amines in medicine and in th
 c.push(h3('B. Odor, Solubility, and Basicity of Amines'));
 c.push(P('**Odor:** Amines with small carbon groups are volatile and have strong, unpleasant odors. Trimethylamine is responsible for the smell of fish, and the diamines putrescine and cadaverine give rotting flesh its odor. Never smell a chemical directly: **waft** the vapor toward your nose with your hand.'));
 c.push(P('**Solubility in water:** The N–H bonds and the lone pair on nitrogen let amines form hydrogen bonds with water. Amines with up to about **six carbon atoms** are soluble or partly soluble in water. A tertiary amine has no N–H bond, but water molecules can still hydrogen bond to its lone pair. As the carbon part of the molecule gets larger, the amine becomes less soluble. A benzene ring is a large nonpolar group, so aniline is only slightly soluble, and *N*-methylaniline is even less soluble; an insoluble amine looks cloudy or forms an oily layer.'));
-c.push(P('**Basicity:** The nitrogen atom of an amine has a **lone pair (unshared pair) of electrons** that can accept a proton (H^{+}). An amine is therefore a **weak base**, like ammonia. In water, a small fraction of the amine molecules take an H^{+} from water, forming an alkylammonium ion and a hydroxide ion (Figure 3a). The OH^{–} ions make the solution basic (pH above 7). Amines with only alkyl groups usually give pH 11–12. Aromatic amines are much weaker bases (pH about 8–9 or lower), because the lone pair on N is partly shared with the benzene ring and is less available to accept H^{+}.'));
+c.push(P('**Basicity:** The nitrogen atom of an amine has a **lone pair (unshared pair) of electrons** that can accept a proton (H^{+}). An amine is therefore a **weak base**, like ammonia. In water, a small fraction of the amine molecules take an H^{+} from water, forming an alkylammonium ion and a hydroxide ion (Figure 3a). In A.4 you will model this with a model kit by bonding an H^{+} to the lone pair on N. The OH^{–} ions make the solution basic (pH above 7). Amines with only alkyl groups usually give pH 11–12. Aromatic amines are much weaker bases (pH about 8–9 or lower), because the lone pair on N is partly shared with the benzene ring and is less available to accept H^{+}.'));
 c.push(P('**pH paper and litmus paper:** pH paper changes to a color that you match to the chart on the container to read the pH. Litmus paper only tells you whether a solution is acidic or basic: **blue litmus turns red in acid**, and **red litmus turns blue in base**. A color that does not change is a negative result.'));
 // C
 c.push(h3('C. Amine Salts'));
@@ -62,11 +63,13 @@ c.push(bullet('**Later rinses** (after the first) may go down the drain with ple
 c.push(bullet('**Trash:** used litmus paper, pH paper, and gloves.'));
 // Procedure
 c.push(h2('Procedure',{pageBreak:true,before:0}));
-c.push(note('Instructor Notes:','At the beginning of lab, start a boiling water bath in the fume hood (a 250-mL beaker about half full of water on a hot plate) and monitor it throughout the lab. Place the dropper bottles of aniline, *N*-methylaniline, and triethylamine in the fume hood.'));
+c.push(note('Instructor Notes:','At the beginning of lab, start a boiling water bath in the fume hood (a 250-mL beaker about half full of water on a hot plate) and monitor it throughout the lab. Place the dropper bottles of aniline, *N*-methylaniline, and triethylamine in the fume hood. Give each pair of students one model kit with at least 6 carbon atoms, 18 hydrogen atoms, 2 nitrogen atoms, 2 oxygen atoms, and 6 flexible bonds (for the benzene ring of aniline and the C=O in Part D), so that two C_{3}H_{9}N isomers can be on the bench at once in A.3. At least one nitrogen atom needs four holes for the ammonium ion in A.4; if the kit’s nitrogen atoms have only three holes, give students a four-hole atom to stand for N^{+} and tell them its color. There are four instructor checks (A.3, A.4, D.1, and D.3); initial each group’s boxes on the report sheet.'));
 c.push(h3('A. Classification and Structure of Amines'));
-c.push(materials('Molecular model kit'));
+c.push(materials('Molecular model kit (one per pair; see Instructor Notes)'));
 c.push(step('A.1','Use a model kit to build models of ammonia, methylamine, dimethylamine, trimethylamine, and aniline. Write the condensed structural formula of each model on your report sheet.'));
 c.push(step('A.2','Classify each compound as a primary (1°), secondary (2°), or tertiary (3°) amine, a quaternary (4°) ammonium ion, or not an amine.'));
+c.push(step('A.3','**Isomers of C_{3}H_{9}N.** Four amines have the molecular formula C_{3}H_{9}N: **propylamine**, **isopropylamine**, **ethylmethylamine**, and **trimethylamine** (which you built in A.1). Each partner builds one isomer at a time from 3 C, 9 H, and 1 N atoms, so two isomers are on the bench together; then take them apart and build the other two. For each isomer, draw the condensed structural formula on your report sheet, count the carbon groups bonded to N, and classify it as 1°, 2°, or 3°. **Instructor check:** show your instructor your isopropylamine and ethylmethylamine models side by side, and explain how you classified each one.'));
+c.push(step('A.4','**An amine acting as a base.** Build a model of methylamine. Its nitrogen has three bonds and one lone pair (on a four-hole nitrogen atom, the empty hole stands for the lone pair). Take one H atom to stand for H^{+} from an acid and bond it to the nitrogen at the lone pair. Count the bonds to N, decide the charge on the new ion, and name it. On your report sheet, write the equation for the reaction of methylamine with HCl and name the amine salt. Then use your model to predict how adding HCl in C.1 will change the solubility and the odor of the amines. **Instructor check:** show your instructor how the lone pair on N accepts H^{+}, and explain your prediction for C.1. Then take apart your models and return the pieces to the kit.'));
 c.push(h3('B. Odor, Solubility, and Basicity of Amines'));
 c.push(materials('Aniline, *N*-methylaniline, triethylamine (dropper bottles in the fume hood), 3 test tubes, test tube rack, 10-mL graduated cylinder, stirring rod, pH paper, gloves'));
 c.push(step('B.1','Label three test tubes 1, 2, and 3. **In the fume hood,** add 5 drops of aniline to tube 1, 5 drops of *N*-methylaniline to tube 2, and 5 drops of triethylamine to tube 3. On your report sheet, draw the condensed structural formula of each amine and classify it (1°, 2°, or 3°).'));
@@ -75,14 +78,14 @@ c.push(step('B.3','Keep the tubes in the fume hood for Parts B and C. Add 2 mL o
 c.push(step('B.4','Dip the stirring rod into each mixture and touch it to a piece of pH paper. Compare the color with the chart on the container and record the pH. Rinse and dry the rod between tubes. **Save the three test tubes for Part C.**'));
 c.push(h3('C. Amine Salts'));
 c.push(materials('The three test tubes from Part B, 10% HCl, blue litmus paper, stirring rod'));
-c.push(step('C.1','Add 10% HCl to each tube, one drop at a time, stirring after each drop, until a drop of the solution on the stirring rod turns blue litmus paper red. Record any change in the solubility of each amine. Waft, and record any change in odor.'));
+c.push(step('C.1','Add 10% HCl to each tube, one drop at a time, stirring after each drop, until a drop of the solution on the stirring rod turns blue litmus paper red. Record any change in the solubility of each amine. Waft, and record any change in odor. Compare your observations with your prediction from A.4.'));
 c.push(step('C.2','On your report sheet, write a balanced equation for the reaction of each amine (aniline, *N*-methylaniline, and triethylamine) with HCl. Name each amine salt.'));
 c.push(h3('D. Amides'));
 c.push(materials('Molecular model kit, acetamide, benzamide, 4 test tubes, test tube rack, spatula, 10-mL graduated cylinder, 10% HCl, 10% NaOH, boiling water bath (250-mL beaker, hot plate) in the fume hood, test tube holder, red litmus paper'));
 c.push(step('D.1','Build models of acetic acid and ammonia. Use the models to show how acetamide and water form: remove the –OH from the acid and an H from the ammonia, and join the carbonyl carbon to the nitrogen. **Instructor check:** show your models to your instructor. Write the equation for the amidation reaction on your report sheet.'));
 c.push(step('D.2','Label four test tubes 1–4. Place a small amount (the tip of a spatula) of acetamide in tubes 1 and 2 and the same amount of benzamide in tubes 3 and 4. Cautiously note the odor of each amide by wafting. Add 2 mL of water to each tube and stir or shake gently. Record the solubility of acetamide and benzamide in water. **Save all four tubes for D.4 and D.5.**'));
 c.push(h4('Hydrolysis of an Amide'));
-c.push(step('D.3','Build a model of acetamide and a model of water. Use them to show the hydrolysis of acetamide: break the C–N bond, add –OH to the carbonyl carbon, and add H to the nitrogen. On your report sheet, write the equation for the hydrolysis of acetamide in acid (with HCl). Remember that in acid the ammonia formed reacts with HCl.'));
+c.push(step('D.3','Build a model of acetamide and a model of water. Use them to show the hydrolysis of acetamide: break the C–N bond, add –OH to the carbonyl carbon, and add H to the nitrogen. **Instructor check:** show your instructor the hydrolysis with your models. On your report sheet, write the equation for the hydrolysis of acetamide in acid (with HCl). Remember that in acid the ammonia formed reacts with HCl.'));
 c.push(step('D.4','**Acid hydrolysis:** Add 2 mL of 10% HCl to tube 1 (acetamide) and tube 3 (benzamide). Using a test tube holder, place both tubes in the boiling water bath in the fume hood and heat for 5 minutes. Remove the tubes and cautiously waft the vapor from each. Record the odor and any other observations, such as crystals forming as the benzamide tube cools (crystals may be unreacted benzamide, so do not rely on them alone).'));
 c.push(step('D.5','**Base hydrolysis:** Add 2 mL of 10% NaOH to tube 2 (acetamide) and tube 4 (benzamide), and place both tubes in the boiling water bath in the fume hood for 5 minutes. While the tubes are still in the hot bath, use a fresh strip of red litmus paper for each tube: moisten one end with distilled water and, holding it by the dry end, hold it just above the mouth of the tube for about 30 seconds. **Do not let the paper touch the tube or the liquid.** Record any change in the color of the litmus paper, then cautiously waft and record any odor. On your report sheet, write the equation for the hydrolysis of acetamide in base (with NaOH).'));
 // Pre-lab
@@ -101,6 +104,15 @@ c.push(...nameBlock());
 c.push(h3('A. Classification and Structure of Amines',{before:120}));
 c.push(table([2300,4560,2500],[['Compound','A.1 Condensed structural formula','A.2 Classification (1°, 2°, 3°, 4°, or not an amine)'],
  ['Ammonia','',''],['Methylamine','',''],['Dimethylamine','',''],['Trimethylamine','',''],['Aniline','','']],{h:800,firstColBold:true}));
+c.push(h3('A (continued). Model Demonstrations',{pageBreak:true,before:0}));
+c.push(table([2300,4060,1500,1500],[['A.3 Isomer of C_{3}H_{9}N','Condensed structural formula','Number of carbon groups on N','1°, 2°, or 3°?'],
+ ['Propylamine','','',''],['Isopropylamine','','',''],['Ethylmethylamine','','',''],['Trimethylamine','','','']],{h:900,firstColBold:true}));
+c.push(P('**A.3** Explain how you classified isopropylamine. Does it matter which carbon atom the N is bonded to?',{before:120,after:800}));
+c.push(checkRow('A.3','C_{3}H_{9}N isomer models shown and classified (1°, 2°, 3°)'));
+c.push(space(200));
+c.push(table([9360],[['**A.4** Equation for the reaction of methylamine with HCl. Draw the ion formed, show its charge, and name the amine salt.']],{header:0,h:1400}));
+c.push(P('**A.4** Prediction: how will adding HCl in C.1 change the solubility and the odor of the amines? Explain using your model.',{before:120,after:900}));
+c.push(checkRow('A.4','amine shown accepting H^{+} at the N lone pair to form an ammonium ion; C.1 prediction explained'));
 c.push(h3('B. Odor, Solubility, and Basicity of Amines',{pageBreak:true,before:0}));
 c.push(table([2160,2400,2400,2400],[['','Tube 1: Aniline','Tube 2: *N*-Methylaniline','Tube 3: Triethylamine'],
  ['**B.1** Condensed structural formula','','',''],['**B.1** Classification','','',''],['**B.2** Odor','','',''],['**B.3** Solubility in water','','',''],['**B.4** pH','','','']],{h:[0,1150,520,650,650,520]}));
@@ -109,16 +121,19 @@ c.push(table([2160,2400,2400,2400],[['C.1','Tube 1: Aniline','Tube 2: *N*-Methyl
  ['Solubility after HCl','','',''],['Odor after HCl','','','']],{h:650}));
 c.push(P('**C.2** Equations for the reactions with HCl (name each amine salt):',{before:200,after:100,keepNext:true}));
 c.push(table([2160,7200],[['Aniline',''],['*N*-Methylaniline',''],['Triethylamine','']],{header:0,h:1000,firstColBold:true}));
+c.push(P('**C.1** Did your observations agree with your prediction in A.4? Explain.',{before:200,after:800}));
 c.push(h3('D. Amides',{pageBreak:true,before:0}));
-c.push(table([9360],[['**D.1** Equation for the formation of acetamide from acetic acid and ammonia']],{header:0,h:950}));
+c.push(table([9360],[['**D.1** Equation for the formation of acetamide from acetic acid and ammonia']],{header:0,h:820}));
+c.push(checkRow('D.1','amidation shown with models (–OH and H removed as water, C–N bond formed)'));
 c.push(space(200));
 c.push(table([2960,3200,3200],[['D.2','Acetamide (tubes 1 and 2)','Benzamide (tubes 3 and 4)'],['Odor','',''],['Solubility in water','','']],{h:750,firstColBold:true}));
 c.push(space(200));
-c.push(table([9360],[['**D.3** Equation for the hydrolysis of acetamide in acid (HCl)']],{header:0,h:950}));
+c.push(table([9360],[['**D.3** Equation for the hydrolysis of acetamide in acid (HCl)']],{header:0,h:820}));
+c.push(checkRow('D.3','hydrolysis of acetamide shown with models (C–N bond broken, water added)'));
 c.push(space(200));
-c.push(table([2960,3200,3200],[['','Acetamide','Benzamide'],['**D.4** Odor and observations after heating with HCl','',''],['**D.5** Change in color of moist red litmus paper','',''],['**D.5** Odor after heating with NaOH','','']],{h:950}));
+c.push(table([2960,3200,3200],[['','Acetamide','Benzamide'],['**D.4** Odor and observations after heating with HCl','',''],['**D.5** Change in color of moist red litmus paper','',''],['**D.5** Odor after heating with NaOH','','']],{h:820}));
 c.push(space(200));
-c.push(table([9360],[['**D.5** Equation for the hydrolysis of acetamide in base (NaOH)']],{header:0,h:950}));
+c.push(table([9360],[['**D.5** Equation for the hydrolysis of acetamide in base (NaOH)']],{header:0,h:820}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 const Q=[['Q.1','Classify each amine nitrogen in phenylephrine (Neo-Synephrine) and methamphetamine in Figure 2 as 1°, 2°, or 3°. Classify the amine group on the side chain of histamine.'],

@@ -18,7 +18,15 @@ function runs(s,base={}){
 }
 const P=(s,o={})=>new Paragraph({children:runs(s,o.run||{}),spacing:{after:o.after??160,before:o.before??0,line:o.line??264},alignment:o.align,indent:o.indent,keepNext:o.keepNext,pageBreakBefore:o.pageBreak});
 const title=s=>new Paragraph({heading:HeadingLevel.HEADING_1,children:[new TextRun({text:s,font:HF,size:56,bold:true,color:BLUE})],spacing:{before:0,after:240}});
-const h2=(s,o={})=>new Paragraph({heading:HeadingLevel.HEADING_2,children:[new TextRun({text:s,font:HF,size:40,bold:true})],spacing:{before:o.before??320,after:160},keepNext:true,pageBreakBefore:o.pageBreak,border:o.rule?{top:{style:BorderStyle.SINGLE,size:24,color:'000000',space:8}}:undefined});
+// Section names used by every lab. The Report Sheet is the data-collection part (ends with the Lab Check-Out stamp);
+// the Questions and Problems are the post-lab report. finalize() adds the stamp boxes next to these headings.
+const H2NAME={'Report Sheet':'Report Sheet: Data Collection','Questions and Problems':'Post-Lab Report: Questions and Problems'};
+// While a lab is being built, answer spaces on the pre-lab page and report-sheet box heights are scaled down slightly
+// so the stamp boxes fit without pushing a question or box onto its own page.
+let MODE=null; const SCALE={prelab:{space:0.8,h:1},report:{space:0.8,h:0.85}};
+const sc=(k,v)=>Math.round(v*((SCALE[MODE]||{})[k]??1));
+const H2KIND={'Pre-Lab Questions':'prelab','Report Sheet':'report','Questions and Problems':'questions'};
+const h2=(s,o={})=>{const p=new Paragraph({heading:HeadingLevel.HEADING_2,children:[new TextRun({text:H2NAME[s]||s,font:HF,size:40,bold:true})],spacing:{before:o.before??320,after:160},keepNext:true,pageBreakBefore:o.pageBreak,border:o.rule?{top:{style:BorderStyle.SINGLE,size:24,color:'000000',space:8}}:undefined}); p.__kind=H2KIND[s]; MODE=H2KIND[s]||null; return p;};
 const h3=(s,o={})=>new Paragraph({heading:HeadingLevel.HEADING_3,children:[new TextRun({text:s,font:HF,size:28,bold:true})],spacing:{before:o.before??280,after:120},keepNext:true,pageBreakBefore:o.pageBreak});
 const h4=s=>new Paragraph({children:runs('**'+s+'**'),spacing:{before:160,after:100},keepNext:true});
 const bullet=(s,lvl=0)=>new Paragraph({children:runs(s),numbering:{reference:'bul',level:lvl},spacing:{after:80,line:264}});
@@ -37,13 +45,24 @@ function cell(c,w,o={}){const arr=Array.isArray(c)?c:[c];return new TableCell({b
 // rows: array of arrays; header row bold+shaded; opts.heights per row (twips) ; opts.firstColBold
 function table(widths,rows,o={}){const total=widths.reduce((a,b)=>a+b,0);
   return new Table({width:{size:total,type:WidthType.DXA},columnWidths:widths,layout:TableLayoutType.FIXED,rows:rows.map((r,ri)=>{
-    const hdr=ri<(o.header??1); const h=hdr?null:(Array.isArray(o.h)?o.h[ri]:o.h);
+    const hdr=ri<(o.header??1); let h=hdr?null:(Array.isArray(o.h)?o.h[ri]:o.h); if(h&&!o.noscale)h=sc('h',h);
     let ci=0; const cells=r.map(c=>{const isO=c&&typeof c=='object'&&!Array.isArray(c); let span=1,val=c; if(isO){span=c.span||1;val=c.t;} const w=widths.slice(ci,ci+span).reduce((a,b)=>a+b,0); const res=cell(val,w,{bold:hdr||(o.firstColBold&&ci==0)||(isO&&c.bold),shade:hdr?'E7ECF5':(isO?c.shade:undefined),align:hdr?AlignmentType.CENTER:(isO?c.align:undefined),span:span>1?span:undefined}); ci+=span; return res;});
     return new TableRow({cantSplit:true,tableHeader:hdr&&o.repeat!==false,height:h?{value:h,rule:HeightRule.ATLEAST}:undefined,children:cells});})});}
 const gap=(n=1)=>Array.from({length:n},()=>new Paragraph({children:[],spacing:{after:0}}));
-const space=tw=>new Paragraph({children:[],spacing:{before:0,after:tw}});
+const space=tw=>new Paragraph({children:[],spacing:{before:0,after:sc('space',tw)}});
 const nameBlock=()=>[P('Name ___________________________________  Date ________________________________',{after:280}),P('Lab Partner ______________________________  Section ______________________________',{after:280})];
+// Instructor check box for a model or demonstration step: checkRow('A.3','both D and L models shown')
+const checkRow=(lab,s,o={})=>table([6560,2800],[[ '☐ **'+(lab?lab+' ':'')+'Instructor check:** '+s, 'Initials or stamp:' ]],{header:0,h:o.h??620,noscale:true});
+// Stamp box under the Pre-Lab Questions heading, and the Lab Check-Out box that closes the Report Sheet (data collection)
+const prelabStamp=()=>[table([6160,3200],[['Name ______________________   Section ________',['**Pre-Lab check:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true}),new Paragraph({children:[],spacing:{before:0,after:140}})];
+const checkoutBox=()=>[new Paragraph({children:[],spacing:{before:0,after:160}}),table([6160,3200],[[['**Lab Check-Out** (end of data collection): ☐ bench and sink clean   ☐ equipment and kits returned   ☐ waste in the correct containers'],['**Check-out:**','*instructor stamp or signature*']]],{header:0,h:820,noscale:true})];
+function finalize(children){const out=[];for(const c of children){
+  if(c&&c.__kind==='questions')out.push(...checkoutBox());
+  out.push(c);
+  if(c&&c.__kind==='prelab')out.push(...prelabStamp());}
+  return out;}
 function build(children,out){
+  children=finalize(children);
   if(global.__COLLECT){global.__COLLECT.push({children,out});return Promise.resolve();}
   const doc=new Document({creator:'Daniel Kwasniewski, Ph.D. and Alexandra Aloia',title:'CHEM 3B Laboratory Manual',description:'CC BY 4.0',styles:{default:{document:{run:{font:TNR,size:24,language:LANG}}},
     paragraphStyles:[{id:'Heading1',name:'Heading 1',basedOn:'Normal',next:'Normal',quickFormat:true,run:{font:HF,size:56,bold:true,color:BLUE},paragraph:{spacing:{before:0,after:240},keepNext:true,outlineLevel:0}},
@@ -55,4 +74,4 @@ function build(children,out){
       children}]});
   return Packer.toBuffer(doc).then(b=>fs.writeFileSync(out,b));
 }
-module.exports={altFor,LANG,HF,TNR,BLUE,runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,gap,space,nameBlock,build,W,D};
+module.exports={checkRow,finalize,altFor,LANG,HF,TNR,BLUE,runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,gap,space,nameBlock,build,W,D};

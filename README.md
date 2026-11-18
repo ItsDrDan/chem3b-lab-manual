@@ -4,7 +4,7 @@
 
 **Website:** https://itsdrdan.github.io/chem3b-lab-manual/
 
-An open educational resource (OER) laboratory manual with 15 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes describe the related experiments.
+An open educational resource (OER) laboratory manual with 16 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes describe the related experiments.
 
 > **Working draft.** This is the current working edition, still being refined. Experiment numbers and procedures may change before the final release.
 
@@ -12,7 +12,7 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 ## Download
 
-**Full manual:** [PDF (242 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
+**Full manual:** [PDF (269 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
 
 | # | Experiment | PDF | Word | Pages |
 |---|---|---|---|---|
@@ -20,27 +20,28 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 | 1 | Functional Groups | [PDF](pdf/experiments/Exp01_FunctionalGroups.pdf) | [Word](docx/experiments/Exp01_FunctionalGroups.docx) | 1–13 |
 | 2 | Structures of Alkanes | [PDF](pdf/experiments/Exp02_StructuresOfAlkanes.pdf) | [Word](docx/experiments/Exp02_StructuresOfAlkanes.docx) | 14–28 |
 | 3 | Hydrocarbons | [PDF](pdf/experiments/Exp03_Hydrocarbons.pdf) | [Word](docx/experiments/Exp03_Hydrocarbons.docx) | 29–44 |
-| 4 | Alcohols and Phenols | [PDF](pdf/experiments/Exp04_AlcoholsPhenols.pdf) | [Word](docx/experiments/Exp04_AlcoholsPhenols.docx) | 45–56 |
-| 5 | Aldehydes and Ketones | [PDF](pdf/experiments/Exp05_AldehydesKetones.pdf) | [Word](docx/experiments/Exp05_AldehydesKetones.docx) | 57–70 |
-| 6 | Carboxylic Acids and Esters | [PDF](pdf/experiments/Exp06_CarboxylicAcidsEsters.pdf) | [Word](docx/experiments/Exp06_CarboxylicAcidsEsters.docx) | 71–83 |
-| 7 | Amines and Amides | [PDF](pdf/experiments/Exp07_AminesAmides.pdf) | [Word](docx/experiments/Exp07_AminesAmides.docx) | 84–96 |
-| 8 | Types of Carbohydrates | [PDF](pdf/experiments/Exp08_TypesOfCarbohydrates.pdf) | [Word](docx/experiments/Exp08_TypesOfCarbohydrates.docx) | 97–111 |
-| 9 | Tests for Carbohydrates | [PDF](pdf/experiments/Exp09_TestsForCarbohydrates.pdf) | [Word](docx/experiments/Exp09_TestsForCarbohydrates.docx) | 112–126 |
-| 10 | Lipids | [PDF](pdf/experiments/Exp10_Lipids.pdf) | [Word](docx/experiments/Exp10_Lipids.docx) | 127–138 |
-| 11 | Aspirin and Analgesics | [PDF](pdf/experiments/Exp11_Aspirin.pdf) | [Word](docx/experiments/Exp11_Aspirin.docx) | 139–152 |
-| 12 | Amino Acids | [PDF](pdf/experiments/Exp12_AminoAcids.pdf) | [Word](docx/experiments/Exp12_AminoAcids.docx) | 153–166 |
-| 13 | Peptides and Proteins | [PDF](pdf/experiments/Exp13_PeptidesProteins.pdf) | [Word](docx/experiments/Exp13_PeptidesProteins.docx) | 167–180 |
-| 14 | Enzymes | [PDF](pdf/experiments/Exp14_Enzymes.pdf) | [Word](docx/experiments/Exp14_Enzymes.docx) | 181–194 |
-| 15 | Vitamins | [PDF](pdf/experiments/Exp15_Vitamins.pdf) | [Word](docx/experiments/Exp15_Vitamins.docx) | 195–208 |
-| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 209–231 |
+| 4 | Alcohols and Phenols | [PDF](pdf/experiments/Exp04_AlcoholsPhenols.pdf) | [Word](docx/experiments/Exp04_AlcoholsPhenols.docx) | 45–60 |
+| 5 | Aldehydes and Ketones | [PDF](pdf/experiments/Exp05_AldehydesKetones.pdf) | [Word](docx/experiments/Exp05_AldehydesKetones.docx) | 61–77 |
+| 6 | Carboxylic Acids and Esters | [PDF](pdf/experiments/Exp06_CarboxylicAcidsEsters.pdf) | [Word](docx/experiments/Exp06_CarboxylicAcidsEsters.docx) | 78–90 |
+| 7 | Amines and Amides | [PDF](pdf/experiments/Exp07_AminesAmides.pdf) | [Word](docx/experiments/Exp07_AminesAmides.docx) | 91–105 |
+| 8 | Types of Carbohydrates | [PDF](pdf/experiments/Exp08_TypesOfCarbohydrates.pdf) | [Word](docx/experiments/Exp08_TypesOfCarbohydrates.docx) | 106–120 |
+| 9 | Tests for Carbohydrates | [PDF](pdf/experiments/Exp09_TestsForCarbohydrates.pdf) | [Word](docx/experiments/Exp09_TestsForCarbohydrates.docx) | 121–135 |
+| 10 | Lipids | [PDF](pdf/experiments/Exp10_Lipids.pdf) | [Word](docx/experiments/Exp10_Lipids.docx) | 136–147 |
+| 11 | Aspirin and Analgesics | [PDF](pdf/experiments/Exp11_Aspirin.pdf) | [Word](docx/experiments/Exp11_Aspirin.docx) | 148–161 |
+| 12 | Amino Acids | [PDF](pdf/experiments/Exp12_AminoAcids.pdf) | [Word](docx/experiments/Exp12_AminoAcids.docx) | 162–175 |
+| 13 | Peptides and Proteins | [PDF](pdf/experiments/Exp13_PeptidesProteins.pdf) | [Word](docx/experiments/Exp13_PeptidesProteins.docx) | 176–188 |
+| 14 | Enzymes | [PDF](pdf/experiments/Exp14_Enzymes.pdf) | [Word](docx/experiments/Exp14_Enzymes.docx) | 189–202 |
+| 15 | Vitamins | [PDF](pdf/experiments/Exp15_Vitamins.pdf) | [Word](docx/experiments/Exp15_Vitamins.docx) | 203–216 |
+| 16 | Nucleic Acids and DNA Extraction | [PDF](pdf/experiments/Exp16_NucleicAcids.pdf) | [Word](docx/experiments/Exp16_NucleicAcids.docx) | 217–235 |
+| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 236–258 |
 
 Page numbers are the manual's printed page numbers. Each experiment PDF keeps them, so a single lab matches the full manual.
 
 Every experiment has the same parts: Goals, Introduction, Hazards and Safety, Waste Instructions, Procedure, Pre-Lab Questions, Report Sheet, and Questions and Problems.
 
-## Drafts (not adopted)
+## Alternate version
 
-- [Experiment 12, cellulose TLC version](drafts/Exp12_AminoAcids_CelluloseTLC_DRAFT.docx): Experiment 12 using two 7.5 × 10 cm cellulose TLC plates per group instead of chromatography paper. It is under review and not part of the manual yet.
+- [Experiment 12, paper chromatography version](drafts/Exp12_AminoAcids_PaperChromatography_ALTERNATE.docx): the earlier Experiment 12, using chromatography paper instead of the cellulose TLC plates now in the manual. Kept for courses without TLC plates (source: `source/src/exp12_paper.js`).
 
 ## How to cite or adapt
 
@@ -62,7 +63,7 @@ npm install
 NOPROMPT=1 TOCJSON=tocpages.json node master.js fig out/CHEM3B_Lab_Manual.docx
 ```
 
-- `src/exp01.js` … `src/exp15.js` hold one experiment each. `src/frontmatter.js` holds the front matter and `src/appendix.js` the appendices. `lablib.js` has the shared styles and helpers.
+- `src/exp01.js` … `src/exp16.js` hold one experiment each. `src/frontmatter.js` holds the front matter and `src/appendix.js` the appendices. `lablib.js` has the shared styles and helpers.
 - Running a single lab file, for example `node src/exp04.js fig out/exp04.docx`, writes that experiment alone.
 - `fig/` has the figures as PNGs, along with the HTML/SVG source each one was drawn from. `svg2png.sh` re-renders them with headless Chrome.
 - The Contents page numbers come from `tocpages.json`. After a layout change on macOS with Microsoft Word, `./remap.sh N` re-measures every page and lists pages that spill. `toc_from_map.py` then turns the map into a new `tocpages.json`.

@@ -36,6 +36,14 @@ Counts are from the reviewers' merged tables (`audit/working-notes/`), plus this
 - **The PDFs are still untagged.** Word's scripted export goes through the macOS Quartz PDF engine, which does not write tags. The alt text is in the Word files; a tagged PDF still needs Word's interactive Save As PDF → "Best for electronic distribution and accessibility."
 - New cosmetic item (P3): Word can break a line between a bond dash and its group (for example "–" / "CH₃" in Exp 2 B.2). A word-joiner fix was tried, but Word ignores it, so it was reverted.
 
+## Round 2 (co-author edits, 2026-11-17)
+
+See ROUND2-LAB-EDITS.md. The manual is now **16 experiments, 269 pages** (front matter i–ix, Experiments pp. 1–235, Appendices pp. 236–258). It was re-measured in Word; the Contents was regenerated with `toc_from_map.py`, and the full PDF and 18 section PDFs were re-exported and re-cut. All 258 printed page numbers and all section starts were checked against the PDF.
+
+To make room for the new stamp boxes, the answer spaces on pre-lab pages are now 80% of their written values, and report-sheet answer-space and box heights 80–85% (set in `lablib.js` SCALE). A few boxes in Exps 1, 4, 5, 7, 10 and 11 were also trimmed so that no question or check-out box sits alone on a page.
+
+Pages that still end high are all section ends: Exp 4's last question (Q.5, with its answer space), Exp 11 p. 156 (as before), Exp 16 at its Waste/Procedure, Procedure/Pre-Lab and final page breaks, and Appendix E p. 249 (as before).
+
 ## Not done
 
 1. **Push and publish.** Not done; wait for both co-authors.

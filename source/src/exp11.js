@@ -102,11 +102,11 @@ c.push(h3('B. Testing Aspirin Products',{pageBreak:true,before:0}));
 c.push(table([3300,1300,2560,2200],[['Sample','B.1 pH','B.2 Color with FeCl_{3}','Salicylic acid: none, faint, or strong purple?'],
  ['**1.** 0.15% salicylic acid (positive control)','','',{t:'(positive control)',shade:'F2F2F2'}],[['**2.** Commercial aspirin','Brand: _______________'],'','',''],[['**3.** Buffered aspirin','Brand: _______________'],'','',''],['**4.** Aspirin made in Part A','','',''],['**5.** Acetylsalicylic acid (reagent)','','','']],{h:800}));
 c.push(h3('C. Analysis of Analgesics by TLC',{pageBreak:true,before:0}));
-c.push(table([3600,5760],[['**C.5** Sketch of your TLC plate','OTC pain reliever brand: ________________________']],{header:0,h:4400}));
+c.push(table([3600,5760],[['**C.5** Sketch of your TLC plate','OTC pain reliever brand: ________________________']],{header:0,h:3800}));
 c.push(P('**C.6** Distance moved by solvent: ____________ cm',{before:160,after:120}));
 c.push(table([1100,3000,2630,2630],[['Spot','Substance','C.6 Distance moved by spot (cm)','C.6 R_{f} value'],
- ['1','Aspirin','',''],['2','Ibuprofen','',''],['3','Acetaminophen','',''],['4','Naproxen','',''],['5','Caffeine','',''],['6','OTC pain reliever, spot 1','',''],['6','OTC pain reliever, spot 2','',''],['6','OTC pain reliever, spot 3','','']],{h:600,firstColBold:true}));
-c.push(P('**C.7** Analgesic(s) identified in the OTC pain reliever, and the R_{f} evidence:',{before:200,after:900}));
+ ['1','Aspirin','',''],['2','Ibuprofen','',''],['3','Acetaminophen','',''],['4','Naproxen','',''],['5','Caffeine','',''],['6','OTC pain reliever, spot 1','',''],['6','OTC pain reliever, spot 2','',''],['6','OTC pain reliever, spot 3','','']],{h:480,firstColBold:true}));
+c.push(P('**C.7** Analgesic(s) identified in the OTC pain reliever, and the R_{f} evidence:',{before:200,after:700}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 const Q=[['Q.1','Draw the structure of aspirin. Circle and label the ester group and the carboxylic acid group.'],

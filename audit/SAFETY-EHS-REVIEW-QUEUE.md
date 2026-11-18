@@ -6,6 +6,13 @@
 - Method: each lab's Hazards and Waste text was compared with the front-matter rules (`source/src/frontmatter.js` lines 66–152), and then with every procedure step that uses each reagent. Full reagent-by-reagent tables for every experiment are in `audit/working-notes/expNN-NN.md`, section 2.
 - GHS statements below come from general SDS knowledge and are marked **verify on SDS**. No local SDS, chemical hygiene plan or waste-contractor rules were available to this review, so **nothing here is "confirmed against local policy."**
 
+**Update after the round-2 lab edits (2026-11-17, see ROUND2-LAB-EDITS.md):**
+- **S-02 is resolved by removal.** No Bunsen burners or flames are left in Exp 13 or anywhere else in the manual.
+- **S-04 is half resolved.** The chromate test is gone; Exp 4 now uses the Lucas test. Tollens' waste still needs EHS confirmation.
+- **S-10 no longer applies.** The chromate reagent was removed.
+- **Exp 12 waste now matches the front matter.** The cellulose TLC version sends used plates to solid waste. S-01 (Exp 11 TLC plates to the trash) is still open.
+- **New items for review:** the Lucas reagent (concentrated HCl/ZnCl₂, fume hood, halogenated waste) and the Exp 16 DNA lab (alcohol, TLC solvent, waste routes). Both are listed in ROUND2-LAB-EDITS.md.
+
 Status codes: **CR** needs co-author review · **EHS** needs EHS verification · **BT** needs a bench test · **NV** not yet verified.
 
 ## A. Release blockers (P0): contradictory or possibly unsafe directions

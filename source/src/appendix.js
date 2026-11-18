@@ -62,7 +62,7 @@ c.push(xtable([2700,6660],[['Item','What it is used for'],
  ['**Mortar and pestle**','Grinding a solid, such as a tablet, into a fine powder.'],
  ['**Wash bottle**','Rinsing glassware and adding small amounts of distilled water.'],
  ['**Hot plate**','Heating water baths and solutions without an open flame. The surface stays hot after it is turned off.'],
- ['**Bunsen burner**','Heating with an open flame. Never use it near flammable organic liquids.'],
+ ['**TLC plate and developing chamber**','Thin-layer chromatography: the plate stands in a shallow layer of solvent in a covered beaker (Experiments #11, #12, and #16).'],
  ['**Ring stand with ring and clamp**','Holding a funnel, flask, or buret (with a buret clamp) at a fixed height.']],{}));
 
 // ======================= APPENDIX B =======================

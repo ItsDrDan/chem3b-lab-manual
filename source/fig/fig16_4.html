@@ -1,0 +1,31 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="760" height="525" viewBox="0 0 760 525" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig16_lib.js"></script>
+<script>
+init('s',20); const G='#555', BLUE='#1f5fbf';
+const rows=[['A','T',2],['G','C',3],['C','G',3],['T','A',2]]; const y0=120,dy=95;
+const XL=230, XR=530; // sugar centers
+function pent(cx,cy,flip){const p=ringPts(cx,cy,20,-90,5); el('polygon',{points:p.map(q=>q.x+','+q.y).join(' '),fill:'#fff',stroke:'#000','stroke-width':2});}
+function phos(x,y){el('circle',{cx:x,cy:y,r:15,fill:'#fff',stroke:'#000','stroke-width':2}); label(x,y+6,'P',{fs:17,bold:true});}
+rows.forEach((r,i)=>{const y=y0+i*dy;
+  // backbone links
+  if(i<rows.length-1){line(XL-14,y+14,XL-55,y+dy/2,{w:2}); line(XL-55,y+dy/2,XL-14,y+dy-14,{w:2}); line(XR+14,y+14,XR+55,y+dy/2,{w:2}); line(XR+55,y+dy/2,XR+14,y+dy-14,{w:2});}
+  // bases
+  rect(XL+22,y-20,108,40,{stroke:'#000',fill:'#eef3fb',rx:4}); label(XL+76,y+7,r[0],{fs:22,bold:true});
+  rect(XR-130,y-20,108,40,{stroke:'#000',fill:'#eef3fb',rx:4}); label(XR-76,y+7,r[1],{fs:22,bold:true});
+  const gx1=XL+132,gx2=XR-132; const n=r[2]; for(let k=0;k<n;k++){const yy=y+(k-(n-1)/2)*11; line(gx1+3,yy,gx2-3,yy,{dash:'4 3',w:1.8});}
+  pent(XL,y); pent(XR,y);
+});
+for(let i=0;i<rows.length-1;i++){phos(XL-55,y0+i*dy+dy/2); phos(XR+55,y0+i*dy+dy/2);}
+// ends
+const yt=y0-dy/2+8, yb=y0+(rows.length-1)*dy+dy/2-8;
+line(XL-14,y0-14,XL-55,yt+12,{w:2}); phos(XL-55,yt); label(XL-55,yt-26,'5′ end',{fs:18,bold:true});
+line(XL-14,y0+(rows.length-1)*dy+14,XL-45,yb,{w:2}); label(XL-55,yb+20,'3′ end (–OH)',{fs:18,bold:true});
+line(XR+14,y0-14,XR+45,yt+8,{w:2}); label(XR+60,yt-12,'3′ end (–OH)',{fs:18,bold:true});
+line(XR+14,y0+(rows.length-1)*dy+14,XR+55,yb-12,{w:2}); phos(XR+55,yb); label(XR+55,yb+36,'5′ end',{fs:18,bold:true});
+// direction arrows
+arrow(70,y0,70,y0+(rows.length-1)*dy,{w:2.5,head:13,color:BLUE}); label(70,y0-20,'5′→3′',{fs:16,color:BLUE});
+arrow(690,y0+(rows.length-1)*dy,690,y0,{w:2.5,head:13,color:BLUE}); label(690,y0+(rows.length-1)*dy+30,'5′→3′',{fs:16,color:BLUE});
+label(380,30,'The two strands run in opposite directions (antiparallel)',{fs:19,bold:true});
+label(380,512,'Pentagon = deoxyribose; P = phosphate; dashed lines = hydrogen bonds',{fs:16,color:G});
+</script>

@@ -1,4 +1,4 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3];
 const {Paragraph,AlignmentType}=D; const M=D; const R=s=>new M.MathRun(s);
 const mathP=(kids,o={})=>new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:120,after:o.after??200},keepNext:o.keepNext,children:[new M.Math({children:kids})]});
@@ -125,7 +125,7 @@ c.push(two('D.3 2-Iodopropane','Complete structural formula','Condensed structur
 const d4=[]; [1,2,3,4].forEach(()=>d4.push([{t:'**Complete structural formula**'},{t:'**Condensed structural formula**'}],['',''],[{t:'**Name:**',span:2}]));
 c.push(table([4680,4680],[[{t:'D.4 Isomers of dichloropropane, C_{3}H_{6}Cl_{2}',span:2,align:AlignmentType.LEFT}],...d4],{header:1,h:[0,0,1700,420,0,1700,420,0,1700,420,0,1700,420]}));
 c.push(space(160));
-c.push(table([4680,4680],[['**D.5** Instructor check: all models complete',{t:'Initials:'}]],{header:0,h:900}));
+c.push(checkRow('D.5','models and report complete'));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
 c.push(step('Q.1','Write the correct IUPAC name of each compound.',{left:0,after:0}));

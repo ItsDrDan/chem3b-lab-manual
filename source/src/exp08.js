@@ -1,4 +1,4 @@
-const L=require('../lablib.js'); const {P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {checkRow,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3]; const {AlignmentType}=D;
 const c=[];
 c.push(title('Experiment #8: Types of Carbohydrates'));
@@ -106,8 +106,9 @@ const hdr=t=>({t,span:2,align:AlignmentType.LEFT});
 const two=(hd,a,b,h)=>table([4680,4680],[[hdr(hd)],[{t:'**'+a+'**'},{t:'**'+b+'**'}],['','']],{header:1,h:[0,0,h]});
 c.push(h3('A. Monosaccharides',{before:120}));
 c.push(table([4680,4680],[[hdr('A.1 Fischer projections of glyceraldehyde')],[{t:'**L-Glyceraldehyde**'},{t:'**D-Glyceraldehyde**'}],['',''],
- [{t:'**Can the two models be placed exactly on top of each other? How does L-glyceraldehyde differ from D-glyceraldehyde?**',span:2}],[{t:'',span:2}],
- [{t:'**Instructor check:** both models ______________',span:2}]],{header:1,h:[0,0,1760,0,968,440]}));
+ [{t:'**Can the two models be placed exactly on top of each other? How does L-glyceraldehyde differ from D-glyceraldehyde?**',span:2}],[{t:'',span:2}]],{header:1,h:[0,0,1760,0,968]}));
+c.push(space(120));
+c.push(checkRow('A.1','D- and L-glyceraldehyde models shown'));
 c.push(space(141));
 c.push(table([3120,3120,3120],[[{t:'A.2 D-Glucose',span:3,align:AlignmentType.LEFT}],[{t:'**Fischer projection of D-glucose** (number the carbons; circle the carbon that makes it D)'},{t:'**Haworth structure of α-D-glucose**'},{t:'**Haworth structure of β-D-glucose**'}],['','','']],{header:1,h:[0,0,2816]}));
 c.push(P('',{pageBreak:true,after:0}));

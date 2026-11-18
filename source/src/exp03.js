@@ -1,5 +1,5 @@
 const fs=require('fs');
-const L=require('../lablib.js'); const {runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
+const L=require('../lablib.js'); const {checkRow,runs,P,title,h2,h3,h4,bullet,step,sub,materials,note,caution,img,table,space,nameBlock,build,W,D}=L;
 const F=process.argv[2]+'/'; const OUT=process.argv[3];
 const {Paragraph,TextRun,ImageRun,AlignmentType}=D;
 // heading 3 that accepts _{sub} markup (lablib h3 writes plain text)
@@ -79,7 +79,7 @@ c.push(h3('A. Types of Hydrocarbons with Model Kits'));
 c.push(materials('Molecular model kit (with flexible bonds)'));
 c.push(step('A.1','Using a model kit, build models of ethene, propene, cyclobutene, *cis*-2-butene, and ethyne (acetylene).'));
 c.push(step('A.2','Draw the condensed or skeletal structure of each on your report sheet.'));
-c.push(step('A.3','Hold one carbon of the double bond in your *cis*-2-butene model and try to twist the other carbon. Then build *trans*-2-butene (Figure 2). Record whether you can turn *cis*-2-butene into *trans*-2-butene without breaking a bond, and why.'));
+c.push(step('A.3','Hold one carbon of the double bond in your *cis*-2-butene model and try to twist the other carbon. Then build *trans*-2-butene (Figure 2). Record whether you can turn *cis*-2-butene into *trans*-2-butene without breaking a bond, and why. **Instructor check:** show your instructor your *cis*-2-butene and *trans*-2-butene models side by side.'));
 c.push(h3('B. Color, Odor, and Physical State'));
 c.push(materials('Test tubes (6), test tube rack, spatulas, droppers, NaCl(s), KI(s), benzoic acid(s), cyclohexane, toluene, distilled water'));
 c.push(step('B.1','Label three test tubes. Place a few crystals of NaCl, KI, and benzoic acid in separate tubes.'));
@@ -129,6 +129,8 @@ c.push(...nameBlock());
 c.push(h3('A. Types of Hydrocarbons with Model Kits',{before:120}));
 c.push(table([2400,6960],[['Name','A.2 Condensed or skeletal structure'],...['Ethene','Propene','Cyclobutene','*cis*-2-Butene','Ethyne (acetylene)'].map(n=>[n,''])],{h:820,firstColBold:true}));
 c.push(table([9360],[['**A.3** Can *cis*-2-butene be turned into *trans*-2-butene without breaking a bond? Why or why not?']],{header:0,h:1300}));
+c.push(space(120));
+c.push(checkRow('A.3','*cis*- and *trans*-2-butene models shown'));
 c.push(h3('B. Color, Odor, and Physical State',{pageBreak:true,before:0}));
 c.push(table([1500,1260,1260,1500,1260,1290,1290],[['Substance','B.3 Formula','B.3 Color and physical state','B.3 Odor','B.4 Melting point (°C)','B.4 Ionic or covalent?','B.4 Organic or inorganic?'],
  ...['Sodium chloride','Potassium iodide','Benzoic acid','Cyclohexane','Toluene','Water'].map(n=>[n,'','','','','',''])],{h:780,firstColBold:true}));

@@ -1,0 +1,16 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',20); const AX=480;
+const rx=(y)=>{arrow(AX,y,AX+130,y); label(AX+65,y-10,'HCl, ZnCl_2',{fs:16,bold:true}); label(AX+65,y+22,'25 °C',{fs:14,color:'#555'});};
+txt(5,67,'A.',{bold:true}); chain(40,60,[{l:'CH_3'},{l:'CH_2'},{l:'CH',up:{l:'OH'}},{l:'CH_2'},{l:'CH_3'}]); rx(60);
+txt(5,197,'B.',{bold:true}); chain(40,190,[{l:'CH_3'},{l:'CH_2'},{l:'CH_2'},{l:'CH_2'},{l:'CH_2'},{l:'OH'}]); rx(190);
+// C. 1-methylcyclopentanol: pentagon, substituted vertex on the right
+txt(5,327,'C.',{bold:true}); const cx=110,cy=320,r=38; const P=[];
+for(let i=0;i<5;i++){const t=i*2*Math.PI/5; P.push([cx+r*Math.cos(t),cy+r*Math.sin(t)]);}
+for(let i=0;i<5;i++){const p=P[i],q=P[(i+1)%5]; line(p[0],p[1],q[0],q[1],{w:2});}
+const v=P[0]; line(v[0],v[1],v[0]+28,v[1]-24,{w:2}); atomAt(v[0]+44,v[1]-36,'OH');
+line(v[0],v[1],v[0]+28,v[1]+24,{w:2}); atomAt(v[0]+50,v[1]+36,'CH_3');
+rx(320);
+</script>

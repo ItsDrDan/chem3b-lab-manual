@@ -1,0 +1,28 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script>
+<script>
+init('s',16); const G='#555', BLUE='#1f5fbf', PL='#f3f1ea';
+const cm=25; // px per cm; plate 6 cm x 10 cm
+function plate(x,y){el('rect',{x,y,width:6*cm,height:10*cm,fill:PL,stroke:'#777','stroke-width':1.5});}
+// (a)
+label(160,30,'(a) Mark and spot the plate',{fs:18,bold:true});
+const ax=85,ay=60; plate(ax,ay); const oy=ay+10*cm-1.5*cm;
+line(ax+6,oy,ax+6*cm-6,oy,{w:1,color:'#888',dash:'2 2'});
+['A','C','T','U','X'].forEach((t,i)=>{const cx=ax+(i+1)*cm; el('circle',{cx,cy:oy,r:3.5,fill:'#444'}); label(cx,oy+20,t,{fs:14});});
+line(ax+6*cm+10,oy,ax+6*cm+10,ay+10*cm,{w:1}); line(ax+6*cm+5,oy,ax+6*cm+15,oy,{w:1}); line(ax+6*cm+5,ay+10*cm,ax+6*cm+15,ay+10*cm,{w:1});
+txt(ax+6*cm+18,oy+24,'1.5 cm',{fs:13});
+txt(ax+6*cm+18,oy-22,'origin',{fs:13,color:G}); txt(ax+6*cm+18,oy-7,'(pencil)',{fs:13,color:G});
+label(160,350,'Marks 1 cm apart. A = adenine, C = cytosine,',{fs:14,color:G}); label(160,368,'T = thymine, U = uracil, X = unknown',{fs:14,color:G});
+// (b)
+label(560,30,'(b) Develop, view under UV, measure',{fs:18,bold:true});
+const bx=470,by=60; plate(bx,by); const o2=by+10*cm-1.5*cm, front=by+1*cm;
+line(bx+6,o2,bx+6*cm-6,o2,{w:1,color:'#888',dash:'2 2'}); line(bx+4,front,bx+6*cm-4,front,{w:1.6,color:BLUE});
+txt(bx+6*cm+8,front+5,'solvent front',{fs:13,color:BLUE});
+const sx=bx+3*cm, sy=o2-(o2-front)*0.5;
+el('ellipse',{cx:sx,cy:sy,rx:8,ry:6,fill:'#6b6b6b'}); el('ellipse',{cx:sx,cy:sy,rx:12,ry:10,fill:'none',stroke:'#333','stroke-width':1.5});
+arrow(sx,o2,sx,sy+10,{head:8,w:1.4}); txt(sx+10,(o2+sy)/2-4,'a',{fs:17,italic:true}); 
+arrow(bx-14,o2,bx-14,front,{head:8,w:1.4,color:BLUE}); txt(bx-34,(o2+front)/2+5,'b',{fs:17,italic:true,color:BLUE});
+line(sx+13,sy,bx+6*cm+6,sy,{w:1}); txt(bx+6*cm+10,sy-3,'example spot',{fs:13,color:G}); txt(bx+6*cm+10,sy+13,'(circled in pencil)',{fs:13,color:G});
+label(560,350,'R_{f} = a ÷ b   (both in cm)',{fs:16}); label(560,370,'Spots look dark on the glowing green plate.',{fs:14,color:G});
+</script>

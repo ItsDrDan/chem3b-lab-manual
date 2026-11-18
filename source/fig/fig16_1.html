@@ -1,0 +1,39 @@
+<svg id="s" xmlns="http://www.w3.org/2000/svg" width="1300" height="410" viewBox="0 0 1300 410" style="background:#fff"></svg>
+<style>body{margin:0}</style>
+<script src="chem.js"></script><script src="fig16_lib.js"></script>
+<script>
+init('s',20); const G='#666', RED='#c0392b';
+function sugarAt(ox,oy,s2,o={}){ // furanose ring: C4',O4',C1',C2',C3' ; returns atoms
+  const A={C4:{x:ox,y:oy},O4:{x:ox+55,y:oy-36,l:'O'},C1:{x:ox+110,y:oy},C2:{x:ox+90,y:oy+64},C3:{x:ox+20,y:oy+64}};
+  const B=[['C4','O4'],['O4','C1'],['C1','C2'],['C2','C3'],['C3','C4']];
+  A.X2={x:ox+90,y:oy+118,l:s2,al:s2=='H'?'c':'l'}; B.push(['C2','X2']);
+  A.X3={x:ox+20,y:oy+118,l:o.o3||'OH',al:'r'}; B.push(['C3','X3']);
+  if(o.cond){A.C5={x:ox-38,y:oy-34,l:'HOCH_2',al:'r',r:14}; B.push(['C4','C5']);}
+  if(o.c5){A.C5={x:ox-48,y:oy-30}; B.push(['C4','C5']); A.O5={x:ox-100,y:oy-30,l:o.o5l||'O',al:o.o5al||'c'}; B.push(['C5','O5']);}
+  if(o.c1){A.X1={x:ox+160,y:oy,l:'OH',al:'l'}; B.push(['C1','X1']);}
+  drawMol(A,B); 
+  const n=(x,y,t)=>label(x,y,t,{fs:15,color:G});
+  n(ox+112,oy-12,'1′'); n(ox+106,oy+76,'2′'); n(ox+4,oy+76,'3′'); n(ox-10,oy+14,'4′'); if(o.c5)n(ox-48,oy-42,'5′'); if(o.cond)n(ox-50,oy-62,'5′');
+  return A;}
+// (a) nucleotide
+txt(20,34,'(a) A nucleotide from DNA',{fs:20,bold:true});
+const S=sugarAt(330,200,'H',{c5:true,o3:'HO'});
+// phosphate on O5'
+const O5=S.O5; const P={P:{x:O5.x-60,y:O5.y,l:'P',al:'c'},Ot:{x:O5.x-60,y:O5.y-58,l:'O',al:'c'},Ob:{x:O5.x-60,y:O5.y+58,l:'O^−',al:'l'},Ol:{x:O5.x-120,y:O5.y,l:'^−O',al:'r'},O5:{...O5,l:'',r:12}};
+drawMol(P,[['P','O5'],['P','Ot',2],['P','Ob'],['P','Ol']],{});
+// fix: bond P-O5 should stop at O label
+// base
+const C1=S.C1; line(C1.x+4,C1.y-3,C1.x+58,C1.y-34); 
+rect(C1.x+58,C1.y-68,170,64,{stroke:'#000',fill:'#f2f2f2',rx:10}); label(C1.x+143,C1.y-41,'Nitrogen base',{fs:18,bold:true}); label(C1.x+143,C1.y-18,'(A, G, C, or T)',{fs:16});
+rect(48,104,200,204,{stroke:'#555',dash:'6 5'}); label(143,335,'Phosphate',{fs:18,bold:true});
+rect(256,138,236,222,{stroke:'#555',dash:'6 5'}); label(365,385,'Sugar (deoxyribose)',{fs:18,bold:true});
+label(C1.x+143,C1.y+28,'Base bonds to C1′',{fs:15,color:G}); label(143,355,'bonds to O on C5′',{fs:15,color:G});
+// (b) ribose vs deoxyribose
+txt(720,34,'(b) The two sugars',{fs:20,bold:true});
+const Ri=sugarAt(800,205,'OH',{cond:true,c1:true});
+const De=sugarAt(1090,205,'H',{cond:true,c1:true});
+label(860,100,'Ribose (in RNA)',{fs:18,bold:true}); label(1150,100,'Deoxyribose (in DNA)',{fs:18,bold:true});
+el('ellipse',{cx:Ri.X2.x+14,cy:Ri.X2.y,rx:30,ry:20,fill:'none',stroke:RED,'stroke-width':2});
+el('ellipse',{cx:De.X2.x,cy:De.X2.y,rx:22,ry:20,fill:'none',stroke:RED,'stroke-width':2});
+label(905,370,'2′ carbon: –OH',{fs:16,color:RED}); label(1185,370,'2′ carbon: –H (no O)',{fs:16,color:RED});
+</script>
