@@ -10,7 +10,7 @@ txt(5,197,'B.',{bold:true}); chain(40,190,[{l:'CH_3'},{l:'CH_2'},{l:'CH_2'},{l:'
 txt(5,327,'C.',{bold:true}); const cx=110,cy=320,r=38; const P=[];
 for(let i=0;i<5;i++){const t=i*2*Math.PI/5; P.push([cx+r*Math.cos(t),cy+r*Math.sin(t)]);}
 for(let i=0;i<5;i++){const p=P[i],q=P[(i+1)%5]; line(p[0],p[1],q[0],q[1],{w:2});}
-const v=P[0]; line(v[0],v[1],v[0]+28,v[1]-24,{w:2}); atomAt(v[0]+44,v[1]-36,'OH');
-line(v[0],v[1],v[0]+28,v[1]+24,{w:2}); atomAt(v[0]+50,v[1]+36,'CH_3');
+const v=P[0]; line(v[0],v[1],v[0]+28,v[1]-24,{w:2}); atomAt(v[0]+44,v[1]-36,'OH',{at:'auto'});
+line(v[0],v[1],v[0]+28,v[1]+24,{w:2}); atomAt(v[0]+50,v[1]+36,'CH_3',{at:'auto'});
 rx(320);
 </script>

@@ -8,7 +8,7 @@ const DY=58, HW=50;
 function fischer(x,y,rows){
   rows.forEach((r,i)=>{
     const yy=y+i*DY;
-    if(r.text){ atomAt(x,yy,r.text,{color:r.color}); }
+    if(r.text){ atomAt(x,yy,r.text,{color:r.color,at:'auto'}); }
     else {
       atomAt(x,yy,'C');
       line(x-HW+14,yy,x-10,yy); atomAt(x-HW-(r.l.length>1?8:0),yy,r.l,{color:r.lc,bold:!!r.lc});

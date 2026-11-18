@@ -10,13 +10,13 @@ function rowC(x,y,l,r,o={}){ atomAt(x,y,'C',{color:o.color});
   if(r){ if(o.dbl) bond(x+10,y,x+HW-10,y,2,{color:o.color}); else line(x+10,y,x+HW-10,y); atomAt(x+HW+(r.length>1?8:2),y,r,{color:o.rc||o.color});}}
 const y0=50;
 // ketose
-atomAt(120,y0,'CH_2OH'); line(120,y0+17,120,y0+DY-12); rowC(120,y0+DY,null,'O',{dbl:true,color:RED}); line(120,y0+DY+12,120,y0+2*DY-13); atomAt(120,y0+2*DY,'R');
+atomAt(120,y0,'CH_2OH',{at:'auto'}); line(120,y0+17,120,y0+DY-12); rowC(120,y0+DY,null,'O',{dbl:true,color:RED}); line(120,y0+DY+12,120,y0+2*DY-13); atomAt(120,y0+2*DY,'R');
 label(120,y0+2*DY+50,'ketose (C=O on C2)',{fs:16,bold:true,color:RED});
 // enediol
 rowC(380,y0,'H','OH',{color:GR}); bond(380,y0+12,380,y0+DY-12,2,{color:GR}); rowC(380,y0+DY,null,'OH',{color:GR}); line(380,y0+DY+12,380,y0+2*DY-13); atomAt(380,y0+2*DY,'R');
 label(380,y0+2*DY+50,'enediol intermediate',{fs:16,bold:true,color:GR});
 // aldose
-atomAt(640,y0,'CHO',{color:BLU}); line(640,y0+17,640,y0+DY-12); rowC(640,y0+DY,'H','OH'); line(640,y0+DY+12,640,y0+2*DY-13); atomAt(640,y0+2*DY,'R');
+atomAt(640,y0,'CHO',{color:BLU,at:'auto'}); line(640,y0+17,640,y0+DY-12); rowC(640,y0+DY,'H','OH'); line(640,y0+DY+12,640,y0+2*DY-13); atomAt(640,y0+2*DY,'R');
 label(640,y0+2*DY+50,'aldose (CHO on C1)',{fs:16,bold:true,color:BLU});
 // equilibrium arrows
 function eq(x1,x2,y){arrow(x1,y-5,x2,y-5,{head:9}); arrow(x2,y+5,x1,y+5,{head:9}); label((x1+x2)/2,y-16,'base (OH^-)',{fs:15,italic:true});}

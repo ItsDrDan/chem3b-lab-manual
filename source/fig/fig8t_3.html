@@ -8,7 +8,7 @@ const Y=240, X=[120,330,540];
 const sub=(o)=>Object.assign({C2:{down:'OH'},C3:{up:{l:'OH',len:22}}},o);
 const L=pyran(X[0],Y,sub({C1:{down:{l:'-',c:RED,len:34}},C4:{down:{l:'-',len:34}},C5:{up:'CH_2OH'}}));
 const M=pyran(X[1],Y,sub({C1:{down:{l:'-',c:RED,len:34}},C4:{down:{l:'-',c:RED,len:34}},C5:{up:{l:'-',len:26}}}));
-const R=pyran(X[2],Y,sub({C1:{down:{l:'-',len:34}},C4:{down:{l:'-',c:RED,len:34}},C5:{up:'CH_2OH'}}));
+const R=pyran(X[2],Y,sub({C1:{down:{l:'-',len:34}},C2:{down:'HO'},C4:{down:{l:'-',c:RED,len:34}},C5:{up:'CH_2OH'}})); // HO (O on the bond) keeps clear of the chain-end O at C1
 // alpha-1,4 links
 function link(p,q){const ox=(p[0]+q[0])/2, oy=Y+62; line(p[0],Y+34,ox-8,oy-6,{color:RED}); line(ox+8,oy-6,q[0],Y+34,{color:RED}); atomAt(ox,oy,'O',{color:RED}); label(ox,oy+30,'α-1,4',{fs:15,color:RED,bold:true});}
 link(L.C1,M.C4); link(M.C1,R.C4);
@@ -16,7 +16,7 @@ link(L.C1,M.C4); link(M.C1,R.C4);
 {const [x]=L.C4; line(x,Y+34,x,Y+46); atomAt(x,Y+58,'O'); line(x-10,Y+62,x-30,Y+70);}
 {const [x]=R.C1; line(x,Y+34,x,Y+46); atomAt(x,Y+58,'O'); line(x+10,Y+62,x+30,Y+70);}
 // C6 of middle unit -> CH2 -> O -> branch C1
-const [c5x,c5y]=M.C5; atomAt(c5x,c5y-38,'CH_2',{color:BLU}); line(c5x,c5y-50,c5x,c5y-74,{color:BLU}); atomAt(c5x,c5y-86,'O',{color:BLU});
+const [c5x,c5y]=M.C5; atomAt(c5x,c5y-38,'CH_2',{color:BLU,at:'auto'}); line(c5x,c5y-50,c5x,c5y-74,{color:BLU}); atomAt(c5x,c5y-86,'O',{color:BLU});
 const BY=c5y-128, BX=c5x-40-1.3*U;
 const B=pyran(BX,BY,sub({C1:{down:{l:'-',c:BLU,len:8}},C4:{down:{l:'-',len:30}},C5:{up:'CH_2OH'}}));
 line(B.C1[0],BY+8,c5x-9,c5y-93,{color:BLU});

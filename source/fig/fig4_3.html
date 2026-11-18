@@ -17,6 +17,6 @@ label((a.start+wx)/2+20,200,'ethanol  +  water',{fs:16,bold:true});
 const bx=470; const b=chain(bx,y,[{l:'CH_3'},{l:'CH_2'},{l:'O',color:RED},{l:'H',color:BLU}]);
 const ox2=b.pos[2].x, hx2=b.pos[3].x; label(ox2,y+34,'δ−',{fs:16,color:RED}); label(hx2,y+34,'δ+',{fs:16,color:BLU});
 const w2=hx2+80; line(hx2+14,y,w2-12,y,{dash:'4,5',w:2.4,color:'#2b8a3e'}); atomAt(w2,y,'O',{color:RED});
-bond(w2,y-12,w2,y-40); atomAt(w2,y-52,'H',{color:BLU}); bond(w2,y+12,w2,y+40); atomAt(w2,y+54,'CH_2CH_3');
+bond(w2,y-12,w2,y-40); atomAt(w2,y-52,'H',{color:BLU}); bond(w2,y+12,w2,y+40); atomAt(w2,y+54,'CH_2CH_3',{at:'auto'});
 label(bx+180,200,'ethanol  +  ethanol',{fs:16,bold:true});
 </script>

@@ -24,7 +24,16 @@ function txt(x,y,label,o={}){
   return {w,el:t};
 }
 // atom label centered at (x,y) ; returns half width
-function atomAt(x,y,label,o={}){const r=txt(x,y+(o.fs||FS)*0.35,label,Object.assign({anchor:'middle'},o));return r.w/2;}
+// Which character of a group label a bond attaches to: the first atom (C in CH_2OH, O in OH), or, for labels that start
+// with H, the last non-H atom (O in HO, C in HOCH_2 or H_3C). Index is into the displayed text (subscripts count).
+function attachIdx(s){ if(s.length<2||s[0]!=='H') return 0; for(let i=s.length-1;i>=0;i--){ if(/[A-GI-Z]/.test(s[i])) return i; } return 0; }
+function charCenter(t,k){ return (t.getStartPositionOfChar(k).x+t.getEndPositionOfChar(k).x)/2; }
+let LAST_ATOM=null;
+// atom label centered at (x,y); returns half width. o.at:'auto' (or a character index) centers the bonded atom itself
+// on x instead of the whole label, so a bond meets the C of CH_2OH or the O of OH/HO, not the middle of the group.
+function atomAt(x,y,label,o={}){const r=txt(x,y+(o.fs||FS)*0.35,label,Object.assign({anchor:'middle'},o)); LAST_ATOM=r.el;
+  if(o.at!==undefined && r.el.textContent.length>1){ const k=o.at==='auto'?attachIdx(r.el.textContent):o.at; const sh=x-charCenter(r.el,k); r.el.setAttribute('x',parseFloat(r.el.getAttribute('x'))+sh); }
+  return r.w/2;}
 function line(x1,y1,x2,y2,o={}){return el('line',{x1,y1,x2,y2,stroke:o.color||COLOR,'stroke-width':o.w||1.6,'stroke-dasharray':o.dash||'','stroke-linecap':'round'});}
 function bond(x1,y1,x2,y2,order=1,o={}){
   if(order==1){line(x1,y1,x2,y2,o);return;}
@@ -39,8 +48,10 @@ function chain(x,y,atoms,o={}){
     const tmp=txt(-999,-999,a.l,{fs}); const hw=tmp.w/2; tmp.el.remove();
     if(i==0){cx=x+hw;} else { const p=pos[i-1]; const x1=p.x+p.hw+4, x2=x1+(a.bl||o.bl||BL); cx=x2+4+hw; bond(x1,y,x2,y,a.order||1,{color:a.bondColor||o.color}); }
     atomAt(cx,y,a.l,{fs,color:a.color||o.color});
-    if(a.up){const uy=y-fs*0.62, ty=uy-vb; bond(cx,uy,cx,ty,a.up.order||1,{color:a.up.bondColor||o.color}); atomAt(cx,ty-fs*0.6,a.up.l,{fs,color:a.up.color||o.color});}
-    if(a.down){const dy0=y+fs*0.62, ty=dy0+vb; bond(cx,dy0,cx,ty,a.down.order||1,{color:a.down.bondColor||o.color}); atomAt(cx,ty+fs*0.45,a.down.l,{fs,color:a.down.color||o.color});}
+    // vertical bonds start at the bonded atom of the label (the C of CH), and the group at the other end is placed by its bonded atom
+    const bx=(a.up||a.down)&&LAST_ATOM.textContent.length>1?charCenter(LAST_ATOM,attachIdx(LAST_ATOM.textContent)):cx;
+    if(a.up){const uy=y-fs*0.62, ty=uy-vb; bond(bx,uy,bx,ty,a.up.order||1,{color:a.up.bondColor||o.color}); atomAt(bx,ty-fs*0.6,a.up.l,{fs,color:a.up.color||o.color,at:'auto'});}
+    if(a.down){const dy0=y+fs*0.62, ty=dy0+vb; bond(bx,dy0,bx,ty,a.down.order||1,{color:a.down.bondColor||o.color}); atomAt(bx,ty+fs*0.45,a.down.l,{fs,color:a.down.color||o.color,at:'auto'});}
     pos.push({x:cx,hw});
   });
   const last=pos[pos.length-1]; return {pos,end:last.x+last.hw,start:x};

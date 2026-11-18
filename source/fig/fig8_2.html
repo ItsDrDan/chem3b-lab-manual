@@ -30,7 +30,7 @@ function ring(P,pt,order,thick,subs){
     ['up','down'].forEach(d=>{ if(!s[d])return; const v=s[d]; const lab=typeof v=='string'?v:v.l; const len=(typeof v=='object'&&v.len)||SL;
       const col=typeof v=='object'?v.c:undefined; const yy=d=='up'?y-len:y+len;
       if(lab==='-'){line(x,y,x,yy,{color:col});return;}
-      line(x,y,x,yy+(d=='up'?10:-10),{color:col}); atomAt(x+(typeof v=='object'&&v.dx||0),d=='up'?yy:yy+2,lab,{color:col});});
+      line(x,y,x,yy+(d=='up'?10:-10),{color:col}); atomAt(x+(typeof v=='object'&&v.dx||0),d=='up'?yy:yy+2,lab,{color:col,at:'auto'});});
   }
   return out;
 }

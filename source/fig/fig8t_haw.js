@@ -24,7 +24,7 @@ function ring(pt,order,thick,subs){
     ['up','down'].forEach(d=>{ if(!s[d])return; const v=s[d]; const lab=typeof v=='string'?v:v.l; const len=(typeof v=='object'&&v.len)||SL;
       const col=typeof v=='object'?v.c:undefined; const yy=d=='up'?y-len:y+len;
       if(lab==='-'){line(x,y,x,yy,{color:col,w:typeof v=='object'&&v.w||1.7});return;}
-      line(x,y,x,yy+(d=='up'?10:-10),{color:col,w:typeof v=='object'&&v.w||1.7}); atomAt(x+(typeof v=='object'&&v.dx||0),d=='up'?yy:yy+2,lab,{color:col,bold:typeof v=='object'&&v.bold});});
+      line(x,y,x,yy+(d=='up'?10:-10),{color:col,w:typeof v=='object'&&v.w||1.7}); atomAt(x+(typeof v=='object'&&v.dx||0),d=='up'?yy:yy+2,lab,{color:col,bold:typeof v=='object'&&v.bold,at:'auto'});});
   }
   return out;
 }

@@ -12,10 +12,10 @@ num(a.C1,1,10,-8);
 const cx=420; const p=k=>[cx+PN[k][0]*U,Y+PN[k][1]*U];
 [['C4','C5'],['C3','C4'],['C2','C3']].forEach(([m,n])=>{const [x1,y1]=p(m),[x2,y2]=p(n); line(x1,y1,x2,y2,{w:['C2C3','C3C4','C1C2'].includes(n+m)||['C2C3','C3C4','C1C2'].includes(m+n)?5:1.7});});
 {const [x1,y1]=p('C5'),[x2,y2]=p('O'); line(x1,y1,x2-16,y2); atomAt(x2+2,y2,'OH',{color:BLU,bold:true});}
-{const [x,y]=p('C5'); line(x,y,x,y-SL+10); atomAt(x,y-SL,'CH_2OH');}
-{const [x,y]=p('C4'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'HO');}
-{const [x,y]=p('C3'); line(x,y,x,y-24+10); atomAt(x,y-24,'OH');}
-{const [x,y]=p('C2'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'OH');}
+{const [x,y]=p('C5'); line(x,y,x,y-SL+10); atomAt(x,y-SL,'CH_2OH',{at:'auto'});}
+{const [x,y]=p('C4'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'HO',{at:'auto'});}
+{const [x,y]=p('C3'); line(x,y,x,y-24+10); atomAt(x,y-24,'OH',{at:'auto'});}
+{const [x,y]=p('C2'); line(x,y,x,y+SL-10); atomAt(x,y+SL+2,'OH',{at:'auto'});}
 // C1 aldehyde: put C label at C1 position
 {const [x2,y2]=p('C2'),[x1,y1]=p('C1'); line(x2,y2,x1-4,y1+7,{w:5});}
 {const [x,y]=p('C1'); atomAt(x+6,y,'C',{color:RED}); bond(x+16,y,x+40,y,2,{color:RED}); atomAt(x+50,y,'O',{color:RED}); line(x+10,y-10,x+24,y-30); atomAt(x+30,y-40,'H');}
