@@ -23,7 +23,7 @@ c.push(table([1500,1800,6060],[['Name','Molecular formula','Condensed structural
  ['Methane','CH_{4}','CH_{4}'],['Ethane','C_{2}H_{6}','CH_{3}CH_{3}'],['Propane','C_{3}H_{8}','CH_{3}CH_{2}CH_{3}'],['Butane','C_{4}H_{10}','CH_{3}CH_{2}CH_{2}CH_{3}'],['Pentane','C_{5}H_{12}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{3}'],
  ['Hexane','C_{6}H_{14}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{2}CH_{3}'],['Heptane','C_{7}H_{16}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{3}'],['Octane','C_{8}H_{18}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{3}'],
  ['Nonane','C_{9}H_{20}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{3}'],['Decane','C_{10}H_{22}','CH_{3}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{2}CH_{3}']],{firstColBold:true}));
-c.push(P('In a molecular model kit, each kind of atom is a colored ball with one hole for each bond it forms. In most kits, carbon is a black ball with four holes and hydrogen is a white ball with one hole. Colors vary from kit to kit, so check the key in your kit.',{before:160}));
+c.push(P('In a molecular model kit, each kind of atom has its own color and one bonding site for each bond it forms. In most kits, carbon is black with four bonding sites and hydrogen is white with one. Colors vary from kit to kit, so check the key in your kit.',{before:160}));
 // B
 c.push(h3('B. Constitutional Isomers'));
 c.push(P('**Constitutional isomers** have the same molecular formula but a different order of bonded atoms, so they have different structural (and condensed) formulas. One isomer cannot be changed into another without breaking bonds and forming new ones. For example, C_{4}H_{10} has two isomers: butane, a continuous chain of four carbons, and 2-methylpropane, a three-carbon chain with a branch (Figure 2).',{keepNext:true}));

@@ -10,7 +10,7 @@ const LABS=[['exp01','Experiment 1: Functional Groups'],['exp02','Experiment 2: 
  ['exp04','Experiment 4: Alcohols and Phenols'],['exp05','Experiment 5: Aldehydes and Ketones'],['exp06','Experiment 6: Carboxylic Acids and Esters'],
  ['exp07','Experiment 7: Amines and Amides'],['exp08','Experiment 8: Types of Carbohydrates'],['exp09','Experiment 9: Tests for Carbohydrates'],
  ['exp10','Experiment 10: Lipids'],['exp11','Experiment 11: Aspirin and Analgesics'],['exp12','Experiment 12: Amino Acids'],
- ['exp13','Experiment 13: Peptides and Proteins'],['exp14','Experiment 14: Enzymes'],['exp15','Experiment 15: Vitamins'],['exp16','Experiment 16: Nucleic Acids and DNA Extraction'],['appendix','Appendices']];
+ ['exp13','Experiment 13: Peptides and Proteins'],['exp14','Experiment 14: Enzymes'],['exp15','Experiment 15: Vitamins'],['exp16','Experiment 16: Nucleic Acids and DNA Extraction'],['workshop_chirality','Workshop: Chirality Stations'],['appendix','Appendices']];
 
 // collect each lab's children without writing files
 function collect(name){
@@ -36,13 +36,14 @@ const add=(children,o={})=>sections.push({__tag:o.tag||'front',properties:{page:
 // Static table of contents (page numbers measured from a Word page map; see remap.sh)
 const TOC_TITLES=[['To the Student','To the Student'],['Laboratory Safety','Laboratory Safety'],['Laboratory Safety Agreement','Laboratory Safety Agreement'],
  ['Chemical Waste Disposal','Chemical Waste Disposal'],['Laboratory Notebooks and Reports','Laboratory Notebooks and Reports'],['Measurements and Uncertainty','Measurements and Uncertainty'],
- ...LABS.filter(([n])=>n!=='appendix').map(([n,h],i)=>['Experiment #'+(i+1)+':',h.replace(/^Experiment (\d+):/,'Experiment #$1:')]),
+ ...LABS.filter(([n])=>/^exp/.test(n)).map(([n,h],i)=>['Experiment #'+(i+1)+':',h.replace(/^Experiment (\d+):/,'Experiment #$1:')]),
+ ['Workshop:','Workshop: Chirality Stations'],
  ['Appendix A:','Appendix A: Common Laboratory Equipment'],['Appendix B:','Appendix B: Organic Functional Groups'],['Appendix C:','Appendix C: IUPAC Naming Guide'],
  ['Appendix D:','Appendix D: Molecular Shapes and Electronegativity'],['Appendix E:','Appendix E: Biomolecules Reference Sheet'],['Appendix F:','Appendix F: Periodic Table and Reference Data']];
 function staticToc(pages){
   const missing=TOC_TITLES.filter(([k])=>!(k in pages)).map(([k])=>k); if(missing.length) throw new Error('TOC pages missing: '+missing);
   return TOC_TITLES.map(([k,t])=>{const lab=/^Experiment|^Appendix/.test(t);
-    return new Paragraph({tabStops:[{type:TabStopType.RIGHT,position:W,leader:'dot'}],spacing:{before:k==='Experiment #1:'||k==='Appendix A:'?160:0,after:50},
+    return new Paragraph({tabStops:[{type:TabStopType.RIGHT,position:W,leader:'dot'}],spacing:{before:k==='Experiment #1:'||k==='Workshop:'||k==='Appendix A:'?160:0,after:50},
       children:[new TextRun({text:t,font:TNR,size:24}),new TextRun({text:'\t'+pages[k],font:TNR,size:24})]});});
 }
 const F=FIG+'/';
@@ -60,7 +61,7 @@ for(const [name,h] of LABS){const ch=collect(name); if(!ch)continue;
 let docTitle='CHEM 3B Laboratory Manual';
 if(process.env.PART){const part=process.env.PART; const keep=sections.filter(x=>x.__tag===part); if(!keep.length) throw new Error('no part '+part);
   if(part!=='front'){const pages=JSON.parse(fs.readFileSync(process.env.TOCJSON,'utf8')); const lab=LABS.find(([n])=>n===part);
-    const key=part==='appendix'?'Appendix A:':'Experiment #'+parseInt(part.slice(3))+':'; keep[0].properties.page.pageNumbers={start:parseInt(pages[key]),formatType:NumberFormat.DECIMAL};
+    const key=part==='appendix'?'Appendix A:':part.startsWith('workshop')?'Workshop:':'Experiment #'+parseInt(part.slice(3))+':'; keep[0].properties.page.pageNumbers={start:parseInt(pages[key]),formatType:NumberFormat.DECIMAL};
     docTitle=part==='appendix'?'CHEM 3B Laboratory Manual: Appendices A–F':lab[1];}
   else docTitle='CHEM 3B Laboratory Manual: Front Matter and Safety';
   sections.length=0; sections.push(...keep);}

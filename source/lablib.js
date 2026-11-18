@@ -9,8 +9,8 @@ function altFor(file,fallback){if(!ALT){try{ALT=JSON.parse(fs.readFileSync(requi
   const k=require('path').basename(file); return {name:k,title:'',description:ALT[k]||plain(fallback)||''};}
 // markup: **bold**, *italic*, _{sub}, ^{sup}
 function runs(s,base={}){
-  s=String(s).replace(/ °C/g,'\u00a0°C'); const out=[]; let b=!!base.bold,i=!!base.italics; const re=/(\*\*|\*|_\{[^}]*\}|\^\{[^}]*\})/g; let last=0,m;
-  const push=(t,ex={})=>{if(t)out.push(new TextRun(Object.assign({text:t,bold:b,italics:i,font:base.font||TNR,size:base.size||24,color:base.color},ex)));};
+  s=String(s).replace(/ °C/g,'\u00a0°C').replace(/\\\*/g,'\uE000'); const out=[]; let b=!!base.bold,i=!!base.italics; const re=/(\*\*|\*|_\{[^}]*\}|\^\{[^}]*\})/g; let last=0,m;
+  const push=(t,ex={})=>{if(t)out.push(new TextRun(Object.assign({text:t.replace(/\uE000/g,'*'),bold:b,italics:i,font:base.font||TNR,size:base.size||24,color:base.color},ex)));};
   while((m=re.exec(s))){push(s.slice(last,m.index)); const t=m[0];
     if(t=='**')b=!b; else if(t=='*')i=!i; else if(t[0]=='_')push(t.slice(2,-1),{subScript:true}); else push(t.slice(2,-1),{superScript:true});
     last=re.lastIndex;}

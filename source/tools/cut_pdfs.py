@@ -26,7 +26,7 @@ lines = [[l.strip() for l in p.extract_text().split('\n')] for p in src.pages]
 bad = [i+1 for i in range(OFF, N) if not re.search(r'CHEM 3B Laboratory Manual\s*%d\b' % (i-OFF+1), ' '.join(lines[i]))]
 if bad: sys.exit(f'printed page numbers do not match on PDF pages {bad[:10]}')
 nlabs = max(int(k.split('#')[1].rstrip(':')) for k in toc if k.startswith('Experiment'))
-starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc['Appendix A:'])+OFF-1]
+starts = [int(toc[f'Experiment #{n}:'])+OFF-1 for n in range(1, nlabs+1)] + [int(toc['Workshop:'])+OFF-1, int(toc['Appendix A:'])+OFF-1]
 titles = {}
 for n in range(1, nlabs+1):
     t = [l for l in lines[starts[n-1]] if l.startswith('Experiment')]
@@ -59,10 +59,16 @@ def make(fn, a, b, title, kind):
         for n in range(1, nlabs+1):
             s, e = starts[n-1], starts[n]; top = w.add_outline_item(titles[n], s)
             for h, i in subs(s, e): w.add_outline_item(h, i, parent=top)
+        w.add_outline_item('Workshop: Chirality Stations', starts[-2])
         ap = w.add_outline_item('Appendices A–F', starts[-1])
         for k, i in apx: w.add_outline_item(APXT[k], i, parent=ap)
     elif kind == 'front':
         for t, i in front: w.add_outline_item(t, i)
+    elif kind == 'workshop':
+        top = w.add_outline_item(title, 0)
+        for h in ['Introduction','Procedure','Answer Sheet']:
+            i = next((i for i in range(a, b) if h in lines[i]), None)
+            if i is not None: w.add_outline_item(h, i-a, parent=top)
     elif kind == 'appendix':
         for k, i in apx: w.add_outline_item(APXT[k], i-a)
     else:
@@ -74,4 +80,5 @@ def make(fn, a, b, title, kind):
 make('pdf/CHEM3B_Lab_Manual_OER.pdf', 0, N, 'CHEM 3B Laboratory Manual', 'full')
 make('pdf/experiments/00_FrontMatter_Safety.pdf', 0, OFF, 'CHEM 3B Laboratory Manual: Front Matter and Safety', 'front')
 for n in range(1, nlabs+1): make(f'pdf/experiments/{NAMES[n]}.pdf', starts[n-1], starts[n], titles[n], 'lab')
+make('pdf/experiments/Workshop_Chirality.pdf', starts[-2], starts[-1], 'Workshop: Chirality Stations', 'workshop')
 make('pdf/experiments/16_Appendices.pdf', starts[-1], N, 'CHEM 3B Laboratory Manual: Appendices A–F', 'appendix')

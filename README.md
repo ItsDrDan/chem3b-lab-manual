@@ -4,7 +4,7 @@
 
 **Website:** https://itsdrdan.github.io/chem3b-lab-manual/
 
-An open educational resource (OER) laboratory manual with 16 experiments for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes describe the related experiments.
+An open educational resource (OER) laboratory manual with 16 experiments and a chirality workshop for a one-semester introductory organic and biological chemistry course. It goes with the CHEM 3B textbook on LibreTexts, whose "In the Lab" boxes describe the related experiments.
 
 > **Working draft.** This is the current working edition, still being refined. Experiment numbers and procedures may change before the final release.
 
@@ -12,7 +12,7 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 
 ## Download
 
-**Full manual:** [PDF (270 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
+**Full manual:** [PDF (278 pages)](pdf/CHEM3B_Lab_Manual_OER.pdf) · [Word](docx/CHEM3B_Lab_Manual_OER.docx)
 
 | # | Experiment | PDF | Word | Pages |
 |---|---|---|---|---|
@@ -33,7 +33,8 @@ Licensed under [CC BY 4.0](LICENSE): you may share and adapt it, including comme
 | 14 | Enzymes | [PDF](pdf/experiments/Exp14_Enzymes.pdf) | [Word](docx/experiments/Exp14_Enzymes.docx) | 190–203 |
 | 15 | Vitamins | [PDF](pdf/experiments/Exp15_Vitamins.pdf) | [Word](docx/experiments/Exp15_Vitamins.docx) | 204–217 |
 | 16 | Nucleic Acids and DNA Extraction | [PDF](pdf/experiments/Exp16_NucleicAcids.pdf) | [Word](docx/experiments/Exp16_NucleicAcids.docx) | 218–236 |
-| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 237–259 |
+| W | Workshop: Chirality Stations (directions and the 20-station answer sheet) | [PDF](pdf/experiments/Workshop_Chirality.pdf) | [Word](docx/experiments/Workshop_Chirality.docx) | 237–244 |
+| | Appendices A–F (equipment, functional groups, IUPAC naming, molecular shapes and electronegativity, biomolecules, periodic table and reference data) | [PDF](pdf/experiments/16_Appendices.pdf) | in the full manual | 245–267 |
 
 Page numbers are the manual's printed page numbers. Each experiment PDF and Word file keeps them (with the same running header), so a single lab matches the full manual. Every PDF has bookmarks for its sections.
 

@@ -86,8 +86,8 @@ c.push(P('Ion–dipole forces need ions, so they do not occur in the pure molecu
 // ---------- Safety & waste ----------
 c.push(h3('Hazards and Safety Instructions'));
 c.push(P('No chemicals are used in this experiment. Follow your laboratory’s dress code, and wear safety goggles if chemicals are in use in the room (or as your instructor directs). Do not eat or drink in the laboratory.',{after:100}));
-c.push(bullet('**Small Magnetic Parts:** Each Snatoms atom contains small, strong magnets. Never put a piece in your mouth. Swallowing two or more magnets is a medical emergency, because they can pull together through the walls of the intestine; tell your instructor at once if a piece is swallowed.'));
-c.push(bullet('**Magnetic Fields:** Keep the pieces away from pacemakers and other medical implants, and away from phones, credit cards, and laptops.'));
+c.push(bullet('**Small Parts:** Model kit pieces are small. Never put a piece in your mouth. If your kit uses **magnetic atoms**, swallowing two or more is a medical emergency, because the magnets can pull together through the walls of the intestine; tell your instructor at once if a piece is swallowed.'));
+c.push(bullet('**Magnetic Kits:** If your kit uses magnetic atoms, keep the pieces away from pacemakers and other medical implants, and away from phones, credit cards, and laptops.'));
 c.push(bullet('**Pinching and Slipping:** The atoms snap together with force; keep fingertips and skin out from between them. Pick up any pieces that fall on the floor so no one slips on them.'));
 c.push(h3('Waste Instructions'));
 c.push(bullet('**No chemical waste** is produced in this experiment.'));
@@ -95,19 +95,19 @@ c.push(bullet('**Model kit:** Take all of your models apart, put every piece bac
 // ---------- Procedure ----------
 c.push(h2('Procedure',{before:360}));
 c.push(note('Instructor Notes:','No chemicals are used. Students may work with a partner (or as the instructor directs), but each student completes their own report sheet. Check each student’s completed Part A and Part B tables and initial the instructor check box (B.5). Count the kit pieces when the kits are returned.'));
-c.push(h4('The Snatoms Model Kit'));
-c.push(P('Each Snatoms kit contains colored plastic balls that represent the atoms found in organic compounds (Table 3). Each atom has the correct number of bonding sites for that element. For a **single bond**, snap two atoms directly together. The black bond pieces are used for multiple bonds: use **two** bond pieces, flat side facing out, to make a **double bond**, and **three** bond pieces, flat side facing in, to make a **triple bond**. Lone pairs are not represented by pieces, so count them on paper.'));
-c.push(cap('**Table 3: Snatoms Atoms**'));
+c.push(h4('The Molecular Model Kit'));
+c.push(P('A molecular model kit contains colored pieces that represent the atoms found in organic compounds. Table 3 shows a common color scheme, but colors vary from kit to kit, so check the key that comes with your kit. Each atom has the correct number of bonding sites for that element. For a **single bond**, join two atoms with one connection; for a **double bond** or **triple bond**, use two or three bond pieces (or flexible bonds), as your kit’s directions show. Lone pairs are usually not represented by pieces, so count them on paper.'));
+c.push(cap('**Table 3: Common Model Kit Atoms (check the key in your kit)**'));
 c.push(table([2340,2340,2340,2340],[['Color','Element','Number of bonds','Lone pairs (neutral)'],
  ['Black','Carbon','4','0'],['White','Hydrogen','1','0'],['Red','Oxygen','2','2'],['Blue','Nitrogen','3','1'],['Green','Halogen (F, Cl, Br, I)','1','3'],['Yellow','Sulfur','2','2'],['Purple','Phosphorus','3','1']].map((r,i)=>i?r.map(x=>({t:x,align:AlignmentType.CENTER})):r)));
 c.push(h3('A. Structure, Shape, and Molar Mass'));
-c.push(materials('Snatoms model kit, periodic table, calculator'));
+c.push(materials('Molecular model kit, periodic table, calculator'));
 c.push(step('A.1','Build a model of each of the six structures (1–6) in the Part A table on your report sheet. Check that every atom has the correct number of bonds (Table 3). For a line-angle structure, first add the carbon at each corner and line end and the hydrogens that give each carbon four bonds.'));
 c.push(step('A.2','Name the functional group (family) of each compound. If it is an alkyl halide or an amine, classify it as primary (1°), secondary (2°), or tertiary (3°). A compound with only C–C and C–H single bonds (such as methane) is an alkane. Write “none” only if the compound is not organic (it has no carbon).'));
 c.push(step('A.3','Determine the molecular shape and the ideal bond angle around the central atom. Count the electron groups (bonded atoms plus lone pairs) and use Table 2. If the molecule has two identical central atoms, describe either one; for a larger molecule, use the center-most atom.'));
 c.push(step('A.4','Write the molecular formula of each compound and calculate its molar mass in g/mol. Show your work.'));
 c.push(h3('B. Polarity and Intermolecular Forces'));
-c.push(materials('Snatoms model kit'));
+c.push(materials('Molecular model kit'));
 c.push(step('B.1','Take apart your Part A models. Build a model of each of the six structures (1–6) in the Part B table on your report sheet.'));
 c.push(step('B.2','Name the functional group (family) of each compound. If it is an alkyl halide or an amine, classify it as 1°, 2°, or 3°.'));
 c.push(step('B.3','Determine whether each molecule is polar (P) or nonpolar (NP). Find the polar bonds, then use the shape of your model to decide whether their dipoles cancel.'));
@@ -115,7 +115,7 @@ c.push(step('B.4','Determine the strongest intermolecular force in the pure subs
 c.push(step('B.5','When both tables are complete, show your report sheet to your instructor for an instructor check. Then take apart all models, check that every piece is in the kit, and return the kit.'));
 // ---------- Pre-lab ----------
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
-const PL=[['1.','The Snatoms atoms contain small, strong magnets. Give two safety precautions you must follow when using the kit, and explain the reason for each.',943],
+const PL=[['1.','Model kit pieces are small, and some kits use magnetic atoms. Give two safety precautions you must follow when using the kit, and explain the reason for each.',943],
  ['2.','This lab produces no chemical waste. What must you do with your models and the kit before you leave, and why must you report missing pieces?',820],
  ['3.','Using Table 3, list the color and number of each atom you need to build ethanol, CH_{3}CH_{2}OH. How would you make the C=O double bond of an aldehyde with the kit?',943],
  ['4.','Draw propylamine, CH_{3}CH_{2}CH_{2}NH_{2}, as a complete (expanded) structural formula and as a line-angle structure. Name its functional group and classify it as 1°, 2°, or 3°.',1250],
