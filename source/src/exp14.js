@@ -17,15 +17,15 @@ c.push(P('Vitamins are grouped by solubility, using the “like dissolves like�
 c.push(P('**Table 1: Some Water-Soluble Vitamins and Their Coenzyme Functions**',{align:AlignmentType.CENTER,after:80,keepNext:true}));
 c.push(table([2100,3630,3630],[['Vitamin','Coenzyme function','Deficiency symptoms'],
  ['B_{1} Thiamine','Decarboxylation of α-keto acids','Beriberi (fatigue, anorexia, nerve degeneration, heart failure)'],
- ['B_{2} Riboflavin','Biological oxidation','Dermatitis, glossitis (tongue inflammation), cataracts'],
+ ['B_{2} Riboflavin','Biological oxidation','Cracked lips and mouth corners, glossitis (tongue inflammation), sore throat, dermatitis, anemia'],
  ['B_{3} Niacin','Biological oxidation','Pellagra (scaly skin, muscle fatigue, diarrhea, mouth sores, mental disorders)'],
  ['B_{6} Pyridoxine','Transamination reactions','Dermatitis, fatigue, anemia, irritability'],
- ['B_{12} Cobalamin','Transfer of methyl groups in the synthesis of red blood cells, choline, and purines','Pernicious anemia, malformed blood cells, mental disorders'],
+ ['B_{12} Cobalamin','Transfer of methyl groups in the synthesis of red blood cells, choline, and purines','Megaloblastic anemia (large, malformed red blood cells), nerve damage, mental disorders'],
  ['C Ascorbic acid','Synthesis of collagen, protein metabolism, iron absorption, wound healing','Scurvy (bleeding gums, slow-healing wounds, muscle pain, anemia)'],
- ['Biotin','Carboxylation of pyruvate to oxaloacetate; fatty acid and amino acid metabolism','Dermatitis, fatigue, anemia, nausea, depression']],{firstColBold:true}));
+ ['Biotin','Carboxylation of pyruvate to oxaloacetate; fatty acid and amino acid metabolism','Dermatitis, hair loss, fatigue, depression']],{firstColBold:true}));
 c.push(h3('B. Standardization: Measuring Vitamin C by Titration'));
 c.push(h4('Vitamin C Is a Reducing Agent'));
-c.push(P('Vitamin C (ascorbic acid) helps the body build collagen, heal wounds, fight infection, and absorb iron. It is found in citrus fruits, broccoli, romaine lettuce, and green peppers. Vitamin C is easily oxidized, which makes it a good **reducing agent**. Recall from CHEM 3A that **oxidation** is the loss of electrons and **reduction** is the gain of electrons. For organic molecules, oxidation often shows up as the loss of hydrogen atoms, as you saw when alcohols were oxidized in Experiment #4.'));
+c.push(P('Vitamin C (ascorbic acid) helps the body build collagen, heal wounds, fight infection, and absorb iron. It is found in citrus fruits, strawberries, kiwifruit, broccoli, and green and red peppers. Vitamin C is easily oxidized, which makes it a good **reducing agent**. Recall from CHEM 3A that **oxidation** is the loss of electrons and **reduction** is the gain of electrons. For organic molecules, oxidation often shows up as the loss of hydrogen atoms, as you saw when alcohols were oxidized in Experiment #4.'));
 c.push(P('When vitamin C reacts with iodine (I_{2}), vitamin C loses two hydrogen atoms (it is oxidized), and I_{2} gains electrons to become colorless iodide ions, I^{–} (it is reduced). **One molecule of vitamin C reacts with one molecule of I_{2}** (Figure 1). Because of this 1:1 ratio, the amount of iodine a sample uses up tells us how much vitamin C the sample contains.',{keepNext:true}));
 c.push(...img(F+'fig12_1.png',624,150,'**Figure 1:** Vitamin C is oxidized by iodine. The H atoms of the two ring –OH groups (shown in red) are removed, and those two O atoms become C=O groups (shown in blue).'));
 c.push(h4('Titration with a Starch Indicator'));
