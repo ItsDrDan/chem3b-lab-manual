@@ -183,6 +183,17 @@ function measurement(){
   const eq=(lhs,num,den,tail)=>new Paragraph({alignment:AlignmentType.CENTER,spacing:{before:60,after:100},children:[new DMath({children:[new MathRun(lhs+' = '),new MathFraction({numerator:[new MathRun(num)],denominator:[new MathRun(den)]}),new MathRun(tail)]})]});
   c.push(eq('percent error','|experimental value − accepted value|','accepted value',' × 100%'));
   c.push(eq('percent yield','actual yield','theoretical yield',' × 100%'));
+  c.push(h3('Sources for Data'));
+  c.push(P('Hazard statements follow the Globally Harmonized System (GHS) classification of each chemical, as summarized by PubChem from the European Chemicals Agency C&L Inventory, and the supplier’s Safety Data Sheet (SDS). They describe the pure chemical unless a concentration is given; always read the SDS for the solution you use. Other data come from these sources:',{after:80}));
+  ['**Physical constants** (melting point, boiling point, density, solubility, molar mass): PubChem, U.S. National Library of Medicine (https://pubchem.ncbi.nlm.nih.gov); NIST Chemistry WebBook (https://webbook.nist.gov); *CRC Handbook of Chemistry and Physics*.',
+   '**Electronegativities and atomic weights** (Appendices D and F): Pauling values as listed in the PubChem Periodic Table; IUPAC Commission on Isotopic Abundances and Atomic Weights, Standard Atomic Weights (https://www.ciaaw.org).',
+   '**Naming** (Appendices B and C): H. A. Favre and W. H. Powell, *Nomenclature of Organic Chemistry: IUPAC Recommendations and Preferred Names 2013*, Royal Society of Chemistry, 2014.',
+   '**Clinical and nutrition values:** MedlinePlus, U.S. National Library of Medicine (https://medlineplus.gov); NIH Office of Dietary Supplements, Vitamin C Fact Sheet (https://ods.od.nih.gov). Clinical values are typical ranges; each clinical laboratory sets its own.',
+   '**Experiment #10:** United States Pharmacopeia, Aspirin Tablets and Buffered Aspirin Tablets monographs (free salicylic acid limits); M. J. R. Desborough and D. M. Keeling, “The aspirin story – from willow to wonder drug,” *British Journal of Haematology* 177, 674–683 (2017).',
+   '**Experiment #5:** NIOSH, *Criteria for a Recommended Standard: Occupational Exposure to Diacetyl and 2,3-Pentanedione*, DHHS (NIOSH) Publication 2016-111 (2016).',
+   '**Experiment #6:** P. A. Chyka et al., “Salicylate poisoning: an evidence-based consensus guideline for out-of-hospital management,” *Clinical Toxicology* 45, 95–131 (2007).',
+   '**Experiment #8:** USDA Agricultural Research Service, *What We Eat in America, NHANES 2017–2018*, Table 5 (percent of energy from carbohydrate).',
+   '**Methylene chloride regulation** (Experiments #9 and #14): U.S. EPA, Methylene Chloride; Regulation Under TSCA, 89 Fed. Reg. 39254 (May 8, 2024), and compliance-date extension for laboratories, 90 Fed. Reg. (Nov. 13, 2025); 40 CFR Part 751.'].forEach(s=>c.push(bulletT(s)));
   return c;
 }
 

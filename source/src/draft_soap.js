@@ -16,6 +16,7 @@ c.push(table([1800,3700,1700,2160],[['Fatty acid','Condensed structural formula'
  ['Lauric','CH_{3}(CH_{2})_{10}COOH','12','about 48%'],['Myristic','CH_{3}(CH_{2})_{12}COOH','14','about 18%'],['Palmitic','CH_{3}(CH_{2})_{14}COOH','16','about 9%'],
  ['Caprylic and capric','CH_{3}(CH_{2})_{6}COOH and CH_{3}(CH_{2})_{8}COOH','8 and 10','about 13%'],['Oleic','CH_{3}(CH_{2})_{7}CH=CH(CH_{2})_{7}COOH','18','about 7%'],
  ['Stearic and linoleic','(see Table 2 of Experiment #9)','18','about 5%']],{firstColBold:true}));
+c.push(P('Typical values, within the ranges in the international food standard for coconut oil (source: Codex Alimentarius).',{align:AlignmentType.CENTER,before:60,after:200,run:{size:20}}));
 c.push(P('**Salting out:** Soap dissolves in water, but it is much less soluble in very salty water. When you add a lot of sodium chloride (NaCl) to the reaction mixture, the soap separates as white curds that float on top. The glycerol and the leftover NaOH stay dissolved in the salt water, so collecting the curds also removes most of them.',{before:160}));
 // B
 c.push(h3('B. How Soap Cleans: Micelles and Emulsions'));

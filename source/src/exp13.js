@@ -43,7 +43,7 @@ c.push(h3('Hazards and Safety Instructions'));
 c.push(P('Wear safety goggles at all times. Wear gloves when handling iodine reagent, the buffers, Benedict’s reagent, and silver nitrate. If any chemical gets on your skin or in your eyes, rinse with water for 15 minutes and tell your instructor.',{after:100}));
 c.push(bullet('**Staining and Irritating (Iodine Reagent):** Iodine reagent stains skin and clothing and can irritate skin and eyes.'));
 c.push(bullet('**Corrosive and Irritating (Buffers):** The pH 2 buffer is acidic and the pH 10 buffer is basic. Both can irritate skin and eyes.'));
-c.push(bullet('**Toxic (Heavy Metal Ions):** Silver nitrate (AgNO_{3}) is toxic if swallowed, irritates eyes, and stains skin black. Benedict’s reagent contains copper(II) sulfate. Handle all of these with gloves and wash your hands before you leave the lab.'));
+c.push(bullet('**Toxic (Heavy Metal Ions):** Silver nitrate (AgNO_{3}) is corrosive to skin and eyes, toxic if swallowed, and very toxic to aquatic life, and it stains skin black. Benedict’s reagent contains copper(II) sulfate. Handle all of these with gloves and wash your hands before you leave the lab.'));
 c.push(bullet('**Flammable (Ethanol):** Keep 95% ethanol away from hot plates and other heat sources.'));
 c.push(bullet('**Thermal Hazards:** The boiling water bath and hot plate cause burns and stay hot after they are turned off. Move test tubes into and out of the boiling water bath with a test tube holder, and point the open end away from everyone.'));
 c.push(bullet('**Enzyme Solution:** The amylase solution is a commercial enzyme preparation. Treat it as you would any lab chemical, avoid breathing dust if you weigh out the solid, and never taste anything in the lab.'));

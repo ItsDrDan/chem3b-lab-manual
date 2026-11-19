@@ -47,7 +47,7 @@ Equipment per pair: 13 large (18 × 150 mm) test tubes, 2 small test tubes with 
 
 ## Safety points needing EHS sign-off
 1. **Enzyme powders (pepsin, pancreatin) are respiratory sensitizers** — draft has stockroom prepare solutions; students never handle powder.
-2. **Phenolphthalein** is classified as a suspected carcinogen (GHS Carc.) and the indicator is in ethanol (flammable) — few drops per tube, gloves, away from hot plate.
+2. **Phenolphthalein** is classified GHS H350 "May cause cancer" (Carc. 1B) and H341 (PubChem/ECHA C&L summary), and the indicator is in ethanol (flammable) — few drops per tube, gloves, away from hot plate.
 3. **Waste routing:** Part A tubes (HCl/buffer + enzyme + egg protein) → aqueous waste; Part B milk tubes (phenolphthalein) and oil tubes → non-halogenated organic waste. EHS may prefer to allow neutralized Part A food/enzyme mixtures down the drain; the draft says no sink disposal.
 4. **Food allergens** (egg, milk) and **animal-derived materials** (porcine pancreatin/pepsin, bovine bile) — draft tells students to notify the instructor and offers the dry-lab option.
 5. 0.2 M HCl, 0.05 M Na2CO3, boiling water bath, stoppered-tube shaking — routine.

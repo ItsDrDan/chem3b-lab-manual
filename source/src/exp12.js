@@ -48,7 +48,7 @@ c.push(table([1700,2560,2400,2700],[['Test','Detects','Positive result','Negativ
 c.push(h3('Hazards and Safety Instructions'));
 c.push(P('Wear safety goggles at all times. Wear gloves for every part of this lab except the model building.',{after:100}));
 c.push(bullet('**Corrosive Acids and Bases:** 10% nitric acid (HNO_{3}) and 10% sodium hydroxide (NaOH) can burn skin and damage eyes. Nitric acid turns skin yellow because it reacts with the proteins in your skin. If any acid or base touches you, rinse with water for 15 minutes and tell your instructor.'));
-c.push(bullet('**Toxic Heavy Metals:** 1% silver nitrate (AgNO_{3}) is toxic and leaves brown-black stains on skin that do not wash off for days. The biuret reagent (5% CuSO_{4}) is harmful if swallowed. Wear gloves, and never pour these solutions down the drain.'));
+c.push(bullet('**Toxic Heavy Metals:** 1% silver nitrate (AgNO_{3}) is corrosive to skin and eyes, toxic if swallowed, and very toxic to aquatic life, and it leaves brown-black stains on skin that do not wash off for days. The biuret reagent (5% CuSO_{4}) is harmful if swallowed. Wear gloves, and never pour these solutions down the drain.'));
 c.push(bullet('**Staining Reagent:** Ninhydrin reacts with the amino acids in skin and leaves purple stains on skin and clothing. Wear gloves and wipe up spills right away.'));
 c.push(bullet('**Flammable Liquid:** 95% ethanol catches fire easily. Keep ethanol away from hot plates (Part B.4).'));
 c.push(bullet('**Thermal Hazards:** Boiling water baths, hot plates, and beakers of hot milk stay hot. Put test tubes into and take them out of the boiling water bath with a test tube holder, and point the open end away from yourself and others. Handle hot beakers with tongs.'));

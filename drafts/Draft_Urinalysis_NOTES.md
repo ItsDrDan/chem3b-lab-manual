@@ -62,7 +62,7 @@ Equipment per pair: 19 test tubes (4 large 18 × 150 mm for the strips, 15 regul
 ## Safety points needing EHS sign-off
 1. **No real urine.** Statement that only stockroom-made simulated urine is used; students must not bring or test their own urine; results are not diagnostic. EHS may want this in the syllabus too.
 2. **Commercial urinalysis controls** (if ever added for urobilinogen) are often human-urine-based → potentially infectious. The draft avoids them.
-3. **AgNO3 1%** (toxic, stains), **10% HNO3** (corrosive, oxidizer), **3% sulfosalicylic acid** (irritant), **Benedict's** (copper, aquatic toxicity), boiling water bath — all routine and already in the manual.
+3. **AgNO3 1%** (toxic, stains), **10% HNO3** (corrosive, GHS Skin Corr. 1B at 5–20%; not classed as an oxidizer below 65%), **3% sulfosalicylic acid** (irritant), **Benedict's** (copper, aquatic toxicity), boiling water bath — all routine and already in the manual.
 4. **Waste routing:** Benedict's + AgNO3 + all leftover samples → aqueous; SSA tubes → non-halogenated organic (SSA is an organic compound); used strips → solid waste (pads contain small amounts of chromogens and nitroprusside). No halogenated waste (NaCl/KCl only). EHS may allow the leftover salt/urea/glucose samples down the drain; the draft says no sink disposal.
 5. **Lithium acetoacetate, urea, BSA, creatinine:** low hazard; stockroom only.
 6. Bovine-derived albumin: mention for students with objections to animal-derived materials (dry-lab option available).
