@@ -27,7 +27,7 @@ c.push(table([1150,4250,850,1410,1700],[['Carbons','Condensed structural formula
  sec('Polyunsaturated fatty acids (two or more cis double bonds)'),
  ['18','CH_{3}(CH_{2})_{4}CH=CHCH_{2}CH=CH(CH_{2})_{7}COOH','−5','Linoleic','Safflower, sunflower'],['18','CH_{3}CH_{2}CH=CHCH_{2}CH=CHCH_{2}CH=CH(CH_{2})_{7}COOH','−11','Linolenic','Flaxseed, canola']],{firstColBold:false}));
 c.push(h3('B. Bromine Test for Unsaturation'));
-c.push(P('You used the bromine test to detect C=C double bonds in alkenes in Experiment #3. Bromine (Br_{2}) dissolved in methylene chloride is **red-orange**. When it is added to an unsaturated fatty acid or oil, Br_{2} adds across each C=C double bond, and the product is colorless, so the red-orange color **fades quickly** (Figure 3). A saturated fatty acid has no double bonds, so the red-orange color **stays**. Each C=C double bond uses up one Br_{2} molecule, so when the same small amount of each lipid is tested, a sample with more double bonds takes more drops of bromine solution before the red-orange color stays. That is why every tube in Part B gets exactly 1 drop of lipid in the same volume of solvent: if the amounts differed, the drop counts could not be compared.',{keepNext:true}));
+c.push(P('You used the bromine test to detect C=C double bonds in alkenes in Experiment #3. Bromine (Br_{2}) dissolved in methylene chloride is **red-orange**. When it is added to an unsaturated fatty acid or oil, Br_{2} adds across each C=C double bond, and the product is colorless, so the red-orange color **fades quickly** (Figure 3). A saturated fatty acid has no double bonds, so the red-orange color **stays**. Each C=C double bond uses up one Br_{2} molecule, so an unsaturated lipid keeps removing the color drop after drop, while the color of a saturated lipid stays after the first drops.',{keepNext:true}));
 c.push(...img(F+'fig9_3.png',624,124,'**Figure 3:** Bromine adds across the double bond of oleic acid, and the red-orange color fades.'));
 c.push(h3('C. Preparation of Hand Lotion'));
 c.push(P('Hand lotions soften skin and keep it from drying out. A lotion is an **emulsion**: tiny droplets of oil spread evenly through water. Oil and water do not normally mix, so a lotion also needs an **emulsifier**, a substance with a polar end that attracts water and a nonpolar end that attracts oil. The lipids in a lotion are nonpolar, so they form a thin layer on the skin that holds in moisture. Table 3 lists the ingredients you will use.'));
@@ -52,7 +52,7 @@ c.push(bullet('**Trash:** hand lotion (wipe it out of the beaker with a paper to
 c.push(bullet('**Never pour melted fats, waxes, or lotion down the sink.** They solidify as they cool and clog the drain.'));
 // Procedure
 c.push(h2('Procedure',{before:360}));
-c.push(note('Instructor Notes:','At the start of lab, fill a 250-mL beaker 2/3 full of water and keep it at a gentle boil for Part C. Set out the bromine solution and CH_{2}Cl_{2} in the fume hood. Part B uses 1 drop of each lipid in 1 mL of CH_{2}Cl_{2}, so the drop counts depend on the bromine concentration and dropper size; run the test once before lab to confirm that the unsaturated samples need clearly different numbers of drops within the 50-drop limit, and adjust the lipid amount if needed. To dispense solids, glide a wood stick gently along the surface.'));
+c.push(note('Instructor Notes:','At the start of lab, fill a 250-mL beaker 2/3 full of water and keep it at a gentle boil for Part C. Set out the bromine solution and CH_{2}Cl_{2} in the fume hood. Part B reuses the A.5 tubes of stearic acid, oleic acid, olive oil, and safflower oil (10–15 drops of lipid in 1 mL of CH_{2}Cl_{2}), with up to 20 drops of 1% bromine solution. To dispense solids, glide a wood stick gently along the surface.'));
 c.push(h3('A. Physical Properties of Some Lipids and Fatty Acids'));
 c.push(materials('Test tubes and stoppers, test tube rack, droppers, wood sticks, spatulas, mortar and pestle, oleic acid, stearic acid, olive oil, safflower oil, lecithin, cholesterol, vitamin A capsules, distilled water, methylene chloride (CH_{2}Cl_{2})'));
 c.push(h4('Classification'));
@@ -63,12 +63,12 @@ c.push(step('A.3','Carefully waft the vapors toward you and describe the odor of
 c.push(h4('Solubility in a Polar Solvent'));
 c.push(step('A.4','Add about 2 mL of water to each of the seven test tubes. Stopper each tube, hold the stopper in place, and shake. Record whether each lipid dissolves, forms a cloudy mixture, floats, sinks, or forms a separate layer.'));
 c.push(h4('Solubility in an Organic Solvent of Low Polarity'));
-c.push(step('A.5','**In the fume hood:** label seven clean, dry test tubes and add 10–15 drops of each liquid lipid, or a small amount of each solid lipid. Add 1 mL (about 20 drops) of methylene chloride (CH_{2}Cl_{2}) to each tube and mix gently. Record whether each lipid dissolves. Do not stopper these tubes.'));
+c.push(step('A.5','**In the fume hood:** label seven clean, dry test tubes and add 10–15 drops of each liquid lipid, or a small amount of each solid lipid. Add 1 mL (about 20 drops) of methylene chloride (CH_{2}Cl_{2}) to each tube and mix gently. Record whether each lipid dissolves. Do not stopper these tubes. Save the stearic acid, oleic acid, olive oil, and safflower oil tubes for Part B.'));
 c.push(h3('B. Bromine Test for Unsaturation'));
 c.push(materials('4 clean, dry test tubes, test tube rack, droppers, wood stick, stearic acid, oleic acid, olive oil, safflower oil, methylene chloride (CH_{2}Cl_{2}), 1% Br_{2} in methylene chloride'));
-c.push(step('B.1','**In the fume hood:** label four clean, dry test tubes. Add exactly **1 drop** of oleic acid, olive oil, and safflower oil to separate tubes. To the fourth tube, add a few crystals of stearic acid (about the size of one drop). Add 1 mL (about 20 drops) of methylene chloride to each tube and swirl gently until the lipid dissolves.'));
-c.push(step('B.2','**In the fume hood** (avoid contact with the bromine solution and its vapors): add 1% bromine solution to the first tube one drop at a time, swirling after each drop, and count the drops. Stop when a red-orange color stays for about 30 seconds, or when you have added 50 drops (record “more than 50”). Record the number of drops and whether the color faded quickly or stayed. Repeat with each of the other three tubes, using the same dropper.'));
-c.push(step('B.3','Decide whether each sample is saturated or unsaturated. Because each tube holds the same small amount of lipid, a sample that takes more drops before the color stays contains more C=C double bonds. Rank the unsaturated samples from fewest to most C=C double bonds.'));
+c.push(step('B.1','**In the fume hood:** use the four tubes saved from A.5: stearic acid, oleic acid, olive oil, and safflower oil, each dissolved in 1 mL of methylene chloride.'));
+c.push(step('B.2','**In the fume hood** (avoid contact with the bromine solution and its vapors): add 1% bromine solution to the first tube one drop at a time, swirling after each drop, and count the drops. Stop when a red-orange color stays (persists), or when you have added 20 drops (record “more than 20”). Record the number of drops and whether the color faded quickly or stayed. Repeat with each of the other three tubes, using the same dropper.'));
+c.push(step('B.3','Decide whether each sample is saturated or unsaturated: the red-orange color stays in a saturated sample, but an unsaturated sample keeps removing the color.'));
 c.push(h3('C. Preparation of Hand Lotion'));
 c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolamine, glycerol, ethanol, distilled water, fragrance (optional), commercial hand lotion, balance, 10-mL and 50-mL graduated cylinders, two 100-mL beakers, 250-mL beaker (water bath), hot plate, thermometer, wire mesh, stirring rod, crucible tongs, pH paper'));
 c.push(P('**Your instructor will tell you whether to make all three lotions, or to make one assigned lotion and compare your results with other groups.**'));
@@ -86,7 +86,7 @@ c.push(step('4.','Describe the smoothness and appearance of the lotion. Determin
 c.push(h2('Pre-Lab Questions',{pageBreak:true,before:0}));
 const PL=[['1.','Which two reagents in this lab must be dispensed and used in the fume hood? Give one hazard of each.',1250],
  ['2.','Where do the test tubes that contain methylene chloride or bromine go at the end of lab? Why can’t melted fats or lotion be poured down the sink?',1250],
- ['3.','In the bromine test, what result shows that a sample is unsaturated? What happens to the Br_{2} molecules? Why does every tube in Part B contain exactly 1 drop of lipid?',1250],
+ ['3.','In the bromine test, what result shows that a sample is unsaturated? What happens to the Br_{2} molecules? Which tubes from Part A do you use in Part B?',1250],
  ['4.','Classify each as hydrolyzable or non-hydrolyzable, and explain: (a) olive oil (b) cholesterol',1250],
  ['5.','Predict whether olive oil will dissolve in water and in methylene chloride. Explain using polarity.',1250],
  ['6.','Stearic acid melts at 70 °C and oleic acid melts at 13 °C. Which fatty acid is unsaturated? Explain why it has the lower melting point.',0]];
@@ -98,9 +98,9 @@ c.push(h3('A. Physical Properties of Lipids and Fatty Acids',{before:120}));
 c.push(table([1460,2200,1500,1400,1400,1400],[['Lipid','A.1 Class; hydrolyzable or non-hydrolyzable?','A.2 Appearance','A.3 Odor','A.4 In water: dissolves, cloudy, or separate layer?','A.5 Soluble in CH_{2}Cl_{2}?'],
  ...['Stearic acid','Oleic acid','Olive oil','Safflower oil','Lecithin','Cholesterol','Vitamin A'].map(n=>[n,'','','','',''])],{h:920,firstColBold:true}));
 c.push(h3('B. Bromine Test for Unsaturation',{before:240}));
-c.push(table([2400,2000,2560,2400],[['Sample (1 drop in 1 mL CH_{2}Cl_{2})','B.2 Drops of bromine solution until the color stays','B.2 Did the red-orange color fade quickly or stay?','B.3 Saturated or unsaturated?'],
+c.push(table([2400,2000,2560,2400],[['Sample (from A.5, in 1 mL CH_{2}Cl_{2})','B.2 Drops of bromine solution until the color stays (up to 20)','B.2 Did the red-orange color fade quickly or stay?','B.3 Saturated or unsaturated?'],
  [{t:'*Fatty acids*',span:4,shade:'F2F2F2',align:AlignmentType.CENTER}],['Stearic acid','','',''],['Oleic acid','','',''],[{t:'*Triacylglycerols (oils)*',span:4,shade:'F2F2F2',align:AlignmentType.CENTER}],['Olive oil','','',''],['Safflower oil','','','']],{h:[0,0,736,736,0,736,736],firstColBold:true}));
-c.push(table([9360],[['**B.3** Rank the unsaturated samples from fewest to most C=C double bonds, and explain using your drop counts:']],{header:0,h:1012}));
+c.push(table([9360],[['**B.3** Explain how your results show which samples are saturated and which are unsaturated:']],{header:0,h:1012}));
 c.push(h3('C. Preparation of Hand Lotion'));
 c.push(table([3120,3120,3120],[['C.1 (all ingredients)','C.2 (without triethanolamine)','C.3 (without stearic acid)'],
  [{t:'**Description of the lotion** (smoothness, thickness, appearance)',span:3,shade:'F2F2F2'}],['','',''],[{t:'**pH (step 4)**',span:3,shade:'F2F2F2'}],['','',''],

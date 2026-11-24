@@ -44,9 +44,9 @@ c.push(table([1900,2560,2400,2500],[['Part','Sample','Type of test','What you fi
  ['A. Solubility','Vitamin tablets and capsules','Qualitative: does it dissolve in water or CH_{2}Cl_{2}?','Water-soluble or fat-soluble'],
  ['B. Standardization','Vitamin C tablet (known: 100 mg)','Titration of a known amount','mg vitamin C per 1 mL of iodine'],
  ['C. Analysis','Juice and powdered drink (unknown)','Titration of an unknown amount','mg vitamin C in each sample'],
- ['D. Heat destruction','Juice and powdered drink, boiled','Titration after heating','mg vitamin C destroyed by heat']],{firstColBold:true}));
+ ['D. Heat destruction','Juice boiled 10 and 30 minutes','Titration after heating','mg vitamin C destroyed by heat']],{firstColBold:true}));
 c.push(h3('D. Heat Destruction of Vitamin C'));
-c.push(P('Vitamin C breaks down when it is heated, especially when air (oxygen) is present. In Part D, you will boil a juice sample and a powdered drink sample that are identical to the ones you analyzed in Part C, then titrate them again. The difference between the unheated and heated results tells you how much vitamin C was destroyed by heating.'));
+c.push(P('Vitamin C breaks down when it is heated, especially when air (oxygen) is present. In Part D, you will boil two portions of the juice you analyzed in Part C, one for 10 minutes and one for 30 minutes, then titrate them. The difference between the unheated and heated results tells you how much vitamin C was destroyed, and comparing the two portions shows the effect of heating time.'));
 // Hazards
 c.push(h3('Hazards and Safety Instructions'));
 c.push(P('Wear safety goggles at all times. Wear gloves when handling iodine solution and methylene chloride.',{after:100}));
@@ -96,10 +96,10 @@ c.push(eq('_____ mL iodine solution × ','mg vitamin C','1 mL iodine solution','
 c.push(sub('Then calculate the mg of vitamin C per mL of juice and per gram of powder. For the powder, also calculate the amount of vitamin C you expected from the label: (mg vitamin C per serving ÷ grams per serving) × grams of powder used.'));
 c.push(P('**Optional fruit or vegetable sample** (if your instructor provides produce): Weigh 10.0 g of the fruit or vegetable. Puree it in a blender with 20 mL of distilled water and filter the puree through cheesecloth into a clean 250-mL Erlenmeyer flask. Add distilled water to a total volume of about 50 mL, then add 2 mL of 0.1 M acetic acid and 10 drops of 1% starch solution. Titrate as in C.4 and calculate the mg of vitamin C per gram of produce.',{before:120}));
 c.push(h3('D. Heat Destruction of Vitamin C'));
-c.push(materials('250-mL Erlenmeyer flasks, the graduated cylinders, cheesecloth, balance, and weighing paper from Part C, hot plate, flask tongs, wire mesh, ice-water bath, juice and powdered drink from Part C, 0.1 M acetic acid, 1% starch solution, your buret of iodine solution'));
-c.push(step('D.1','Use the juice that had the most vitamin C in Part C (a sample with very little vitamin C shows almost no change). Prepare a second juice sample exactly as in C.1 (20.0 mL of juice and 30 mL of water) and a second powdered drink sample exactly as in C.3 (1.00 g of powder and 50 mL of water). Do **not** add the acetic acid or starch yet. Label the flasks.'));
-c.push(step('D.2','Heat both flasks on a hot plate until they boil gently, then boil for 15 minutes, swirling occasionally with flask tongs. Some water will evaporate; this does not affect the result, because you are measuring the total mg of vitamin C in the flask.'));
-c.push(step('D.3','Using flask tongs, move the flasks to a wire mesh to cool for 1–2 minutes, then place them in an ice-water bath until they are cool to the touch. Cooling quickly stops the breakdown of vitamin C.'));
+c.push(materials('250-mL Erlenmeyer flasks, the graduated cylinders, cheesecloth, balance, and weighing paper from Part C, hot plate, flask tongs, wire mesh, ice-water bath, juice from Part C, 0.1 M acetic acid, 1% starch solution, your buret of iodine solution'));
+c.push(step('D.1','Use the same juice as in Part C (if your class tested several juices, use one with a high vitamin C content; a sample with very little vitamin C shows almost no change). Pour 20.0 mL of the juice into each of two 250-mL Erlenmeyer flasks and add 50 mL of distilled water to each. Label the flasks **10 min** and **30 min**. Do **not** add the acetic acid or starch yet.'));
+c.push(step('D.2','Heat both flasks on a hot plate until they boil gently. Boil the **10 min** flask for 10 minutes and the **30 min** flask for 30 minutes, swirling occasionally with flask tongs; take each flask off the heat when its time is up. Some water will evaporate; this does not affect the result, because you are measuring the total mg of vitamin C in the flask.'));
+c.push(step('D.3','Using flask tongs, move each flask to a wire mesh to cool for 1–2 minutes, then place them in an ice-water bath until they are cool to the touch. Cooling quickly stops the breakdown of vitamin C.'));
 c.push(step('D.4','Add 2 mL of 0.1 M acetic acid and 10 drops of 1% starch solution to each flask. Continuing from your current buret reading, titrate each heated sample to the blue-black endpoint. **These titrations may use less iodine than in Part C,** so add it slowly, drop by drop as you approach the endpoint. Record the initial and final buret readings for each.'));
 c.push(step('D.5','For each heated sample, calculate the volume of iodine solution used and the mg of vitamin C remaining. Then use your results from C.5 to calculate the mg of vitamin C destroyed by heating and the percent destroyed:',{after:0,keepNext:true}));
 c.push(eq('% destroyed = ','mg vitamin C destroyed','mg vitamin C before heating (C.5)',' × 100%'));
@@ -135,12 +135,12 @@ c.push(table([3360,3000,3000],[['','Fruit juice','Powdered drink'],
  [['Expected mg vitamin C in sample from the label','(show your calculation)'],{t:'',shade:'F2F2F2'},{t:'mg',align:AlignmentType.RIGHT}]],{h:[0,600,520,520,520,520,1500,700,700,1500]}));
 c.push(space(120)); c.push(table([3360,6000],[[{t:'**Optional:** fruit or vegetable (name)'},''],['Volume of iodine solution used',{t:'mL',align:AlignmentType.RIGHT}],[['mg vitamin C per g of produce','(show your calculation)'],{t:'mg/g',align:AlignmentType.RIGHT}]],{header:0,h:[520,520,1100]}));
 c.push(h3('D. Heat Destruction of Vitamin C',{before:240}));
-c.push(table([3360,3000,3000],[['','Heated fruit juice','Heated powdered drink'],
+c.push(table([3360,3000,3000],[['','Juice boiled 10 minutes','Juice boiled 30 minutes'],
  ['**D.4** Initial buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
  ['Final buret reading',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
  ['**D.5** Volume of iodine solution used',{t:'mL',align:AlignmentType.RIGHT},{t:'mL',align:AlignmentType.RIGHT}],
  [['mg vitamin C remaining after heating','(show your calculation)'],{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
- ['mg vitamin C destroyed (C.5 − D.5)',{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
+ ['mg vitamin C destroyed (juice in C.5 − D.5)',{t:'mg',align:AlignmentType.RIGHT},{t:'mg',align:AlignmentType.RIGHT}],
  [['Percent destroyed','(show your calculation)'],{t:'%',align:AlignmentType.RIGHT},{t:'%',align:AlignmentType.RIGHT}]],{h:[0,520,520,520,1500,600,1500]}));
 // Questions
 c.push(h2('Questions and Problems',{pageBreak:true,before:0}));
@@ -151,7 +151,7 @@ const Q=[['Q.1','Which of the vitamins you tested are water-soluble? Which are f
  ['Q.5','A student adds several extra drops of iodine after the endpoint of the juice titration. Will the calculated mg of vitamin C in the juice be too high or too low? Explain.'],
  ['Q.6','Which of your samples had more vitamin C? For the powdered drink, how did your result compare with the amount expected from the label?'],
  ['Q.7','If the daily requirement for vitamin C is 75 mg, how many milliliters of the juice or grams of the powdered drink would you need to consume to meet it? Show your work.'],
- ['Q.8','Does heating affect the vitamin C content of a juice or drink? Compare the percent destroyed for your two samples.'],
+ ['Q.8','Does heating affect the vitamin C content of the juice? Compare the percent destroyed after 10 minutes and after 30 minutes of boiling.'],
  ['Q.9','If vitamin C tablets are stored in a warm, humid bathroom cabinet, what might happen to their vitamin C content over time? Explain.'],
  ['Q.10','If you want to keep most of the vitamin C in your vegetables, how should you prepare them for dinner?']];
 Q.forEach(([a,b],i)=>{c.push(step(a,b,{left:0,after:0})); c.push(space(i==Q.length-1?0:(i==4?1300:1500)));});

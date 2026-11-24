@@ -55,6 +55,23 @@ Most amounts, times and steps carried over correctly. The details below were res
 13. **Exp 13 D.1:** Alex offered 1% Pb(NO₃)₂ or HgCl₂ as alternatives to AgNO₃; the current lab uses AgNO₃ only. Also, if the stock starch is buffered at pH 7, it pulls the Part C pH tubes toward 7.
 14. **Pre-Lab content questions** that were dropped (Exps 2, 3, 4, 14) and Exp 12's hydrolysis equation and peptide name. Optional.
 
+## Decided 2026-11-24: use Alex's numbers (Daniel)
+
+Applied:
+- **Exp 5 Tollens' test:** D.1 10 drops of each sample; D.2 2 mL of Tollens' reagent.
+- **Exp 12 casein:** 10% acetic acid in C.3 and the materials ("you may need 2–3 mL" kept); "10% acetic acid irritates skin and eyes" added to Hazards.
+- **Exp 14 Part D:** two portions of the same juice (20.0 mL juice + 50 mL water each), boiled 10 minutes and 30 minutes; report columns "Juice boiled 10 minutes / 30 minutes"; Q.8 compares the two times; Table 2 and the introduction match.
+- **Exp 9 Part B:** reuses the A.5 tubes (10–15 drops of lipid in 1 mL CH₂Cl₂); 1% bromine until the red-orange color persists or 20 drops; B.3 classifies saturated/unsaturated (the drop-count ranking, which needed equal 1-drop samples, was removed); Pre-Lab Q3, the introduction, Instructor Notes and Report Sheet match.
+- **Exp 7 intro:** amines with one to four carbon atoms are soluble in water.
+- **Exp 8:** E.2 NaOH "about 20 drops"; Seliwanoff's caution says the reagent is prepared with concentrated hydrochloric acid.
+
+Kept on purpose (Alex's number would be wrong or less safe):
+- **Exp 3 bromine skin rinse:** stays at 15 minutes (safety data sheets and standard first aid); Alex had 10.
+- **Exp 9 Beaker 2:** stays 100 mL (it holds 52 mL; Alex's 50-mL beaker would overflow).
+- **Exp 9 Table 2 melting points** (oleic 13 °C, palmitoleic 0 °C) and other corrected facts stay corrected.
+
+Not numbers, still open: items 5–6 and 8–14 above (Exp 3 combustion demo and HBr test, Exp 9 triethanolamine in the hood, Exp 10 USP standard, Exp 2 isomer names, Exp 1 Snatoms note, Exp 4 pH order, Exp 13 inhibitors, dropped pre-lab questions).
+
 ## So details don't get lost again
 
 - Before editing a lab, keep the co-author's last version as the baseline, and compare after each round of edits, not only at the end. The two passes above can be rerun: `source/tools/compare_details.py` (automatic quantity and name check) plus a step-by-step read of the procedure, materials, report sheet and questions.

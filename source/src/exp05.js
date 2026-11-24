@@ -75,8 +75,8 @@ c.push(step('C.2','Place the tubes in the 50–60 °C water bath and let them wa
 c.push(step('C.3','Add 20 drops of iodine test reagent to each tube and mix. Watch for a few minutes for a pale yellow solid (iodoform) to form. Record the result for each tube as positive (yellow solid) or negative (no solid), and describe the color of the liquid. Empty the tubes into the **halogenated waste container**.'));
 c.push(h3('D. Oxidation of Aldehydes and Ketones (Tollens’ Test)'));
 c.push(materials('4 clean test tubes, test tube rack, marker, droppers, 10-mL graduated cylinder, anisaldehyde, benzaldehyde, acetone, unknown, Tollens’ reagent (freshly prepared), warm water bath (50–60 °C) with thermometer, test tube holder'));
-c.push(step('D.1','Label four clean test tubes with a marker. Place 5 drops of anisaldehyde, benzaldehyde, acetone, and your unknown in separate tubes.'));
-c.push(step('D.2','Add 3 mL of Tollens’ reagent to each tube and mix gently.'));
+c.push(step('D.1','Label four clean test tubes with a marker. Place 10 drops of anisaldehyde, benzaldehyde, acetone, and your unknown in separate tubes.'));
+c.push(step('D.2','Add 2 mL of Tollens’ reagent to each tube and mix gently.'));
 c.push(step('D.3','Place all four tubes in the 50–60 °C water bath **at the same time** for 5 minutes. Make sure the tubes are stable so they do not tip or splash. Do not heat them longer than 5 minutes.'));
 c.push(step('D.4','Remove the tubes and look for a silver mirror or a gray-black precipitate of silver, which shows that the sample was oxidized. Compare each tube with the acetone (ketone) tube; *be aware that this test may give a false positive for one or more of the samples* (see Introduction D). Record your observations, identify the compounds that were oxidized, and compare the results with your prediction from A.6. **Immediately** pour the contents of all four tubes into the **non-halogenated organic waste container**.'));
 c.push(h3('E. Identification of an Unknown'));
