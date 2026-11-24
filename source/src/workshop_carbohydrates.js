@@ -95,7 +95,7 @@ const PL=[['1.','This workshop uses no chemicals. Give two safety rules that sti
  ['2.','What does the D in D-glucose mean? Which carbon of glucose do you look at to decide whether it is D or L?',1050],
  ['3.','In A.1, how will you hold your glyceraldehyde model so that you can draw its Fischer projection? Which bonds point toward you?',1050],
  ['4.','In a Haworth structure of D-glucose, how can you tell the α anomer from the β anomer? Which carbon is the anomeric carbon?',1050],
- ['5.','Using Table 2, name the two monosaccharides that make up lactose and the type of glycosidic bond that joins them. Name one food that contains lactose.',1050],
+ ['5.','Using Table 2, name the two monosaccharides that make up lactose and the type of glycosidic bond that joins them. Name one food that contains lactose. Then list two other foods in your diet that are good sources of carbohydrates and the main carbohydrate in each.',1050],
  ['6.','Amylose and cellulose are both unbranched chains of glucose. What is the difference between their glycosidic bonds, and why can humans digest one but not the other?',1050],
  ['7.','Which polysaccharide do animals use to store glucose, and where in the body is it stored?',0]];
 PL.forEach(([a,b,sp])=>{c.push(step(a,b,{left:360,after:0})); if(sp)c.push(space(sp));});

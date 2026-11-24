@@ -88,5 +88,7 @@ const doc=new Document({evenAndOddHeaderAndFooters:true,creator:'Alexandra Aloia
 const {unzipSync,zipSync,strFromU8,strToU8}=require('fflate');
 function mirror(buf){const z=unzipSync(new Uint8Array(buf)); let x=strFromU8(z['word/settings.xml']);
   if(!x.includes('<w:mirrorMargins/>')) x=x.replace(/(<w:settings[^>]*>(<w:displayBackgroundShape\/>)?)/,'$1<w:mirrorMargins/>');
+  // keep figures at full resolution: stop Word from compressing pictures when it saves or exports a PDF
+  if(!x.includes('doNotAutoCompressPictures')) x=x.replace('</w:compat>','</w:compat><w:doNotAutoCompressPictures/>');
   z['word/settings.xml']=strToU8(x); return Buffer.from(zipSync(z,{level:6}));}
 Packer.toBuffer(doc).then(b=>{b=mirror(b);fs.writeFileSync(OUT,b);console.log('wrote',OUT,sections.length,'sections');});

@@ -134,7 +134,7 @@ const Q=[['Q.1','In Part A, which tube hydrolyzed the starch fastest, and which 
  ['Q.3','Use your graph from B.4. At which temperature was amylase most active? Why was its activity lower at 0 °C and at 100 °C? Explain how the reasons differ.',1500],
  ['Q.4','Use your graph from C.4. What was the optimum pH of amylase in your experiment? Explain why the activity dropped at pH 2 and at pH 10.',1500],
  ['Q.5','The pH of the stomach is about 2. (a) What does this suggest about the optimum pH of pepsin? (b) What happens to the activity of pepsin when it moves into the small intestine, where the pH is about 8? (c) What happens to salivary amylase when swallowed food reaches the stomach?',1700],
- ['Q.6','In Part D, in which mixtures was starch hydrolyzed? Which added substances acted as inhibitors, and how do heavy metal ions inhibit an enzyme?',1500]];
+ ['Q.6','In Part D, in which mixtures was starch hydrolyzed? Which added substances acted as inhibitors? How do heavy metal ions inhibit an enzyme, and how could ethanol affect it?',1500]];
 Q.forEach(([a,b,sp])=>{c.push(step(a,b,{left:0,after:0})); c.push(space(sp));});
 c.push(step('Q.7','A student measured the time for a starch–amylase mixture to reach the achromic point (iodine test stays yellow-brown) at several temperatures:',{left:0,after:80,keepNext:true}));
 c.push(table([2600,1340,1340,1340,1340,1400],[['Temperature (°C)','10','25','37','50','65'],['Time to achromic point (min)','24','9','4','7','no change after 30']],{firstColBold:true}));

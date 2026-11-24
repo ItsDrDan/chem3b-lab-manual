@@ -66,7 +66,7 @@ c.push(step('A.5','Add 10% NaOH to each tube, about 10 drops at a time, mixing a
 c.push(step('A.6','Add 10% HCl to each tube, about 10 drops at a time, mixing after each addition, until a drop of the solution turns blue litmus paper red (the solution is now acidic). Record your observations. Write the equation for the reaction of each sodium salt with HCl (include the charges).'));
 c.push(h3('B. Esters'));
 c.push(materials('Model kit, 5 test tubes, test tube rack, test tube holder, 10-mL graduated cylinder, droppers, stirring rod, spatula, small (50- or 100-mL) beaker, boiling water bath, methanol, 1-propanol, 1-octanol, benzyl alcohol, 1-pentanol, salicylic acid (s), glacial acetic acid, 85% phosphoric acid (H_{3}PO_{4})'));
-c.push(step('B.1','Make models of acetic acid and methanol (methyl alcohol). **Instructor check:** with your instructor watching, remove the atoms that form water (the –OH from the acid and the H from the alcohol), and join the remaining pieces with an ester bond to form methyl acetate. Write the equation for the formation of the ester.'));
+c.push(step('B.1','Make models of acetic acid and methanol (methyl alcohol). **Instructor check:** with your instructor watching, remove the atoms that form water (the –OH from the acid and the H from the alcohol), and join the remaining pieces with an ester bond to form methyl acetate. Then show the reverse reaction, **hydrolysis**: add a water molecule back across the ester bond to split methyl acetate into acetic acid and methanol. Write the equation for the formation of the ester.'));
 c.push(step('B.2','Label five test tubes 1–5. **In the fume hood,** prepare the five mixtures listed in the B.2 table (mixtures 1–5). Add 3 mL of the alcohol and 1 mL of the carboxylic acid; for salicylic acid, use enough solid to cover the tip of a spatula. Write the condensed structural formula of each alcohol and carboxylic acid.',{after:80,keepNext:true}));
 c.push(table([1800,3780,3780],[['Mixture','Alcohol (3 mL)','Carboxylic acid'],['1','Methanol','Salicylic acid (tip of a spatula)'],['2','1-Propanol','Acetic acid (1 mL)'],['3','1-Octanol','Acetic acid (1 mL)'],['4','Benzyl alcohol','Acetic acid (1 mL)'],['5','1-Pentanol','Acetic acid (1 mL)']],{firstColBold:true}));
 c.push(caution('Glacial acetic acid and 85% phosphoric acid cause severe burns. Dispense them in the fume hood and keep the tube pointed away from you and others.'));
@@ -98,7 +98,7 @@ c.push(table([2560,3400,3400],[['','Acetic acid','Benzoic acid'],
  ['**A.4** Hot water; then after cooling',SH,''],['**A.5** Observations after adding NaOH (red litmus turns blue)','',''],['**A.6** Observations after adding HCl (blue litmus turns red)','','']],{h:[0,1300,600,500,850,850,850]}));
 c.push(table([9360],[['**A.5** Equations for the reactions of acetic acid and benzoic acid with NaOH:'],['**A.6** Equations for the reactions of sodium acetate and sodium benzoate with HCl:']],{header:0,h:[1500,1500]}));
 c.push(h3('B. Esters',{before:240}));
-c.push(checkRow('B.1','ester formation shown with models (water removed, ester bond formed)'));
+c.push(checkRow('B.1','ester formation and hydrolysis shown with models (water removed, ester bond formed, then split by water)'));
 c.push(space(120));
 c.push(table([9360],[['**B.1** Equation for the formation of methyl acetate from acetic acid and methanol:']],{header:0,h:1500}));
 c.push(P('',{after:120}));

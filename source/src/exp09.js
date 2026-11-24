@@ -74,10 +74,10 @@ c.push(materials('Stearic acid, cetyl alcohol, lanolin (anhydrous), triethanolam
 c.push(P('**Your instructor will tell you whether to make all three lotions, or to make one assigned lotion and compare your results with other groups.**'));
 c.push(step('C.1','Follow the General Instructions (steps 1–4) using all of the ingredients in the table in step 1.'));
 c.push(step('C.2','Follow the General Instructions, but leave the **triethanolamine** out of Beaker 1.'));
-c.push(step('C.3','Follow the General Instructions, but leave the **stearic acid** out of Beaker 1.'));
+c.push(step('C.3','Follow the General Instructions, but leave the **stearic acid** out of Beaker 1. Compare the three lotions with each other (and, in C.4, with a commercial lotion).'));
 c.push(step('C.4','Determine the pH of a commercial hand lotion the same way (General Instructions, step 4) and record its brand. Compare it with your lotion(s).'));
 c.push(h4('General Instructions'));
-c.push(step('1.','Use a balance to weigh the solids directly into the beakers (tare the beaker first), and use graduated cylinders for the liquids:',{left:360,after:80,keepNext:true}));
+c.push(step('1.','Use a balance to weigh the solids directly into the beakers (tare the beaker first), and use the 10-mL graduated cylinder for the small volumes (glycerol, triethanolamine, and ethanol) and the 50-mL graduated cylinder for the water:',{left:360,after:80,keepNext:true}));
 c.push(table([2900,1780,2900,1780],[['Beaker 1 (100 mL)','Amount','Beaker 2 (100 mL)','Amount'],['Stearic acid','3 g','Glycerol (glycerin)','2 mL'],['Cetyl alcohol','1 g','Distilled water','50 mL'],['Lanolin (anhydrous)','2 g','',''],['Triethanolamine','1 mL','','']]));
 c.push(step('2.','Using crucible tongs, hold Beaker 1 in the water bath and stir until the contents reach about 80 °C and are completely melted, then set it on a wire mesh. Heat Beaker 2 in the water bath to about 80 °C the same way.',{left:360,after:140}));
 c.push(step('3.','While both are still warm, slowly pour Beaker 2 into Beaker 1 while stirring. Add 5.0 mL of ethanol and a few drops of fragrance (if available). Keep stirring for 3–5 minutes, until the mixture becomes a smooth lotion. If it is too thick, stir in a little warm water; if it is still runny, let it cool while stirring.',{left:360,after:140}));
