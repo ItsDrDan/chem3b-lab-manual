@@ -39,7 +39,7 @@ c.push(table([2300,3260,3800],[['Ingredient','Formula or description','Role in t
 // Hazards
 c.push(h3('Hazards and Safety Instructions'));
 c.push(P('Wear safety goggles and gloves at all times.',{after:100}));
-c.push(bullet('**Corrosive and Toxic Vapors:** Bromine solution causes severe chemical burns, and its vapors are toxic. Methylene chloride (CH_{2}Cl_{2}) evaporates quickly, its vapors are harmful, and it is a suspected carcinogen. Dispense and use both only in the fume hood, and keep their test tubes in the hood. If bromine solution gets on your skin or in your eyes, rinse with water for 15 minutes and tell your instructor.'));
+c.push(bullet('**Corrosive and Toxic Vapors:** Bromine solution causes severe chemical burns, and bromine vapor is very toxic (it can be fatal if inhaled). Methylene chloride (CH_{2}Cl_{2}) evaporates quickly, its vapors are harmful, and it is a suspected carcinogen. Dispense and use both only in the fume hood, and keep their test tubes in the hood. If bromine solution gets on your skin or in your eyes, rinse with water for 15 minutes and tell your instructor.'));
 c.push(bullet('**Irritant (Weak Base):** Triethanolamine is a weak base that irritates skin, eyes, and the respiratory tract. Wear gloves when measuring it.'));
 c.push(bullet('**Flammable:** Ethanol is flammable; keep it away from hot plates and flames.'));
 c.push(bullet('**Thermal Hazards:** The hot water bath and the 80 °C beakers can cause burns. Move beakers with crucible tongs, set hot glassware on a wire mesh, and check glassware for cracks before heating.'));
@@ -52,7 +52,7 @@ c.push(bullet('**Trash:** hand lotion (wipe it out of the beaker with a paper to
 c.push(bullet('**Never pour melted fats, waxes, or lotion down the sink.** They solidify as they cool and clog the drain.'));
 // Procedure
 c.push(h2('Procedure',{before:360}));
-c.push(note('Instructor Notes:','At the start of lab, fill a 250-mL beaker 2/3 full of water and keep it at a gentle boil for Part C. Set out the bromine solution and CH_{2}Cl_{2} in the fume hood. Part B reuses the A.5 tubes of stearic acid, oleic acid, olive oil, and safflower oil (10–15 drops of lipid in 1 mL of CH_{2}Cl_{2}), with up to 20 drops of 1% bromine solution. To dispense solids, glide a wood stick gently along the surface.'));
+c.push(note('Instructor Notes:','At the start of lab, fill a 250-mL beaker 2/3 full of water and keep it at a gentle boil for Part C. Set out the bromine solution and CH_{2}Cl_{2} in the fume hood. Part B reuses the A.5 tubes of stearic acid, oleic acid, olive oil, and safflower oil (10–15 drops of lipid in 1 mL of CH_{2}Cl_{2}), with up to 20 drops of 1% bromine solution. To dispense solids, glide a wood stick gently along the surface. **Methylene chloride:** laboratory use is allowed under the U.S. EPA’s 2024 TSCA rule only within a Workplace Chemical Protection Program (exposure monitoring, exposure limits, and training; 40 CFR 751). Check with your EHS office that your lab is covered, or substitute a non-chlorinated solvent.'));
 c.push(h3('A. Physical Properties of Some Lipids and Fatty Acids'));
 c.push(materials('Test tubes and stoppers, test tube rack, droppers, wood sticks, spatulas, mortar and pestle, oleic acid, stearic acid, olive oil, safflower oil, lecithin, cholesterol, vitamin A capsules, distilled water, methylene chloride (CH_{2}Cl_{2})'));
 c.push(h4('Classification'));
